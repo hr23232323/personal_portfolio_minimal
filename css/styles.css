@@ -1,0 +1,117 @@
+body,
+* {
+    margin: 0;
+}
+
+
+/* -------------------------------------------Basic Layouting*/
+
+#main {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.landing-page {
+    height: 100%;
+}
+
+.section {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+}
+
+.landing-content {
+    flex-basis: 0;
+    flex-grow: 4;
+
+    display: flex;
+    flex-direction: column;
+}
+
+.content {
+    width: 60%;
+    margin: 100px auto;
+}
+
+
+/* -------------------------------------------Landing Image*/
+.landing-image {
+    flex-basis: 0;
+    flex-grow: 1;
+    text-align: right;
+}
+
+.landing-image img {
+    height: 100%;
+}
+
+/* -------------------------------------------Landing Text*/
+
+
+.landing-text {
+    width: 70%;
+    margin: auto auto;
+    margin-left: 20%;
+    padding-bottom: 10%;
+}
+
+.landing-text h1 {
+    font-size: 40px;
+    font-family: Verdana;
+    color: hsl(60, 80%, 5%);
+}
+
+.landing-text h2 {
+    font-size: 20px;
+    font-weight: normal;
+    color: hsl(60, 80%, 5%);
+    font-family: Verdana;
+    font-weight: normal;
+    letter-spacing: 3px;
+    opacity: 0.8;
+    margin-bottom: 10%;
+}
+
+
+
+/* -------------------------------------------Fixed Nav*/
+
+.fixed-nav {
+    position: fixed;
+    height: 100vh;
+    bottom: 0;
+    left: 50px;
+    /*Vertical Centering*/
+    display: flex;
+    flex-direction: column;
+}
+
+.fixed-nav ul {
+    list-style-type: none;
+    margin: auto;
+    padding: 0;
+}
+
+
+.fixed-nav ul li {
+    font-size: 24px;
+    margin: 5px;
+    margin-bottom: 30px;
+    margin-top: 30px;
+}
+
+.fixed-nav ul li:hover {
+    transition: 0.2s linear;
+    transform: translatey(-3px);
+}
+
+.fixed-nav ul li a {
+    color: #333;
+    text-decoration: none;
+}
+
+.fixed-nav ul li:hover a {
+    color: hsl(120, 50%, 70%);
+}

@@ -1,0 +1,24 @@
+:root {
+    /*  Colors   */
+    --p-color: hsl(15, 89%, 60%);
+    --p-color-d: hsl(15, 95%, 20%);
+    --p-color-l: hsl(15, 80%, 80%);
+    --p-color-d-m: hsl(15, 92%, 40%);
+    --p-color-l-m: hsl(15, 85%, 70%);
+
+    /*  Greys   */
+    --p-grey: hsl(15, 5%, 60%);
+    --p-grey-d: hsl(15, 6%, 20%);
+    --p-grey-l: hsl(15, 3%, 80%);
+    --p-grey-d-m: hsl(15, 6%, 40%);
+    --p-grey-l-m: hsl(15, 4%, 70%);
+
+    /*  Sizes  */
+    --p-size: 16px;
+    --p-size-b: 20px;
+    --p-size-s: 12px;
+    --p-size-b-m: 18px;
+    --p-size-s-m: 14px;
+    --p-size-b-2: 24px;
+    --p-size-s-2: 10px;
+}

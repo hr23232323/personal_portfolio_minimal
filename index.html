@@ -1,6 +1,7 @@
 <html>
 
 <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>
         Harsh Rana
     </title>
@@ -9,58 +10,275 @@
 
     <!-- Font awesome -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
 </head>
 
 <body>
-    <div id="main">
-        <div class="fixed-nav">
-            <ul>
-                <li>
-                    <a href="https://www.linkedin.com/in/harshrana1997/" target="_blank">
-                        <i class="fab fa-linkedin"></i>
-                    </a>
-                </li>
-                <li>
-                    <a href="https://medium.com/@hr23232323" target="_blank">
-                        <i class="fab fa-medium"></i>
-                    </a>
-                </li>
-                <li>
-                    <a href="https://github.com/hr23232323" target="_blank">
-                        <i class="fab fa-github"></i>
-                    </a>
-                </li>
-                <li>
-                    <a href="mailto:hrana@wpi.edu" target="_blank">
-                        <i class="fas fa-envelope"></i>
-                    </a>
-                </li>
-            </ul>
-        </div>
+    <div class="fixed-nav">
+        <ul>
+            <li>
+                <a href="https://www.linkedin.com/in/harshrana1997/" target="_blank">
+                    <i class="fab fa-linkedin"></i>
+                </a>
+            </li>
+            <li>
+                <a href="https://medium.com/@hr23232323" target="_blank">
+                    <i class="fab fa-medium"></i>
+                </a>
+            </li>
+            <li>
+                <a href="https://github.com/hr23232323" target="_blank">
+                    <i class="fab fa-github"></i>
+                </a>
+            </li>
+            <li>
+                <a href="mailto:hrana@wpi.edu" target="_blank">
+                    <i class="fas fa-envelope"></i>
+                </a>
+            </li>
+        </ul>
+    </div>
 
-        <div class="section landing-page">
-            <div class="landing-content">
-                <div class="landing-text">
-                    <h2>My name is Harsh Rana</h2>
+    <div class="landing-page">
+        <div class="landing-content">
+            <div class="landing-text">
+                <h2>My name is Harsh Rana</h2>
 
-                    <h1>I'm interested in world-changing use cases of software engineering and data science.</h1>
+                <h1>I'm interested in world-changing use cases of software engineering and data science.</h1>
 
-                </div>
             </div>
-            <div class="landing-image">
-                <img src="img/harshPic-min.png">
+        </div>
+        <div class="landing-image">
+            <img src="img/harshPic-min.png">
+        </div>
+    </div>
+    <div clas="main">
+
+        <div class="section">
+            <div class="content about-section-content">
+
+                <div class="about-text">
+                    <h1 class="section-header">About Me</h1>
+                    <p>
+                        I'm interested in using my engineering knowledge to solve complex problems. I'm skilled in Software Development, UI/UX Design, Web Development, Data Science and Machine Learning.
+                    </p>
+                    <p>
+
+                        When I'm not working on a professional goal, you can find me reading self-help and financal books, watching TED talks, rock climbing, running or meditating.
+                    </p>
+                </div>
+                <div class="about-image">
+                    <img src="img/harsh_circle_3.jpg">
+                </div>
             </div>
         </div>
 
         <div class="section">
             <div class="content">
-                <h1>Title</h1>
+                <h1 class="section-header">Skills</h1>
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut risus ipsum, tincidunt sit amet fermentum eu, tristique sit amet lectus. Integer quis dolor dolor. Sed auctor scelerisque felis, id consequat eros lobortis ut. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut aliquet mi elit, non euismod velit interdum vitae. Nam commodo massa risus, a vehicula augue elementum et. Morbi accumsan efficitur sapien vitae pellentesque. Integer consequat maximus orci, sed pretium arcu. </p>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="content">
+                <h1 class="section-header">Experience</h1>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut risus ipsum, tincidunt sit amet fermentum eu, tristique sit amet lectus. Integer quis dolor dolor. Sed auctor scelerisque felis, id consequat eros lobortis ut. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut aliquet mi elit, non euismod velit interdum vitae. Nam commodo massa risus, a vehicula augue elementum et. Morbi accumsan efficitur sapien vitae pellentesque. Integer consequat maximus orci, sed pretium arcu. </p>
+            </div>
+        </div>
+
+
+        <div class="section">
+            <div class="content project-section-content">
+                <div class="project-header">
+                    <h1 class="section-header">Projects</h1>
+
+                    <label class="switch">
+                        <input type="checkbox" checked onclick="project_switch()">
+                        <div class="slider round">
+                            <span class="sd project-options">Software Development</span>
+                            <span class="ds project-options">Data Science</span>
+                        </div>
+                    </label>
+
+                </div>
+
+                <div class="project-carousel">
+                    <div id="sd-projects-div" class="project-row">
+                        <div class="project-tile sd-projects">
+                            <div class="project-image">
+                                <div class="project-image-content">
+                                    <img src="img/project-placeholder.jpg">
+                                </div>
+                            </div>
+                            <div class="project-text">
+                                <div class="project-text-content">
+                                    <p>Project 1</p>
+                                    <h1>Nam commodo massa risus, a vehicl</h1>
+                                </div>
+                            </div>
+                            <div class="project-tags">
+                                <div class="project-tags-content">
+                                    <div class="tag">HTML</div>
+                                    <div class="tag">CSS</div>
+                                    <div class="tag">JavaScript</div>
+                                    <div class="tag">HTML</div>
+                                    <div class="tag">CSS</div>
+                                    <div class="tag">JavaScript</div>
+                                    <div class="tag">HTML</div>
+                                    <div class="tag">CSS</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="project-tile sd-projects">
+
+                            <div class="project-image">
+                                <div class="project-image-content">
+                                    <img src="img/project-placeholder.jpg">
+                                </div>
+                            </div>
+                            <div class="project-text">
+                                <div class="project-text-content">
+                                    <p>Project 2</p>
+                                    <h1>Scelerisque felis, id consequat eros</h1>
+                                </div>
+                            </div>
+                            <div class="project-tags">
+                                <div class="project-tags-content">
+                                    <div class="tag">HTML</div>
+                                    <div class="tag">CSS</div>
+                                    <div class="tag">JavaScript</div>
+                                    <div class="tag">HTML</div>
+                                    <div class="tag">CSS</div>
+                                    <div class="tag">JavaScript</div>
+                                    <div class="tag">HTML</div>
+                                    <div class="tag">CSS</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="project-tile sd-projects">
+
+                            <div class="project-image">
+                                <div class="project-image-content">
+                                    <img src="img/project-placeholder.jpg">
+                                </div>
+                            </div>
+                            <div class="project-text">
+                                <div class="project-text-content">
+                                    <p>Project 3</p>
+                                    <h1>Lorem ipsum dolor sit amet</h1>
+                                </div>
+                            </div>
+                            <div class="project-tags">
+                                <div class="project-tags-content">
+                                    <div class="tag">HTML</div>
+                                    <div class="tag">CSS</div>
+                                    <div class="tag">JavaScript</div>
+                                    <div class="tag">HTML</div>
+                                    <div class="tag">CSS</div>
+                                    <div class="tag">JavaScript</div>
+                                    <div class="tag">HTML</div>
+                                    <div class="tag">CSS</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="ds-projects-div" class="project-row">
+                        <div class="project-tile ds-projects">
+                            <div class="project-image">
+                                <div class="project-image-content">
+                                    <img src="img/project-placeholder.jpg">
+                                </div>
+                            </div>
+                            <div class="project-text">
+                                <div class="project-text-content">
+                                    <p>Project 4</p>
+                                    <h1>Nam commodo massa risus, a vehicl</h1>
+                                </div>
+                            </div>
+                            <div class="project-tags">
+                                <div class="project-tags-content">
+                                    <div class="tag">HTML</div>
+                                    <div class="tag">CSS</div>
+                                    <div class="tag">JavaScript</div>
+                                    <div class="tag">HTML</div>
+                                    <div class="tag">CSS</div>
+                                    <div class="tag">JavaScript</div>
+                                    <div class="tag">HTML</div>
+                                    <div class="tag">CSS</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="project-tile ds-projects">
+
+                            <div class="project-image">
+                                <div class="project-image-content">
+                                    <img src="img/project-placeholder.jpg">
+                                </div>
+                            </div>
+                            <div class="project-text">
+                                <div class="project-text-content">
+                                    <p>Project 5</p>
+                                    <h1>Scelerisque felis, id consequat eros</h1>
+                                </div>
+                            </div>
+                            <div class="project-tags">
+                                <div class="project-tags-content">
+                                    <div class="tag">HTML</div>
+                                    <div class="tag">CSS</div>
+                                    <div class="tag">JavaScript</div>
+                                    <div class="tag">HTML</div>
+                                    <div class="tag">CSS</div>
+                                    <div class="tag">JavaScript</div>
+                                    <div class="tag">HTML</div>
+                                    <div class="tag">CSS</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="project-tile ds-projects">
+
+                            <div class="project-image">
+                                <div class="project-image-content">
+                                    <img src="img/project-placeholder.jpg">
+                                </div>
+                            </div>
+                            <div class="project-text">
+                                <div class="project-text-content">
+                                    <p>Project 6</p>
+                                    <h1>Lorem ipsum dolor sit amet</h1>
+                                </div>
+                            </div>
+                            <div class="project-tags">
+                                <div class="project-tags-content">
+                                    <div class="tag">HTML</div>
+                                    <div class="tag">CSS</div>
+                                    <div class="tag">JavaScript</div>
+                                    <div class="tag">HTML</div>
+                                    <div class="tag">CSS</div>
+                                    <div class="tag">JavaScript</div>
+                                    <div class="tag">HTML</div>
+                                    <div class="tag">CSS</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+                <div class="help-text">
+                    <p>Use the toggle button above to switch between the different domains of projects.</p>
+                </div>
+
+
             </div>
         </div>
 
 
     </div>
 </body>
+<script src="./js/scripts_main.js"></script>
 
 </html>

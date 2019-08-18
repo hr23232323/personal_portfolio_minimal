@@ -71,12 +71,55 @@ function project_switch() {
         var display = window.getComputedStyle(spans[i]).getPropertyValue('display');
         //console.log(name, display);
         if (name == "sd" && display == "block") {
-            console.log("SHOW SD");
             sd_btn_click();
         } else if (name == "ds" && display == "block") {
-            console.log("SHOW DS");
             ds_btn_click();
         }
 
     }
+}
+
+function change_exp_text(exp_link_id) {
+    switch (exp_link_id) {
+        case 'exp-1-link':
+            change_text("exp-1", exp_link_id);
+            break;
+        case 'exp-2-link':
+            change_text("exp-2", exp_link_id);
+            break;
+        case 'exp-3-link':
+            change_text("exp-3", exp_link_id);
+            break;
+    }
+}
+
+function change_text(div_id, link_id) {
+    var exp_divs = document.getElementsByClassName("exp-text");
+    var i;
+    for (i = 0; i < exp_divs.length; i++) {
+        if (exp_divs[i].id == div_id) {
+            exp_divs[i].classList.remove("inactive");
+        } else {
+            exp_divs[i].classList.add("inactive");
+        }
+    }
+
+
+    var exp_links = document.getElementsByClassName("exp-link");
+    for (i = 0; i < exp_links.length; i++) {
+        if (exp_links[i].id == link_id) {
+            exp_links[i].classList.add("active");
+        } else {
+            exp_links[i].classList.remove("active");
+        }
+    }
+}
+
+
+var exp_links = document.getElementsByClassName("exp-link");
+for (var link of exp_links) {
+    link.addEventListener("click", function (event) {
+        change_exp_text(event.target.id);
+
+    });
 }

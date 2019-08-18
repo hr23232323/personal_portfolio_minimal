@@ -131,7 +131,7 @@ body,
 
 .content {
     background-color: hsl(240, 0%, 100%);
-    padding: 10%;
+    padding: 5% 10%;
 }
 
 .section-header {
@@ -190,6 +190,89 @@ body,
 }
 
 
+/* ------------------------------------------- Experience Section */
+
+.exp-content {
+    display: flex;
+    flex-direction: row;
+}
+
+.exp-left {
+    flex-basis: 0;
+    flex-grow: 3;
+}
+
+
+.exp-right {
+    flex-basis: 0;
+    flex-grow: 7;
+    transition: all 1s;
+}
+
+.exp-list {
+    list-style: none;
+    padding: 0;
+}
+
+.exp-list li {
+    margin: 25px 0;
+    padding-left: 0;
+    list-style-type: none;
+    color: hsl(240, 10%, 80%);
+    cursor: pointer;
+    transition: all .3s ease-out;
+}
+
+.exp-list li.active {
+    font-weight: bold;
+    color: hsl(240, 10%, 60%);
+    transform: scale(1.1);
+}
+
+.exp-list li:hover {
+    color: hsl(240, 10%, 60%);
+}
+
+
+.exp-text {
+    transition: opacity 1s;
+    overflow: hidden;
+}
+
+.exp-text.inactive {
+    height: 0;
+    opacity: 0;
+    position: absolute;
+    left: 9999px;
+}
+
+
+.exp-text h1 {
+    color: hsl(240, 10%, 20%);
+    margin-bottom: 5px;
+}
+
+.exp-text h2 {
+    color: hsl(240, 10%, 60%);
+    font-weight: normal;
+    margin-bottom: 15px;
+}
+
+.exp-text ul {
+    padding-left: 20px;
+    list-style: none;
+}
+
+.exp-text ul li::before {
+    content: "\2022";
+    color: hsl(240, 10%, 60%);
+    font-weight: bold;
+    display: inline-block;
+    width: 1em;
+    margin-left: -1em;
+}
+
+
 
 /* ------------------------------------------- Project Section */
 
@@ -202,11 +285,20 @@ body,
     background-color: hsl(240, 10%, 96%);
     margin-bottom: 0;
     overflow: hidden;
+    padding-top: 0;
 }
 
 .project-header {
     text-align: center;
 }
+
+.header-text {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-content: center;
+}
+
 
 .project-row {
     display: flex;
@@ -241,11 +333,10 @@ body,
 .project-text {
     flex-basis: 0;
     flex-grow: 2;
-    margin-top: 5%;
 }
 
 .project-tags {
-    flex-grow: 0.5;
+    flex-grow: 0.2;
 }
 
 .project-text-content {

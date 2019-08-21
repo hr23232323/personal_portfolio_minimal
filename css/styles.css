@@ -1,8 +1,17 @@
 body,
 * {
     margin: 0;
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Raleway', sans-serif;
     box-sizing: border-box;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: 'Oswald', sans-serif;
 }
 
 
@@ -68,13 +77,12 @@ body,
 .landing-text h1 {
     font-size: 40px;
     color: hsl(60, 80%, 5%);
+    font-family: 'Raleway', sans-serif;
 }
 
 .landing-text h2 {
     font-size: 20px;
-    font-weight: normal;
     color: hsl(60, 80%, 5%);
-    font-weight: normal;
     letter-spacing: 3px;
     opacity: 0.8;
     margin-bottom: 10%;
@@ -189,17 +197,55 @@ body,
     padding-bottom: 5%;
 }
 
+.about-lists {
+    display: flex;
+    flex-direction: row;
+}
+
+.list {
+    flex-basis: 0;
+    flex-grow: 1;
+}
+
+.custom-list {
+    list-style: none;
+    padding-left: 0;
+}
+
+.custom-list li {
+    position: relative;
+    padding-left: 20px;
+    line-height: 30px;
+}
+
+.custom-list li:before {
+    content: '';
+    width: 10px;
+    height: 10px;
+    position: absolute;
+    background-image: url('../img/bullet.png');
+    background-size: cover;
+    background-position: center;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+
 
 /* ------------------------------------------- Experience Section */
 
 .exp-content {
     display: flex;
     flex-direction: row;
+    justify-content: center;
+    align-content: center;
 }
 
 .exp-left {
     flex-basis: 0;
     flex-grow: 3;
+    display: flex;
 }
 
 
@@ -209,28 +255,67 @@ body,
     transition: all 1s;
 }
 
+
+
+.exp-text h1 {
+    color: hsl(240, 10%, 20%);
+    margin-bottom: 5px;
+}
+
+.exp-text h2 {
+    color: hsl(240, 10%, 60%);
+    font-weight: normal;
+}
+
+.job-subheader {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 15px;
+}
+
+.job-subheader .row {
+    flex-basis: 0;
+    flex-grow: 1;
+}
+
+.job-subheader .right {
+    text-align: right;
+
+}
+
+.job-subheader .row h2 {
+    font-size: 1.4em;
+}
+
+
+
 .exp-list {
     list-style: none;
     padding: 0;
+    height: 100%;
 }
 
 .exp-list li {
-    margin: 25px 0;
+    margin: 33% 0;
     padding-left: 0;
     list-style-type: none;
     color: hsl(240, 10%, 80%);
     cursor: pointer;
-    transition: all .3s ease-out;
+    transition: transform .3s ease-out;
+    padding-left: 5px;
 }
 
 .exp-list li.active {
     font-weight: bold;
     color: hsl(240, 10%, 60%);
     transform: scale(1.1);
+    border-left: solid 2px hsl(240, 10%, 60%);
 }
 
-.exp-list li:hover {
+.exp-list li:not(.active):hover {
     color: hsl(240, 10%, 60%);
+    padding-left: 4px;
+    border-left: solid 1px hsl(240, 10%, 60%);
 }
 
 
@@ -246,31 +331,11 @@ body,
     left: 9999px;
 }
 
-
-.exp-text h1 {
-    color: hsl(240, 10%, 20%);
-    margin-bottom: 5px;
+.exp-text li {
+    margin-bottom: 10px;
 }
 
-.exp-text h2 {
-    color: hsl(240, 10%, 60%);
-    font-weight: normal;
-    margin-bottom: 15px;
-}
 
-.exp-text ul {
-    padding-left: 20px;
-    list-style: none;
-}
-
-.exp-text ul li::before {
-    content: "\2022";
-    color: hsl(240, 10%, 60%);
-    font-weight: bold;
-    display: inline-block;
-    width: 1em;
-    margin-left: -1em;
-}
 
 
 
@@ -446,7 +511,6 @@ input:checked + .slider:before {
     top: 50%;
     left: 50%;
     font-size: 10px;
-    font-family: Verdana, sans-serif;
 }
 
 input:checked + .slider .sd {

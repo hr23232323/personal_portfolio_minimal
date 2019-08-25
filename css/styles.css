@@ -305,7 +305,6 @@ h6 {
 
 .exp-list li {
     margin: 33% 0;
-    padding-left: 0;
     list-style-type: none;
     color: hsl(240, 10%, 80%);
     cursor: pointer;
@@ -575,7 +574,7 @@ input:checked + .slider .ds {
 
     /*--------About---------------*/
     .about-section-content {
-        padding: 5% 10%;
+        padding: 5% 5%;
         flex-direction: column;
         margin-top: 100px;
     }
@@ -617,15 +616,19 @@ input:checked + .slider .ds {
         margin: 10px 0;
         text-align: center;
         font-size: 1.5em;
+        padding-left: 0px;
+        transition: font-size 0.5s;
     }
 
 
-    .exp-list li.active {
+    #list-mobile li.active {
         border-left: none;
         border-bottom: solid 2px hsl(240, 10%, 60%);
+        transform: none;
+        font-size: 2em;
     }
 
-    .exp-list li:not(.active):hover {
+    #list-mobile li:not(.active):hover {
         border-left: none;
         border-bottom: solid 1px hsl(240, 10%, 60%);
     }

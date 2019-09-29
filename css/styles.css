@@ -602,6 +602,10 @@ input:checked + .slider .ds {
     }
 
     /*---------Experience*/
+    .exp-left {
+        display: block;
+    }
+
     .exp-content {
         display: flex;
         flex-direction: column;

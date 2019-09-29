@@ -224,13 +224,39 @@ h6 {
     width: 10px;
     height: 10px;
     position: absolute;
-    background-image: url('../img/bullet.png');
+    background-image: url('../img/bullet_4.png');
     background-size: cover;
     background-position: center;
     left: 0;
     top: 50%;
     transform: translateY(-50%);
 }
+
+.custom-list-1 {
+    list-style: none;
+    padding-left: 0;
+}
+
+.custom-list-1 li {
+    position: relative;
+    padding-left: 20px;
+    line-height: 30px;
+}
+
+.custom-list-1 li:before {
+    content: '';
+    width: 10px;
+    height: 10px;
+    position: absolute;
+    background-image: url('../img/bullet_4.png');
+    background-size: cover;
+    background-position: center;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+
 
 
 

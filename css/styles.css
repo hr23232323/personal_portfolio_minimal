@@ -579,6 +579,10 @@ input:checked + .slider .ds {
         left: 15px;
     }
 
+    /*---------NAV------------*/
+    .landing-text h1 {
+        font-size: 32px;
+    }
 
     /*--------About---------------*/
     .about-section-content {

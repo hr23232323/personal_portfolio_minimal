@@ -583,7 +583,7 @@ input:checked + .slider .ds {
     .about-section-content {
         padding: 5% 5%;
         flex-direction: column;
-        margin-top: 300px;
+        margin-top: 100px;
     }
 
     .about-text {

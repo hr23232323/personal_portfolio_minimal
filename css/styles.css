@@ -5,6 +5,7 @@ body,
     box-sizing: border-box;
 }
 
+
 h1,
 h2,
 h3,
@@ -24,7 +25,7 @@ h6 {
 }
 
 .landing-page {
-    height: 100%;
+    height: 100vh;
     width: 100%;
     display: flex;
     flex-direction: row;

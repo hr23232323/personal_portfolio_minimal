@@ -564,14 +564,6 @@ input:checked + .slider .ds {
 
 
 
-
-
-
-
-
-
-
-
 /*--------------------------------- MOBILE ---------------------*/
 
 
@@ -611,6 +603,16 @@ input:checked + .slider .ds {
 
     .about-image img {
         width: 200px;
+    }
+
+    .list {
+        box-sizing: border-box;
+        padding: 1%;
+    }
+
+    .custom-list li {
+        line-height: 20px;
+        margin-bottom: 25px;
     }
 
     /*---------Experience*/

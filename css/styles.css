@@ -620,6 +620,11 @@ input:checked + .slider .ds {
     }
 
     /*---------Experience*/
+    .exp-section-content {
+        width: 100%;
+        padding: 5% 15%;
+    }
+
     .exp-left {
         display: block;
     }

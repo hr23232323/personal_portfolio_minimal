@@ -398,21 +398,24 @@ h6 {
 
 .project-image {
     flex-basis: 0;
-    flex-grow: 3;
+    flex-grow: 4;
+    min-height: 0;
 }
 
 .project-text {
     flex-basis: 0;
     flex-grow: 4;
+    min-height: 0;
 }
 
 .project-tags {
     flex-basis: 0;
-    flex-grow: 1;
+    flex-grow: 1.5;
+    min-height: 0;
 }
 
 .project-image-content {
-    max-height: 40%;
+    max-height: 80%;
     margin: 5%;
     overflow-y: hidden;
 }

@@ -413,6 +413,10 @@ h6 {
     flex-basis: 0;
     flex-grow: 1.5;
     min-height: 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-content: center;
 }
 
 .project-image-content {
@@ -444,7 +448,7 @@ h6 {
     display: flex;
     flex-direction: row;
     flex-flow: row wrap;
-    width: 100%;
+    width: 90%;
     align-items: center;
     align-content: space-between;
     justify-content: center;

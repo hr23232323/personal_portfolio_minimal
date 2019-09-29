@@ -254,6 +254,7 @@ h6 {
     flex-basis: 0;
     flex-grow: 7;
     transition: all 1s;
+    padding: 2%;
 }
 
 
@@ -629,6 +630,10 @@ input:checked + .slider .ds {
         display: block;
     }
 
+    .exp-right {
+        padding: 0%;
+    }
+
     .exp-content {
         display: flex;
         flex-direction: column;
@@ -652,6 +657,7 @@ input:checked + .slider .ds {
         text-align: center;
         font-size: 1.5em;
         padding-left: 0px;
+        padding-bottom: 10px;
         transition: font-size 0.5s;
     }
 
@@ -660,7 +666,6 @@ input:checked + .slider .ds {
         border-left: none;
         border-bottom: solid 2px hsl(240, 10%, 60%);
         transform: none;
-        font-size: 2em;
     }
 
     #list-mobile li:not(.active):hover {

@@ -605,6 +605,10 @@ input:checked + .slider .ds {
         width: 200px;
     }
 
+    .about-lists {
+        flex-direction: column;
+    }
+
     .list {
         box-sizing: border-box;
         padding: 1%;
@@ -612,7 +616,7 @@ input:checked + .slider .ds {
 
     .custom-list li {
         line-height: 20px;
-        margin-bottom: 25px;
+        margin-bottom: 15px;
     }
 
     /*---------Experience*/

@@ -192,3 +192,9 @@ for (var link of exp_links) {
 
     });
 }
+
+var flkty = new Flickity('.main-gallery', {
+    // options
+    cellAlign: 'left',
+    contain: true
+});

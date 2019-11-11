@@ -655,6 +655,7 @@ input:checked + .slider .ds {
     .exp-section-content {
         width: 100%;
         padding: 5% 20%;
+        height: 90%;
     }
 
     .exp-left {
@@ -707,6 +708,12 @@ input:checked + .slider .ds {
     .job-subheader .row h2 {
         font-size: 1.1em;
     }
+
+    .exp-text {
+        width: 100%;
+    }
+
+
 
     /*-----Projects------*/
     .project-carousel {

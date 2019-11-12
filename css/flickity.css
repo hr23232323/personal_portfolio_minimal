@@ -146,3 +146,12 @@ https://flickity.metafizzy.co
 .flickity-page-dots .dot.is-selected {
     opacity: 1;
 }
+
+/*-----------------CUSTOM------------------*/
+.gallery-cell {
+    opacity: 0.1;
+}
+
+.gallery-cell.is-selected {
+    opacity: 1;
+}

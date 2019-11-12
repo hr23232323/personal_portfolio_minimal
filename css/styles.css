@@ -262,6 +262,7 @@ h6 {
 
 /* ------------------------------------------- Experience Section */
 
+
 .exp-content {
     display: flex;
     flex-direction: row;
@@ -282,7 +283,6 @@ h6 {
     transition: all 1s;
     padding: 2%;
 }
-
 
 
 .exp-text h1 {
@@ -357,6 +357,7 @@ h6 {
 .exp-text {
     transition: opacity 1s;
     overflow: hidden;
+    width: 100%;
 }
 
 .exp-text.inactive {
@@ -709,8 +710,8 @@ input:checked + .slider .ds {
         font-size: 1.1em;
     }
 
-    .exp-text {
-        width: 100%;
+    .exp-text h1 {
+        font-weight: normal;
     }
 
 

@@ -712,6 +712,7 @@ input:checked + .slider .ds {
 
     .exp-text h1 {
         font-weight: normal;
+        font-size: 1.5em;
     }
 
 

@@ -21,4 +21,15 @@
     --p-size-s-m: 14px;
     --p-size-b-2: 24px;
     --p-size-s-2: 10px;
+
+    /*  REAL    */
+    --text-primary: hsl(240, 10%, 20%);
+    --text-secondary: hsl(240, 10%, 60%);
+    --text-highlight: hsl(120, 50%, 70%);
+    --text-light: hsl(120, 50%, 100%);
+
+    /*  BG  */
+    --bg-primary: hsl(240, 10%, 96%);
+    --bg-secondary: hsl(240, 0%, 100%);
+    --bg-grey: hsl(240, 10%, 80%);
 }

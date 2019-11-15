@@ -77,13 +77,13 @@ h6 {
 
 .landing-text h1 {
     font-size: 40px;
-    color: hsl(60, 80%, 5%);
+    color: var(--text-primary);
     font-family: 'Raleway', sans-serif;
 }
 
 .landing-text h2 {
     font-size: 20px;
-    color: hsl(60, 80%, 5%);
+    color: var(--text-primary);
     letter-spacing: 3px;
     opacity: 0.8;
     margin-bottom: 10%;
@@ -124,44 +124,35 @@ h6 {
 }
 
 .fixed-nav ul li a {
-    color: #333;
+    color: var(--text-primary);
     text-decoration: none;
 }
 
 .fixed-nav ul li:hover a {
-    color: hsl(120, 50%, 70%);
+    color: var(--text-highlight);
 }
 
 
 /* ------------------------------------------- Common Sections Visuals */
 .section {
-    background-color: hsl(240, 10%, 96%);
+    background-color: var(--bg-primary);
 }
 
 .content {
-    background-color: hsl(240, 0%, 100%);
+    background-color: var(--bg-secondary);
     padding: 5% 10%;
 }
 
 .section-header {
+    color: var(--text-primary);
     margin-bottom: 3%;
     padding-bottom: 1%;
-    border-bottom: 2px solid hsl(240, 10%, 96%);
+    border-bottom: 2px solid var(--bg-primary);
 }
 
 
 /* ------------------------------------------- About Section */
 
-/*.about-section-content {
-    background-color: hsl(210, 91%, 22%);
-    padding: 10%;
-    margin: 0 auto;
-    margin-top: -50px;
-    width: 60%;
-    z-index: 1000;
-    color: hsl(240, 10%, 96%);
-
-}*/
 
 .about-section-content {
     margin-top: 50px;
@@ -281,17 +272,17 @@ h6 {
     flex-basis: 0;
     flex-grow: 7;
     transition: all 1s;
-    padding: 2%;
+    padding: 2% 2% 2% 0;
 }
 
 
 .exp-text h1 {
-    color: hsl(240, 10%, 20%);
+    color: var(--text-primary);
     margin-bottom: 5px;
 }
 
 .exp-text h2 {
-    color: hsl(240, 10%, 60%);
+    color: var(--text-secondary);
     font-weight: normal;
 }
 
@@ -334,7 +325,7 @@ h6 {
 .exp-list li {
     margin: 33% 0;
     list-style-type: none;
-    color: hsl(240, 10%, 80%);
+    color: var(--bg-grey);
     cursor: pointer;
     transition: transform .3s ease-out;
     padding-left: 5px;
@@ -342,15 +333,15 @@ h6 {
 
 .exp-list li.active {
     font-weight: bold;
-    color: hsl(240, 10%, 60%);
+    color: var(--text-secondary);
     transform: scale(1.1);
-    border-left: solid 2px hsl(240, 10%, 60%);
+    border-left: solid 2px var(--text-secondary);
 }
 
 .exp-list li:not(.active):hover {
-    color: hsl(240, 10%, 60%);
+    color: var(--text-secondary);
     padding-left: 4px;
-    border-left: solid 1px hsl(240, 10%, 60%);
+    border-left: solid 1px var(--text-secondary);
 }
 
 
@@ -383,7 +374,7 @@ h6 {
 
 .project-section-content {
     width: 100%;
-    background-color: hsl(240, 10%, 96%);
+    background-color: var(--bg-primary);
     margin-bottom: 0;
     overflow-x: hidden;
     padding-top: 0;
@@ -414,7 +405,7 @@ h6 {
     display: flex;
     flex-direction: column;
     box-sizing: border-box;
-    background: hsl(240, 0%, 100%);
+    background: var(--bg-secondary);
     box-shadow: 0px 0px 5px 0px hsla(210, 91%, 22%, 0.1);
     height: 500px;
 }
@@ -486,20 +477,21 @@ h6 {
     margin: 1%;
     border-radius: 15px;
     text-align: center;
-    color: hsl(240, 10%, 60%);
+    color: var(--text-secondary);
     font-size: 12px;
     box-sizing: border-box;
 }
 
 .tag:hover {
-    background: hsl(240, 10%, 50%);
-    color: hsl(240, 10%, 100%);
+    background: var(--bg-grey);
+    color: var(--text-light);
+    cursor: default;
 }
 
 .help-text {
     justify-content: center;
     text-align: center;
-    color: hsl(240, 10%, 60%);
+    color: var(--text-secondary);
 }
 
 /*-----------Switch------------*/
@@ -521,7 +513,7 @@ h6 {
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: hsl(240, 10%, 80%);
+    background-color: var(--bg-grey);
     -webkit-transition: .4s;
     transition: .4s;
 }
@@ -533,14 +525,14 @@ h6 {
     width: 30px;
     left: 5px;
     bottom: 5px;
-    background-color: white;
+    background-color: var(--text-light);
     -webkit-transition: .4s;
     transition: .4s;
 }
 
 input:checked + .slider {
-    background-color: hsl(240, 10%, 60%);
-    color: #333;
+    background-color: var(--text-secondary);
+    color: var(--text-primary);
 }
 
 
@@ -557,7 +549,7 @@ input:checked + .slider:before {
 
 .sd,
 .ds {
-    color: white;
+    color: var(--text-light);
     position: absolute;
     transform: translate(-50%, -50%);
     top: 50%;
@@ -697,13 +689,13 @@ input:checked + .slider .ds {
 
     #list-mobile li.active {
         border-left: none;
-        border-bottom: solid 2px hsl(240, 10%, 60%);
+        border-bottom: solid 2px var(--text-secondary);
         transform: none;
     }
 
     #list-mobile li:not(.active):hover {
         border-left: none;
-        border-bottom: solid 1px hsl(240, 10%, 60%);
+        border-bottom: solid 1px var(--text-secondary);
     }
 
     .job-subheader .row h2 {
@@ -712,7 +704,7 @@ input:checked + .slider .ds {
 
     .exp-text h1 {
         font-weight: normal;
-        font-size: 1.5em;
+        font-size: 1.7em;
     }
 
 

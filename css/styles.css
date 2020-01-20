@@ -89,6 +89,11 @@ h6 {
     margin-bottom: 10%;
 }
 
+.highlight-text {
+    display: inline;
+    background-image: linear-gradient(#fff 60%, var(--text-highlight) 30%);
+}
+
 
 
 /* -------------------------------------------Fixed Nav*/
@@ -129,7 +134,7 @@ h6 {
 }
 
 .fixed-nav ul li:hover a {
-    color: var(--text-highlight);
+    color: var(--text-hover);
 }
 
 
@@ -647,8 +652,7 @@ input:checked + .slider .ds {
     /*---------Experience*/
     .exp-section-content {
         width: 100%;
-        padding: 5% 20%;
-        height: 90%;
+        padding: 5% 16%;
     }
 
     .exp-left {

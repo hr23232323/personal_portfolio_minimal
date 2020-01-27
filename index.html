@@ -166,88 +166,22 @@
                         <h1 class="section-header">Projects</h1>
                     </div>
 
-                    <label class="switch">
+                    <!--<label class="switch">
                         <input type="checkbox" checked onclick="project_switch()">
                         <div class="slider round">
                             <span class="sd project-options">Software Development</span>
                             <span class="ds project-options">Data Science</span>
                         </div>
-                    </label>
+                    </label>-->
+                    <div class="project-btns">
+                        <button class="ds project-options active">Data Science</button>
+                        <button class="sd project-options inactive">Software Development</button>
+                    </div>
+
 
                 </div>
 
                 <div class="project-carousel">
-                    <div id="sd-projects-div" class="project-row">
-                        <div class="project-tile sd-projects">
-                            <div class="project-image">
-                                <div class="project-image-content">
-                                    <img src="img/projects/wpi_global_map.JPG" alt="WPI Global Project Map photo">
-                                </div>
-                            </div>
-                            <div class="project-text">
-                                <div class="project-text-content">
-                                    <h1>WPI Global Projects Map</h1>
-                                    <p>A web application which highlights WPI's project centers across the world</p>
-                                </div>
-                            </div>
-                            <div class="project-tags">
-                                <div class="project-tags-content">
-                                    <div class="tag">HTML</div>
-                                    <div class="tag">CSS</div>
-                                    <div class="tag">JavaScript</div>
-                                    <div class="tag">PHP</div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="project-tile sd-projects">
-                            <div class="project-image">
-                                <div class="project-image-content">
-                                    <img src="img/projects/human_exp.JPG" alt="Screenshot from human-computer interaction experiment website">
-                                </div>
-                            </div>
-                            <div class="project-text">
-                                <div class="project-text-content">
-                                    <h1>Human Perception Experiment</h1>
-                                    <p>Recreation of Cleveland and McGill's experiment about human perception in data visualization</p>
-                                </div>
-                            </div>
-                            <div class="project-tags">
-                                <div class="project-tags-content">
-                                    <div class="tag">HTML</div>
-                                    <div class="tag">CSS</div>
-                                    <div class="tag">JavaScript</div>
-                                    <div class="tag">Python</div>
-                                    <div class="tag">R</div>
-                                    <div class="tag">D3.js</div>
-                                    <div class="tag">Statistics</div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="project-tile sd-projects">
-
-                            <div class="project-image">
-                                <div class="project-image-content">
-                                    <img src="img/projects/workout_buddy.JPG" alt="screenshot from workout buddy website">
-                                </div>
-                            </div>
-                            <div class="project-text">
-                                <div class="project-text-content">
-                                    <h1>Workout Buddy</h1>
-                                    <p>A website to help people create and keep track of workouts</p>
-                                </div>
-                            </div>
-                            <div class="project-tags">
-                                <div class="project-tags-content">
-                                    <div class="tag">HTML</div>
-                                    <div class="tag">CSS</div>
-                                    <div class="tag">JavaScript</div>
-                                    <div class="tag">NodeJS</div>
-                                    <div class="tag">SQLite</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
                     <div id="ds-projects-div" class="project-row">
                         <div class="project-tile ds-projects">
                             <div class="project-image">
@@ -320,10 +254,78 @@
                         </div>
                     </div>
 
+                    <div id="sd-projects-div" class="project-row">
+                        <div class="project-tile sd-projects">
+                            <div class="project-image">
+                                <div class="project-image-content">
+                                    <img src="img/projects/wpi_global_map.JPG" alt="WPI Global Project Map photo">
+                                </div>
+                            </div>
+                            <div class="project-text">
+                                <div class="project-text-content">
+                                    <h1>WPI Global Projects Map</h1>
+                                    <p>A web application which highlights WPI's project centers across the world</p>
+                                </div>
+                            </div>
+                            <div class="project-tags">
+                                <div class="project-tags-content">
+                                    <div class="tag">HTML</div>
+                                    <div class="tag">CSS</div>
+                                    <div class="tag">JavaScript</div>
+                                    <div class="tag">PHP</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="project-tile sd-projects">
+                            <div class="project-image">
+                                <div class="project-image-content">
+                                    <img src="img/projects/human_exp.JPG" alt="Screenshot from human-computer interaction experiment website">
+                                </div>
+                            </div>
+                            <div class="project-text">
+                                <div class="project-text-content">
+                                    <h1>Human Perception Experiment</h1>
+                                    <p>Recreation of Cleveland and McGill's experiment about human perception in data visualization</p>
+                                </div>
+                            </div>
+                            <div class="project-tags">
+                                <div class="project-tags-content">
+                                    <div class="tag">HTML</div>
+                                    <div class="tag">CSS</div>
+                                    <div class="tag">JavaScript</div>
+                                    <div class="tag">Python</div>
+                                    <div class="tag">R</div>
+                                    <div class="tag">D3.js</div>
+                                    <div class="tag">Statistics</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="project-tile sd-projects">
 
-                </div>
-                <div class="help-text">
-                    <p>Use the toggle button above to switch between the different domains of projects.</p>
+                            <div class="project-image">
+                                <div class="project-image-content">
+                                    <img src="img/projects/workout_buddy.JPG" alt="screenshot from workout buddy website">
+                                </div>
+                            </div>
+                            <div class="project-text">
+                                <div class="project-text-content">
+                                    <h1>Workout Buddy</h1>
+                                    <p>A website to help people create and keep track of workouts</p>
+                                </div>
+                            </div>
+                            <div class="project-tags">
+                                <div class="project-tags-content">
+                                    <div class="tag">HTML</div>
+                                    <div class="tag">CSS</div>
+                                    <div class="tag">JavaScript</div>
+                                    <div class="tag">NodeJS</div>
+                                    <div class="tag">SQLite</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
                 </div>
             </div>
         </div>

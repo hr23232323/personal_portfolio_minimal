@@ -24,6 +24,7 @@
 
     /*  REAL    */
     --text-primary: hsl(240, 10%, 20%);
+    --text-blue: hsl(207, 58%, 39%);
     --text-secondary: hsl(240, 10%, 60%);
     --text-highlight: hsl(54, 94%, 64%);
     --text-light: hsl(120, 50%, 100%);

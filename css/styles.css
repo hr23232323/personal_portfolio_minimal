@@ -499,7 +499,7 @@ h6 {
     color: var(--text-secondary);
 }
 
-/*-----------Switch------------*/
+/*-----------Switch
 .switch {
     position: relative;
     display: inline-block;
@@ -546,8 +546,6 @@ input:checked + .slider:before {
     -ms-transform: translateX(160px);
     transform: translateX(160px);
 }
-
-/*------ ADDED CSS ---------*/
 .sd {
     display: none;
 }
@@ -577,6 +575,40 @@ input:checked + .slider .ds {
 .slider.round:before {
     border-radius: 50%;
 }
+------------*/
+/*--------------SWITCH #2-----------------*/
+
+.project-btns {
+    font-size: 0;
+}
+
+button:focus {
+    outline: 0;
+}
+
+.project-btns button {
+    background-color: var(--bg-primary);
+    border: none;
+    color: var(--text-secondary);
+    padding: 15px;
+    width: 250px;
+    text-align: center;
+    text-decoration: none;
+    border-bottom: solid 2px var(--bg-primary);
+    transition: all 0.2s;
+    font-weight: bold;
+}
+
+.project-btns .inactive:hover {
+    color: var(--p-grey-l-m);
+    cursor: pointer;
+}
+
+.project-btns .active {
+    background-color: var(--bg-primary);
+    color: var(--text-blue);
+    border-bottom: solid 2px var(--text-blue);
+}
 
 
 
@@ -587,7 +619,7 @@ input:checked + .slider .ds {
     width: 200%;
 }
 
-#ds-projects-div {
+#sd-projects-div {
     transform: translateX(200%);
 }
 
@@ -724,6 +756,10 @@ input:checked + .slider .ds {
 
     .project-tile {
         margin: 5% 5%;
+    }
+
+    .project-btns button {
+        width: 100px;
     }
 
 

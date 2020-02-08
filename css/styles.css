@@ -1,7 +1,7 @@
 body,
 * {
     margin: 0;
-    font-family: 'Raleway', sans-serif;
+    font-family: 'AvertaQuibi-Regular', Helvetica, sans-serif;
     box-sizing: border-box;
 }
 
@@ -12,7 +12,7 @@ h3,
 h4,
 h5,
 h6 {
-    font-family: 'Oswald', sans-serif;
+    font-family: 'AvertaQuibi-Black', Helvetica, sans-serif;
 }
 
 
@@ -25,7 +25,7 @@ h6 {
 }
 
 .landing-page {
-    height: 100vh;
+    height: 90vh;
     width: 100%;
     display: flex;
     flex-direction: row;
@@ -40,7 +40,6 @@ h6 {
 .landing-content {
     flex-basis: 0;
     flex-grow: 4;
-
     display: flex;
     flex-direction: column;
 }
@@ -75,10 +74,11 @@ h6 {
     padding-bottom: 10%;
 }
 
+
 .landing-text h1 {
-    font-size: 40px;
+    font-size: 60px;
     color: var(--text-primary);
-    font-family: 'Raleway', sans-serif;
+    font-family: 'AvertaQuibi-Black', sans-serif;
 }
 
 .landing-text h2 {
@@ -86,12 +86,14 @@ h6 {
     color: var(--text-primary);
     letter-spacing: 3px;
     opacity: 0.8;
-    margin-bottom: 10%;
+    margin-bottom: 5%;
+    font-family: 'AvertaQuibi-Semibold', sans-serif;
 }
 
 .highlight-text {
     display: inline;
     background-image: linear-gradient(#fff 60%, var(--text-highlight) 30%);
+    font-family: 'AvertaQuibi-Black', sans-serif;
 }
 
 

@@ -35,3 +35,23 @@
     --bg-secondary: hsl(240, 0%, 100%);
     --bg-grey: hsl(240, 10%, 80%);
 }
+
+@font-face {
+    font-family: 'AvertaQuibi-Black';
+    src: url('../static/AvertaQuibi-Black.woff2') format('woff2')
+}
+
+@font-face {
+    font-family: 'AvertaQuibi-Bold';
+    src: url('../static/AvertaQuibi-Bold.woff2') format('woff2')
+}
+
+@font-face {
+    font-family: 'AvertaQuibi-Regular';
+    src: url('../static/AvertaQuibi-Regular.woff2') format('woff2')
+}
+
+@font-face {
+    font-family: 'AvertaQuibi-Semibold';
+    src: url('../static/AvertaQuibi-Semibold.woff2') format('woff2')
+}

@@ -579,8 +579,10 @@ button:focus {
     }
 
     /*---------Landing------------*/
-    .landing-text h1 {
-        font-size: 32px;
+    .landing-text h1 {}
+
+    .section-header {
+        font-size: 1.6rem;
     }
 
     /*--------About---------------*/
@@ -678,7 +680,7 @@ button:focus {
 
     .exp-text h1 {
         font-weight: normal;
-        font-size: 1.4em;
+        font-size: 1.7em;
     }
 
 

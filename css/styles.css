@@ -12,7 +12,7 @@ h3,
 h4,
 h5,
 h6 {
-    font-family: 'AvertaQuibi-Black', Helvetica, sans-serif;
+    font-family: 'AvertaQuibi-Bold', Helvetica, sans-serif;
 }
 
 
@@ -25,7 +25,7 @@ h6 {
 }
 
 .landing-page {
-    height: 90vh;
+    height: 100vh;
     width: 100%;
     display: flex;
     flex-direction: row;
@@ -77,24 +77,25 @@ h6 {
 
 
 .landing-text h1 {
-    font-size: 60px;
-    color: var(--text-primary);
+    font-size: 4rem;
+    color: var(--text-light);
     font-family: 'AvertaQuibi-Black', sans-serif;
+    letter-spacing: 3px;
 }
 
 .landing-text h2 {
     font-size: 20px;
-    color: var(--text-primary);
+    color: var(--text-light);
     letter-spacing: 3px;
-    opacity: 0.8;
     margin-bottom: 5%;
     font-family: 'AvertaQuibi-Semibold', sans-serif;
 }
 
 .highlight-text {
     display: inline;
-    background-image: linear-gradient(#fff 60%, var(--text-highlight) 30%);
+    background-image: linear-gradient(var(--bg-secondary) 70%, var(--text-highlight) 30%);
     font-family: 'AvertaQuibi-Black', sans-serif;
+
 }
 
 
@@ -147,16 +148,16 @@ h6 {
 }
 
 .content {
-    background-color: var(--bg-secondary);
+    background-color: var(--bg-light);
     padding: 5% 10%;
 }
 
 
 .section-header {
     color: var(--text-primary);
-    margin-bottom: 3%;
+    margin-bottom: 1%;
     padding-bottom: 1%;
-    border-bottom: 2px solid var(--bg-primary);
+    font-size: 4rem;
 }
 
 
@@ -166,10 +167,9 @@ h6 {
 .about-section-content {
     margin-top: 50px;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding-right: 0%;
 }
 
 .about-image {
@@ -196,11 +196,24 @@ h6 {
 
 .about-text p {
     padding-bottom: 5%;
+    font-size: 1.2rem;
 }
 
 .about-lists {
     display: flex;
     flex-direction: row;
+}
+
+.about-word-cloud {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-basis: 0;
+    flex-grow: 2;
+}
+
+.about-word-cloud img {
+    width: 100%;
 }
 
 .list {
@@ -371,10 +384,6 @@ h6 {
     margin-bottom: 10px;
 }
 
-
-
-
-
 /* ------------------------------------------- Project Section */
 
 .project-header .section-header {
@@ -414,7 +423,7 @@ h6 {
     display: flex;
     flex-direction: column;
     box-sizing: border-box;
-    background: var(--bg-secondary);
+    background: var(--bg-light);
     box-shadow: 0px 0px 5px 0px hsla(210, 91%, 22%, 0.1);
     height: 500px;
     cursor: pointer;

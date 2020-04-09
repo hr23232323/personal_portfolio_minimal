@@ -28,12 +28,14 @@
     --text-blue: hsl(207, 58%, 39%);
     --text-secondary: hsl(240, 10%, 60%);
     --text-highlight: hsl(54, 94%, 64%);
+    --text-highlight: hsl(76, 53%, 64%);
     --text-light: hsl(120, 50%, 100%);
     --text-hover: hsl(120, 50%, 70%);
 
     /*  BG  */
-    --bg-primary: hsl(240, 10%, 96%);
-    --bg-secondary: hsl(240, 0%, 100%);
+    --bg-primary: hsl(240, 10%, 100%);
+    --bg-secondary: hsl(353, 42%, 45%);
+    --bg-light: hsl(240, 0%, 100%);
     --bg-grey: hsl(240, 10%, 80%);
 }
 

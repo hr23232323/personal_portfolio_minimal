@@ -579,7 +579,10 @@ button:focus {
     }
 
     /*---------Landing------------*/
-    .landing-text h1 {}
+    .landing-text h1 {
+        font-size: 2.5rem;
+        letter-spacing: 1px;
+    }
 
     .section-header {
         font-size: 1.6rem;

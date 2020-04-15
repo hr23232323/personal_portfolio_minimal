@@ -283,6 +283,8 @@ h6 {
     align-content: center;
 }
 
+.exp-section-content {}
+
 .exp-left {
     flex-basis: 0;
     flex-grow: 3;
@@ -382,6 +384,17 @@ h6 {
 
 .exp-text li {
     margin-bottom: 10px;
+}
+
+.exp-content .flickity-button {
+    background-color: var(--bg-secondary);
+    color: var(--text-light);
+}
+
+.exp-content .flickity-button:hover {
+    background-color: var(--bg-secondary);
+    color: var(--text-light);
+    opacity: 0.9;
 }
 
 /* ------------------------------------------- Project Section */
@@ -695,6 +708,13 @@ button:focus {
         font-size: 1.5em;
     }
 
+    .exp-content .flickity-prev-next-button.previous {
+        display: none;
+    }
+
+    .exp-content .flickity-prev-next-button.next {
+        display: none;
+    }
 
 
     /*-----Projects------*/

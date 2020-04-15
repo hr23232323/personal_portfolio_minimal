@@ -63,11 +63,11 @@ https://flickity.metafizzy.co
 }
 
 .flickity-button:active {
-    opacity: 0.6;
+    opacity: 0.8;
 }
 
 .flickity-button:disabled {
-    opacity: 0.3;
+    opacity: 0.2;
     cursor: auto;
     /* prevent disabled button from capturing pointer up event. #716 */
     pointer-events: none;
@@ -80,7 +80,7 @@ https://flickity.metafizzy.co
 /* ---- previous/next buttons ---- */
 
 .flickity-prev-next-button {
-    top: 80%;
+    top: 50%;
     width: 44px;
     height: 44px;
     border-radius: 50%;
@@ -89,11 +89,11 @@ https://flickity.metafizzy.co
 }
 
 .flickity-prev-next-button.previous {
-    left: -50px;
+    left: -80px;
 }
 
 .flickity-prev-next-button.next {
-    right: -50px;
+    right: -80px;
 }
 
 /* right to left */

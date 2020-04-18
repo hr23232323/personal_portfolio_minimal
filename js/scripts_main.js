@@ -273,3 +273,18 @@ var flkty = new Flickity('.main-gallery', {
     cellAlign: 'left',
     contain: true
 });
+
+var landing_div = document.getElementsByClassName("landing-page")[0]
+var icon_list = document.getElementsByClassName("fa-icon")
+
+document.addEventListener("scroll", function () {
+    var landing_btm = landing_div.getBoundingClientRect().bottom
+    for (var icon of icon_list) {
+        icon_btm = icon.getBoundingClientRect().bottom
+        if (landing_btm < icon_btm) {
+            icon.style.color = "var(--text-primary)"
+        } else {
+            icon.style.color = "var(--bg-primary)"
+        }
+    }
+})

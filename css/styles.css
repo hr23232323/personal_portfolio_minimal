@@ -133,7 +133,7 @@ h6 {
 }
 
 .fixed-nav ul li a {
-    color: var(--text-primary);
+    color: var(--bg-primary);
     text-decoration: none;
 }
 

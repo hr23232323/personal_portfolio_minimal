@@ -586,6 +586,25 @@ button:focus {
     transform: translateX(200%);
 }
 
+/*------------------FOOTER----------------*/
+.footer {
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    background-color: var(--bg-footer);
+    color: var(--text-light);
+
+}
+
+.footer p {
+    margin: 20px;
+    opacity: 80%;
+}
+
+.footer .copy {
+    font-size: 16px;
+}
+
 
 
 

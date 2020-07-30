@@ -35,6 +35,7 @@
     /*  BG  */
     --bg-primary: hsl(240, 10%, 100%);
     --bg-secondary: hsl(353, 42%, 45%);
+    --bg-footer: hsla(353, 42%, 45%, 100%);
     --bg-light: hsl(240, 0%, 100%);
     --bg-grey: hsl(240, 10%, 80%);
 }

@@ -98,6 +98,13 @@ h6 {
 
 }
 
+.highlight-text-2 {
+    display: inline;
+    background-image: linear-gradient(var(--bg-primary) 70%, var(--text-highlight) 30%);
+    font-family: 'AvertaQuibi-Bold', sans-serif;
+
+}
+
 
 
 /* -------------------------------------------Fixed Nav*/
@@ -170,6 +177,7 @@ h6 {
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    margin-bottom: 50px;
 }
 
 .about-image {

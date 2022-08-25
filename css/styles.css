@@ -385,17 +385,6 @@ h6 {
     margin-bottom: 10px;
 }
 
-.exp-content .flickity-button {
-    background-color: var(--bg-secondary);
-    color: var(--text-light);
-}
-
-.exp-content .flickity-button:hover {
-    background-color: var(--bg-secondary);
-    color: var(--text-light);
-    opacity: 0.9;
-}
-
 .custom-list-1 {
     font-size: 1.2rem;
 }
@@ -728,14 +717,6 @@ button:focus {
     .exp-text h1 {
         font-weight: normal;
         font-size: 1.5em;
-    }
-
-    .exp-content .flickity-prev-next-button.previous {
-        display: none;
-    }
-
-    .exp-content .flickity-prev-next-button.next {
-        display: none;
     }
 
 

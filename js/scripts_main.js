@@ -260,12 +260,6 @@ for (var link of exp_links) {
     });
 }
 
-var flkty = new Flickity('.main-gallery', {
-    // options
-    cellAlign: 'left',
-    contain: true
-});
-
 var landing_div = document.getElementsByClassName("landing-page")[0]
 var icon_list = document.getElementsByClassName("fa-icon")
 

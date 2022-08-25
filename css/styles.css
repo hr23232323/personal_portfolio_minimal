@@ -207,6 +207,11 @@ h6 {
     font-size: 1.2rem;
 }
 
+.about-text li {
+    padding-bottom: 3%;
+    font-size: 1.2rem;
+}
+
 .about-lists {
     display: flex;
     flex-direction: row;

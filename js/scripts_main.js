@@ -3,7 +3,6 @@ function ds_btn_click() {
     ds_projects = document.getElementsByClassName("ds-projects");
     var i;
     for (i = 0; i < sd_projects.length; i++) {
-        //console.log(sd_projects[i]);
         (function (ind) {
             setTimeout(function () {
                 sd_projects[ds_projects.length - ind - 1].style.transition = "transform 1s";
@@ -15,7 +14,6 @@ function ds_btn_click() {
 
     var j;
     for (j = 0; j < sd_projects.length; j++) {
-        //console.log(sd_projects[i]);
         (function (ind2) {
             setTimeout(function () {
 
@@ -33,7 +31,6 @@ function ds_btn_click_mob() {
     ds_projects = document.getElementsByClassName("ds-projects");
     var i;
     for (i = 0; i < sd_projects.length; i++) {
-        //console.log(sd_projects[i]);
         (function (ind) {
             setTimeout(function () {
                 sd_projects[sd_projects.length - ind - 1].style.transition = "transform 0.75s";
@@ -45,7 +42,6 @@ function ds_btn_click_mob() {
 
     var j;
     for (j = 0; j < sd_projects.length; j++) {
-        //console.log(sd_projects[i]);
         (function (ind2) {
             setTimeout(function () {
 
@@ -66,7 +62,6 @@ function sd_btn_click() {
 
     var j;
     for (j = 0; j < ds_projects.length; j++) {
-        //console.log(sd_projects[i]);
         (function (ind2) {
             setTimeout(function () {
                 ds_projects[ind2].style.transition = "transform 1s";
@@ -78,7 +73,6 @@ function sd_btn_click() {
 
     var i;
     for (i = 0; i < sd_projects.length; i++) {
-        //console.log(sd_projects[i]);
         (function (ind) {
             setTimeout(function () {
                 sd_projects[ind].style.transition = "transform 1s";
@@ -95,7 +89,6 @@ function sd_btn_click_mob() {
 
     var j;
     for (j = 0; j < ds_projects.length; j++) {
-        //console.log(sd_projects[i]);
         (function (ind2) {
             setTimeout(function () {
                 ds_projects[ind2].style.transition = "transform 0.75s";
@@ -107,7 +100,6 @@ function sd_btn_click_mob() {
 
     var i;
     for (i = 0; i < sd_projects.length; i++) {
-        //console.log(sd_projects[i]);
         (function (ind) {
             setTimeout(function () {
                 sd_projects[ind].style.transition = "transform 0.75s";
@@ -267,12 +259,6 @@ for (var link of exp_links) {
         change_exp_text(event.target.id);
     });
 }
-
-var flkty = new Flickity('.main-gallery', {
-    // options
-    cellAlign: 'left',
-    contain: true
-});
 
 var landing_div = document.getElementsByClassName("landing-page")[0]
 var icon_list = document.getElementsByClassName("fa-icon")

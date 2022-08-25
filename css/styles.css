@@ -35,6 +35,7 @@ h6 {
     width: 100%;
     display: flex;
     flex-direction: row;
+    background-color: var(--bg-primary);
 }
 
 .landing-content {
@@ -49,7 +50,16 @@ h6 {
     width: 70%;
     margin: 0 auto;
     margin-bottom: 100px;
-    /*box-shadow: 12px 12px 0px -6px hsl(210, 91%, 22%);*/
+    background-color: var(--bg-light);
+    padding: 5% 10%;
+}
+
+
+.section-header {
+    color: var(--text-primary);
+    margin-bottom: 1%;
+    padding-bottom: 1%;
+    font-size: 4rem;
 }
 
 
@@ -93,14 +103,14 @@ h6 {
 
 .highlight-text {
     display: inline;
-    background-image: linear-gradient(var(--bg-secondary) 70%, var(--text-highlight) 30%);
+    background-image: linear-gradient(var(--bg-secondary) 60%, var(--text-highlight) 40%);
     font-family: 'AvertaQuibi-Black', sans-serif;
 
 }
 
 .highlight-text-2 {
     display: inline;
-    background-image: linear-gradient(var(--bg-primary) 70%, var(--text-highlight) 30%);
+    background-image: linear-gradient(var(--bg-primary) 60%, var(--text-highlight) 40%);
     font-family: 'AvertaQuibi-Bold', sans-serif;
 
 }
@@ -147,26 +157,6 @@ h6 {
 .fixed-nav ul li:hover a {
     color: var(--text-hover);
 }
-
-
-/* ------------------------------------------- Common Sections Visuals */
-.section {
-    background-color: var(--bg-primary);
-}
-
-.content {
-    background-color: var(--bg-light);
-    padding: 5% 10%;
-}
-
-
-.section-header {
-    color: var(--text-primary);
-    margin-bottom: 1%;
-    padding-bottom: 1%;
-    font-size: 4rem;
-}
-
 
 /* ------------------------------------------- About Section */
 
@@ -381,6 +371,7 @@ h6 {
     transition: opacity 1s;
     overflow: hidden;
     width: 100%;
+    margin: 5% 0;
 }
 
 .exp-text.inactive {
@@ -392,17 +383,6 @@ h6 {
 
 .exp-text li {
     margin-bottom: 10px;
-}
-
-.exp-content .flickity-button {
-    background-color: var(--bg-secondary);
-    color: var(--text-light);
-}
-
-.exp-content .flickity-button:hover {
-    background-color: var(--bg-secondary);
-    color: var(--text-light);
-    opacity: 0.9;
 }
 
 .custom-list-1 {
@@ -737,14 +717,6 @@ button:focus {
     .exp-text h1 {
         font-weight: normal;
         font-size: 1.5em;
-    }
-
-    .exp-content .flickity-prev-next-button.previous {
-        display: none;
-    }
-
-    .exp-content .flickity-prev-next-button.next {
-        display: none;
     }
 
 

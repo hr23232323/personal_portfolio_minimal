@@ -103,14 +103,14 @@ h6 {
 
 .highlight-text {
     display: inline;
-    background-image: linear-gradient(var(--bg-secondary) 70%, var(--text-highlight) 30%);
+    background-image: linear-gradient(var(--bg-secondary) 60%, var(--text-highlight) 40%);
     font-family: 'AvertaQuibi-Black', sans-serif;
 
 }
 
 .highlight-text-2 {
     display: inline;
-    background-image: linear-gradient(var(--bg-primary) 70%, var(--text-highlight) 30%);
+    background-image: linear-gradient(var(--bg-primary) 60%, var(--text-highlight) 40%);
     font-family: 'AvertaQuibi-Bold', sans-serif;
 
 }
@@ -371,6 +371,7 @@ h6 {
     transition: opacity 1s;
     overflow: hidden;
     width: 100%;
+    margin: 5% 0;
 }
 
 .exp-text.inactive {

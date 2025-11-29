@@ -7,7 +7,7 @@
 export const experiences = [
   {
     id: "stride-funding",
-    company: "Stride Funding",
+    company: "Clasp (FKA Stride Funding)",
     roles: [
       {
         title: "Senior Software Engineer",

@@ -1,0 +1,169 @@
+/* ============================================================
+   MUSING PAGE STYLES
+   Minimal framework for musing pages
+   ============================================================ */
+
+.musing-container {
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 3rem 2rem;
+}
+
+.back-link {
+    color: #888888;
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: color 0.2s ease;
+    display: inline-block;
+    margin-bottom: 1.5rem;
+}
+
+.back-link:hover {
+    color: #c9c9c9;
+}
+
+.musing {
+    display: flex;
+    flex-direction: column;
+}
+
+.musing-meta {
+    font-size: 0.85rem;
+    color: #7a7a7a;
+    margin-bottom: 1.5rem;
+    font-family: 'AvertaQuibi-Regular', sans-serif;
+}
+
+.musing-title {
+    font-size: 2.5rem;
+    font-weight: 400;
+    font-family: 'PlayfairDisplay-Regular', serif;
+    margin-bottom: 2.5rem;
+    line-height: 1.2;
+    color: #c9c9c9;
+}
+
+.musing-content {
+    font-family: 'PlayfairDisplay-Regular', serif;
+    font-size: 1.1rem;
+    line-height: 1.85;
+    color: #c9c9c9;
+}
+
+.musing-content p {
+    margin-bottom: 1.5rem;
+    color: #c9c9c9;
+}
+
+.musing-content a {
+    color: #888888;
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 3px;
+    text-decoration-style: dotted;
+    transition: all 0.2s ease;
+    text-decoration-color: #888888;
+}
+
+.musing-content a:hover {
+    color: #c9c9c9;
+    text-decoration-color: #6ba3ff;
+    text-decoration-thickness: 1.5px;
+}
+
+.musing-content h2 {
+    font-size: 1.5rem;
+    font-weight: 400;
+    margin-top: 2.5rem;
+    margin-bottom: 1.5rem;
+    font-family: 'PlayfairDisplay-Regular', serif;
+    color: #c9c9c9;
+}
+
+.musing-content h3 {
+    font-size: 1.2rem;
+    font-weight: 400;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    font-family: 'PlayfairDisplay-Regular', serif;
+    color: #c9c9c9;
+}
+
+.musing-content blockquote {
+    border-left: 3px solid #7a7a7a;
+    padding-left: 1.5rem;
+    margin: 2rem 0;
+    color: #7a7a7a;
+    font-style: italic;
+}
+
+.musing-content ul,
+.musing-content ol {
+    margin: 1.5rem 0;
+    padding-left: 2rem;
+}
+
+.musing-content li {
+    margin-bottom: 0.75rem;
+    color: #c9c9c9;
+}
+
+.musing-footer {
+    max-width: 700px;
+    margin: 4rem auto 0;
+    padding: 3rem 2rem 2rem;
+    border-top: 1px solid #2a2a2a;
+    text-align: center;
+    font-size: 0.95rem;
+    color: #7a7a7a;
+}
+
+.musing-footer a {
+    color: #888888;
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 3px;
+    text-decoration-style: dotted;
+    transition: all 0.2s ease;
+    text-decoration-color: #888888;
+}
+
+.musing-footer a:hover {
+    color: #c9c9c9;
+    text-decoration-color: #6ba3ff;
+}
+
+/* ============================================================
+   RESPONSIVE DESIGN
+   ============================================================ */
+
+@media (max-width: 640px) {
+    .musing-header {
+        padding: 0.75rem 1.5rem;
+    }
+
+    .musing-container {
+        padding: 2rem 1.5rem;
+    }
+
+    .musing-title {
+        font-size: 1.75rem;
+        margin-bottom: 2rem;
+    }
+
+    .musing-content {
+        font-size: 1rem;
+    }
+
+    .musing-content h2 {
+        font-size: 1.25rem;
+    }
+
+    .musing-content h3 {
+        font-size: 1rem;
+    }
+
+    .musing-footer {
+        padding: 2rem 1.5rem;
+    }
+}

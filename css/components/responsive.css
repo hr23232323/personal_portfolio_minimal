@@ -1,0 +1,99 @@
+/* ============================================================
+   MOBILE RESPONSIVE DESIGN (breakpoint: 500px and below)
+   ============================================================ */
+
+@media screen and (max-width: 500px) {
+    /* Navigation adjustments for mobile */
+    .fixed-nav {
+        left: 15px;
+    }
+
+    .fixed-nav ul li {
+        font-size: 16px;
+    }
+
+    /* Landing section */
+    .landing-text {
+        width: 75%;
+        margin-left: 18%;
+    }
+
+    .landing-text h2 {
+        font-size: 1rem;
+    }
+
+    .landing-text h1 {
+        font-size: 2.4rem;
+        letter-spacing: 1px;
+    }
+
+    .section-header {
+        font-size: 2.2rem;
+    }
+
+    /* About section - reflow for mobile */
+    .about-section-content {
+        padding: 5% 5%;
+        flex-direction: column;
+        margin-top: 100px;
+    }
+
+    .about-text {
+        order: 2;
+    }
+
+    .about-image {
+        order: 1;
+        margin: 0;
+        margin-top: -100px;
+        display: block;
+    }
+
+    .about-image img {
+        width: 200px;
+    }
+
+    .about-lists {
+        flex-direction: column;
+    }
+
+    .list {
+        box-sizing: border-box;
+        padding: 1%;
+    }
+
+    .custom-list li {
+        line-height: 20px;
+        margin-bottom: 15px;
+    }
+
+    /* Experience section - mobile layout */
+    .experience-item {
+        margin: 3% 0;
+    }
+
+    .company-name {
+        font-size: 1.5rem;
+    }
+
+    .role-dates {
+        font-size: 0.9em;
+    }
+
+    /* Projects section - mobile carousel (vertical scrolling) */
+    .project-carousel {
+        height: 1500px;
+    }
+
+    .project-row {
+        flex-direction: column;
+    }
+
+    .project-tile {
+        margin: 5% 5%;
+    }
+
+    .project-btns button {
+        width: 100px;
+    }
+}

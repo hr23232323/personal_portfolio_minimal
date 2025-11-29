@@ -1,0 +1,48 @@
+/* ============================================================
+   HERO SECTION - Landing page with headline and highlights
+   ============================================================ */
+
+.landing-image {
+    display: none;
+    flex-basis: 0;
+    flex-grow: 1;
+    text-align: right;
+}
+
+.landing-image img {
+    height: 100%;
+}
+
+.landing-text {
+    width: 70%;
+    margin: auto auto;
+    margin-left: 20%;
+    padding-bottom: 10%;
+}
+
+.landing-text h1 {
+    font-size: 4rem;
+    color: var(--text-light);
+    font-family: 'AvertaQuibi-Black', sans-serif;
+    letter-spacing: 3px;
+}
+
+.landing-text h2 {
+    font-size: 20px;
+    color: var(--text-light);
+    letter-spacing: 3px;
+    margin-bottom: 5%;
+    font-family: 'AvertaQuibi-Semibold', sans-serif;
+}
+
+.highlight-text {
+    display: inline;
+    background-image: linear-gradient(var(--bg-secondary) 60%, var(--text-highlight) 40%);
+    font-family: 'AvertaQuibi-Black', sans-serif;
+}
+
+.highlight-text-2 {
+    display: inline;
+    background-image: linear-gradient(var(--bg-primary) 60%, var(--text-highlight) 40%);
+    font-family: 'AvertaQuibi-Bold', sans-serif;
+}

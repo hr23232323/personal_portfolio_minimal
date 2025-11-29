@@ -1,0 +1,176 @@
+/* ============================================================
+   PROJECTS SECTION - Filterable carousel with two categories
+
+   CAROUSEL ANIMATION:
+   - Desktop: slides translateX(-1022%) to show next set
+   - Mobile: slides translateX(-333%) due to column layout
+   - Animation time: 1s (desktop), 0.75s (mobile)
+   - Staggered timing: 0.1s start + 0.2s per item
+   ============================================================ */
+
+.project-header .section-header {
+    margin-bottom: 2%;
+}
+
+.project-section-content {
+    width: 100%;
+    background-color: var(--bg-primary);
+    margin-bottom: 0;
+    overflow-x: hidden;
+    padding-top: 0;
+}
+
+.project-header {
+    text-align: center;
+}
+
+.header-text {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-content: center;
+}
+
+.project-row {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+}
+
+.project-tile {
+    flex-basis: 0;
+    flex-grow: 1;
+    margin: 5% 2%;
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    background: var(--bg-light);
+    box-shadow: 0px 0px 5px 0px hsla(210, 91%, 22%, 0.1);
+    height: 500px;
+    cursor: pointer;
+}
+
+.project-tile:hover {
+    box-shadow: 0px 0px 7px 5px hsla(210, 91%, 22%, 0.1);
+}
+
+.project-image {
+    flex-basis: 0;
+    flex-grow: 4;
+    min-height: 0;
+}
+
+.project-text {
+    flex-basis: 0;
+    flex-grow: 4;
+    min-height: 0;
+}
+
+.project-tags {
+    flex-basis: 0;
+    flex-grow: 1.5;
+    min-height: 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-content: center;
+}
+
+.project-image-content {
+    max-height: 80%;
+    margin: 5%;
+    overflow-y: hidden;
+}
+
+.project-text-content {
+    padding: 5%;
+}
+
+.project-text-content h1 {
+    font-size: 1.5em;
+    margin-bottom: 15px;
+}
+
+.project-text-content p {
+    margin-bottom: 2%;
+}
+
+.project-image img {
+    max-width: 100%;
+}
+
+.project-tags-content {
+    display: flex;
+    flex-direction: row;
+    flex-flow: row wrap;
+    width: 90%;
+    align-items: center;
+    align-content: space-between;
+    justify-content: center;
+}
+
+.tag {
+    padding: 2% 3%;
+    margin: 1%;
+    border-radius: 15px;
+    text-align: center;
+    color: var(--text-secondary);
+    font-size: 12px;
+    box-sizing: border-box;
+}
+
+.tag:hover {
+    background: var(--bg-grey);
+    color: var(--text-light);
+    cursor: default;
+}
+
+.help-text {
+    justify-content: center;
+    text-align: center;
+    color: var(--text-secondary);
+}
+
+/* Project button styling - "Data Science" and "Software Development" tabs */
+.project-btns {
+    font-size: 0;
+}
+
+button:focus {
+    outline: 0;
+}
+
+.project-btns button {
+    background-color: var(--bg-primary);
+    border: none;
+    color: var(--text-secondary);
+    padding: 15px;
+    width: 250px;
+    text-align: center;
+    text-decoration: none;
+    border-bottom: solid 2px var(--bg-primary);
+    transition: all 0.2s;
+    font-weight: bold;
+}
+
+.project-btns .inactive:hover {
+    color: var(--p-grey-l-m);
+    cursor: pointer;
+}
+
+.project-btns .active {
+    background-color: var(--bg-primary);
+    color: var(--text-blue);
+    border-bottom: solid 2px var(--text-blue);
+}
+
+/* Carousel layout - holds both DS and SD project rows side-by-side */
+.project-carousel {
+    display: flex;
+    flex-direction: row;
+    width: 200%;
+}
+
+#sd-projects-div {
+    transform: translateX(200%);   /* Starts off-screen to the right */
+}

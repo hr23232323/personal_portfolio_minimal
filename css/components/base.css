@@ -1,0 +1,19 @@
+/* ============================================================
+   BASE STYLES - Universal styles, fonts, and reset
+   ============================================================ */
+
+body,
+* {
+    margin: 0;
+    font-family: 'AvertaQuibi-Regular', Helvetica, sans-serif;
+    box-sizing: border-box;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: 'AvertaQuibi-Bold', Helvetica, sans-serif;
+}

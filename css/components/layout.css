@@ -1,0 +1,46 @@
+/* ============================================================
+   LAYOUT - Main containers and page structure
+   ============================================================ */
+
+.main {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.landing-page {
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+}
+
+.section {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    background-color: var(--bg-primary);
+}
+
+.landing-content {
+    flex-basis: 0;
+    flex-grow: 4;
+    display: flex;
+    flex-direction: column;
+    background-color: var(--bg-secondary);
+}
+
+.content {
+    width: 70%;
+    margin: 0 auto;
+    margin-bottom: 100px;
+    background-color: var(--bg-light);
+    padding: 5% 10%;
+}
+
+.section-header {
+    color: var(--text-primary);
+    margin-bottom: 1%;
+    padding-bottom: 1%;
+    font-size: 4rem;
+}

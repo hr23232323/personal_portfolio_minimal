@@ -1,0 +1,41 @@
+/* ============================================================
+   FIXED NAVIGATION - Left sidebar with social media links
+   ============================================================ */
+
+.fixed-nav {
+    position: fixed;
+    height: 100vh;
+    bottom: 0;
+    left: 50px;
+    /* Vertical centering */
+    display: flex;
+    flex-direction: column;
+    z-index: 10000;
+}
+
+.fixed-nav ul {
+    list-style-type: none;
+    margin: auto;
+    padding: 0;
+}
+
+.fixed-nav ul li {
+    font-size: 24px;
+    margin: 5px;
+    margin-bottom: 30px;
+    margin-top: 30px;
+}
+
+.fixed-nav ul li:hover {
+    transition: 0.2s linear;
+    transform: translatey(-3px);
+}
+
+.fixed-nav ul li a {
+    color: var(--bg-primary);
+    text-decoration: none;
+}
+
+.fixed-nav ul li:hover a {
+    color: var(--text-hover);
+}

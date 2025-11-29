@@ -1,0 +1,204 @@
+/* ============================================================
+   EXPERIENCE SECTION - Job listings and details
+   Note: Experience items will be dynamically rendered by experience.js
+   ============================================================ */
+
+.about-section-content {
+    margin-top: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 50px;
+}
+
+.about-image {
+    height: 300px;
+    flex-basis: 0;
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 10%;
+    margin-right: -100px;
+}
+
+.about-image img {
+    width: 300px;
+    border-radius: 50%;
+}
+
+.about-text {
+    flex-basis: 0;
+    flex-grow: 3;
+}
+
+.about-text p {
+    padding-bottom: 5%;
+    font-size: 1.2rem;
+}
+
+.about-lists {
+    display: flex;
+    flex-direction: row;
+}
+
+.about-word-cloud {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-basis: 0;
+    flex-grow: 2;
+}
+
+.about-word-cloud img {
+    width: 100%;
+}
+
+.list {
+    flex-basis: 0;
+    flex-grow: 1;
+}
+
+.custom-list {
+    list-style: none;
+    padding-left: 0;
+}
+
+.custom-list li {
+    position: relative;
+    padding-left: 20px;
+    line-height: 30px;
+}
+
+.custom-list li:before {
+    content: '';
+    width: 10px;
+    height: 10px;
+    position: absolute;
+    background-image: url('../img/bullet_4.png');
+    background-size: cover;
+    background-position: center;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.custom-list-1 {
+    list-style: none;
+    padding-left: 0;
+    font-size: 1.2rem;
+}
+
+.custom-list-1 li {
+    position: relative;
+    padding-left: 20px;
+    line-height: 30px;
+    margin-bottom: 10px;
+}
+
+.custom-list-1 li:before {
+    content: '';
+    width: 10px;
+    height: 10px;
+    position: absolute;
+    background-image: url('../img/bullet_4.png');
+    background-size: cover;
+    background-position: center;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+/* Experience item styling (rendered from data) */
+.experience-item {
+    margin: 5% 0;
+    animation: fade-in 0.6s ease-in;
+}
+
+.experience-company-header {
+    margin-bottom: 3%;
+}
+
+.company-name {
+    color: var(--text-primary);
+    margin-bottom: 5px;
+    font-size: 2rem;
+}
+
+.experience-roles {
+    display: flex;
+    flex-direction: column;
+}
+
+.role {
+    transition: background-color 0.3s ease, padding 0.3s ease;
+    margin: 3% 0;
+    padding: 2%;
+    border-radius: 4px;
+}
+
+.role.highlighted {
+    background-color: rgba(0, 0, 0, 0.02);
+}
+
+.role-header {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 15px;
+}
+
+.role-title {
+    flex: 1;
+    color: var(--text-secondary);
+    font-size: 1.3em;
+    font-weight: normal;
+}
+
+.role-dates {
+    text-align: right;
+    color: var(--text-secondary);
+    font-size: 1em;
+}
+
+.role-achievements {
+    list-style: none;
+    padding-left: 0;
+}
+
+.role-achievements li {
+    position: relative;
+    padding-left: 20px;
+    line-height: 30px;
+    margin-bottom: 10px;
+    color: var(--text-primary);
+}
+
+.role-achievements li:before {
+    content: '';
+    width: 10px;
+    height: 10px;
+    position: absolute;
+    background-image: url('../img/bullet_4.png');
+    background-size: cover;
+    background-position: center;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.narrow-section {
+    margin: 3% 0;
+}
+
+/* Animations */
+@keyframes fade-in {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

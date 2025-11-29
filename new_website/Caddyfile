@@ -1,0 +1,20 @@
+# Caddyfile - New Portfolio Web Server Configuration
+
+:80 {
+	root /srv
+
+	file_server {
+		index index.html
+	}
+
+	encode gzip
+
+	header /static/* Cache-Control "public, max-age=31536000, immutable"
+	header /*.{js,css} Cache-Control "public, max-age=86400"
+	header /img/* Cache-Control "public, max-age=604800"
+	header /*.html Cache-Control "public, max-age=3600, must-revalidate"
+
+	header X-Content-Type-Options "nosniff"
+	header X-Frame-Options "DENY"
+	header X-XSS-Protection "1; mode=block"
+}

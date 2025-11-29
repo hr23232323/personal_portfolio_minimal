@@ -1,10 +1,9 @@
-# Personal Portfolio - Caddy Web Server
-# Modern, lightweight static file server with automatic HTTPS support
-# Perfect for serving the personal portfolio website
+# Personal Portfolio (Old) - Caddy Web Server
+# Serves the original portfolio design
 
 FROM caddy:latest
 
-# Copy entire project to Caddy's default serving directory
+# Copy old website to serving directory
 COPY . /srv
 
 # Copy Caddyfile to Caddy's config directory

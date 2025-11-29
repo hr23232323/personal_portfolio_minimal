@@ -7,7 +7,7 @@
 export const experiences = [
   {
     id: "stride-funding",
-    company: "Clasp (FKA Stride Funding)",
+    company: "Clasp",
     subheader: "Formerly known as Stride Funding",
     roles: [
       {

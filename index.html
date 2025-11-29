@@ -348,16 +348,19 @@ For detailed code documentation, see README.md
 <script type="module">
     import { initializeExperiences } from './js/components/experience.js';
     import { initializeProjects } from './js/components/projects.js';
+    import { initializeScrollEffects } from './js/components/scroll-effects.js';
 
     // Initialize components when DOM is ready
     if (document.readyState === 'loading') {
         document.addEventListener('DOMContentLoaded', () => {
             initializeExperiences();
             initializeProjects();
+            initializeScrollEffects();
         });
     } else {
         initializeExperiences();
         initializeProjects();
+        initializeScrollEffects();
     }
 </script>
 

@@ -1,19 +1,26 @@
+/* ============================================================
+   CSS CUSTOM PROPERTIES (VARIABLES)
+   ============================================================
+   All color, size, and theme values are defined here.
+   This allows for easy global updates to the design.
+
+   NAMING CONVENTION:
+   - Primary colors/sizes (used most) have base names: --text-primary, --bg-primary
+   - Variants use suffixes: -d (dark), -l (light), -m (medium)
+   - Deprecated legacy variables (starting with --p-) are kept for compatibility
+============================================================ */
 :root {
-    /*  Colors   */
+    /* ====== LEGACY VARIABLES (deprecated, kept for reference) ====== */
     --p-color: hsl(15, 89%, 60%);
     --p-color-d: hsl(15, 95%, 20%);
     --p-color-l: hsl(15, 80%, 80%);
     --p-color-d-m: hsl(15, 92%, 40%);
     --p-color-l-m: hsl(15, 85%, 70%);
-
-    /*  Greys   */
     --p-grey: hsl(15, 5%, 60%);
     --p-grey-d: hsl(15, 6%, 20%);
     --p-grey-l: hsl(15, 3%, 80%);
     --p-grey-d-m: hsl(15, 6%, 40%);
     --p-grey-l-m: hsl(15, 4%, 70%);
-
-    /*  Sizes  */
     --p-size: 16px;
     --p-size-b: 20px;
     --p-size-s: 12px;
@@ -22,22 +29,29 @@
     --p-size-b-2: 24px;
     --p-size-s-2: 10px;
 
-    /*  REAL    */
-    --text-primary: hsl(240, 10%, 20%);
-    --text-primary: hsl(0, 0%, 25%);
-    --text-blue: hsl(207, 58%, 39%);
-    --text-secondary: hsl(240, 10%, 60%);
-    --text-highlight: hsla(76, 53%, 64%, 0.75);
-    --text-light: hsl(120, 50%, 100%);
-    --text-hover: hsl(120, 50%, 70%);
+    /* ====== CURRENT TEXT COLORS ====== */
+    --text-primary: hsl(0, 0%, 25%);              /* Dark grey - main body text */
+    --text-blue: hsl(207, 58%, 39%);              /* Blue - links and CTAs */
+    --text-secondary: hsl(240, 10%, 60%);         /* Medium grey - secondary text, dates */
+    --text-highlight: hsla(76, 53%, 64%, 0.75);   /* Yellow-green - highlighted keywords */
+    --text-light: hsl(120, 50%, 100%);            /* White - text on dark backgrounds */
+    --text-hover: hsl(120, 50%, 70%);             /* Light green - hover effect on nav */
 
-    /*  BG  */
-    --bg-primary: hsl(240, 10%, 100%);
-    --bg-secondary: hsl(353, 42%, 45%);
-    --bg-footer: hsla(353, 42%, 45%, 100%);
-    --bg-light: hsl(240, 0%, 100%);
-    --bg-grey: hsl(240, 10%, 80%);
+    /* ====== BACKGROUND COLORS ====== */
+    --bg-primary: hsl(240, 10%, 100%);            /* White - main content background */
+    --bg-secondary: hsl(353, 42%, 45%);           /* Red/burgundy - hero section */
+    --bg-footer: hsla(353, 42%, 45%, 100%);       /* Red/burgundy - footer */
+    --bg-light: hsl(240, 0%, 100%);               /* White - card backgrounds */
+    --bg-grey: hsl(240, 10%, 80%);                /* Light grey - hover states */
 }
+
+/* ============================================================
+   CUSTOM FONTS
+   ============================================================
+   AvertaQuibi font family with 4 weights.
+   Stored locally as woff2 (modern browsers, optimized file size).
+   Applied in styles.css: body uses -Regular, headings use -Bold.
+============================================================ */
 
 @font-face {
     font-family: 'AvertaQuibi-Black';

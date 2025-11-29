@@ -1,5 +1,38 @@
 <!doctype html>
 <html lang="en">
+<!--
+================================================================================
+HARSH RANA - PERSONAL PORTFOLIO WEBSITE
+================================================================================
+A minimal, single-page portfolio showcasing professional experience and projects.
+
+TECHNOLOGY STACK:
+- HTML5 (semantic markup)
+- CSS3 (custom properties, flexbox, responsive design)
+- Vanilla JavaScript (no frameworks)
+- Font Awesome 5.2.0 (social icons)
+- Google Fonts (Oswald, Raleway)
+
+SECTIONS:
+1. Fixed Navigation Sidebar - Social links (color changes on scroll)
+2. Hero/Landing - Main headline with highlighted keywords
+3. About - Background, education, work experience
+4. Projects - Filterable carousel (Data Science vs Software Development)
+5. Footer - Copyright information
+
+FILE STRUCTURE:
+├── index.html           (This file - main entry point)
+├── css/
+│   ├── stylesheet.css   (CSS variables, font definitions)
+│   └── styles.css       (All layout and component styles)
+├── js/
+│   └── scripts_main.js  (Project carousel, icon color, scroll effects)
+├── img/                 (Project images, profile photos, assets)
+└── static/              (Custom fonts - AvertaQuibi)
+
+For detailed code documentation, see README.md
+================================================================================
+-->
 
 <head>
     <meta charset="utf-8">
@@ -10,20 +43,26 @@
     <meta property="og:image" content="./img/harsh_circle_min.jpg">
     <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
-    <title>
-        Harsh Rana
-    </title>
+    <title>Harsh Rana</title>
+
+    <!-- Stylesheets -->
     <link rel="stylesheet" href="css/stylesheet.css" type="text/css">
     <link rel="stylesheet" href="css/styles.css" type="text/css">
 
-    <!-- Font awesome -->
+    <!-- Font Awesome Icons (v5.2.0) - for social media links -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
 
-    <!-- Fonts -->
+    <!-- Google Fonts: Oswald (headings) & Raleway (secondary text) -->
     <link href="https://fonts.googleapis.com/css?family=Oswald:300|Raleway&display=swap" rel="stylesheet">
 </head>
 
 <body>
+    <!-- ============================================================
+         FIXED NAVIGATION SIDEBAR
+         Fixed left sidebar with social media links.
+         Icons change color on scroll: white over hero, dark over main content.
+         See scripts_main.js for color change logic.
+         ============================================================ -->
     <div class="fixed-nav">
         <ul>
             <li>
@@ -54,17 +93,30 @@
         </ul>
     </div>
 
+    <!-- ============================================================
+         HERO/LANDING SECTION
+         Full-height hero section with headline and highlighted keywords.
+         Red background (--bg-secondary) with white text.
+         Keywords highlighted with yellow-green gradient underline.
+         ============================================================ -->
     <div class="landing-page">
         <div class="landing-content">
             <div class="landing-text">
                 <h2>My name is Harsh Rana</h2>
-
                 <h1>I'm interested in world-changing applications of <span class="highlight-text">Software Engineering</span> and <span class="highlight-text">Data Science</span>.</h1>
-
             </div>
         </div>
     </div>
+
+    <!-- ============================================================
+         MAIN CONTENT
+         Contains: About, Projects, and Footer sections
+         ============================================================ -->
     <div class="main">
+        <!-- ============================================================
+             ABOUT SECTION
+             Includes: intro, education, 3 work experiences with details
+             ============================================================ -->
         <div class="section">
             <div class="content about-section-content">
                 <div class="about-text">
@@ -152,6 +204,12 @@
         </div>
 
 
+        <!-- ============================================================
+             PROJECTS SECTION
+             Filterable carousel with two tabs: Data Science and Software Development.
+             Clicking buttons triggers animation to switch between project views.
+             See scripts_main.js for project filtering logic.
+             ============================================================ -->
         <div class="section">
             <div class="content project-section-content">
                 <div class="project-header">
@@ -162,8 +220,6 @@
                         <button class="ds project-options active">Data Science</button>
                         <button class="sd project-options inactive">Software Development</button>
                     </div>
-
-
                 </div>
 
                 <div class="project-carousel">
@@ -315,13 +371,45 @@
                 </div>
             </div>
         </div>
+        <!-- ============================================================
+             FOOTER SECTION
+             Copyright notice
+             ============================================================ -->
         <div class="section footer">
             <p><span class="copy">&copy;</span> 2022 Harsh Rana </p>
         </div>
-
-
     </div>
+
+    <!-- ============================================================
+         HOT RELOAD - Development Only
+         This script enables automatic page refresh when files are modified.
+         It only runs in local development (localhost).
+         IMPORTANT: Remove this in production or before deploying!
+         ============================================================ -->
+    <script>
+        if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
+            setInterval(function() {
+                fetch(window.location.href, {cache: 'no-store'})
+                    .then(response => response.text())
+                    .then(html => {
+                        if (html !== document.documentElement.outerHTML) {
+                            console.log('[Hot Reload] Changes detected, refreshing...');
+                            window.location.reload();
+                        }
+                    })
+                    .catch(error => console.error('[Hot Reload] Error checking for changes:', error));
+            }, 1000); // Check for changes every 1 second
+        }
+    </script>
+
 </body>
+
+<!-- ============================================================
+     JAVASCRIPT
+     scripts_main.js handles:
+     - Project carousel filtering (DS / SD tabs)
+     - Social icon color changes on scroll
+     ============================================================ -->
 <script src="./js/scripts_main.js"></script>
 
 </html>

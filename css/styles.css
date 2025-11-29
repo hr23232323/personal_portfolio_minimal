@@ -1,10 +1,29 @@
+/* ============================================================
+   STYLES.CSS - COMPLETE LAYOUT AND COMPONENT STYLES
+   ============================================================
+   This file contains all visual styling for the portfolio.
+   See stylesheet.css for CSS variables (colors, fonts, etc).
+
+   SECTIONS:
+   1. Base Styles - body, headings, universal
+   2. Basic Layout - main containers and page structure
+   3. Landing Section - hero area
+   4. Fixed Navigation - sidebar links
+   5. About Section - background and experience
+   6. Projects Section - carousel and cards
+   7. Footer - copyright
+   8. Mobile Responsive - breakpoint at 500px
+============================================================ */
+
+/* ============================================================
+   BASE STYLES
+============================================================ */
 body,
 * {
     margin: 0;
     font-family: 'AvertaQuibi-Regular', Helvetica, sans-serif;
     box-sizing: border-box;
 }
-
 
 h1,
 h2,
@@ -15,8 +34,9 @@ h6 {
     font-family: 'AvertaQuibi-Bold', Helvetica, sans-serif;
 }
 
-
-/* -------------------------------------------Basic Layouting*/
+/* ============================================================
+   BASIC LAYOUT - Main containers and page structure
+============================================================ */
 
 .main {
     display: flex;
@@ -62,8 +82,9 @@ h6 {
     font-size: 4rem;
 }
 
-
-/* -------------------------------------------Landing Image*/
+/* ============================================================
+   LANDING SECTION - Hero area with headline
+============================================================ */
 .landing-image {
     display: none;
     flex-basis: 0;
@@ -74,8 +95,6 @@ h6 {
 .landing-image img {
     height: 100%;
 }
-
-/* -------------------------------------------Landing Text*/
 
 
 .landing-text {
@@ -117,14 +136,16 @@ h6 {
 
 
 
-/* -------------------------------------------Fixed Nav*/
+/* ============================================================
+   FIXED NAVIGATION - Left sidebar with social links
+============================================================ */
 
 .fixed-nav {
     position: fixed;
     height: 100vh;
     bottom: 0;
     left: 50px;
-    /*Vertical Centering*/
+    /* Vertical centering */
     display: flex;
     flex-direction: column;
     z-index: 10000;
@@ -158,8 +179,9 @@ h6 {
     color: var(--text-hover);
 }
 
-/* ------------------------------------------- About Section */
-
+/* ============================================================
+   ABOUT SECTION - Background, education, work experience
+============================================================ */
 
 .about-section-content {
     margin-top: 50px;
@@ -271,8 +293,10 @@ h6 {
 
 
 
-/* ------------------------------------------- Experience Section */
-
+/* ============================================================
+   EXPERIENCE SECTION - Job listings and details
+   Note: Experience items are displayed inline, no tab switching
+============================================================ */
 
 .exp-content {
     display: flex;
@@ -389,7 +413,15 @@ h6 {
     font-size: 1.2rem;
 }
 
-/* ------------------------------------------- Project Section */
+/* ============================================================
+   PROJECT SECTION - Filterable carousel with two categories
+
+   CAROUSEL ANIMATION:
+   - Desktop: slides translateX(-1022%) to show next set
+   - Mobile: slides translateX(-333%) due to column layout
+   - Animation time: 1s (desktop), 0.75s (mobile)
+   - Staggered timing: 0.1s start + 0.2s per item
+============================================================ */
 
 .project-header .section-header {
     margin-bottom: 2%;
@@ -519,8 +551,7 @@ h6 {
 }
 
 
-/*--------------PROJECT SWITCH-----------------*/
-
+/* Project button styling - "Data Science" and "Software Development" tabs */
 .project-btns {
     font-size: 0;
 }
@@ -555,7 +586,7 @@ button:focus {
 
 
 
-/*-----------------Div Setup-------------*/
+/* Carousel layout - holds both DS and SD project rows side-by-side */
 .project-carousel {
     display: flex;
     flex-direction: row;
@@ -563,10 +594,12 @@ button:focus {
 }
 
 #sd-projects-div {
-    transform: translateX(200%);
+    transform: translateX(200%);   /* Starts off-screen to the right */
 }
 
-/*------------------FOOTER----------------*/
+/* ============================================================
+   FOOTER - Copyright notice
+============================================================ */
 .footer {
     align-items: center;
     justify-content: center;
@@ -588,12 +621,12 @@ button:focus {
 
 
 
-/*--------------------------------- MOBILE ---------------------*/
-
+/* ============================================================
+   MOBILE RESPONSIVE DESIGN (breakpoint: 500px and below)
+   ============================================================ */
 
 @media screen and (max-width:500px) {
-
-    /*---------NAV------------*/
+    /* Navigation adjustments for mobile */
     .fixed-nav {
         left: 15px;
     }
@@ -621,7 +654,7 @@ button:focus {
         font-size: 2.2rem;
     }
 
-    /*--------About---------------*/
+    /* About section - reflow for mobile */
     .about-section-content {
         padding: 5% 5%;
         flex-direction: column;
@@ -657,7 +690,7 @@ button:focus {
         margin-bottom: 15px;
     }
 
-    /*---------Experience*/
+    /* Experience section - mobile layout */
     .exp-section-content {
         width: 100%;
         padding: 5% 16%;
@@ -720,7 +753,7 @@ button:focus {
     }
 
 
-    /*-----Projects------*/
+    /* Projects section - mobile carousel (vertical scrolling) */
     .project-carousel {
         height: 1500px;
     }

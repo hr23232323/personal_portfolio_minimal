@@ -1,0 +1,35 @@
+# Caddyfile - Personal Portfolio Web Server Configuration
+# Modern, minimal configuration for serving static files
+# Documentation: https://caddyserver.com/docs/caddyfile
+
+# Server block - listen on port 80 (HTTP, standard port)
+:80 {
+	# Serve files from /srv (mounted volume in Docker)
+	root /srv
+
+	# Use Caddy's file server with index.html as default
+	file_server {
+		index index.html
+	}
+
+	# Enable gzip compression for faster transfers
+	encode gzip
+
+	# Cache headers for static assets
+	# Custom fonts: cache for 1 year (they have version in filename)
+	header /static/* Cache-Control "public, max-age=31536000, immutable"
+
+	# CSS and JavaScript: cache for 24 hours
+	header /*.{js,css} Cache-Control "public, max-age=86400"
+
+	# Images: cache for 7 days
+	header /img/* Cache-Control "public, max-age=604800"
+
+	# HTML files: always revalidate (for hot reload during dev)
+	header /*.html Cache-Control "public, max-age=3600, must-revalidate"
+
+	# Security headers (optional but recommended)
+	header X-Content-Type-Options "nosniff"
+	header X-Frame-Options "DENY"
+	header X-XSS-Protection "1; mode=block"
+}

@@ -28,7 +28,7 @@
          FIXED NAVIGATION SIDEBAR
          Fixed left sidebar with social media links.
          Icons change color on scroll: white over hero, dark over main content.
-         See scripts_main.js for color change logic.
+         See js/components/scroll-effects.js for color change logic.
          ============================================================ -->
     <div class="fixed-nav">
         <ul>
@@ -283,11 +283,11 @@
 
 <!-- ============================================================
      JAVASCRIPT
-     Modular component system:
+     Modular component system (ES6 modules):
      - data/content.js - Centralized content storage
      - js/components/experience.js - Experience section renderer
      - js/components/projects.js - Projects carousel renderer
-     - js/scripts_main.js - Scroll effects, utility functions
+     - js/components/scroll-effects.js - Scroll-based UI updates
      ============================================================ -->
 <script type="module">
     import { initializeExperiences } from './js/components/experience.js';
@@ -307,7 +307,5 @@
         initializeScrollEffects();
     }
 </script>
-
-<script src="./js/scripts_main.js"></script>
 
 </html>

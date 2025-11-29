@@ -39,10 +39,15 @@ function renderExperience(experience) {
     .map(role => renderRole(role))
     .join('');
 
+  const subheaderHTML = experience.subheader
+    ? `<p class="company-subheader">${experience.subheader}</p>`
+    : '';
+
   return `
     <div class="experience-item" data-company="${experience.id}">
       <div class="experience-company-header">
         <h1 class="company-name">${experience.company}</h1>
+        ${subheaderHTML}
       </div>
       <div class="experience-roles">
         ${rolesHTML}

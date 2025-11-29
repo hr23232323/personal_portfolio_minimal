@@ -153,6 +153,18 @@
     display: block;
 }
 
+.company-subheader {
+    color: hsl(240, 10%, 35%);
+    margin: 8px 0 0 0;
+    padding: 0;
+    font-size: 0.95rem;
+    font-weight: 400;
+    font-style: italic;
+    font-family: 'AvertaQuibi-Regular', sans-serif;
+    letter-spacing: 0;
+    line-height: 1.4;
+}
+
 .experience-roles {
     display: flex;
     flex-direction: column;
@@ -295,6 +307,10 @@
     .company-name {
         font-size: 2.2rem;
         letter-spacing: -1px;
+    }
+
+    .company-subheader {
+        font-size: 0.9rem;
     }
 
     .role {

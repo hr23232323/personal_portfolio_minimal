@@ -1,6 +1,6 @@
 /* ============================================================
-   EXPERIENCE SECTION - Bold, Modern, Visually Striking Design
-   Inspired by leading portfolio sites with strong visual hierarchy
+   EXPERIENCE SECTION - Bold, Modern Visual Design
+   Note: Experience items will be dynamically rendered by experience.js
    ============================================================ */
 
 .about-section-content {
@@ -111,172 +111,135 @@
 }
 
 /* ============================================================
-   EXPERIENCE ITEM - Large, Bold, High-Impact Design
+   EXPERIENCE ITEM - Bold Card Design
    ============================================================ */
 
 .experience-item {
-    position: relative;
-    margin: 100px 0;
-    padding: 0;
-    animation: fade-in 0.8s ease-in;
-    border: none;
-    background: transparent;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.5) 0%, rgba(255, 255, 255, 0.8) 100%);
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    border-radius: 12px;
+    padding: 50px 45px;
+    margin: 50px 0;
+    animation: fade-in 0.6s ease-in;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
 }
 
-.experience-item:nth-child(odd) {
-    padding-left: 0;
-    padding-right: 0;
+.experience-item:hover {
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+    transform: translateY(-2px);
 }
 
 .experience-company-header {
-    margin-bottom: 45px;
-    position: relative;
-    padding-bottom: 30px;
-}
-
-.experience-company-header::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 80px;
-    height: 5px;
-    background: var(--text-highlight);
-    border-radius: 3px;
+    margin-bottom: 35px;
+    padding-bottom: 20px;
+    border-bottom: 3px solid var(--text-highlight);
 }
 
 .company-name {
     color: var(--text-primary);
     margin: 0;
     padding: 0;
-    font-size: 4.2rem;
+    font-size: 2.8rem;
     font-weight: 900;
     font-family: 'AvertaQuibi-Black', sans-serif;
-    letter-spacing: -3px;
-    line-height: 0.95;
+    letter-spacing: -2px;
+    line-height: 1.1;
     text-transform: none;
-    display: block;
 }
 
 .experience-roles {
     display: flex;
     flex-direction: column;
-    margin-left: 60px;
 }
 
 /* ============================================================
-   ROLE - Bold Role Titles with Strong Visual Distinction
+   ROLE - Individual Job Title and Achievements
    ============================================================ */
 
 .role {
-    position: relative;
-    margin: 50px 0;
-    padding: 40px 0;
-    padding-left: 40px;
-    border-left: 6px solid var(--text-highlight);
-    border-top: none;
-    border-bottom: none;
-    background: none;
+    margin: 28px 0;
+    padding: 24px 0;
+    border-left: 4px solid var(--text-highlight);
+    padding-left: 28px;
     transition: all 0.3s ease;
 }
 
-.role::before {
-    content: '';
-    position: absolute;
-    left: -4px;
-    top: 0;
-    width: 16px;
-    height: 16px;
-    background: var(--text-highlight);
-    border-radius: 50%;
-    z-index: 1;
-}
-
 .role:hover {
-    padding-left: 50px;
+    background-color: rgba(0, 0, 0, 0.02);
+    padding-left: 32px;
 }
 
 .role-header {
     display: flex;
     flex-direction: row;
-    align-items: center;
-    margin-bottom: 28px;
-    gap: 30px;
+    align-items: baseline;
+    margin-bottom: 22px;
+    gap: 20px;
 }
 
 .role-title {
     flex: 1;
     color: var(--text-primary);
-    font-size: 2rem;
-    font-weight: 800;
+    font-size: 1.5rem;
+    font-weight: 700;
     font-family: 'AvertaQuibi-Bold', sans-serif;
     margin: 0;
-    line-height: 1.2;
 }
 
 .role-dates {
     text-align: right;
-    color: white;
-    font-size: 0.9rem;
-    font-weight: 600;
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    font-weight: 500;
     white-space: nowrap;
     flex-shrink: 0;
     background: var(--text-highlight);
-    padding: 8px 18px;
-    border-radius: 25px;
-    letter-spacing: 0.5px;
+    color: white;
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 0.85rem;
 }
 
 .role-achievements {
     list-style: none;
     padding-left: 0;
     margin: 0;
-    display: grid;
-    gap: 18px;
 }
 
 .role-achievements li {
     position: relative;
-    padding-left: 30px;
-    line-height: 1.75;
+    padding-left: 24px;
+    line-height: 1.7;
+    margin-bottom: 14px;
     color: var(--text-primary);
-    font-size: 1.05rem;
+    font-size: 1rem;
     font-weight: 500;
 }
 
+.role-achievements li:last-child {
+    margin-bottom: 0;
+}
+
 .role-achievements li:before {
-    content: '↪';
+    content: '▸';
     position: absolute;
     left: 0;
-    top: 2px;
+    top: 0;
     color: var(--text-highlight);
-    font-size: 1.3rem;
+    font-size: 1.2rem;
     font-weight: bold;
 }
 
 .narrow-section {
-    margin: 70px 0;
+    margin: 50px 0;
 }
 
 .narrow-section p {
-    font-size: 1.25rem;
-    line-height: 1.9;
+    font-size: 1.15rem;
+    line-height: 1.8;
     color: var(--text-primary);
     font-weight: 500;
-    max-width: 900px;
-}
-
-/* ============================================================
-   VISUAL DIVIDERS AND ACCENTS
-   ============================================================ */
-
-.experience-item:not(:last-child)::after {
-    content: '';
-    display: block;
-    width: 100%;
-    height: 1px;
-    background: linear-gradient(to right, var(--text-highlight) 0%, transparent 100%);
-    margin-top: 80px;
 }
 
 /* ============================================================
@@ -286,11 +249,11 @@
 @keyframes fade-in {
     from {
         opacity: 0;
-        transform: translateX(-30px);
+        transform: translateY(20px);
     }
     to {
         opacity: 1;
-        transform: translateX(0);
+        transform: translateY(0);
     }
 }
 
@@ -299,74 +262,63 @@
    ============================================================ */
 
 @media screen and (max-width: 500px) {
+    .experience-item {
+        padding: 35px 25px;
+        margin: 30px 0;
+        border-radius: 8px;
+    }
+
+    .experience-company-header {
+        margin-bottom: 25px;
+        padding-bottom: 15px;
+        border-bottom: 2px solid var(--text-highlight);
+    }
+
     .company-name {
-        font-size: 2.5rem;
-        letter-spacing: -1.5px;
-    }
-
-    .experience-company-header::after {
-        width: 60px;
-        height: 4px;
-    }
-
-    .experience-roles {
-        margin-left: 20px;
+        font-size: 2rem;
+        letter-spacing: -1px;
     }
 
     .role {
-        margin: 35px 0;
-        padding: 30px 0;
-        padding-left: 25px;
-        border-left: 4px solid var(--text-highlight);
-    }
-
-    .role::before {
-        width: 12px;
-        height: 12px;
-        left: -3px;
+        margin: 20px 0;
+        padding: 18px 0;
+        padding-left: 20px;
+        border-left: 3px solid var(--text-highlight);
     }
 
     .role:hover {
-        padding-left: 30px;
+        padding-left: 24px;
     }
 
     .role-header {
         flex-direction: column;
         align-items: flex-start;
-        gap: 12px;
-        margin-bottom: 20px;
+        gap: 10px;
+        margin-bottom: 16px;
     }
 
     .role-title {
-        font-size: 1.4rem;
+        font-size: 1.2rem;
     }
 
     .role-dates {
         align-self: flex-start;
-        padding: 6px 14px;
+        padding: 4px 10px;
         font-size: 0.8rem;
     }
 
-    .role-achievements {
-        gap: 14px;
-    }
-
     .role-achievements li {
-        font-size: 1rem;
-        padding-left: 28px;
-        line-height: 1.6;
-    }
-
-    .experience-item:not(:last-child)::after {
-        margin-top: 50px;
+        font-size: 0.95rem;
+        padding-left: 20px;
+        margin-bottom: 10px;
     }
 
     .narrow-section {
-        margin: 50px 0;
+        margin: 30px 0;
     }
 
     .narrow-section p {
-        font-size: 1.1rem;
-        line-height: 1.7;
+        font-size: 1rem;
+        line-height: 1.6;
     }
 }

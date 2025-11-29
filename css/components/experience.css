@@ -112,18 +112,28 @@
 
 /* Experience item styling (rendered from data) */
 .experience-item {
-    margin: 5% 0;
+    margin: 80px 0;
+    padding: 60px 0;
+    border-top: 1px solid rgba(0, 0, 0, 0.08);
     animation: fade-in 0.6s ease-in;
 }
 
+.experience-item:first-child {
+    border-top: none;
+}
+
 .experience-company-header {
-    margin-bottom: 3%;
+    margin-bottom: 40px;
 }
 
 .company-name {
     color: var(--text-primary);
-    margin-bottom: 5px;
-    font-size: 2rem;
+    margin-bottom: 0;
+    font-size: 3.5rem;
+    font-weight: bold;
+    font-family: 'AvertaQuibi-Black', sans-serif;
+    letter-spacing: -1px;
+    line-height: 1.2;
 }
 
 .experience-roles {
@@ -133,62 +143,86 @@
 
 .role {
     transition: background-color 0.3s ease, padding 0.3s ease;
-    margin: 3% 0;
-    padding: 2%;
-    border-radius: 4px;
+    margin: 40px 0;
+    padding: 30px 0;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    border-radius: 0;
+}
+
+.role:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
 }
 
 .role.highlighted {
-    background-color: rgba(0, 0, 0, 0.02);
+    background-color: transparent;
 }
 
 .role-header {
     display: flex;
     flex-direction: row;
-    margin-bottom: 15px;
+    align-items: flex-start;
+    margin-bottom: 25px;
+    gap: 30px;
 }
 
 .role-title {
     flex: 1;
-    color: var(--text-secondary);
-    font-size: 1.3em;
-    font-weight: normal;
+    color: var(--text-primary);
+    font-size: 1.6rem;
+    font-weight: 600;
+    font-family: 'AvertaQuibi-Semibold', sans-serif;
+    margin: 0;
 }
 
 .role-dates {
     text-align: right;
     color: var(--text-secondary);
-    font-size: 1em;
+    font-size: 1rem;
+    white-space: nowrap;
+    flex-shrink: 0;
 }
 
 .role-achievements {
     list-style: none;
     padding-left: 0;
+    margin: 0;
 }
 
 .role-achievements li {
     position: relative;
-    padding-left: 20px;
-    line-height: 30px;
-    margin-bottom: 10px;
+    padding-left: 25px;
+    line-height: 1.8;
+    margin-bottom: 18px;
     color: var(--text-primary);
+    font-size: 1.05rem;
+}
+
+.role-achievements li:last-child {
+    margin-bottom: 0;
 }
 
 .role-achievements li:before {
     content: '';
-    width: 10px;
-    height: 10px;
+    width: 12px;
+    height: 12px;
     position: absolute;
     background-image: url('../img/bullet_4.png');
-    background-size: cover;
+    background-size: contain;
+    background-repeat: no-repeat;
     background-position: center;
     left: 0;
-    top: 50%;
-    transform: translateY(-50%);
+    top: 0.4rem;
 }
 
 .narrow-section {
-    margin: 3% 0;
+    margin: 40px 0;
+}
+
+.narrow-section p {
+    font-size: 1.1rem;
+    line-height: 1.7;
+    color: var(--text-primary);
 }
 
 /* Animations */
@@ -200,5 +234,55 @@
     to {
         opacity: 1;
         transform: translateY(0);
+    }
+}
+
+/* Mobile responsive adjustments */
+@media screen and (max-width: 500px) {
+    .experience-item {
+        margin: 50px 0;
+        padding: 40px 0;
+    }
+
+    .company-name {
+        font-size: 2.2rem;
+        letter-spacing: -0.5px;
+    }
+
+    .experience-company-header {
+        margin-bottom: 25px;
+    }
+
+    .role {
+        margin: 25px 0;
+        padding: 20px 0;
+    }
+
+    .role-header {
+        flex-direction: column;
+        gap: 8px;
+        margin-bottom: 18px;
+    }
+
+    .role-title {
+        font-size: 1.2rem;
+    }
+
+    .role-dates {
+        text-align: left;
+    }
+
+    .role-achievements li {
+        font-size: 1rem;
+        padding-left: 22px;
+        margin-bottom: 14px;
+    }
+
+    .narrow-section {
+        margin: 25px 0;
+    }
+
+    .narrow-section p {
+        font-size: 1rem;
     }
 }

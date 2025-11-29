@@ -1,38 +1,5 @@
 <!doctype html>
 <html lang="en">
-<!--
-================================================================================
-HARSH RANA - PERSONAL PORTFOLIO WEBSITE
-================================================================================
-A minimal, single-page portfolio showcasing professional experience and projects.
-
-TECHNOLOGY STACK:
-- HTML5 (semantic markup)
-- CSS3 (custom properties, flexbox, responsive design)
-- Vanilla JavaScript (no frameworks)
-- Font Awesome 5.2.0 (social icons)
-- Google Fonts (Oswald, Raleway)
-
-SECTIONS:
-1. Fixed Navigation Sidebar - Social links (color changes on scroll)
-2. Hero/Landing - Main headline with highlighted keywords
-3. About - Background, education, work experience
-4. Projects - Filterable carousel (Data Science vs Software Development)
-5. Footer - Copyright information
-
-FILE STRUCTURE:
-├── index.html           (This file - main entry point)
-├── css/
-│   ├── stylesheet.css   (CSS variables, font definitions)
-│   └── styles.css       (All layout and component styles)
-├── js/
-│   └── scripts_main.js  (Project carousel, icon color, scroll effects)
-├── img/                 (Project images, profile photos, assets)
-└── static/              (Custom fonts - AvertaQuibi)
-
-For detailed code documentation, see README.md
-================================================================================
--->
 
 <head>
     <meta charset="utf-8">
@@ -312,29 +279,6 @@ For detailed code documentation, see README.md
             <p><span class="copy">&copy;</span> 2022 Harsh Rana </p>
         </div>
     </div>
-
-    <!-- ============================================================
-         HOT RELOAD - Development Only
-         This script enables automatic page refresh when files are modified.
-         It only runs in local development (localhost).
-         IMPORTANT: Remove this in production or before deploying!
-         ============================================================ -->
-    <script>
-        if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
-            setInterval(function() {
-                fetch(window.location.href, {cache: 'no-store'})
-                    .then(response => response.text())
-                    .then(html => {
-                        if (html !== document.documentElement.outerHTML) {
-                            console.log('[Hot Reload] Changes detected, refreshing...');
-                            window.location.reload();
-                        }
-                    })
-                    .catch(error => console.error('[Hot Reload] Error checking for changes:', error));
-            }, 1000); // Check for changes every 1 second
-        }
-    </script>
-
 </body>
 
 <!-- ============================================================

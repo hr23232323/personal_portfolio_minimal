@@ -67,19 +67,6 @@
         margin-bottom: 15px;
     }
 
-    /* Experience section - mobile layout */
-    .experience-item {
-        margin: 3% 0;
-    }
-
-    .company-name {
-        font-size: 1.5rem;
-    }
-
-    .role-dates {
-        font-size: 0.9em;
-    }
-
     /* Projects section - mobile carousel (vertical scrolling) */
     .project-carousel {
         height: 1500px;

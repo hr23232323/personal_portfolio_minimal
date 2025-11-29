@@ -114,8 +114,8 @@ For detailed code documentation, see README.md
          ============================================================ -->
     <div class="main">
         <!-- ============================================================
-             ABOUT SECTION
-             Includes: intro, education, 3 work experiences with details
+             EXPERIENCE SECTION
+             Rendered dynamically by js/components/experience.js from data/content.js
              ============================================================ -->
         <div class="section">
             <div class="content about-section-content">
@@ -126,79 +126,12 @@ For detailed code documentation, see README.md
                             I graduated from <span class="highlight-text-2">Worcester Polytechnic Institute</span> with a B.S. in <span class="highlight-text-2">Computer Science</span>, and a <span class="highlight-text-2">Data Science</span> minor. Since then, I've worked at </p>
                     </div>
 
-                        <div id="exp-1" class="exp-text">
-                            <h1>Stride Funding</h1>
-                            <div class="job-subheader">
-                                <div class="row">
-                                    <h2>Senior Software Engineer</h2>
-                                </div>
-                                <div class="row right">
-                                    <h2>Oct '22 - Present</h2>
-                                </div>
-                            </div>
-                            <ul class="custom-list-1">
-                                <li>Mentoring a team of engineers, while continuing to be a high performing IC</li>
-                                <li>Architecting business-critical initiatives and leading implementation efforts</li>
-                            </ul>
-                            <br>
-                            <div class="job-subheader">
-                                <div class="row">
-                                    <h2>Fullstack Software Engineer</h2>
-                                </div>
-                                <div class="row right">
-                                    <h2>Feb '22 - Oct '22</h2>
-                                </div>
-                            </div>
-                            <ul class="custom-list-1">
-                                <li>Building the core platform - A full-stack multi-tenant application</li>
-                                <li>Tech stack: Docker, React, Node, NextJs, Typescript, Python, Django, Airflow, SQL, GCP</li>
-                            </ul>
-                            <br>
-                        </div>
-
-                        <div id="exp-2" class="exp-text">
-                            <h1>Software Engineer</h1>
-                            <div class="job-subheader">
-                                <div class="row">
-                                    <h2>ButcherBox</h2>
-                                </div>
-                                <div class="row right">
-                                    <h2>Oct '20 - Feb '22</h2>
-                                </div>
-                            </div>
-                            <ul class="custom-list-1">
-                                <li>Built an automated data quality pipeline to increase operating efficiency</li>
-                                <li>Implemented a fullstack application to optimize customer support workflow</li>
-                                <li>Tech stack: Docker, Python, SQL, Go, Airflow, React, NextJs, Typescript, Laravel</li>
-                            </ul>
-                            <br>
-                        </div>
-
-
-                        <div id="exp-3" class="exp-text">
-                            <h1>Big Data Engineer</h1>
-                            <div class="job-subheader">
-                                <div class="row">
-                                    <h2>Bank of America</h2>
-                                </div>
-                                <div class="row right">
-                                    <h2>Jul '19 - Oct '20</h2>
-                                </div>
-                            </div>
-                            <ul class="custom-list-1">
-                                <li>Building near real-time and batch data ETL pipelines for public applications</li>
-                                <li>Designing backend infrastructures for data volumes of upto 300GB/day</li>
-                                <li>Tech stack: Hadoop, map-reduce, Hive, Sqoop, Spark and Oozie</li>
-                            </ul>
-                            <br>
-                        </div>
-                        
-                        <br><br>
+                    <!-- Experience items rendered here by experience.js -->
+                    <div id="experience-container"></div>
 
                     <div class="narrow-section">
-                        <p>I'm particularly passionate about two main things: <span class="highlight-text-2">leveraging data to solve complex problems</span> and <span class="highlight-text-2">building impactful, clean &amp; efficient software.</span>
-                    </p>
-                </div>
+                        <p>I'm particularly passionate about two main things: <span class="highlight-text-2">leveraging data to solve complex problems</span> and <span class="highlight-text-2">building impactful, clean &amp; efficient software.</span></p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -406,10 +339,28 @@ For detailed code documentation, see README.md
 
 <!-- ============================================================
      JAVASCRIPT
-     scripts_main.js handles:
-     - Project carousel filtering (DS / SD tabs)
-     - Social icon color changes on scroll
+     Modular component system:
+     - data/content.js - Centralized content storage
+     - js/components/experience.js - Experience section renderer
+     - js/components/projects.js - Projects carousel renderer
+     - js/scripts_main.js - Scroll effects, utility functions
      ============================================================ -->
+<script type="module">
+    import { initializeExperiences } from './js/components/experience.js';
+    import { initializeProjects } from './js/components/projects.js';
+
+    // Initialize components when DOM is ready
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', () => {
+            initializeExperiences();
+            initializeProjects();
+        });
+    } else {
+        initializeExperiences();
+        initializeProjects();
+    }
+</script>
+
 <script src="./js/scripts_main.js"></script>
 
 </html>

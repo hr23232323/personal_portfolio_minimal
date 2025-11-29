@@ -1,19 +1,12 @@
 /* ============================================================
-   MINIMAL PORTFOLIO - Clean, Simple, Content-First
+   MINIMAL DARK PORTFOLIO - Freeform, Informal, Content-First
    ============================================================ */
 
 :root {
-    --text-primary: #000;
-    --text-secondary: #666;
-    --text-accent: #0066cc;
-    --bg-primary: #fff;
-    --bg-secondary: #f9f9f9;
-    --border-color: #e0e0e0;
-    --spacing-xs: 0.5rem;
-    --spacing-sm: 1rem;
-    --spacing-md: 1.5rem;
-    --spacing-lg: 2rem;
-    --spacing-xl: 3rem;
+    --bg: #0a0a0a;
+    --text: #e0e0e0;
+    --link: #6ba3ff;
+    --link-hover: #8bb5ff;
 }
 
 * {
@@ -22,207 +15,96 @@
     box-sizing: border-box;
 }
 
+html, body {
+    width: 100%;
+    height: 100%;
+}
+
 body {
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-    color: var(--text-primary);
-    background-color: var(--bg-primary);
-    line-height: 1.6;
+    color: var(--text);
+    background-color: var(--bg);
+    line-height: 1.7;
     font-size: 16px;
+    padding: 0;
 }
-
-/* ============================================================
-   HEADER & NAVIGATION
-   ============================================================ */
-
-header {
-    position: sticky;
-    top: 0;
-    background-color: var(--bg-primary);
-    border-bottom: 1px solid var(--border-color);
-    padding: var(--spacing-md) 0;
-    z-index: 100;
-}
-
-nav {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 0 var(--spacing-md);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.logo {
-    font-size: 1.25rem;
-    font-weight: 600;
-    text-decoration: none;
-    color: var(--text-primary);
-}
-
-.nav-links {
-    list-style: none;
-    display: flex;
-    gap: var(--spacing-lg);
-}
-
-.nav-links a {
-    text-decoration: none;
-    color: var(--text-primary);
-    font-size: 0.95rem;
-    transition: color 0.2s;
-}
-
-.nav-links a:hover {
-    color: var(--text-accent);
-}
-
-/* ============================================================
-   MAIN CONTENT
-   ============================================================ */
 
 main {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: var(--spacing-xl) var(--spacing-md);
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    min-height: 100vh;
+    padding: 4rem 2rem;
 }
 
-/* ============================================================
-   HERO SECTION
-   ============================================================ */
-
-.hero {
-    margin-bottom: var(--spacing-xl);
-    padding-bottom: var(--spacing-xl);
-    border-bottom: 1px solid var(--border-color);
-}
-
-.hero h1 {
-    font-size: 2.5rem;
-    margin-bottom: var(--spacing-md);
-    line-height: 1.2;
-}
-
-.hero p {
-    font-size: 1.1rem;
-    color: var(--text-secondary);
+.content {
     max-width: 600px;
+    width: 100%;
 }
 
-/* ============================================================
-   SECTIONS
-   ============================================================ */
-
-.section {
-    margin-bottom: var(--spacing-xl);
+h1 {
+    font-size: 2rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    letter-spacing: -0.5px;
 }
 
-.section h2 {
-    font-size: 1.75rem;
-    margin-bottom: var(--spacing-md);
-    border-bottom: 2px solid var(--border-color);
-    padding-bottom: var(--spacing-sm);
+h2 {
+    font-size: 1.1rem;
+    font-weight: 500;
+    margin-top: 2rem;
+    margin-bottom: 0.75rem;
+    color: var(--text);
 }
 
-.section-intro {
-    color: var(--text-secondary);
-    margin-bottom: var(--spacing-md);
+h2:first-of-type {
+    margin-top: 1.5rem;
+}
+
+p {
+    margin-bottom: 1.5rem;
+    color: #a8a8a8;
     font-size: 0.95rem;
 }
 
-/* ============================================================
-   CONTENT LIST
-   ============================================================ */
-
-.content-list {
-    display: flex;
-    flex-direction: column;
-    gap: var(--spacing-lg);
-}
-
-.content-item {
-    padding: var(--spacing-md) 0;
-    border-bottom: 1px solid var(--border-color);
-}
-
-.content-item:last-child {
-    border-bottom: none;
-}
-
-.content-item a {
-    font-size: 1.1rem;
-    color: var(--text-accent);
-    text-decoration: underline;
-    transition: opacity 0.2s;
-}
-
-.content-item a:hover {
-    opacity: 0.7;
-}
-
-.meta {
-    font-size: 0.85rem;
-    color: var(--text-secondary);
-    margin-top: var(--spacing-xs);
-}
-
-/* ============================================================
-   FOOTER
-   ============================================================ */
-
-footer {
-    margin-top: var(--spacing-xl);
-    padding-top: var(--spacing-lg);
-    border-top: 1px solid var(--border-color);
-    text-align: center;
-    color: var(--text-secondary);
-    font-size: 0.9rem;
-}
-
-.social-links {
+ul {
     list-style: none;
-    display: flex;
-    justify-content: center;
-    gap: var(--spacing-lg);
-    margin-top: var(--spacing-md);
+    margin-bottom: 1.5rem;
 }
 
-.social-links a {
-    color: var(--text-accent);
+li {
+    margin-bottom: 0.5rem;
+}
+
+a {
+    color: var(--link);
     text-decoration: none;
-    transition: opacity 0.2s;
+    transition: color 0.15s ease;
 }
 
-.social-links a:hover {
-    opacity: 0.7;
+a:hover {
+    color: var(--link-hover);
 }
 
-/* ============================================================
-   RESPONSIVE DESIGN
-   ============================================================ */
-
+/* Mobile responsive */
 @media (max-width: 640px) {
-    .nav-links {
-        gap: var(--spacing-md);
-        font-size: 0.9rem;
-    }
-
-    .hero h1 {
-        font-size: 1.75rem;
-    }
-
-    .hero p {
-        font-size: 1rem;
-    }
-
-    .section h2 {
-        font-size: 1.4rem;
-    }
-
-    .content-item a {
-        font-size: 1rem;
-    }
-
     main {
-        padding: var(--spacing-lg) var(--spacing-md);
+        padding: 2rem 1.5rem;
+    }
+
+    .content {
+        max-width: 100%;
+    }
+
+    h1 {
+        font-size: 1.5rem;
+    }
+
+    h2 {
+        font-size: 1rem;
+    }
+
+    p {
+        font-size: 0.9rem;
     }
 }

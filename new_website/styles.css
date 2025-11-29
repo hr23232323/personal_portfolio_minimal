@@ -17,11 +17,16 @@
     src: url('./static/AvertaQuibi-Semibold.woff2') format('woff2');
 }
 
+@font-face {
+    font-family: 'PlayfairDisplay-Black';
+    src: url('./static/PlayfairDisplay-Black.ttf') format('truetype');
+}
+
 :root {
     --bg: #1a1a1a;
     --text: #c9c9c9;
     --text-secondary: #7a7a7a;
-    --link: #6ba3ff;
+    --link: #8a8a8a;
     --link-hover: #88b8ff;
     --border: #2a2a2a;
 }
@@ -69,11 +74,11 @@ body {
 }
 
 .site-header h1 {
-    font-size: 1.4rem;
-    font-weight: 600;
-    letter-spacing: 0.5px;
+    font-size: 1.5rem;
+    font-weight: 400;
+    letter-spacing: 0px;
     text-transform: uppercase;
-    font-family: 'AvertaQuibi-Semibold', sans-serif;
+    font-family: 'PlayfairDisplay-Regular', serif;
 }
 
 /* ============================================================
@@ -99,11 +104,11 @@ main {
 }
 
 h2 {
-    font-size: 1.05rem;
-    font-weight: 500;
+    font-size: 1.2rem;
+    font-weight: 200;
     margin-top: 2.5rem;
     margin-bottom: 1rem;
-    text-transform: uppercase;
+    /* text-transform: uppercase; */
     letter-spacing: 1px;
     color: var(--text-secondary);
     font-family: 'AvertaQuibi-Semibold', sans-serif;
@@ -120,7 +125,7 @@ p {
 
 ul {
     list-style: none;
-    margin-bottom: 2rem;
+    margin-bottom: 4rem;
 }
 
 li {
@@ -129,18 +134,18 @@ li {
 }
 
 a {
-    color: #888888;
+    color: var(--link);
     text-decoration: underline;
     text-decoration-thickness: 1px;
     text-underline-offset: 3px;
     text-decoration-style: dotted;
     transition: all 0.2s ease;
-    text-decoration-color: #888888;
+    text-decoration-color: var(--link);
 }
 
 a:hover {
-    color: #c9c9c9;
-    text-decoration-color: #6ba3ff;
+    color: var(--text);
+    text-decoration-color: var(--link-hover);
     text-decoration-thickness: 1.5px;
 }
 

@@ -47,7 +47,7 @@ body {
     color: var(--text);
     background-color: var(--bg);
     line-height: 1.8;
-    font-size: 24px;
+    font-size: 1.5rem;
     padding: 0;
 }
 
@@ -106,11 +106,11 @@ main {
 h2 {
     font-size: 1.2rem;
     font-weight: 400;
-    margin-top: 2.5rem;
+    margin-top: 3rem;
     margin-bottom: 1rem;
     /* text-transform: uppercase; */
     letter-spacing: 1px;
-    color: var(--text-secondary);
+    color: var(--text);
     font-family: 'PlayfairDisplay-Regular', serif;
 }
 
@@ -130,7 +130,7 @@ ul {
 
 li {
     margin-bottom: 0.75rem;
-    color: var(--text);
+    color: var(--text-secondary);
 }
 
 a {

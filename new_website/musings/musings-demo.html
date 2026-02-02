@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="How I built a markdown-based publishing system for my portfolio">
+    <title>Building a Simple Musings System - Harsh Rana</title>
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="musing-styles.css">
+</head>
+<body>
+    <main class="musing-container">
+        <article class="musing">
+            <a href="/" class="back-link">← Back</a>
+
+            <div class="musing-meta">
+                <time>February 1, 2026</time>
+            </div>
+
+            <h1 class="musing-title">Building a Simple Musings System</h1>
+
+            <div class="musing-content">
+                <p>I wanted a simple way to publish thoughts without the overhead of a CMS or complex framework. This is how I built a markdown-based musings system.</p>
+<h2>The Problem</h2>
+<p>Most blogging systems are overkill for a personal portfolio. I needed something that:</p>
+<ul>
+<li>Let me write in markdown (fast, distraction-free)</li>
+<li>Generated static HTML (performant, portable)</li>
+<li>Required minimal tooling (keep it simple)</li>
+<li>Integrated with my existing static site</li>
+</ul>
+<h2>The Solution</h2>
+<p>A simple build script that converts markdown to HTML. Here&#39;s how it works:</p>
+<h3>1. Write in Markdown</h3>
+<p>Create a <code>.md</code> file with frontmatter:</p>
+<pre><code class="language-markdown">---
+title: My Article Title
+date: February 1, 2026
+description: A short description
+slug: my-article-slug
+---
+
+Your content here...
+</code></pre>
+<h3>2. Build with Node.js</h3>
+<p>A simple script reads the markdown files, parses frontmatter, converts content to HTML, and injects it into a template.</p>
+<pre><code class="language-javascript">const { marked } = require(&#39;marked&#39;);
+const matter = require(&#39;gray-matter&#39;);
+
+const { data, content } = matter(fileContent);
+const html = marked(content);
+</code></pre>
+<h3>3. Serve Static Files</h3>
+<p>The build happens during Docker image creation. The final container just serves static HTML with Caddy.</p>
+<h2>Why This Works</h2>
+<p><strong>Simplicity</strong>: Two dependencies, one build script, one template.</p>
+<p><strong>Performance</strong>: Static HTML is fast. No runtime processing.</p>
+<p><strong>Portability</strong>: Markdown files are future-proof. Easy to migrate.</p>
+<p><strong>Developer Experience</strong>: Write markdown, run build, deploy. That&#39;s it.</p>
+<h2>Trade-offs</h2>
+<p>This approach sacrifices features for simplicity:</p>
+<ul>
+<li>No dynamic content</li>
+<li>No search (yet)</li>
+<li>No tags/categories (yet)</li>
+<li>Requires rebuild for changes</li>
+</ul>
+<p>For a personal portfolio, these trade-offs are worth it. I can add features later if needed.</p>
+<h2>Key Learnings</h2>
+<ol>
+<li><strong>Start simple</strong> - Don&#39;t add features you don&#39;t need yet</li>
+<li><strong>Optimize for writing</strong> - Markdown is faster than HTML</li>
+<li><strong>Build-time over runtime</strong> - Generate static files when possible</li>
+<li><strong>Docker multi-stage builds</strong> - Keep final images small</li>
+</ol>
+<hr>
+<p><strong>Questions or thoughts?</strong> <a href="mailto:hr23232323@gmail.com">Get in touch</a></p>
+
+            </div>
+        </article>
+    </main>
+
+    <footer class="musing-footer">
+        <p>Questions or thoughts? <a href="mailto:hr23232323@gmail.com">Get in touch</a></p>
+    </footer>
+</body>
+</html>

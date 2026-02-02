@@ -1,0 +1,12 @@
+{
+  "name": "portfolio-new",
+  "version": "1.0.0",
+  "description": "Harsh Rana's minimal portfolio website",
+  "scripts": {
+    "build-musings": "node build-musings.js"
+  },
+  "dependencies": {
+    "marked": "^11.1.1",
+    "gray-matter": "^4.0.3"
+  }
+}

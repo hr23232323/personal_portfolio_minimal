@@ -1,0 +1,13 @@
+# Node.js dependencies
+new_website/node_modules/
+new_website/package-lock.json
+
+# macOS
+.DS_Store
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+*~

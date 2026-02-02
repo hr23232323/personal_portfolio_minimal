@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Musing by Harsh Rana">
-    <title>Musing - Harsh Rana</title>
+    <meta name="description" content="{{DESCRIPTION}}">
+    <title>{{TITLE}} - Harsh Rana</title>
     <link rel="stylesheet" href="../styles.css">
     <link rel="stylesheet" href="musing-styles.css">
 </head>
@@ -14,14 +14,13 @@
             <a href="/" class="back-link">← Back</a>
 
             <div class="musing-meta">
-                <time datetime="2024-11-29">November 29, 2024</time>
+                <time>{{DATE}}</time>
             </div>
 
-            <h1 class="musing-title">Your Musing Title Here</h1>
+            <h1 class="musing-title">{{TITLE}}</h1>
 
             <div class="musing-content">
-                <!-- Your musing content goes here -->
-                <p>Start writing your musing content here. You have complete freedom with the styling and structure within this content area.</p>
+                {{CONTENT}}
             </div>
         </article>
     </main>

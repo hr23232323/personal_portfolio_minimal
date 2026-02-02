@@ -1,5 +1,5 @@
 # Personal Portfolio (New) - Caddy Web Server
-# Serves the new minimal portfolio design
+# Musings are built via 'make build-musings' before Docker starts
 
 FROM caddy:latest
 

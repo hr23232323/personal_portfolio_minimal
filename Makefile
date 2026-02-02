@@ -1,7 +1,7 @@
 # Personal Portfolio - Development Makefile
 # Commands for developing both old and new website versions
 
-.PHONY: help old new old-up old-down old-logs old-clean new-up new-down new-logs new-clean
+.PHONY: help old new old-up old-down old-logs old-clean new-up new-down new-logs new-clean build-musings
 
 help:
 	@echo "Portfolio Development Commands:"
@@ -19,6 +19,7 @@ help:
 	@echo "  make new-down    - Stop new website server"
 	@echo "  make new-logs    - View new website logs"
 	@echo "  make new-clean   - Clean new website Docker resources"
+	@echo "  make build-musings - Convert markdown musings to HTML"
 	@echo ""
 	@echo "Servers will be available at:"
 	@echo "  Old: http://localhost:8080"
@@ -76,7 +77,7 @@ new:
 	docker build -t portfolio-new:dev ./new_website
 	@echo "✓ Build complete. Run 'make new-up' to start the server."
 
-new-up: new
+new-up: new build-musings
 	@echo "Starting new website server..."
 	@docker ps -a --filter "name=portfolio-new-dev" --format '{{.ID}}' | xargs -r docker rm -f
 	docker run -d \
@@ -107,3 +108,16 @@ new-clean:
 	@docker rm portfolio-new-dev 2>/dev/null || true
 	@docker rmi portfolio-new:dev 2>/dev/null || true
 	@echo "✓ New website cleanup complete"
+
+# ============================================================
+# MUSINGS BUILD COMMAND
+# ============================================================
+
+build-musings:
+	@echo "Building musings from markdown (in Docker)..."
+	@docker run --rm \
+		-v $$(pwd)/new_website:/build \
+		-w /build \
+		node:20-alpine \
+		sh -c "npm install --silent && npm run build-musings"
+	@echo "✓ Musings build complete"

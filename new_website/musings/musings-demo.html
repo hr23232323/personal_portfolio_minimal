@@ -81,7 +81,21 @@ const html = marked(content);
     </main>
 
     <footer class="musing-footer">
-        <p>Questions or thoughts? <a href="mailto:hr23232323@gmail.com">Get in touch</a></p>
+        <section class="subscribe-section">
+            <h3>Stay in the loop</h3>
+            <p>If you enjoyed this, you'll probably like my newsletter. I send out thoughts on AI and engineering every few weeks.</p>
+            <form
+                action="https://buttondown.email/api/emails/embed-subscribe/harshrana"
+                method="post"
+                target="popupwindow"
+                onsubmit="window.open('https://buttondown.email/harshrana', 'popupwindow')"
+                class="subscribe-form"
+            >
+                <input type="email" name="email" id="bd-email" placeholder="email@example.com" required>
+                <button type="submit">Subscribe</button>
+            </form>
+        </section>
+        <p class="footer-contact">Questions or thoughts? <a href="mailto:hr23232323@gmail.com">Get in touch</a></p>
     </footer>
 </body>
 </html>

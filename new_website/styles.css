@@ -270,6 +270,88 @@ a:hover {
 }
 
 /* ============================================================
+   SUBSCRIBE FORM & FOOTER
+   ============================================================ */
+
+.subscribe-section {
+    margin-top: 5rem;
+    padding: 3rem;
+    background: rgba(42, 42, 42, 0.2);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+}
+
+.subscribe-section h2, .subscribe-section h3 {
+    margin-top: 0;
+    font-family: 'AvertaQuibi-Semibold', sans-serif;
+    font-size: 1.5rem;
+    text-transform: none;
+    letter-spacing: 0;
+}
+
+.subscribe-form {
+    display: flex;
+    gap: 10px;
+    margin-top: 1.5rem;
+}
+
+.subscribe-form input[type="email"] {
+    flex: 1;
+    background: #000;
+    border: 1px solid var(--border);
+    padding: 0.8rem 1.2rem;
+    border-radius: 6px;
+    color: var(--text);
+    font-family: 'AvertaQuibi-Regular', sans-serif;
+    font-size: 1rem;
+}
+
+.subscribe-form input[type="email"]:focus {
+    outline: none;
+    border-color: var(--link);
+}
+
+.subscribe-form button {
+    background: var(--text);
+    color: var(--bg);
+    border: none;
+    padding: 0.8rem 1.5rem;
+    border-radius: 6px;
+    font-family: 'AvertaQuibi-Semibold', sans-serif;
+    font-weight: 600;
+    cursor: pointer;
+    transition: opacity 0.2s ease;
+}
+
+.subscribe-form button:hover {
+    opacity: 0.9;
+}
+
+.site-footer {
+    margin-top: 4rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--border);
+}
+
+.social-links {
+    display: flex;
+    gap: 20px;
+    list-style: none;
+    margin-bottom: 0;
+}
+
+.social-links a {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    font-family: 'AvertaQuibi-Regular', sans-serif;
+    text-decoration: none;
+}
+
+.social-links a:hover {
+    color: var(--text);
+}
+
+/* ============================================================
    RESPONSIVE DESIGN
    ============================================================ */
 

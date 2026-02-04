@@ -1,6 +1,6 @@
 # Node.js dependencies
-new_website/node_modules/
-new_website/package-lock.json
+node_modules/
+package-lock.json
 
 # macOS
 .DS_Store

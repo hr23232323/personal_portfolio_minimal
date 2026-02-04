@@ -1,113 +1,73 @@
-# Personal Portfolio - Development Makefile
-# Commands for developing both old and new website versions
+# Personal Portfolio - Development & Production Makefile
 
-.PHONY: help old new old-up old-down old-logs old-clean new-up new-down new-logs new-clean build-musings
+# Production Variables
+GCP_PROJECT=harsh-personal-projects-misc
+APP_NAME=portfolio
+
+.PHONY: help dev up down logs clean build-musings new-musing set-gcp-project build-cloud push deploy
 
 help:
 	@echo "Portfolio Development Commands:"
 	@echo ""
-	@echo "Old Website (original design):"
-	@echo "  make old         - Build old website Docker image"
-	@echo "  make old-up      - Start old website server"
-	@echo "  make old-down    - Stop old website server"
-	@echo "  make old-logs    - View old website logs"
-	@echo "  make old-clean   - Clean old website Docker resources"
-	@echo ""
-	@echo "New Website (minimal design):"
-	@echo "  make new         - Build new website Docker image"
-	@echo "  make new-up      - Start new website server"
-	@echo "  make new-down    - Stop new website server"
-	@echo "  make new-logs    - View new website logs"
-	@echo "  make new-clean   - Clean new website Docker resources"
+	@echo "Development:"
+	@echo "  make dev           - Build website Docker image"
+	@echo "  make up            - Start website server"
+	@echo "  make down          - Stop website server"
+	@echo "  make logs          - View website logs"
+	@echo "  make clean         - Clean Docker resources"
 	@echo "  make build-musings - Convert markdown musings to HTML"
+	@echo "  make new-musing SLUG=my-post - Create new musing template"
 	@echo ""
-	@echo "Servers will be available at:"
-	@echo "  Old: http://localhost:8080"
-	@echo "  New: http://localhost:8081"
+	@echo "Production Deployment (Cloud Run):"
+	@echo "  make deploy        - Build musings, build image, push, and deploy to Cloud Run"
+	@echo "  make build-cloud   - Build Docker image for Cloud Run"
+	@echo "  make push          - Push image to GCR"
+	@echo ""
+	@echo "Server will be available at:"
+	@echo "  http://localhost:8080"
 	@echo ""
 	@echo "Hot reload is automatic - just save your files!"
 
 # ============================================================
-# OLD WEBSITE COMMANDS
+# DEVELOPMENT COMMANDS
 # ============================================================
 
-old:
-	@echo "Building old website Docker image..."
-	docker build -t portfolio-old:dev ./old_website
-	@echo "✓ Build complete. Run 'make old-up' to start the server."
+dev:
+	@echo "Building website Docker image..."
+	docker build -t portfolio:dev .
+	@echo "✓ Build complete. Run 'make up' to start the server."
 
-old-up: old
-	@echo "Starting old website server..."
-	@docker ps -a --filter "name=portfolio-old-dev" --format '{{.ID}}' | xargs -r docker rm -f
+up: dev build-musings
+	@echo "Starting website server..."
+	@docker ps -a --filter "name=portfolio-dev" --format '{{.ID}}' | xargs -r docker rm -f
 	docker run -d \
-		--name portfolio-old-dev \
+		--name portfolio-dev \
 		-p 8080:80 \
-		-v $$(pwd)/old_website:/srv \
-		portfolio-old:dev
+		-v $$(pwd):/srv \
+		portfolio:dev
 	@echo ""
-	@echo "✓ Old website running at http://localhost:8080"
+	@echo "✓ Website running at http://localhost:8080"
 	@echo "✓ Hot reload enabled - changes auto-refresh"
 	@echo ""
-	@echo "To view logs: make old-logs"
-	@echo "To stop:      make old-down"
+	@echo "To view logs: make logs"
+	@echo "To stop:      make down"
 
-old-down:
-	@echo "Stopping old website server..."
-	@docker stop portfolio-old-dev 2>/dev/null || true
-	@docker rm portfolio-old-dev 2>/dev/null || true
-	@echo "✓ Old website server stopped"
+down:
+	@echo "Stopping website server..."
+	@docker stop portfolio-dev 2>/dev/null || true
+	@docker rm portfolio-dev 2>/dev/null || true
+	@echo "✓ Website server stopped"
 
-old-logs:
-	@echo "Showing old website logs (Ctrl+C to exit)..."
-	docker logs -f portfolio-old-dev
+logs:
+	@echo "Showing website logs (Ctrl+C to exit)..."
+	docker logs -f portfolio-dev
 
-old-clean:
-	@echo "Cleaning up old website Docker resources..."
-	@docker stop portfolio-old-dev 2>/dev/null || true
-	@docker rm portfolio-old-dev 2>/dev/null || true
-	@docker rmi portfolio-old:dev 2>/dev/null || true
-	@echo "✓ Old website cleanup complete"
-
-# ============================================================
-# NEW WEBSITE COMMANDS
-# ============================================================
-
-new:
-	@echo "Building new website Docker image..."
-	docker build -t portfolio-new:dev ./new_website
-	@echo "✓ Build complete. Run 'make new-up' to start the server."
-
-new-up: new build-musings
-	@echo "Starting new website server..."
-	@docker ps -a --filter "name=portfolio-new-dev" --format '{{.ID}}' | xargs -r docker rm -f
-	docker run -d \
-		--name portfolio-new-dev \
-		-p 8081:80 \
-		-v $$(pwd)/new_website:/srv \
-		portfolio-new:dev
-	@echo ""
-	@echo "✓ New website running at http://localhost:8081"
-	@echo "✓ Hot reload enabled - changes auto-refresh"
-	@echo ""
-	@echo "To view logs: make new-logs"
-	@echo "To stop:      make new-down"
-
-new-down:
-	@echo "Stopping new website server..."
-	@docker stop portfolio-new-dev 2>/dev/null || true
-	@docker rm portfolio-new-dev 2>/dev/null || true
-	@echo "✓ New website server stopped"
-
-new-logs:
-	@echo "Showing new website logs (Ctrl+C to exit)..."
-	docker logs -f portfolio-new-dev
-
-new-clean:
-	@echo "Cleaning up new website Docker resources..."
-	@docker stop portfolio-new-dev 2>/dev/null || true
-	@docker rm portfolio-new-dev 2>/dev/null || true
-	@docker rmi portfolio-new:dev 2>/dev/null || true
-	@echo "✓ New website cleanup complete"
+clean:
+	@echo "Cleaning up Docker resources..."
+	@docker stop portfolio-dev 2>/dev/null || true
+	@docker rm portfolio-dev 2>/dev/null || true
+	@docker rmi portfolio:dev 2>/dev/null || true
+	@echo "✓ Cleanup complete"
 
 # ============================================================
 # MUSINGS BUILD COMMAND
@@ -116,8 +76,77 @@ new-clean:
 build-musings:
 	@echo "Building musings from markdown (in Docker)..."
 	@docker run --rm \
-		-v $$(pwd)/new_website:/build \
+		-v $$(pwd):/build \
 		-w /build \
 		node:20-alpine \
 		sh -c "npm install --silent && npm run build-musings"
 	@echo "✓ Musings build complete"
+
+new-musing:
+	@if [ -z "$(SLUG)" ]; then \
+		echo "Error: Please provide a SLUG parameter"; \
+		echo "Usage: make new-musing SLUG=my-post-title"; \
+		exit 1; \
+	fi
+	@DATE=$$(date "+%B %d, %Y"); \
+	FILE="musings/content/$(SLUG).md"; \
+	if [ -f "$$FILE" ]; then \
+		echo "Error: $$FILE already exists"; \
+		exit 1; \
+	fi; \
+	echo "Creating new musing: $$FILE"; \
+	echo "---" > "$$FILE"; \
+	echo "title: TODO: Add your title here" >> "$$FILE"; \
+	echo "date: $$DATE" >> "$$FILE"; \
+	echo "description: TODO: Add a compelling description" >> "$$FILE"; \
+	echo "slug: $(SLUG)" >> "$$FILE"; \
+	echo "---" >> "$$FILE"; \
+	echo "" >> "$$FILE"; \
+	echo "Write your content here in markdown." >> "$$FILE"; \
+	echo "" >> "$$FILE"; \
+	echo "## Example Heading" >> "$$FILE"; \
+	echo "" >> "$$FILE"; \
+	echo "Your thoughts..." >> "$$FILE"; \
+	echo ""; \
+	echo "✓ Created $$FILE"; \
+	echo ""; \
+	echo "Next steps:"; \
+	echo "  1. Edit the file and add your content"; \
+	echo "  2. Run 'make build-musings' to generate HTML"; \
+	echo "  3. Add link to index.html"; \
+	echo "  4. Test with 'make up'"
+
+# ============================================================
+# PRODUCTION DEPLOYMENT (Cloud Run)
+# ============================================================
+
+set-gcp-project:
+	@echo "Setting GCP project to $(GCP_PROJECT)..."
+	gcloud config set project $(GCP_PROJECT)
+	@echo "✓ GCP project set"
+
+build-cloud: build-musings
+	@echo "Building Docker image for Cloud Run (linux/amd64)..."
+	docker buildx build \
+		--platform linux/amd64 \
+		-t gcr.io/$(GCP_PROJECT)/$(APP_NAME) \
+		-f Dockerfile \
+		.
+	@echo "✓ Cloud Run image built"
+
+push:
+	@echo "Pushing image to Google Container Registry..."
+	docker push gcr.io/$(GCP_PROJECT)/$(APP_NAME)
+	@echo "✓ Image pushed to gcr.io/$(GCP_PROJECT)/$(APP_NAME)"
+
+deploy: set-gcp-project build-cloud push
+	@echo "Deploying to Cloud Run..."
+	gcloud run deploy $(APP_NAME) \
+		--image gcr.io/$(GCP_PROJECT)/$(APP_NAME) \
+		--platform managed \
+		--region us-central1 \
+		--allow-unauthenticated \
+		--port 80
+	@echo ""
+	@echo "✓ Deployment complete!"
+	@echo "Your site should be live at the URL shown above"

@@ -72,20 +72,71 @@
 }
 
 .musing-content h2 {
-    font-size: 1.5rem;
-    font-weight: 400;
-    margin-top: 2.5rem;
-    margin-bottom: 1.5rem;
-    font-family: 'PlayfairDisplay-Regular', serif;
+    font-size: 1.6rem;
+    font-weight: 600;
+    margin-top: 3rem;
+    margin-bottom: 1rem;
+    font-family: 'AvertaQuibi-Semibold', sans-serif;
     color: #c9c9c9;
+    letter-spacing: -0.01em;
+    line-height: 1.3;
 }
 
 .musing-content h3 {
-    font-size: 1.2rem;
-    font-weight: 400;
+    font-size: 1.15rem;
+    font-weight: 600;
+    margin-top: 2.5rem;
+    margin-bottom: 0.75rem;
+    font-family: 'AvertaQuibi-Semibold', sans-serif;
+    color: #c9c9c9;
+    letter-spacing: 0;
+    line-height: 1.4;
+}
+
+.musing-content h4 {
+    font-size: 1rem;
+    font-weight: 600;
     margin-top: 2rem;
-    margin-bottom: 1rem;
-    font-family: 'PlayfairDisplay-Regular', serif;
+    margin-bottom: 0.5rem;
+    font-family: 'AvertaQuibi-Semibold', sans-serif;
+    color: #7a7a7a;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+}
+
+.musing-content hr {
+    border: none;
+    border-top: 1px solid #444;
+    margin: 3rem auto;
+    max-width: 40%;
+}
+
+.musing-content pre {
+    background: #242424;
+    border: 1px solid #333;
+    border-radius: 6px;
+    padding: 1.25rem 1.5rem;
+    overflow-x: auto;
+    margin: 1.75rem 0;
+}
+
+.musing-content pre code {
+    font-family: 'SF Mono', 'Fira Code', 'Consolas', monospace;
+    font-size: 0.85rem;
+    line-height: 1.6;
+    color: #c9c9c9;
+    background: none;
+    border: none;
+    padding: 0;
+}
+
+.musing-content code {
+    font-family: 'SF Mono', 'Fira Code', 'Consolas', monospace;
+    font-size: 0.875em;
+    background: #242424;
+    border: 1px solid #333;
+    border-radius: 3px;
+    padding: 0.15em 0.4em;
     color: #c9c9c9;
 }
 
@@ -97,8 +148,14 @@
     font-style: italic;
 }
 
-.musing-content ul,
+.musing-content ul {
+    list-style: disc;
+    margin: 1.5rem 0;
+    padding-left: 2rem;
+}
+
 .musing-content ol {
+    list-style: decimal;
     margin: 1.5rem 0;
     padding-left: 2rem;
 }

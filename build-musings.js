@@ -37,7 +37,7 @@ mdFiles.forEach(file => {
     return;
   }
 
-  const htmlContent = marked(content);
+  const htmlContent = marked(content, { breaks: true });
   const output = template
     .replace(/{{TITLE}}/g, frontmatter.title)
     .replace(/{{DATE}}/g, frontmatter.date)

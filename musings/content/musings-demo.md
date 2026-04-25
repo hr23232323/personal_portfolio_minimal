@@ -79,6 +79,3 @@ For a personal portfolio, these trade-offs are worth it. I can add features late
 3. **Build-time over runtime** - Generate static files when possible
 4. **Docker multi-stage builds** - Keep final images small
 
----
-
-**Questions or thoughts?** [Get in touch](mailto:hr23232323@gmail.com)

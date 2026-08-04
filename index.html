@@ -11,7 +11,7 @@
 
     <meta property="og:type" content="website">
     <meta property="og:title" content="Harsh Rana">
-    <meta property="og:description" content="AI products and systems from 0→1—turning high-value workflows into production software teams can operate and scale.">
+    <meta property="og:description" content="AI products and systems from 0→1. I turn high-value workflows into production software teams can operate and scale.">
     <meta property="og:url" content="https://harshrana.com/">
     <meta property="og:image" content="https://harshrana.com/favicon.svg">
     <meta property="og:site_name" content="Harsh Rana">
@@ -20,7 +20,7 @@
     <meta name="twitter:site" content="@_harshrana">
     <meta name="twitter:creator" content="@_harshrana">
     <meta name="twitter:title" content="Harsh Rana">
-    <meta name="twitter:description" content="AI products and systems from 0→1—turning high-value workflows into production software teams can operate and scale.">
+    <meta name="twitter:description" content="AI products and systems from 0→1. I turn high-value workflows into production software teams can operate and scale.">
     <meta name="twitter:image" content="https://harshrana.com/favicon.svg">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -41,10 +41,9 @@
 
     <main id="top">
         <section class="hero" aria-labelledby="hero-title">
-            <p class="hero-code" aria-hidden="true">FOCUS: AI_PRODUCTS_AND_SYSTEMS<br>MODE: ZERO_TO_ONE<br>STATUS: BUILD_AND_RUN</p>
             <h1 id="hero-title"><span>AI.</span><span>PRODUCTS +</span><span>SYSTEMS.</span></h1>
             <div class="hero-bottom">
-                <p>I build the execution layer between AI strategy and operating results—taking high-value workflows from 0→1, shipping the first production system, and creating something teams can run and scale.</p>
+                <p>I build the execution layer between AI strategy and operating results. I take high-value workflows from 0→1, ship the first production system, and create something teams can run and scale.</p>
                 <ul class="focus-list" aria-label="Areas of focus">
                     <li>0→1 product development</li>
                     <li>AI + data systems</li>
@@ -56,29 +55,72 @@
         <section class="featured-build" id="work" aria-labelledby="featured-title">
             <div class="featured-copy">
                 <p class="section-label">Selected system / 01</p>
-                <h2 id="featured-title"><a href="https://carl.golf" target="_blank" rel="noopener noreferrer">Carl</a> — agentic concierge that finds and books golf tee times via text.</h2>
+                <h2 id="featured-title"><a href="https://carl.golf" target="_blank" rel="noopener noreferrer">Carl</a> finds Boston tee times by text, including inventory booking apps miss.</h2>
+                <p>Natural-language intake, multi-source inventory, offline routing, ranking, and a text-first interface in one production workflow.</p>
                 <a class="text-link" href="https://carl.golf" target="_blank" rel="noopener noreferrer">Open Carl ↗</a>
             </div>
 
-            <div class="system-diagram" role="img" aria-label="Carl workflow: text, search, then book">
-                <div class="diagram-head"><span>Agentic concierge</span><span>carl.golf</span></div>
-                <div class="pipeline">
-                    <div><b>01</b><span>TEXT</span></div>
-                    <i aria-hidden="true">→</i>
-                    <div><b>02</b><span>SEARCH</span></div>
-                    <i aria-hidden="true">→</i>
-                    <div><b>03</b><span>BOOK</span></div>
+            <div class="system-diagram" role="group" aria-label="Representative Carl request, orchestration trace, and result">
+                <div class="diagram-head"><span>Request to result / representative flow</span><span>carl.golf</span></div>
+
+                <div class="carl-workbench">
+                    <div class="message-window" role="group" aria-label="Example text conversation with Carl">
+                        <div class="ios-chrome">
+                            <span aria-hidden="true">‹</span>
+                            <div class="ios-contact">
+                                <b>C</b>
+                                <span><strong>Carl</strong><small>Text Message</small></span>
+                            </div>
+                            <span aria-hidden="true">•••</span>
+                        </div>
+                        <div class="message-thread">
+                            <time>MON 8:04 AM</time>
+                            <p class="message-bubble message-sent">Monday morning, 2 players, near Boston.</p>
+                            <p class="message-bubble message-received">On it. Checking booking sites and local pro shops.</p>
+                            <div class="tee-result">
+                                <span>CARL'S PICK</span>
+                                <h3>Newton Commonwealth</h3>
+                                <dl>
+                                    <div><dt>TIME</dt><dd>Mon 7:12 AM</dd></div>
+                                    <div><dt>PRICE</dt><dd>$44 / player</dd></div>
+                                    <div><dt>GROUP</dt><dd>2 spots</dd></div>
+                                </dl>
+                                <b>OPEN BOOKING ↗</b>
+                            </div>
+                        </div>
+                        <div class="message-composer"><span>＋</span><p>iMessage</p><span>↑</span></div>
+                    </div>
+
+                    <div class="trace-window" role="group" aria-label="Representative orchestration trace">
+                        <div class="trace-head"><span>ORCHESTRATION TRACE</span><i><b></b> REPRESENTATIVE</i></div>
+                        <ol class="trace-list">
+                            <li><time>+00.0</time><div><b>REQUEST_PARSE</b><span>date · time · players · radius</span></div><i>OK</i></li>
+                            <li><time>+00.8</time><div><b>INVENTORY_QUERY</b><span>GolfNow</span></div><i>DONE</i></li>
+                            <li><time>+01.2</time><div><b>INVENTORY_QUERY</b><span>TeeOff · ForeUp</span></div><i>DONE</i></li>
+                            <li><time>+02.4</time><div><b>OFFLINE_ROUTING</b><span>phone-only pro shops</span></div><i>ROUTED</i></li>
+                            <li><time>+06.9</time><div><b>RESULT_RANK</b><span>fit · price · rating · distance</span></div><i>DONE</i></li>
+                            <li class="trace-final"><time>+07.6</time><div><b>RESPONSE_READY</b><span>ranked options + booking path</span></div><i>SENT</i></li>
+                        </ol>
+                        <div class="trace-output">
+                            <span>OUTPUT</span>
+                            <p>One useful recommendation, not another grid of filters.</p>
+                        </div>
+                    </div>
                 </div>
-                <div class="signal-bars" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
-                <div class="diagram-foot"><span>GOLF TEE TIMES</span><span>VIA TEXT</span></div>
+
+                <div class="carl-proof" aria-label="Carl product coverage">
+                    <div><b>135+</b><span>Boston-area courses</span></div>
+                    <div><b>04</b><span>inventory paths</span></div>
+                    <div><b>5–10s</b><span>typical results</span></div>
+                </div>
             </div>
         </section>
 
         <section class="build-index" aria-labelledby="build-index-title">
-            <div class="section-head"><h2 id="build-index-title">Build index</h2><span>Selected / 01—04</span></div>
+            <div class="section-head"><h2 id="build-index-title">Build index</h2><span>Selected / 01–04</span></div>
 
             <a class="build-row" href="https://carl.golf" target="_blank" rel="noopener noreferrer">
-                <b>01</b><h3>Carl</h3><p>Agentic concierge that finds and books golf tee times via text</p><span>OPEN</span><i aria-hidden="true">↗</i>
+                <b>01</b><h3>Carl</h3><p>AI golf concierge that searches booking platforms and phone-only pro shops by text</p><span>OPEN</span><i aria-hidden="true">↗</i>
             </a>
             <a class="build-row" href="https://logfast.app" target="_blank" rel="noopener noreferrer">
                 <b>02</b><h3>LogFast</h3><p>Multimodal nutrition and workout tracker</p><span>OPEN</span><i aria-hidden="true">↗</i>

@@ -23,7 +23,7 @@ page picks the components it needs and can add bespoke pieces inline.
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>… — Harsh Rana</title>
+  <title>… | Harsh Rana</title>
   <meta name="description" content="…">
   <link rel="canonical" href="https://harshrana.com/musings/<slug>.html">
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
@@ -74,7 +74,7 @@ page picks the components it needs and can add bespoke pieces inline.
 |---|---|
 | `.hero` + `.hero__eyebrow` / `h1` / `.hero__deck` / `.hero__meta` | Opening block: small kicker, oversize serif title with `<em>` for accent color, italic deck, author/read-time/date row |
 | `.section-break` (`data-chapter`, `data-title`) | Chapter divider with ghosted numeral and kicker. The `data-*` attrs feed the floating chapter pill |
-| `.lede` | First paragraph after the hero — gets a drop cap |
+| `.lede` | First paragraph after the hero; gets a drop cap |
 | `.codeblock` + `.codeblock__cap` / `.codeblock__body` | Captioned code with `.lang`, `.com`, `.str`, `.fn` spans |
 | `.pull` | Centered italic pull quote, hairline rules above and below |
 | `.stat` + `.stat__num` / `.stat__label` | Full-bleed type stat (e.g. `100×`, `20k+`) |
@@ -85,7 +85,7 @@ page picks the components it needs and can add bespoke pieces inline.
 ## Bespoke pieces
 
 Anything one-of-a-kind (e.g. the Tom interactive in
-`software-engineering-age-of-agents.html`) lives inline in that page — its
+`software-engineering-age-of-agents.html`) lives inline in that page; its
 own `<style>` and `<script>` blocks. Don't promote it to the shared
 components unless a second musing actually needs it.
 

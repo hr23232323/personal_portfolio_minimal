@@ -102,6 +102,6 @@ I'm seeing the same thing across teams and people now. Some people are using LLM
 
 ---
 
-Look, I could be wrong. I’m just an engineer writing 20,000+ lines of code a week through a terminal, trying to make sense of a career that looks nothing like it did when I started 12 years ago. The tools are here, and they aren't going away. The real question for 2030 isn't whether AI will be writing the code—it’s whether you’ll be the person defining the 'job' it needs to do.
+Look, I could be wrong. I’m just an engineer writing 20,000+ lines of code a week through a terminal, trying to make sense of a career that looks nothing like it did when I started 12 years ago. The tools are here, and they aren't going away. The real question for 2030 isn't whether AI will be writing the code. It’s whether you’ll be the person defining the 'job' it needs to do.
 
 I’m exploring that transition in real-time. If you’re also trying to navigate the shift from builder to architect in the age of agents, drop your email below. I send out my thoughts on a super irregular (but hopefully useful) cadence.

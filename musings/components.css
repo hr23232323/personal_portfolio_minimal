@@ -272,12 +272,6 @@ a { color: inherit; }
   scroll-margin-top: 60px;
   font-variation-settings: "opsz" 30;
 }
-.post h3::before {
-  content: "—  ";
-  color: var(--accent);
-  font-weight: 400;
-}
-
 /* ─── Code blocks ─── */
 .codeblock {
   background: var(--bg-elev);

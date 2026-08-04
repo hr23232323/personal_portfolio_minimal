@@ -1,98 +1,400 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Some thoughts on what software engineering looks like in the age of agents">
-    <title>Software Engineering in the Age of Agents - Harsh Rana</title>
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
-    <link rel="stylesheet" href="../styles.css">
-    <link rel="stylesheet" href="musing-styles.css">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Software Engineering in the Age of Agents — Harsh Rana</title>
+  <meta name="description" content="Some thoughts on what software engineering looks like in the age of agents.">
+  <link rel="canonical" href="https://harshrana.com/musings/software-engineering-age-of-agents.html">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Software Engineering in the Age of Agents">
+  <meta property="og:description" content="Some thoughts on what software engineering looks like in the age of agents.">
+  <meta property="og:url" content="https://harshrana.com/musings/software-engineering-age-of-agents.html">
+  <meta property="og:image" content="https://harshrana.com/favicon.svg">
+  <meta property="og:site_name" content="Harsh Rana">
+  <meta property="article:author" content="Harsh Rana">
+  <meta property="article:published_time" content="2026-02-22">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:site" content="@_harshrana">
+  <meta name="twitter:creator" content="@_harshrana">
+  <meta name="twitter:title" content="Software Engineering in the Age of Agents">
+  <meta name="twitter:description" content="Some thoughts on what software engineering looks like in the age of agents.">
+  <meta name="twitter:image" content="https://harshrana.com/favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300..700;1,6..72,300..700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="components.css">
 </head>
 <body>
-    <main class="musing-container">
-        <article class="musing">
-            <a href="/" class="back-link">← Back</a>
 
-            <div class="musing-meta">
-                <time>February 22, 2026</time>
-            </div>
+<div class="progress"><div class="progress__bar" id="progressBar"></div></div>
+<div class="topbar__chapter" id="chapterPill"><b id="chapterNum">00</b> <span id="chapterTitle">Intro</span></div>
 
-            <h1 class="musing-title">Software Engineering in the Age of Agents</h1>
+<header class="topbar">
+  <a href="/" class="topbar__back">← Index</a>
+  <a href="/" class="topbar__brand">HARSH RANA</a>
+</header>
 
-            <div class="musing-content">
-                <p>This is probably the most famous line of code in the world:</p>
-<pre><code class="language-python">print(&quot;Hello, World!&quot;)
-</code></pre>
-<p>It has <strong>syntax</strong>, <strong>meaning</strong>, and a <strong>job</strong>. </p>
-<p>The syntax is simple and is similar to grammar in English.</p>
-<p><em>This is a proper sentence.</em><br><em>This isn&#39;t proper sentence.</em></p>
-<p>Not much room for creativity or style, just a set of finite rules. Well defined. Clear right and wrong. Deterministic.</p>
-<p>Next up is meaning. This is where things start getting fun.</p>
-<p><em>Tom is walking.</em><br><em>Tom is walking down the street.</em><br><em>Tom is slowly walking down the street.</em><br><em>Tom is slowly walking down the street towards a pub.</em><br><em>Tom is slowly walking down the busy street towards a pub.</em><br><em>Tom is slowly walking down the busy street towards an Irish pub.</em> </p>
-<p>You get the point. All these sentences are syntactically correct, but each conveys slightly different meaning. There&#39;s no right or wrong, unless the pub is English or the street is not busy, they&#39;re just different.</p>
-<p>In coding, that can be the difference between these:</p>
-<pre><code class="language-python">print(&quot;Error&quot;)
-print(&quot;Error, please try again.&quot;)
-print(&quot;Fatal Error, please contact the admin.&quot;)
-print(f&quot;Error: {e}&quot;)
-print(f&quot;Error of type {type(e).__name__}: {e}&quot;)
-</code></pre>
-<p>There&#39;s no real right or wrong. All the above will compile and run just fine, but different engineers might have different preferences. Even within the same company, different codebases might have different standards.</p>
-<p>So far so good? Now let&#39;s talk about the final layer, job to be done. These two sentences are doing very different jobs:</p>
-<ol>
-<li><em>Tom is walking.</em> </li>
-<li><em>Tom is slowly walking down the busy street towards an Irish pub.</em></li>
-</ol>
-<p>The former tell us what Tom is doing. The latter also tells us what Tom is doing, but it adds where he is and where he&#39;s going. If the &quot;job&quot; is to tell you only what Tom is doing, then the first sentence is perfectly acceptable. If the &quot;job&quot; is to tell you where Tom is, what he&#39;s doing, and where he&#39;s going, then the first sentence is no longer acceptable. </p>
-<p>Aha! Finally, a right and a wrong sentence choice. So what does this mean when it comes to coding?</p>
-<pre><code class="language-python">print(&quot;Error&quot;)
-</code></pre>
-<p>It means that the above code is correct syntax and meaning, but it is not acceptable if the &quot;job&quot; is to say what happened (error) and describe it (<code>KeyValidationError</code>). This might feel like a trivial example, but what I&#39;m seeing in AI generated code in the wild is something similar. </p>
-<p>And I can&#39;t unsee it.</p>
-<hr>
-<p>I&#39;ve been writing code for 12 years. The first 6 were purely by hand. No autocomplete, no tools, not even much copy and pasting. I liked writing code, I was good at it and I enjoyed the process of building software. Then, I started writing harder and harder code. Stack overflow was my bible. Code snippets shared across the internet by anonymous software engineers was a godsend. I discovered a modern IDE called VS Code, and suddenly the autocomplete was much more helpful in my daily workflow. I was still writing most of the logic by hand, but the syntax was taken care of for me. </p>
-<p>Then ChatGPT dropped in 2022, and coding changed overnight. Suddenly, it wasn&#39;t just syntax that could be ignored, it was also meaning. If you wanted to code the equivalent of &quot;<em>Tom is slowly walking down the busy street towards an Irish pub</em>&quot;, you could just ask ChatGPT and it would be done for you. So what exactly was the job of a software engineer then? Well from 2023 to 2025 it was to just describe the job to be done, and your favorite LLM provider would write code that captured the job, meaning, and syntax for you. They all had slight variations in the meaning they captured (<em>Tom is walking down the busy street towards an Irish pub</em> VS <em>Tom is <strong>slowly</strong> walking down the street towards an Irish pub</em> VS <em>Tom is slowly walking down the <strong>busy</strong> street towards an Irish pub</em>) but the job to be done, was getting done. </p>
-<p>Then, Claude Code dropped in 2025. Again, everything changed overnight. </p>
-<p>Now, an agentic coding tool like Claude Code could read and understand your codebase/product specs/bug description and create it&#39;s own job to be done to meet the need. Engineers could describe strategy and CC would create jobs to be done and do them. Non-technical people started doing the same. Describe the job to be done, and have CC do it for you. </p>
-<p>So are we going to have any software engineers in 2030? I believe so and here&#39;s my two main reasons why:</p>
-<ol>
-<li>The &quot;jobs to be done&quot; in a product is subjective</li>
-<li>The &quot;right&quot; humans can multiply LLM output</li>
-</ol>
-<p>I&#39;m going to use a simple authentication (sign up, sign in etc.) flow to help make my case. </p>
-<h3>The &quot;jobs to be done&quot; in a product is subjective</h3>
-<p>Believe it or not, there&#39;s a lot of different jobs to be done when you think about something as universal as authentication. To keep things simple, let&#39;s just look at a sign up flow. </p>
-<p>First the basics, how can a user sign up? Just email and password was the classic, but that&#39;s not going to work in 2026 when Social Sign-On (SSO) is the new expectation. But which SSOs providers to enable? If you created a product that allowed everyone to sign up with any platform of their choosing, then you would have 100 logos on your sign up screen. Most products have 2-3 (Google, Facebook, Apple, sometimes Github) and this is a subjective decision. </p>
-<p>Now, what about additional fields and metadata during signup? Do you ask users about their name? If so, when? If you do it during the initial sign up you might have users who drop off (classic conversion problem). If you do it later, you application needs to work with or without names. It also needs to ask users to add their name if they haven&#39;t already. Lastly, do you ask for first name only, last name, middle names? What about usernames? Again, do you have them pick a username when signing up or after? Regardless, how do you make sure there&#39;s no username clashes? Also can a user change their username? Some apps let you and some don&#39;t, but that&#39;s another subjective decision. Very different jobs to be done, and no necessary right or wrong. </p>
-<p>Going a step deeper, how and where is all this stored? If someone signs up with Google SSO, do you still ask for their name on your application? What if they change their name on their google account but not on your application, is that okay? What happens when/if they delete their Google account? Will they lose access to your product as well? If not, how will your product detect and create a graceful path for that scenario?</p>
-<p>Not saying that LLMs can&#39;t handle this, oh they very well can. But each decision is subjective and creates side effects that are entirely different jobs to be done. Not every application can or should be doing all these jobs because then applications get bogged down by ridiculous layers of logic, each has a noticeable impact on the performance of your application. Sign up should be smooth and fast, not complicated and slow. Yet how many applications can say that they have a smooth sign up experience? Go sign up for JIRA if you haven&#39;t in a while.</p>
-<h3>The &quot;right&quot; humans can multiply LLM output</h3>
-<p>LLMs are easily the most revolutionary technology of my young career, but, they&#39;re still just a tool. And tools don&#39;t have the same effect on work output across people. For example, imagine that you could do 2x the work you can per hour now. Then, every individual has a decision:</p>
-<ol>
-<li>Do 2x as much, working at the same intensity and hours as before</li>
-<li>Do the same amount of work, but in half as much time as before</li>
-</ol>
-<p>Neither is right or wrong and I&#39;m not here to judge. But most people, organizations, and compensation structures I&#39;ve seen would quickly feel some tension. Organizations would prefer that everyone would fall into the former bucket, but a lot of people will go towards the latter way of working. More time for family, hobbies, health - I don&#39;t blame them.</p>
-<p>I&#39;m seeing the same thing across teams and people now. Some people are using LLMs, specifically agentic coding tools, to do much more than before. They&#39;re entering new codebases, they&#39;re expanding their circle of influence, and increasing their value. They&#39;re learning more about their company and organization and solving problems outside their roadmap. Others are doing about the same as before, but with a different tool kit. Sure, Claude Code is writing a bigger % of the code, but there&#39;s no statistically significant difference in their productivity. I believe this trend will continue for quite some time. Play out over time, and some engineers (think the former type) will be worth 5x, 10x, 100x as the others. There&#39;ll still be a market for those engineers. </p>
-<hr>
-<p>Look, I could be wrong. I’m just an engineer writing 20,000+ lines of code a week through a terminal, trying to make sense of a career that looks nothing like it did when I started 12 years ago. The tools are here, and they aren&#39;t going away. The real question for 2030 isn&#39;t whether AI will be writing the code—it’s whether you’ll be the person defining the &#39;job&#39; it needs to do.</p>
-<p>I’m exploring that transition in real-time. If you’re also trying to navigate the shift from builder to architect in the age of agents, drop your email below. I send out my thoughts on a super irregular (but hopefully useful) cadence.</p>
+<article class="post">
 
-            </div>
-        </article>
-    </main>
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero__eyebrow">Musing No. 01 · February 2026</div>
+    <h1>Software Engineering in the Age of <em>Agents</em></h1>
+    <p class="hero__deck">Some thoughts on what software engineering looks like in the age of agents.</p>
+    <div class="hero__meta">
+      <span><b>Harsh Rana</b></span>
+      <span class="sep"></span>
+      <span>8 min read</span>
+      <span class="sep"></span>
+      <span>February 22, 2026</span>
+    </div>
+  </section>
 
-    <footer class="musing-footer">
-        <section class="subscribe-section">
-            <h3>Stay in the loop</h3>
-            <p>If you enjoyed this, you'll probably like my newsletter. I send out thoughts on AI and engineering every few weeks.</p>
-            <iframe
-                scrolling="no"
-                style="width:100%; height:150px; border:none; margin-top:1.5rem; filter: invert(0.9) hue-rotate(180deg);"
-                src="https://buttondown.com/harshrana?as_embed=true"
-            ></iframe>
-        </section>
-    </footer>
+  <!-- ── 01 ── -->
+  <section class="section-break" data-chapter="01" data-title="Syntax, Meaning, Job">
+    <div class="section-break__numeral">01</div>
+    <div class="section-break__kicker">
+      <span class="num">01</span>
+      <span>The anatomy of a line of code</span>
+    </div>
+    <h2>Every line of code has three layers.</h2>
+  </section>
+
+  <p class="lede">This is probably the most famous line of code in the world:</p>
+
+  <div class="codeblock">
+    <div class="codeblock__cap"><span><span class="lang">python</span> · hello.py</span><span>—</span></div>
+    <div class="codeblock__body"><span class="fn">print</span>(<span class="str">"Hello, World!"</span>)</div>
+  </div>
+
+  <p>It has <strong>syntax</strong>, <strong>meaning</strong>, and a <strong>job</strong>.</p>
+
+  <div class="threecol">
+    <div class="threecol__cell">
+      <div class="threecol__num">LAYER 01</div>
+      <div class="threecol__word">syntax</div>
+      <div class="threecol__caption">The grammar. Parens, quotes, function names. Deterministic.</div>
+    </div>
+    <div class="threecol__cell">
+      <div class="threecol__num">LAYER 02</div>
+      <div class="threecol__word">meaning</div>
+      <div class="threecol__caption">What the code is <em>about</em>. Puts a string on a screen.</div>
+    </div>
+    <div class="threecol__cell">
+      <div class="threecol__num">LAYER 03</div>
+      <div class="threecol__word">job</div>
+      <div class="threecol__caption">Why the code exists. The reason you opened the file.</div>
+    </div>
+  </div>
+
+  <p>The syntax is simple and is similar to grammar in English.</p>
+
+  <p><em>This is a proper sentence.</em><br><em>This isn't proper sentence.</em></p>
+
+  <p>Not much room for creativity or style, just a set of finite rules. Well defined. Clear right and wrong. Deterministic.</p>
+
+  <p>Next up is meaning. This is where things start getting fun.</p>
+
+  <p><em>Tom is walking.</em><br>
+  <em>Tom is walking down the street.</em><br>
+  <em>Tom is slowly walking down the street.</em><br>
+  <em>Tom is slowly walking down the street towards a pub.</em><br>
+  <em>Tom is slowly walking down the busy street towards a pub.</em><br>
+  <em>Tom is slowly walking down the busy street towards an Irish pub.</em></p>
+
+  <!-- Tom interactive (bespoke for this musing) -->
+  <div class="tom" id="tomDemo">
+    <div class="tom__label"><span class="pulse"></span>Live · same syntax, compounding meaning</div>
+    <div class="tom__sentence" id="tomSentence"></div>
+    <div class="tom__steps" id="tomSteps"></div>
+    <div class="tom__hint">Tap a step to layer on another word. The syntax stays legal. The meaning compounds.</div>
+  </div>
+
+  <p>You get the point. All these sentences are syntactically correct, but each conveys slightly different meaning. There's no right or wrong, unless the pub is English or the street is not busy, they're just different.</p>
+
+  <p>In coding, that can be the difference between these:</p>
+
+  <div class="codeblock">
+    <div class="codeblock__cap"><span><span class="lang">python</span> · errors.py</span><span>5 versions</span></div>
+    <div class="codeblock__body"><span class="fn">print</span>(<span class="str">"Error"</span>)
+<span class="fn">print</span>(<span class="str">"Error, please try again."</span>)
+<span class="fn">print</span>(<span class="str">"Fatal Error, please contact the admin."</span>)
+<span class="fn">print</span>(<span class="str">f"Error: {e}"</span>)
+<span class="fn">print</span>(<span class="str">f"Error of type {type(e).__name__}: {e}"</span>)</div>
+  </div>
+
+  <p>There's no real right or wrong. All the above will compile and run just fine, but different engineers might have different preferences. Even within the same company, different codebases might have different standards.</p>
+
+  <p>So far so good? Now let's talk about the final layer, job to be done. These two sentences are doing very different jobs:</p>
+
+  <ol>
+    <li><em>Tom is walking.</em></li>
+    <li><em>Tom is slowly walking down the busy street towards an Irish pub.</em></li>
+  </ol>
+
+  <p>The former tell us what Tom is doing. The latter also tells us what Tom is doing, but it adds where he is and where he's going. If the "job" is to tell you only what Tom is doing, then the first sentence is perfectly acceptable. If the "job" is to tell you where Tom is, what he's doing, and where he's going, then the first sentence is no longer acceptable.</p>
+
+  <p>Aha! Finally, a right and a wrong sentence choice. So what does this mean when it comes to coding?</p>
+
+  <div class="codeblock">
+    <div class="codeblock__cap"><span><span class="lang">python</span> · handler.py</span><span>—</span></div>
+    <div class="codeblock__body"><span class="fn">print</span>(<span class="str">"Error"</span>)</div>
+  </div>
+
+  <p>It means that the above code is correct syntax and meaning, but it is not acceptable if the "job" is to say what happened (error) and describe it (<code>KeyValidationError</code>). This might feel like a trivial example, but what I'm seeing in AI generated code in the wild is something similar.</p>
+
+  <div class="pull">
+    And I can't <em>unsee</em> it.
+  </div>
+
+  <!-- ── 02 ── -->
+  <section class="section-break" data-chapter="02" data-title="Twelve Years">
+    <div class="section-break__numeral">02</div>
+    <div class="section-break__kicker">
+      <span class="num">02</span>
+      <span>A short history of the job</span>
+    </div>
+    <h2>Twelve years at the keyboard, three eras.</h2>
+  </section>
+
+  <p>I've been writing code for 12 years. The first 6 were purely by hand. No autocomplete, no tools, not even much copy and pasting. I liked writing code, I was good at it and I enjoyed the process of building software. Then, I started writing harder and harder code. Stack overflow was my bible. Code snippets shared across the internet by anonymous software engineers was a godsend. I discovered a modern IDE called VS Code, and suddenly the autocomplete was much more helpful in my daily workflow. I was still writing most of the logic by hand, but the syntax was taken care of for me.</p>
+
+  <p>Then ChatGPT dropped in 2022, and coding changed overnight. Suddenly, it wasn't just syntax that could be ignored, it was also meaning. If you wanted to code the equivalent of "<em>Tom is slowly walking down the busy street towards an Irish pub</em>", you could just ask ChatGPT and it would be done for you. So what exactly was the job of a software engineer then? Well from 2023 to 2025 it was to just describe the job to be done, and your favorite LLM provider would write code that captured the job, meaning, and syntax for you. They all had slight variations in the meaning they captured (<em>Tom is walking down the busy street towards an Irish pub</em> VS <em>Tom is <strong>slowly</strong> walking down the street towards an Irish pub</em> VS <em>Tom is slowly walking down the <strong>busy</strong> street towards an Irish pub</em>) but the job to be done, was getting done.</p>
+
+  <div class="stat">
+    <span class="stat__num">20<em>k</em>+</span>
+    <span class="stat__label">Lines of code I write through a terminal in a typical week</span>
+  </div>
+
+  <p>Then, Claude Code dropped in 2025. Again, everything changed overnight.</p>
+
+  <p>Now, an agentic coding tool like Claude Code could read and understand your codebase/product specs/bug description and create it's own job to be done to meet the need. Engineers could describe strategy and CC would create jobs to be done and do them. Non-technical people started doing the same. Describe the job to be done, and have CC do it for you.</p>
+
+  <!-- ── 03 ── -->
+  <section class="section-break" data-chapter="03" data-title="So, 2030?">
+    <div class="section-break__numeral">03</div>
+    <div class="section-break__kicker">
+      <span class="num">03</span>
+      <span>What survives</span>
+    </div>
+    <h2>So, will we have software engineers in <em>2030</em>?</h2>
+  </section>
+
+  <p>So are we going to have any software engineers in 2030? I believe so and here's my two main reasons why:</p>
+
+  <ol>
+    <li>The "jobs to be done" in a product is subjective</li>
+    <li>The "right" humans can multiply LLM output</li>
+  </ol>
+
+  <p>I'm going to use a simple authentication (sign up, sign in etc.) flow to help make my case.</p>
+
+  <h3>The "jobs to be done" in a product is subjective</h3>
+
+  <p>Believe it or not, there's a lot of different jobs to be done when you think about something as universal as authentication. To keep things simple, let's just look at a sign up flow.</p>
+
+  <p>First the basics, how can a user sign up? Just email and password was the classic, but that's not going to work in 2026 when Social Sign-On (SSO) is the new expectation. But which SSOs providers to enable? If you created a product that allowed everyone to sign up with any platform of their choosing, then you would have 100 logos on your sign up screen. Most products have 2-3 (Google, Facebook, Apple, sometimes Github) and this is a subjective decision.</p>
+
+  <p>Now, what about additional fields and metadata during signup? Do you ask users about their name? If so, when? If you do it during the initial sign up you might have users who drop off (classic conversion problem). If you do it later, you application needs to work with or without names. It also needs to ask users to add their name if they haven't already. Lastly, do you ask for first name only, last name, middle names? What about usernames? Again, do you have them pick a username when signing up or after? Regardless, how do you make sure there's no username clashes? Also can a user change their username? Some apps let you and some don't, but that's another subjective decision. Very different jobs to be done, and no necessary right or wrong.</p>
+
+  <p>Going a step deeper, how and where is all this stored? If someone signs up with Google SSO, do you still ask for their name on your application? What if they change their name on their google account but not on your application, is that okay? What happens when/if they delete their Google account? Will they lose access to your product as well? If not, how will your product detect and create a graceful path for that scenario?</p>
+
+  <div class="pull">
+    Not saying that LLMs can't handle this, <em>oh they very well can.</em> But each decision is subjective and creates side effects that are entirely different jobs to be done.
+  </div>
+
+  <p>Not every application can or should be doing all these jobs because then applications get bogged down by ridiculous layers of logic, each has a noticeable impact on the performance of your application. Sign up should be smooth and fast, not complicated and slow. Yet how many applications can say that they have a smooth sign up experience? Go sign up for JIRA if you haven't in a while.</p>
+
+  <h3>The "right" humans can multiply LLM output</h3>
+
+  <p>LLMs are easily the most revolutionary technology of my young career, but, they're still just a tool. And tools don't have the same effect on work output across people. For example, imagine that you could do 2x the work you can per hour now. Then, every individual has a decision:</p>
+
+  <ol>
+    <li>Do 2x as much, working at the same intensity and hours as before</li>
+    <li>Do the same amount of work, but in half as much time as before</li>
+  </ol>
+
+  <p>Neither is right or wrong and I'm not here to judge. But most people, organizations, and compensation structures I've seen would quickly feel some tension. Organizations would prefer that everyone would fall into the former bucket, but a lot of people will go towards the latter way of working. More time for family, hobbies, health - I don't blame them.</p>
+
+  <p>I'm seeing the same thing across teams and people now. Some people are using LLMs, specifically agentic coding tools, to do much more than before. They're entering new codebases, they're expanding their circle of influence, and increasing their value. They're learning more about their company and organization and solving problems outside their roadmap. Others are doing about the same as before, but with a different tool kit. Sure, Claude Code is writing a bigger % of the code, but there's no statistically significant difference in their productivity. I believe this trend will continue for quite some time. Play out over time, and some engineers (think the former type) will be worth 5x, 10x, 100x as the others. There'll still be a market for those engineers.</p>
+
+  <div class="stat">
+    <span class="stat__num">100<em>×</em></span>
+    <span class="stat__label">The gap I expect between top and median engineers by 2030</span>
+  </div>
+
+  <!-- ── 04 ── -->
+  <section class="section-break" data-chapter="04" data-title="The Real Question">
+    <div class="section-break__numeral">04</div>
+    <div class="section-break__kicker">
+      <span class="num">04</span>
+      <span>Closing</span>
+    </div>
+    <h2>The real question for 2030.</h2>
+  </section>
+
+  <p>Look, I could be wrong. I'm just an engineer writing 20,000+ lines of code a week through a terminal, trying to make sense of a career that looks nothing like it did when I started 12 years ago. The tools are here, and they aren't going away.</p>
+
+  <div class="pull">
+    The real question for 2030 isn't whether AI will be writing the code—<em>it's whether you'll be the person defining the 'job' it needs to do.</em>
+  </div>
+
+  <p>I'm exploring that transition in real-time. If you're also trying to navigate the shift from builder to architect in the age of agents, drop your email below. I send out my thoughts on a super irregular (but hopefully useful) cadence.</p>
+
+  <!-- Subscribe -->
+  <div class="stay">
+    <h4>Stay in the loop</h4>
+    <p>I write about AI, agentic systems, and building software. No spam, just the good stuff.</p>
+    <iframe scrolling="no" loading="lazy" src="https://buttondown.com/harshrana?as_embed=true"></iframe>
+  </div>
+
+  <!-- Sign off -->
+  <div class="signoff">
+    Until next time,
+    <div class="signoff__name">— Harsh</div>
+  </div>
+
+  <!-- Read next -->
+  <div class="next">
+    <div class="next__label">Read next</div>
+    <a href="#" class="next__card" onclick="return false;">
+      <div class="next__card-meta"><span>COMING SOON</span><span class="arrow">→</span></div>
+      <div class="next__card-title">More musings on the way.</div>
+    </a>
+  </div>
+
+</article>
+
+<footer class="musing-footer">
+  <div class="links">
+    <a href="https://twitter.com/_harshrana" target="_blank" rel="noopener">Twitter</a>
+    <a href="https://linkedin.com/in/harshrana1997" target="_blank" rel="noopener">LinkedIn</a>
+    <a href="https://github.com/hr23232323" target="_blank" rel="noopener">GitHub</a>
+    <a href="mailto:hr23232323@gmail.com">Email</a>
+  </div>
+</footer>
+
+<!-- Bespoke Tom interactive styles -->
+<style>
+  .tom {
+    margin: 48px 0;
+    padding: 36px 36px 28px;
+    background: var(--bg-card);
+    border: 1px solid var(--rule);
+    border-radius: 6px;
+  }
+  .tom__label {
+    font-family: var(--sans);
+    font-size: 10px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    margin-bottom: 18px;
+    display: flex; align-items: center; gap: 10px;
+  }
+  .tom__label .pulse {
+    width: 6px; height: 6px; border-radius: 50%;
+    background: var(--accent);
+    animation: tom-pulse 1.8s ease-out infinite;
+  }
+  @keyframes tom-pulse {
+    0%   { box-shadow: 0 0 0 0 var(--accent-glow); }
+    70%  { box-shadow: 0 0 0 10px rgba(61,138,100,0); }
+    100% { box-shadow: 0 0 0 0 rgba(61,138,100,0); }
+  }
+  .tom__sentence {
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 28px;
+    line-height: 1.35;
+    color: var(--ink);
+    min-height: 2.6em;
+    text-wrap: pretty;
+    margin-bottom: 24px;
+    font-variation-settings: "opsz" 30;
+    transition: opacity .25s;
+  }
+  .tom__sentence .added {
+    background: var(--highlight);
+    color: var(--accent);
+    padding: 0 4px;
+    border-radius: 2px;
+  }
+  .tom__steps { display: flex; align-items: center; gap: 8px; }
+  .tom__steps button {
+    flex: 1; height: 32px;
+    background: transparent;
+    border: 1px solid var(--rule);
+    color: var(--ink-soft);
+    font-family: var(--mono);
+    font-size: 11px;
+    cursor: pointer;
+    border-radius: 3px;
+    transition: all .15s;
+  }
+  .tom__steps button:hover { color: var(--ink); border-color: var(--rule-strong); }
+  .tom__steps button.active {
+    color: var(--accent);
+    border-color: var(--accent);
+    background: var(--highlight);
+  }
+  .tom__hint {
+    margin-top: 14px;
+    font-family: var(--sans);
+    font-size: 12px;
+    color: var(--ink-soft);
+  }
+</style>
+
+<script src="components.js"></script>
+<script>
+  // Bespoke Tom demo: compounds meaning while syntax stays legal.
+  const tomSentences = [
+    "Tom is walking.",
+    "Tom is walking down the street.",
+    "Tom is slowly walking down the street.",
+    "Tom is slowly walking down the street towards a pub.",
+    "Tom is slowly walking down the busy street towards a pub.",
+    "Tom is slowly walking down the busy street towards an Irish pub."
+  ];
+  const tomSentence = document.getElementById('tomSentence');
+  const tomSteps = document.getElementById('tomSteps');
+  tomSentences.forEach((_, i) => {
+    const b = document.createElement('button');
+    b.textContent = i + 1;
+    b.setAttribute('aria-label', `Show Tom sentence ${i + 1} of ${tomSentences.length}`);
+    b.onclick = () => setTom(i);
+    tomSteps.appendChild(b);
+  });
+  function setTom(i) {
+    const prev = i > 0 ? tomSentences[i - 1] : '';
+    const cur = tomSentences[i];
+    const prevWords = new Set(prev.toLowerCase().replace(/[.,]/g, '').split(/\s+/));
+    const html = cur.split(/(\s+)/).map(tok => {
+      const clean = tok.toLowerCase().replace(/[.,]/g, '');
+      if (!clean.trim()) return tok;
+      return prevWords.has(clean) ? tok : `<span class="added">${tok}</span>`;
+    }).join('');
+    tomSentence.style.opacity = '0';
+    setTimeout(() => {
+      tomSentence.innerHTML = html;
+      tomSentence.style.opacity = '1';
+    }, 160);
+    document.querySelectorAll('#tomSteps button').forEach((d, k) => d.classList.toggle('active', k === i));
+  }
+  setTom(0);
+  let tomIdx = 0;
+  const tomT = setInterval(() => {
+    tomIdx++;
+    if (tomIdx >= tomSentences.length) { clearInterval(tomT); return; }
+    setTom(tomIdx);
+  }, 2200);
+  document.getElementById('tomDemo').addEventListener('click', () => clearInterval(tomT), { once: true });
+</script>
+
 </body>
 </html>

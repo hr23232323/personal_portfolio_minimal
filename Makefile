@@ -4,7 +4,7 @@
 GCP_PROJECT=harsh-personal-projects-misc
 APP_NAME=portfolio
 
-.PHONY: help dev up down logs clean build-musings new-musing set-gcp-project build-cloud push deploy
+.PHONY: help dev up down logs clean set-gcp-project build-cloud push deploy
 
 help:
 	@echo "Portfolio Development Commands:"
@@ -15,11 +15,9 @@ help:
 	@echo "  make down          - Stop website server"
 	@echo "  make logs          - View website logs"
 	@echo "  make clean         - Clean Docker resources"
-	@echo "  make build-musings - Convert markdown musings to HTML"
-	@echo "  make new-musing SLUG=my-post - Create new musing template"
 	@echo ""
 	@echo "Production Deployment (Cloud Run):"
-	@echo "  make deploy        - Build musings, build image, push, and deploy to Cloud Run"
+	@echo "  make deploy        - Build image, push, and deploy to Cloud Run"
 	@echo "  make build-cloud   - Build Docker image for Cloud Run"
 	@echo "  make push          - Push image to GCR"
 	@echo ""
@@ -37,7 +35,7 @@ dev:
 	docker build -t portfolio:dev .
 	@echo "✓ Build complete. Run 'make up' to start the server."
 
-up: dev build-musings
+up: dev
 	@echo "Starting website server..."
 	@docker ps -a --filter "name=portfolio-dev" --format '{{.ID}}' | xargs -r docker rm -f
 	docker run -d \
@@ -70,53 +68,6 @@ clean:
 	@echo "✓ Cleanup complete"
 
 # ============================================================
-# MUSINGS BUILD COMMAND
-# ============================================================
-
-build-musings:
-	@echo "Building musings from markdown (in Docker)..."
-	@docker run --rm \
-		-v $$(pwd):/build \
-		-w /build \
-		node:20-alpine \
-		sh -c "npm install --silent && npm run build-musings"
-	@echo "✓ Musings build complete"
-
-new-musing:
-	@if [ -z "$(SLUG)" ]; then \
-		echo "Error: Please provide a SLUG parameter"; \
-		echo "Usage: make new-musing SLUG=my-post-title"; \
-		exit 1; \
-	fi
-	@DATE=$$(date "+%B %d, %Y"); \
-	FILE="musings/content/$(SLUG).md"; \
-	if [ -f "$$FILE" ]; then \
-		echo "Error: $$FILE already exists"; \
-		exit 1; \
-	fi; \
-	echo "Creating new musing: $$FILE"; \
-	echo "---" > "$$FILE"; \
-	echo "title: TODO: Add your title here" >> "$$FILE"; \
-	echo "date: $$DATE" >> "$$FILE"; \
-	echo "description: TODO: Add a compelling description" >> "$$FILE"; \
-	echo "slug: $(SLUG)" >> "$$FILE"; \
-	echo "---" >> "$$FILE"; \
-	echo "" >> "$$FILE"; \
-	echo "Write your content here in markdown." >> "$$FILE"; \
-	echo "" >> "$$FILE"; \
-	echo "## Example Heading" >> "$$FILE"; \
-	echo "" >> "$$FILE"; \
-	echo "Your thoughts..." >> "$$FILE"; \
-	echo ""; \
-	echo "✓ Created $$FILE"; \
-	echo ""; \
-	echo "Next steps:"; \
-	echo "  1. Edit the file and add your content"; \
-	echo "  2. Run 'make build-musings' to generate HTML"; \
-	echo "  3. Add link to index.html"; \
-	echo "  4. Test with 'make up'"
-
-# ============================================================
 # PRODUCTION DEPLOYMENT (Cloud Run)
 # ============================================================
 
@@ -125,7 +76,7 @@ set-gcp-project:
 	gcloud config set project $(GCP_PROJECT)
 	@echo "✓ GCP project set"
 
-build-cloud: build-musings
+build-cloud:
 	@echo "Building Docker image for Cloud Run (linux/amd64)..."
 	docker buildx build \
 		--platform linux/amd64 \

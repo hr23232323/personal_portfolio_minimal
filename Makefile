@@ -3,8 +3,9 @@
 # Production Variables
 GCP_PROJECT=harsh-personal-projects-misc
 APP_NAME=portfolio
+CONTACT_APP_NAME=portfolio-contact
 
-.PHONY: help dev up down logs clean set-gcp-project build-cloud push deploy
+.PHONY: help dev up down logs clean set-gcp-project build-cloud push deploy build-contact push-contact deploy-contact
 
 help:
 	@echo "Portfolio Development Commands:"
@@ -20,6 +21,7 @@ help:
 	@echo "  make deploy        - Build image, push, and deploy to Cloud Run"
 	@echo "  make build-cloud   - Build Docker image for Cloud Run"
 	@echo "  make push          - Push image to GCR"
+	@echo "  make deploy-contact - Deploy the Resend contact endpoint"
 	@echo ""
 	@echo "Server will be available at:"
 	@echo "  http://localhost:8080"
@@ -101,3 +103,33 @@ deploy: set-gcp-project build-cloud push
 	@echo ""
 	@echo "✓ Deployment complete!"
 	@echo "Your site should be live at the URL shown above"
+
+build-contact:
+	@echo "Building contact API image for Cloud Run (linux/amd64)..."
+	docker buildx build \
+		--platform linux/amd64 \
+		-t gcr.io/$(GCP_PROJECT)/$(CONTACT_APP_NAME) \
+		-f contact-api/Dockerfile \
+		contact-api
+	@echo "✓ Contact API image built"
+
+push-contact:
+	@echo "Pushing contact API image to Google Container Registry..."
+	docker push gcr.io/$(GCP_PROJECT)/$(CONTACT_APP_NAME)
+	@echo "✓ Contact API image pushed"
+
+deploy-contact: set-gcp-project build-contact push-contact
+	@echo "Deploying contact API to Cloud Run..."
+	gcloud run deploy $(CONTACT_APP_NAME) \
+		--image gcr.io/$(GCP_PROJECT)/$(CONTACT_APP_NAME) \
+		--platform managed \
+		--region us-central1 \
+		--allow-unauthenticated \
+		--port 8080 \
+		--service-account portfolio-contact@$(GCP_PROJECT).iam.gserviceaccount.com \
+		--memory 256Mi \
+		--max-instances 2 \
+		--timeout 15 \
+		--set-env-vars "CONTACT_TO_EMAIL=harsh@harshrana.com,CONTACT_FROM_EMAIL=Harsh Rana <contact@mail.harshrana.com>,ALLOWED_ORIGINS=https://harshrana.com|https://www.harshrana.com" \
+		--set-secrets RESEND_API_KEY=portfolio-resend-api-key:latest
+	@echo "✓ Contact API deployment complete"

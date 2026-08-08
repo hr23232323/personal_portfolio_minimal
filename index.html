@@ -27,6 +27,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&amp;family=DM+Mono:wght@400;500&amp;family=Inter:wght@400;500&amp;display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
+    <script src="/contact.js?v=1" defer></script>
 </head>
 <body>
     <header class="site-header">
@@ -199,13 +200,39 @@
             </a>
         </section>
 
-        <section class="subscribe-section" id="contact" aria-labelledby="subscribe-title">
-            <div class="subscribe-copy">
-                <p class="section-label">Stay in the loop</p>
-                <h2 id="subscribe-title">Stay in the loop</h2>
-                <p>I write about AI, agentic systems, and building software. No spam, just the good stuff.</p>
+        <section class="contact-section" id="contact" aria-labelledby="contact-title">
+            <div class="contact-copy">
+                <p class="section-label">Work together / compare notes</p>
+                <h2 id="contact-title">Have something worth building?</h2>
+                <p>I'm interested in 0→1 AI products, operational systems, and messy problems that need a hands-on builder. Tell me what you're working through.</p>
+                <p class="contact-direct">Prefer email? <a href="mailto:harsh@harshrana.com">harsh@harshrana.com ↗</a></p>
             </div>
-            <iframe scrolling="no" loading="lazy" title="Subscribe to Harsh Rana's newsletter" src="https://buttondown.com/harshrana?as_embed=true"></iframe>
+
+            <form class="contact-form" id="contact-form" data-endpoint="https://portfolio-contact-ty42wirxla-uc.a.run.app/contact" novalidate>
+                <div class="contact-fields">
+                    <label>
+                        <span>Name</span>
+                        <input type="text" name="name" autocomplete="name" maxlength="100" required>
+                    </label>
+                    <label>
+                        <span>Email</span>
+                        <input type="email" name="email" autocomplete="email" maxlength="254" required>
+                    </label>
+                </div>
+                <label class="contact-message">
+                    <span>What are you working on?</span>
+                    <textarea name="message" rows="5" minlength="10" maxlength="5000" required></textarea>
+                </label>
+                <label class="contact-trap" aria-hidden="true">
+                    <span>Company website</span>
+                    <input type="text" name="company_website" tabindex="-1" autocomplete="off">
+                </label>
+                <input type="hidden" name="started_at" value="">
+                <div class="contact-actions">
+                    <button type="submit">Send a note ↗</button>
+                    <p class="contact-status" id="contact-status" role="status" aria-live="polite">This goes directly to me. You won't be added to a list.</p>
+                </div>
+            </form>
         </section>
     </main>
 
@@ -216,7 +243,7 @@
             <a href="https://twitter.com/_harshrana" target="_blank" rel="noopener noreferrer">Twitter ↗</a>
             <a href="https://linkedin.com/in/harshrana1997" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a>
             <a href="https://github.com/hr23232323" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
-            <a href="mailto:hr23232323@gmail.com">Email ↗</a>
+            <a href="mailto:harsh@harshrana.com">Email ↗</a>
         </nav>
     </footer>
 </body>

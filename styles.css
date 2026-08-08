@@ -876,15 +876,15 @@ main {
     font-weight: 400;
 }
 
-.subscribe-section {
+.contact-section {
     padding: clamp(4rem, 8vw, 7rem) 0 clamp(3.5rem, 6vw, 5.5rem);
     display: grid;
-    grid-template-columns: minmax(260px, 0.75fr) minmax(360px, 1.25fr);
-    align-items: center;
+    grid-template-columns: minmax(260px, 0.72fr) minmax(380px, 1.28fr);
+    align-items: start;
     gap: clamp(2rem, 6vw, 6rem);
 }
 
-.subscribe-copy h2 {
+.contact-copy h2 {
     margin: 1.5rem 0 1rem;
     font-family: var(--display);
     font-size: clamp(2rem, 4vw, 3.6rem);
@@ -894,19 +894,146 @@ main {
     text-transform: uppercase;
 }
 
-.subscribe-copy > p:last-child {
+.contact-copy > p:not(.section-label, .contact-direct) {
     max-width: 480px;
     color: var(--ink-mid);
     font-size: 0.88rem;
     line-height: 1.65;
 }
 
-.subscribe-section iframe {
-    width: 100%;
-    height: 170px;
+.contact-direct {
+    margin-top: 2rem;
+    color: var(--ink-soft);
+    font-family: var(--mono);
+    font-size: 0.58rem;
+    line-height: 1.6;
+    text-transform: uppercase;
+}
+
+.contact-direct a {
+    display: block;
+    width: fit-content;
+    margin-top: 0.35rem;
+    color: var(--ink);
+    text-transform: none;
+}
+
+.contact-direct a:hover {
+    color: var(--signal);
+}
+
+.contact-form {
+    position: relative;
+    padding: clamp(1.3rem, 3vw, 2rem);
     border: 1px solid var(--rule);
     background: var(--panel);
-    filter: var(--iframe-filter);
+}
+
+.contact-fields {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+}
+
+.contact-form label {
+    display: flex;
+    flex-direction: column;
+    gap: 0.55rem;
+}
+
+.contact-form label > span {
+    color: var(--ink-soft);
+    font-family: var(--mono);
+    font-size: 0.58rem;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+}
+
+.contact-form input,
+.contact-form textarea {
+    width: 100%;
+    padding: 0.85rem 0.9rem;
+    color: var(--ink);
+    background: var(--bg);
+    border: 1px solid var(--rule-strong);
+    border-radius: 0;
+    outline: none;
+    font: inherit;
+    font-size: 0.82rem;
+    transition: border-color 150ms ease, box-shadow 150ms ease;
+}
+
+.contact-form textarea {
+    min-height: 142px;
+    line-height: 1.55;
+    resize: vertical;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+    border-color: var(--signal);
+    box-shadow: 0 0 0 1px var(--signal);
+}
+
+.contact-message {
+    margin-top: 1rem;
+}
+
+.contact-trap {
+    position: absolute;
+    left: -10000px;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+}
+
+.contact-actions {
+    margin-top: 1rem;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    align-items: center;
+    gap: 1rem;
+}
+
+.contact-actions button {
+    min-height: 46px;
+    padding: 0.8rem 1.2rem;
+    color: var(--signal-ink);
+    background: var(--signal);
+    border: 1px solid var(--signal);
+    cursor: pointer;
+    font-family: var(--mono);
+    font-size: 0.62rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    transition: filter 150ms ease, transform 150ms ease;
+}
+
+.contact-actions button:hover {
+    filter: brightness(1.08);
+    transform: translateY(-1px);
+}
+
+.contact-actions button:disabled {
+    cursor: wait;
+    filter: grayscale(0.35);
+    opacity: 0.72;
+    transform: none;
+}
+
+.contact-status {
+    color: var(--ink-soft);
+    font-family: var(--mono);
+    font-size: 0.54rem;
+    line-height: 1.5;
+}
+
+.contact-status[data-state="error"] {
+    color: var(--hot);
+}
+
+.contact-status[data-state="success"] {
+    color: var(--signal);
 }
 
 /* ============================================================
@@ -988,7 +1115,7 @@ main {
 
     .hero-bottom,
     .archive-heading,
-    .subscribe-section {
+    .contact-section {
         grid-template-columns: 1fr;
     }
 
@@ -1116,8 +1243,9 @@ main {
         padding: 2rem 1.5rem;
     }
 
-    .subscribe-section iframe {
-        height: 190px;
+    .contact-fields,
+    .contact-actions {
+        grid-template-columns: 1fr;
     }
 
     .site-footer {

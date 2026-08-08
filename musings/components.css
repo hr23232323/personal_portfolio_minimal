@@ -438,7 +438,7 @@ a { color: inherit; }
   .threecol__cell:last-child { border-bottom: none; }
 }
 
-/* ─── Subscribe card ─── */
+/* ─── Contact card ─── */
 .stay {
   margin: 96px 0 24px;
   padding: 40px 36px 36px;
@@ -461,12 +461,17 @@ a { color: inherit; }
   color: var(--ink-mid);
   margin-bottom: 8px;
 }
-.stay iframe {
-  width: 100%;
-  height: 150px;
-  border: none;
-  margin-top: 0.5rem;
-  filter: invert(0.9) hue-rotate(180deg);
+.stay a {
+  width: fit-content;
+  margin-top: 1rem;
+  display: inline-block;
+  padding-bottom: 3px;
+  border-bottom: 1px solid var(--accent);
+  color: var(--accent);
+  font-family: var(--mono);
+  font-size: 12px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
 }
 
 /* ─── Sign-off ─── */

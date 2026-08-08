@@ -273,6 +273,18 @@ main {
     text-wrap: pretty;
 }
 
+.story-emphasis {
+    padding: 0 0.06em;
+    color: var(--ink);
+    background: linear-gradient(
+        transparent 58%,
+        color-mix(in srgb, var(--signal) 32%, transparent) 58%
+    );
+    font-weight: 500;
+    -webkit-box-decoration-break: clone;
+    box-decoration-break: clone;
+}
+
 .operating-loop {
     margin-top: clamp(3.5rem, 7vw, 6rem);
     display: grid;

@@ -1,0 +1,1038 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>I Told My AI Agent to “Try Harder” | Harsh Rana</title>
+  <meta name="description" content="A prompt change fixed the exact agent behavior I was targeting, then made the overall product worse, costlier, and much slower at the tail.">
+  <link rel="canonical" href="https://harshrana.com/musings/try-harder-agent-evals.html">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="I Told My AI Agent to “Try Harder.” It Got 8% Worse and 66% More Expensive.">
+  <meta property="og:description" content="A change that fixed the exact behavior I was targeting quietly made the overall product worse.">
+  <meta property="og:url" content="https://harshrana.com/musings/try-harder-agent-evals.html">
+  <meta property="og:image" content="https://harshrana.com/img/try-harder-agent-social.png">
+  <meta property="og:image:width" content="1774">
+  <meta property="og:image:height" content="887">
+  <meta property="og:site_name" content="Harsh Rana">
+  <meta property="article:author" content="Harsh Rana">
+  <meta property="article:published_time" content="2026-08-10">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@_harshrana">
+  <meta name="twitter:creator" content="@_harshrana">
+  <meta name="twitter:title" content="I Told My AI Agent to “Try Harder.” It Got 8% Worse and 66% More Expensive.">
+  <meta name="twitter:description" content="A change that fixed the exact behavior I was targeting quietly made the overall product worse.">
+  <meta name="twitter:image" content="https://harshrana.com/img/try-harder-agent-social.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300..700;1,6..72,300..700&amp;family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="components.css">
+</head>
+<body>
+
+<div class="progress"><div class="progress__bar" id="progressBar"></div></div>
+<div class="topbar__chapter" id="chapterPill"><b id="chapterNum">00</b> <span id="chapterTitle">Intro</span></div>
+
+<header class="topbar">
+  <a href="/" class="topbar__back">← Index</a>
+  <a href="/" class="topbar__brand">HARSH RANA</a>
+</header>
+
+<article class="post post--experiment">
+
+  <section class="hero hero--experiment">
+    <div class="hero__eyebrow">Musing No. 02 · August 2026</div>
+    <h1>I Told My AI Agent to <em>“Try Harder.”</em> It Got 8% Worse, 66% More Expensive, and Its Tail Latency Nearly Doubled.</h1>
+    <p class="hero__deck">A change that fixed the exact behavior I was targeting quietly made the overall product worse.</p>
+    <div class="hero__meta">
+      <span><b>Harsh Rana</b></span>
+      <span class="sep"></span>
+      <span>9 min read</span>
+      <span class="sep"></span>
+      <span>August 10, 2026</span>
+    </div>
+  </section>
+
+  <!-- 01 -->
+  <section class="section-break" data-chapter="01" data-title="The Bug">
+    <div class="section-break__numeral">01</div>
+    <div class="section-break__kicker">
+      <span class="num">01</span>
+      <span>The real conversation</span>
+    </div>
+    <h2>The user got more flexible. The agent <em>didn’t.</em></h2>
+  </section>
+
+  <p class="lede">A user asked Carl, my AI golf concierge, to find a tee time near Boston.</p>
+
+  <p>Carl searched a handful of nearby courses and returned some options.</p>
+
+  <p>The user widened the request. They were willing to drive farther. Anything in the broader Boston area would work.</p>
+
+  <p>Carl searched fewer courses.</p>
+
+  <p>The user pushed once more: was that really everything available?</p>
+
+  <p>Carl searched roughly the same small set again and confidently said there wasn’t much else.</p>
+
+  <!-- Visual 01: the behavior that exposed the bug -->
+  <figure class="search-escalation wide-visual" aria-labelledby="search-escalation-title">
+    <figcaption class="visual-cap">
+      <span><b>01</b> Conversation trace</span>
+      <span>Search effort vs. user flexibility</span>
+    </figcaption>
+    <div class="escalation-head" id="search-escalation-title">
+      <span>User request</span>
+      <span>Courses checked</span>
+    </div>
+    <div class="escalation-row">
+      <div class="request-bubble"><span>01</span><p>Find me a tee time near Boston.</p></div>
+      <div class="coverage">
+        <b>6</b>
+        <div class="coverage-track"><i style="--coverage: 60%"></i></div>
+      </div>
+    </div>
+    <div class="escalation-row escalation-row--wider">
+      <div class="request-bubble"><span>02</span><p>I’m willing to drive farther. Anywhere around Boston works.</p></div>
+      <div class="coverage">
+        <b>4</b>
+        <div class="coverage-track"><i style="--coverage: 40%"></i></div>
+      </div>
+    </div>
+    <div class="escalation-row escalation-row--push">
+      <div class="request-bubble"><span>03</span><p>Is that truly everything?</p></div>
+      <div class="coverage">
+        <b>6</b>
+        <div class="coverage-track"><i style="--coverage: 60%"></i></div>
+      </div>
+    </div>
+    <div class="escalation-signal">
+      <span>User flexibility <b>↑</b></span>
+      <span>Search effort <b>↔</b></span>
+    </div>
+  </figure>
+
+  <p>Across the conversation, the user became more flexible. The agent’s search effort barely changed.</p>
+
+  <p><strong>That was the bug.</strong></p>
+
+  <p>The obvious fix was to tell the agent to try harder.</p>
+
+  <p>It worked.</p>
+
+  <p>It also made the overall product 8% worse, 66% more expensive, and pushed its slowest responses from roughly 19 seconds to more than 35.</p>
+
+  <!-- 02 -->
+  <section class="section-break" data-chapter="02" data-title="Primitive by Design">
+    <div class="section-break__numeral">02</div>
+    <div class="section-break__kicker">
+      <span class="num">02</span>
+      <span>The discovery architecture</span>
+    </div>
+    <h2>Why Carl had <em>primitive tools.</em></h2>
+  </section>
+
+  <p>Carl lives in your text messages. You tell him when and where you want to play, and he searches fragmented golf-course booking systems for something that works.</p>
+
+  <p>The first version gave the model several small tools:</p>
+
+  <div class="codeblock tool-list">
+    <div class="codeblock__cap"><span><span class="lang">tools</span> · carl.search</span><span>5 primitives</span></div>
+    <div class="codeblock__body"><span class="fn">geocode_location</span>(location)
+<span class="fn">find_nearby_courses</span>(coordinates, radius)
+<span class="fn">look_up_tee_times</span>(course, date)
+<span class="fn">generate_booking_link</span>(course, slot)
+<span class="fn">update_user_preferences</span>(user, preferences)</div>
+  </div>
+
+  <p>This came from traditional software-design instincts.</p>
+
+  <p>If I were building the same system without an LLM, each function would have one responsibility. A controller or service layer would decide how to compose those functions into a complete workflow.</p>
+
+  <p>With an agent, the model can become that orchestration layer.</p>
+
+  <p>It can look at the request, inspect the tools available, and decide how to combine them. As models improve, they should theoretically become better at making those decisions without me hard-coding every possible path.</p>
+
+  <p>There was also a practical reason to start this way: <strong>primitive tools create room to learn.</strong></p>
+
+  <p>When the product is new, I do not actually know which actions will frequently occur together. Smaller tools let me observe how the agent tries to solve the problem before I prematurely encode one workflow as the workflow.</p>
+
+  <p>That architecture worked surprisingly well. Until it didn’t.</p>
+
+  <h3>Finding the failure inside the loop</h3>
+
+  <p>I use product analytics and structured input/output logs to understand how people interact with the systems I build.</p>
+
+  <p>This is not especially sophisticated infrastructure. It is simply enough visibility to inspect real conversations, identify repeated problems, and trace what the agent did.</p>
+
+  <p>The geography problem appeared more than once.</p>
+
+  <p>People would give Carl permission to search farther away, but the model still inspected only a small set of courses. In some cases, it widened the location incorrectly, changed the center of the search, or stopped after finding partial results.</p>
+
+  <p>The user saw a confident answer.</p>
+
+  <p>Behind that answer, the tool loop was mostly a black box.</p>
+
+  <p>I reproduced the conversations locally and added deterministic checkpoints between each model and tool call. That let me step through the loop:</p>
+
+  <div class="codeblock checkpoint-log">
+    <div class="codeblock__cap"><span><span class="lang">trace</span> · agent loop</span><span>deterministic checkpoints</span></div>
+    <div class="codeblock__body"><span class="com">01</span>  What did the model understand?
+<span class="com">02</span>  Which tool did it choose?
+<span class="com">03</span>  What arguments did it send?
+<span class="com">04</span>  What came back?
+<span class="com">05</span>  Which course did it inspect next?
+<span class="com">06</span>  Why did it stop?</div>
+  </div>
+
+  <p>The problem became clear.</p>
+
+  <p>The agent was responsible for too many small but consequential decisions:</p>
+
+  <ul>
+    <li>Where to anchor the search.</li>
+    <li>How far to look.</li>
+    <li>How many courses counted as enough.</li>
+    <li>Which returned courses deserved inspection.</li>
+    <li>Whether partial results were sufficient.</li>
+    <li>When to stop searching.</li>
+  </ul>
+
+  <p>The prompt encouraged exploration, but nothing actually required it.</p>
+
+  <!-- 03 -->
+  <section class="section-break" data-chapter="03" data-title="The Experiment">
+    <div class="section-break__numeral">03</div>
+    <div class="section-break__kicker">
+      <span class="num">03</span>
+      <span>A local win, a system loss</span>
+    </div>
+    <h2>The simple fix: <em>“try harder.”</em></h2>
+  </section>
+
+  <p>I am a big believer in keeping things stupid simple.</p>
+
+  <p>At the time, Carl had room to do more work. Model cost per answer was low. Median latency was reasonable. The agent was not making hundreds of tool calls.</p>
+
+  <p>It seemed unnecessary to redesign the system.</p>
+
+  <p>If Carl could simply loop a few more times, expand the search radius, and inspect more of the courses it found, it should produce better results.</p>
+
+  <p>So I made two related changes:</p>
+
+  <ol>
+    <li>I expanded what the course-discovery primitive could return.</li>
+    <li>I put more pressure in the prompt to inspect every course and widen the search when users signaled flexibility.</li>
+  </ol>
+
+  <p>Then I ran the evaluation suite.</p>
+
+  <p>The targeted behavior improved. All five search-coverage scenarios passed.</p>
+
+  <p><strong>The full product got worse.</strong></p>
+
+  <!-- Visual 02: experiment scorecard -->
+  <figure class="experiment-board wide-visual" aria-labelledby="experiment-title">
+    <figcaption class="visual-cap">
+      <span><b>02</b> Evaluation run</span>
+      <span>Baseline vs. “try harder”</span>
+    </figcaption>
+    <div class="experiment-target" id="experiment-title">
+      <span>Target behavior</span>
+      <strong>Search coverage</strong>
+      <b>5 / 5 passed</b>
+    </div>
+    <div class="experiment-grid" role="table" aria-label="Evaluation results comparing the baseline and try harder versions">
+      <div class="metric-row metric-head" role="row">
+        <span role="columnheader">Metric</span>
+        <span role="columnheader">Baseline</span>
+        <span role="columnheader">Try harder</span>
+        <span role="columnheader">Change</span>
+      </div>
+      <div class="metric-row" role="row">
+        <span role="cell">Passing scenarios</span>
+        <b role="cell">26 / 29</b>
+        <b role="cell">24 / 29</b>
+        <strong class="delta delta--bad" role="cell">↓ 7.7%</strong>
+      </div>
+      <div class="metric-row" role="row">
+        <span role="cell">Total evaluation cost</span>
+        <b role="cell">25.63¢</b>
+        <b role="cell">42.54¢</b>
+        <strong class="delta delta--bad" role="cell">↑ 66%</strong>
+      </div>
+      <div class="metric-row" role="row">
+        <span role="cell">Median reply latency</span>
+        <b role="cell">5.1s</b>
+        <b role="cell">4.5s</b>
+        <strong class="delta delta--good" role="cell">↓ 11%</strong>
+      </div>
+      <div class="metric-row metric-row--tail" role="row">
+        <span role="cell">P95 reply latency</span>
+        <b role="cell">18.9s</b>
+        <b role="cell">35.4s</b>
+        <strong class="delta delta--bad" role="cell">↑ 87%</strong>
+      </div>
+    </div>
+    <div class="experiment-verdict">
+      <span>Local objective</span><b>PASS</b>
+      <span>Whole product</span><b>REGRESSED</b>
+    </div>
+  </figure>
+
+  <p>The median becoming slightly faster is a useful reminder: one latency number rarely describes the experience. Typical responses were fine. The slowest meaningful slice became almost twice as slow.</p>
+
+  <p>Some of the additional cost and latency were expected. More searching means more tool results, more context, and more model turns.</p>
+
+  <p>The behavioral regressions were not.</p>
+
+  <p>Carl began searching before asking how many golfers were in the group.</p>
+
+  <p>In a longer booking conversation, it spent so many turns looking through courses that it exhausted the loop before returning a booking link.</p>
+
+  <p>The agent had become more committed to searching, even when the correct next action was to stop and ask a question.</p>
+
+  <p>I had improved one instruction by making it compete more aggressively with every other instruction.</p>
+
+  <!-- 04 -->
+  <section class="section-break" data-chapter="04" data-title="System Accuracy">
+    <div class="section-break__numeral">04</div>
+    <div class="section-break__kicker">
+      <span class="num">04</span>
+      <span>Beyond a single score</span>
+    </div>
+    <h2>Agent accuracy is <em>not one number.</em></h2>
+  </section>
+
+  <p>Carl’s evals do not only ask whether the final response sounds correct.</p>
+
+  <p>They test several layers of the product:</p>
+
+  <ul>
+    <li>Did Carl ask for missing information?</li>
+    <li>Did it remember facts from earlier turns?</li>
+    <li>Did it call the required tools?</li>
+    <li>Did it avoid unnecessary tools?</li>
+    <li>Did it inspect enough courses for the request?</li>
+    <li>Did returned slots support the requested party size?</li>
+    <li>Did it handle a failed booking provider without inventing availability?</li>
+    <li>Did it respond quickly enough?</li>
+    <li>Did the interaction stay within its cost budget?</li>
+    <li>Did it maintain the concise experience expected in text messages?</li>
+  </ul>
+
+  <p>That distinction mattered here.</p>
+
+  <p>The new version was more accurate according to the metric I had just optimized: search coverage.</p>
+
+  <p>It was worse according to the system’s broader job.</p>
+
+  <p>This is one reason I am skeptical of evaluating agents with a single success score. A product can improve at completing one task while becoming slower, less economical, and less capable of knowing when it should not perform the task yet.</p>
+
+  <h3>The problem wasn’t effort</h3>
+
+  <p>The real issue was that “try harder” is not a useful control surface.</p>
+
+  <p>What does trying harder mean?</p>
+
+  <ul>
+    <li>Search a wider radius?</li>
+    <li>Inspect every course?</li>
+    <li>Spend more tokens reasoning?</li>
+    <li>Call more tools?</li>
+    <li>Retry failed providers?</li>
+    <li>Continue until some minimum number of results appears?</li>
+  </ul>
+
+  <p>Those are different behaviors with different costs.</p>
+
+  <p>I had expressed a product requirement as a motivational instruction.</p>
+
+  <blockquote class="requirement">
+    <span>Product requirement</span>
+    <p>When a user widens the geography, Carl should inspect a measurably broader set of relevant courses before saying nothing else is available.</p>
+  </blockquote>
+
+  <p>That requirement is bounded. It is observable. Much of it can be enforced without intelligence.</p>
+
+  <p>It did not belong entirely inside the model.</p>
+
+  <!-- 05 -->
+  <section class="section-break" data-chapter="05" data-title="Move the Boundary">
+    <div class="section-break__numeral">05</div>
+    <div class="section-break__kicker">
+      <span class="num">05</span>
+      <span>Composing the learned workflow</span>
+    </div>
+    <h2>Moving predictable work <em>out of the agent.</em></h2>
+  </section>
+
+  <p>The next architecture gave Carl a composed search tool.</p>
+
+  <p>Instead of asking the model to independently geocode, discover courses, choose a subset, inspect them, and assemble links, the backend could own the predictable chain.</p>
+
+  <!-- Visual 03: before and after architecture -->
+  <figure class="architecture-visual wide-visual" aria-labelledby="architecture-title">
+    <figcaption class="visual-cap">
+      <span><b>03</b> Responsibility map</span>
+      <span id="architecture-title">Same product, different boundary</span>
+    </figcaption>
+    <div class="architecture-grid">
+      <section class="architecture-panel architecture-panel--before">
+        <header><span>Before</span><strong>Model owns the loop</strong></header>
+        <div class="owner owner--model">MODEL · REASON + ORCHESTRATE</div>
+        <ol class="primitive-chain">
+          <li><span>01</span>Geocode</li>
+          <li><span>02</span>Discover</li>
+          <li><span>03</span>Choose subset</li>
+          <li><span>04</span>Inspect course</li>
+          <li><span>05</span>Decide when to stop</li>
+        </ol>
+        <footer><i></i> Five probabilistic decisions in the critical path</footer>
+      </section>
+
+      <div class="boundary-shift" aria-hidden="true"><span>→</span><b>MOVE<br>THE<br>BOUNDARY</b></div>
+
+      <section class="architecture-panel architecture-panel--after">
+        <header><span>After</span><strong>Each layer owns what it is good at</strong></header>
+        <div class="responsibility-lane responsibility-lane--model">
+          <div class="owner owner--model">MODEL · JUDGMENT</div>
+          <div class="lane-steps"><span>Interpret intent</span><span>Ask what’s missing</span><span>Communicate</span></div>
+        </div>
+        <div class="responsibility-lane responsibility-lane--code">
+          <div class="owner owner--code">CODE · PROMISE</div>
+          <div class="lane-steps"><span>Expand radius</span><span>Fetch in parallel</span><span>Filter + link</span><span>Measure coverage</span></div>
+        </div>
+        <footer><i></i> Search coverage is now observable and enforceable</footer>
+      </section>
+    </div>
+  </figure>
+
+  <p>It could:</p>
+
+  <ul>
+    <li>Read precomputed coordinates for golf courses that rarely move.</li>
+    <li>Expand the radius according to explicit rules.</li>
+    <li>Fetch tee sheets in parallel.</li>
+    <li>Filter slots by time and party size.</li>
+    <li>Keep booking links attached to the correct course.</li>
+    <li>Report exactly how many courses it inspected.</li>
+  </ul>
+
+  <p>The model still had important work.</p>
+
+  <p>It needed to translate a messy human request into intent. It needed to understand phrases like “after work,” “somewhere near my meeting,” or “I’m willing to drive.” It needed to decide when information was missing and communicate the result naturally.</p>
+
+  <p>But the model no longer needed to repeatedly decide whether five courses were enough.</p>
+
+  <p>This did not magically make every evaluation pass. It did make search effort enforceable, observable, and independently improvable.</p>
+
+  <!-- 06 -->
+  <section class="section-break" data-chapter="06" data-title="The Boundary">
+    <div class="section-break__numeral">06</div>
+    <div class="section-break__kicker">
+      <span class="num">06</span>
+      <span>What the product has learned</span>
+    </div>
+    <h2>Primitive tools were <em>not the mistake.</em></h2>
+  </section>
+
+  <p>My conclusion is not that agents should always receive large, composed tools.</p>
+
+  <p>I still think primitive tools are often the right place to begin.</p>
+
+  <p>Starting with primitives lets you observe:</p>
+
+  <ul>
+    <li>Which tools repeatedly appear together.</li>
+    <li>Where the model demonstrates useful flexibility.</li>
+    <li>Where it makes inconsistent choices.</li>
+    <li>Which information should be precomputed.</li>
+    <li>Which actions need deterministic guarantees.</li>
+    <li>Which composed workflows the real product actually requires.</li>
+  </ul>
+
+  <p>If I had started with one enormous golf-search tool, I might have hidden those decisions before understanding them.</p>
+
+  <p>The threshold changes when the product matures.</p>
+
+  <blockquote class="question-callout">
+    <span>Once a chain becomes common and predictable</span>
+    <p>Does the model still need to own this?</p>
+  </blockquote>
+
+  <p>Sometimes the answer is yes. The task may contain meaningful ambiguity or benefit from creative composition.</p>
+
+  <p>Sometimes the answer is no. The sequence has become an expensive probabilistic implementation of behavior I can now describe exactly.</p>
+
+  <p>That is when primitives can become composed tools, deterministic code, stored computation, or a separate bounded system.</p>
+
+  <h3>The lesson</h3>
+
+  <p>The agent did what I asked.</p>
+
+  <p>It tried harder.</p>
+
+  <p>The problem was that I asked it to work harder at decisions it should no longer have owned.</p>
+
+  <blockquote class="closing-rule">
+    <span>The rule I use now</span>
+    <p>When the model is making a <em>judgment</em>, give it room to reason. When the product is making a <em>promise</em>, make that promise enforceable.</p>
+  </blockquote>
+
+  <p>The harder question is deciding where that boundary belongs.</p>
+
+  <p>That is not a primitive-tools-versus-composed-tools debate with one correct answer. It depends on the product, the maturity of the workflow, the model, and what you have learned from real usage.</p>
+
+  <p>That deserves its own article.</p>
+
+  <div class="stay">
+    <h4>Building an agentic product?</h4>
+    <p>If you are working through the same boundary between model judgment and product guarantees, I’d like to compare notes.</p>
+    <a href="/#contact">Start a conversation →</a>
+  </div>
+
+  <div class="signoff">
+    Until next time,
+    <div class="signoff__name">Harsh</div>
+  </div>
+
+  <div class="next">
+    <div class="next__label">Read another</div>
+    <a href="/musings/software-engineering-age-of-agents.html" class="next__card">
+      <div class="next__card-meta"><span>MUSING 01 · 8 MIN</span><span class="arrow">→</span></div>
+      <div class="next__card-title">Software Engineering in the Age of Agents</div>
+    </a>
+  </div>
+
+</article>
+
+<footer class="musing-footer">
+  <div class="links">
+    <a href="https://twitter.com/_harshrana" target="_blank" rel="noopener">Twitter</a>
+    <a href="https://linkedin.com/in/harshrana1997" target="_blank" rel="noopener">LinkedIn</a>
+    <a href="https://github.com/hr23232323" target="_blank" rel="noopener">GitHub</a>
+    <a href="mailto:harsh@harshrana.com">Email</a>
+  </div>
+</footer>
+
+<style>
+  .hero--experiment h1 {
+    font-size: clamp(42px, 6vw, 68px);
+    line-height: .98;
+  }
+
+  .wide-visual {
+    width: calc(100% + 320px);
+    margin: 56px -160px;
+    border: 1px solid var(--rule-strong);
+    border-radius: 8px;
+    background: #111411;
+    overflow: hidden;
+  }
+
+  .visual-cap {
+    min-height: 44px;
+    padding: 0 18px;
+    border-bottom: 1px solid var(--rule);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    font-family: var(--mono);
+    font-size: 10px;
+    line-height: 1.3;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+  }
+
+  .visual-cap b {
+    margin-right: 8px;
+    color: var(--accent);
+    font-weight: 500;
+  }
+
+  /* Visual 01: request flexibility vs. search effort */
+  .escalation-head {
+    display: grid;
+    grid-template-columns: 1fr 260px;
+    gap: 40px;
+    padding: 24px 32px 12px;
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+  }
+
+  .escalation-row {
+    display: grid;
+    grid-template-columns: 1fr 260px;
+    gap: 40px;
+    align-items: center;
+    padding: 12px 32px;
+  }
+
+  .request-bubble {
+    min-height: 70px;
+    padding: 17px 20px;
+    display: grid;
+    grid-template-columns: 30px 1fr;
+    align-items: center;
+    gap: 14px;
+    border: 1px solid var(--rule-strong);
+    border-radius: 5px 18px 18px 18px;
+    background: rgba(255,255,255,.025);
+  }
+
+  .request-bubble > span {
+    font-family: var(--mono);
+    font-size: 10px;
+    color: var(--ink-faint);
+  }
+
+  .post .request-bubble p {
+    margin: 0;
+    font-family: var(--sans);
+    font-size: 15px;
+    line-height: 1.4;
+    color: var(--ink);
+  }
+
+  .escalation-row--wider .request-bubble {
+    border-color: var(--accent);
+    box-shadow: inset 3px 0 0 var(--accent);
+  }
+
+  .escalation-row--push .request-bubble {
+    border-color: rgba(222,105,51,.52);
+    box-shadow: inset 3px 0 0 #de6933;
+  }
+
+  .coverage {
+    display: grid;
+    grid-template-columns: 52px 1fr;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .coverage > b {
+    font-family: var(--serif);
+    font-size: 46px;
+    font-weight: 400;
+    line-height: 1;
+    text-align: right;
+    color: var(--ink);
+  }
+
+  .coverage-track {
+    height: 8px;
+    background: rgba(255,255,255,.06);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .coverage-track i {
+    display: block;
+    width: var(--coverage);
+    height: 100%;
+    background: var(--accent);
+    transform-origin: left;
+    animation: reveal-bar .9s cubic-bezier(.22,.9,.35,1) both;
+  }
+
+  .escalation-row--wider .coverage-track i { background: #de6933; animation-delay: .15s; }
+  .escalation-row--push .coverage-track i { background: #de6933; animation-delay: .3s; }
+
+  @keyframes reveal-bar {
+    from { transform: scaleX(0); }
+    to { transform: scaleX(1); }
+  }
+
+  .escalation-signal {
+    margin-top: 20px;
+    border-top: 1px solid var(--rule);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .escalation-signal span {
+    padding: 22px 32px;
+    display: flex;
+    justify-content: space-between;
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: .06em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+  }
+
+  .escalation-signal span:first-child { border-right: 1px solid var(--rule); }
+  .escalation-signal b { color: var(--accent); font-size: 16px; }
+  .escalation-signal span:last-child b { color: #de6933; }
+
+  /* Visual 02: experiment scorecard */
+  .experiment-target {
+    min-height: 96px;
+    padding: 24px 28px;
+    display: grid;
+    grid-template-columns: 140px 1fr auto;
+    align-items: center;
+    gap: 24px;
+    background: var(--accent);
+    color: #07120c;
+    font-family: var(--mono);
+  }
+
+  .experiment-target span {
+    font-size: 10px;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    opacity: .7;
+  }
+
+  .experiment-target strong {
+    font-family: var(--sans);
+    font-size: 25px;
+    letter-spacing: -.03em;
+  }
+
+  .experiment-target b {
+    padding: 9px 12px;
+    border: 1px solid rgba(7,18,12,.35);
+    font-size: 12px;
+    letter-spacing: .06em;
+  }
+
+  .experiment-grid { padding: 8px 28px; }
+
+  .metric-row {
+    min-height: 74px;
+    display: grid;
+    grid-template-columns: minmax(220px, 1.5fr) 1fr 1fr 1fr;
+    align-items: center;
+    gap: 20px;
+    border-bottom: 1px solid var(--rule);
+  }
+
+  .metric-row > span:first-child {
+    font-family: var(--sans);
+    font-size: 14px;
+    color: var(--ink-mid);
+  }
+
+  .metric-row > b {
+    font-family: var(--serif);
+    font-size: 25px;
+    font-weight: 400;
+    font-variant-numeric: tabular-nums;
+    color: var(--ink);
+  }
+
+  .metric-head {
+    min-height: 42px;
+    font-family: var(--mono);
+    font-size: 9px;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+  }
+
+  .metric-head > span:first-child { font-family: var(--mono); font-size: 9px; color: var(--ink-faint); }
+
+  .delta {
+    width: fit-content;
+    padding: 7px 9px;
+    font-family: var(--mono);
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: .03em;
+  }
+
+  .delta--bad { color: #f0804d; background: rgba(222,105,51,.12); }
+  .delta--good { color: #73bb91; background: rgba(61,138,100,.15); }
+  .metric-row--tail { background: rgba(222,105,51,.045); }
+
+  .experiment-verdict {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr auto;
+    align-items: center;
+    gap: 18px;
+    padding: 22px 28px;
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: .07em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+  }
+
+  .experiment-verdict b {
+    padding: 7px 9px;
+    color: var(--accent);
+    border: 1px solid var(--accent-soft);
+    font-weight: 500;
+  }
+
+  .experiment-verdict b:last-child {
+    color: #f0804d;
+    border-color: rgba(222,105,51,.35);
+  }
+
+  /* Text requirements */
+  .requirement,
+  .question-callout,
+  .closing-rule {
+    margin: 44px 0;
+    padding: 28px 30px;
+    border: 1px solid var(--rule-strong);
+    border-left: 3px solid var(--accent);
+    background: var(--bg-card);
+  }
+
+  .requirement > span,
+  .question-callout > span,
+  .closing-rule > span {
+    display: block;
+    margin-bottom: 12px;
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    color: var(--accent);
+  }
+
+  .post .requirement p,
+  .post .question-callout p,
+  .post .closing-rule p {
+    margin: 0;
+    font-size: 24px;
+    line-height: 1.35;
+    font-style: italic;
+  }
+
+  .question-callout { text-align: center; border-left-width: 1px; }
+  .post .question-callout p { font-size: clamp(28px, 4vw, 38px); }
+
+  .closing-rule {
+    margin: 64px -80px;
+    padding: 48px 64px;
+    border-left-width: 1px;
+    text-align: center;
+  }
+
+  .post .closing-rule p {
+    font-size: clamp(29px, 4vw, 40px);
+    line-height: 1.2;
+  }
+
+  .closing-rule em { color: var(--accent); }
+
+  /* Visual 03: architecture boundary */
+  .architecture-grid {
+    padding: 28px;
+    display: grid;
+    grid-template-columns: 1fr 76px 1.15fr;
+    align-items: stretch;
+  }
+
+  .architecture-panel {
+    min-width: 0;
+    border: 1px solid var(--rule-strong);
+    background: rgba(255,255,255,.018);
+  }
+
+  .architecture-panel > header {
+    min-height: 78px;
+    padding: 17px 18px;
+    border-bottom: 1px solid var(--rule);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .architecture-panel > header span {
+    margin-bottom: 4px;
+    font-family: var(--mono);
+    font-size: 9px;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+  }
+
+  .architecture-panel > header strong {
+    font-family: var(--sans);
+    font-size: 16px;
+    letter-spacing: -.02em;
+    color: var(--ink);
+  }
+
+  .owner {
+    padding: 10px 14px;
+    font-family: var(--mono);
+    font-size: 9px;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+  }
+
+  .owner--model { color: #f0804d; background: rgba(222,105,51,.11); }
+  .owner--code { color: #73bb91; background: rgba(61,138,100,.14); }
+
+  .primitive-chain {
+    margin: 0;
+    padding: 14px 18px 20px;
+    list-style: none;
+    counter-reset: none;
+  }
+
+  .post .primitive-chain li {
+    min-height: 43px;
+    margin: 0;
+    padding: 11px 8px 9px 42px;
+    border-bottom: 1px solid var(--rule);
+    font-family: var(--sans);
+    font-size: 12px;
+    color: var(--ink-mid);
+  }
+
+  .post .primitive-chain li::before { display: none; }
+
+  .primitive-chain li > span {
+    position: absolute;
+    left: 8px;
+    font-family: var(--mono);
+    font-size: 9px;
+    color: #f0804d;
+  }
+
+  .primitive-chain li:not(:last-child)::after {
+    content: "↓";
+    position: absolute;
+    left: 18px;
+    bottom: -8px;
+    z-index: 2;
+    color: var(--ink-faint);
+    background: #111411;
+    font-family: var(--mono);
+    font-size: 10px;
+  }
+
+  .responsibility-lane { margin: 16px; border: 1px solid var(--rule); }
+
+  .lane-steps {
+    padding: 12px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 7px;
+  }
+
+  .lane-steps span {
+    flex: 1 1 42%;
+    padding: 9px 10px;
+    border: 1px solid var(--rule);
+    font-family: var(--sans);
+    font-size: 10px;
+    line-height: 1.25;
+    color: var(--ink-mid);
+  }
+
+  .architecture-panel > footer {
+    margin-top: auto;
+    padding: 16px 18px;
+    border-top: 1px solid var(--rule);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-family: var(--mono);
+    font-size: 9px;
+    line-height: 1.45;
+    letter-spacing: .04em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+  }
+
+  .architecture-panel > footer i {
+    width: 7px;
+    height: 7px;
+    flex: 0 0 auto;
+    border-radius: 50%;
+    background: #de6933;
+  }
+
+  .architecture-panel--after { display: flex; flex-direction: column; }
+  .architecture-panel--after > footer i { background: var(--accent); }
+
+  .boundary-shift {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    color: var(--accent);
+  }
+
+  .boundary-shift span {
+    font-family: var(--serif);
+    font-size: 42px;
+    line-height: 1;
+  }
+
+  .boundary-shift b {
+    font-family: var(--mono);
+    font-size: 8px;
+    line-height: 1.5;
+    letter-spacing: .1em;
+    font-weight: 400;
+    text-align: center;
+  }
+
+  @media (max-width: 1040px) {
+    .wide-visual { width: calc(100% + 160px); margin-left: -80px; margin-right: -80px; }
+  }
+
+  @media (max-width: 800px) {
+    .wide-visual { width: 100%; margin: 48px 0; }
+    .closing-rule { margin-left: 0; margin-right: 0; padding: 40px 28px; }
+    .architecture-grid { grid-template-columns: 1fr; gap: 14px; }
+    .boundary-shift { flex-direction: row; padding: 4px 0; }
+    .boundary-shift span { transform: rotate(90deg); font-size: 30px; }
+    .boundary-shift b br { display: none; }
+  }
+
+  @media (max-width: 620px) {
+    .hero--experiment h1 { font-size: clamp(39px, 11.5vw, 54px); }
+    .visual-cap { align-items: flex-start; flex-direction: column; gap: 4px; padding-top: 13px; padding-bottom: 13px; }
+    .escalation-head { display: none; }
+    .escalation-row { grid-template-columns: 1fr; gap: 12px; padding: 12px 16px; }
+    .escalation-row:first-of-type { padding-top: 20px; }
+    .coverage { grid-template-columns: 38px 1fr; padding: 0 4px; }
+    .coverage > b { font-size: 34px; }
+    .escalation-signal { grid-template-columns: 1fr; }
+    .escalation-signal span:first-child { border-right: 0; border-bottom: 1px solid var(--rule); }
+    .experiment-target { grid-template-columns: 1fr auto; gap: 8px 16px; }
+    .experiment-target span { grid-column: 1 / -1; }
+    .experiment-target strong { font-size: 20px; }
+    .experiment-grid { padding: 6px 14px; }
+    .metric-row { grid-template-columns: 1.35fr .8fr .8fr; gap: 8px; min-height: 84px; }
+    .metric-row > *:nth-child(2) { display: none; }
+    .metric-row > b { font-size: 20px; }
+    .metric-row > span:first-child { font-size: 12px; }
+    .metric-head { min-height: 38px; font-size: 8px; }
+    .metric-head > span:first-child { font-size: 8px; }
+    .experiment-verdict { grid-template-columns: 1fr auto; }
+    .architecture-grid { padding: 16px; }
+    .lane-steps span { flex-basis: 100%; }
+    .post .requirement p { font-size: 21px; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .coverage-track i { animation: none; }
+  }
+</style>
+
+<script src="components.js"></script>
+</body>
+</html>

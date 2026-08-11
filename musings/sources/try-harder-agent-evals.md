@@ -1,6 +1,6 @@
 ---
 title: I Told My AI Agent to “Try Harder.” It Got 8% Worse, 66% More Expensive, and Its Tail Latency Nearly Doubled.
-date: August 10, 2026
+date: April 2026
 description: A change that fixed the exact behavior I was targeting quietly made the overall product worse.
 slug: try-harder-agent-evals
 ---

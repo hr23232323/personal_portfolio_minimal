@@ -5,7 +5,7 @@ description: A change that fixed the exact behavior I was targeting quietly made
 slug: try-harder-agent-evals
 ---
 
-A user asked Carl, my AI golf concierge, to find a tee time near Boston.
+A user asked [Carl](https://carl.golf/?utm_source=harshrana.com&utm_medium=referral&utm_campaign=agent-evals), my AI golf concierge, to find a tee time near Boston.
 
 Carl searched a handful of nearby courses and returned some options.
 

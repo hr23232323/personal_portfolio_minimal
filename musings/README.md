@@ -79,7 +79,7 @@ page picks the components it needs and can add bespoke pieces inline.
 | `.pull` | Centered italic pull quote, hairline rules above and below |
 | `.stat` + `.stat__num` / `.stat__label` | Full-bleed type stat (e.g. `100×`, `20k+`) |
 | `.threecol` | 3-up type grid for concept enumeration |
-| `.stay` | Subscribe card (uses the Buttondown iframe) |
+| `.contact-card` | Contact card linking to the native site form |
 | `.signoff` + `.next` | Italic sign-off and read-next list |
 
 ## Bespoke pieces

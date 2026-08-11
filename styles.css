@@ -18,7 +18,6 @@
     --tag-bg: #101311;
     --header-bg: rgba(8, 10, 9, 0.88);
     --image-overlay: rgba(8, 10, 9, 0.08);
-    --iframe-filter: invert(0.9) hue-rotate(180deg);
 
     --display: 'Archivo Black', 'Arial Black', sans-serif;
     --mono: 'DM Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
@@ -41,7 +40,6 @@
         --tag-bg: #e5e3db;
         --header-bg: rgba(240, 238, 230, 0.9);
         --image-overlay: rgba(240, 238, 230, 0.04);
-        --iframe-filter: none;
     }
 }
 

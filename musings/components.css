@@ -439,14 +439,14 @@ a { color: inherit; }
 }
 
 /* ─── Contact card ─── */
-.stay {
+.contact-card {
   margin: 96px 0 24px;
   padding: 40px 36px 36px;
   border: 1px solid var(--rule);
   border-radius: 8px;
   background: var(--bg-card);
 }
-.stay h4 {
+.contact-card h4 {
   font-family: var(--sans);
   font-weight: 600;
   font-size: 22px;
@@ -454,14 +454,14 @@ a { color: inherit; }
   margin-bottom: 10px;
   color: var(--ink);
 }
-.stay p {
+.contact-card p {
   font-family: var(--serif);
   font-size: 17px;
   line-height: 1.55;
   color: var(--ink-mid);
   margin-bottom: 8px;
 }
-.stay a {
+.contact-card a {
   width: fit-content;
   margin-top: 1rem;
   display: inline-block;

@@ -1,0 +1,905 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Your AI Agent Should Never Make the Same Mistake Twice | Harsh Rana</title>
+  <meta name="description" content="The best AI evals start as customer complaints. I turned Carl's real failures into tests, and those tests became the product's memory.">
+  <link rel="canonical" href="https://harshrana.com/musings/ai-agent-never-same-mistake-twice.html">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Your AI Agent Should Never Make the Same Mistake Twice">
+  <meta property="og:description" content="The first failure is data. The second is yours.">
+  <meta property="og:url" content="https://harshrana.com/musings/ai-agent-never-same-mistake-twice.html">
+  <meta property="og:image" content="https://harshrana.com/img/never-twice-agent-evals-social.png">
+  <meta property="og:image:width" content="1536">
+  <meta property="og:image:height" content="1024">
+  <meta property="og:site_name" content="Harsh Rana">
+  <meta property="article:author" content="Harsh Rana">
+  <meta property="article:published_time" content="2026-05-01">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@_harshrana">
+  <meta name="twitter:creator" content="@_harshrana">
+  <meta name="twitter:title" content="Your AI Agent Should Never Make the Same Mistake Twice">
+  <meta name="twitter:description" content="The first failure is data. The second is yours.">
+  <meta name="twitter:image" content="https://harshrana.com/img/never-twice-agent-evals-social.png">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://harshrana.com/musings/ai-agent-never-same-mistake-twice.html"
+    },
+    "headline": "Your AI Agent Should Never Make the Same Mistake Twice.",
+    "description": "The best AI evals start as customer complaints. I turned Carl's real failures into tests, and those tests became the product's memory.",
+    "image": "https://harshrana.com/img/never-twice-agent-evals-social.png",
+    "datePublished": "2026-05-01",
+    "author": {
+      "@type": "Person",
+      "name": "Harsh Rana",
+      "url": "https://harshrana.com/"
+    },
+    "publisher": {
+      "@type": "Person",
+      "name": "Harsh Rana",
+      "url": "https://harshrana.com/"
+    },
+    "inLanguage": "en-US",
+    "keywords": [
+      "AI agent evaluation",
+      "production AI systems",
+      "customer feedback",
+      "LLM observability",
+      "regression testing"
+    ]
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300..700;1,6..72,300..700&amp;family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="components.css">
+</head>
+<body>
+
+<div class="progress"><div class="progress__bar" id="progressBar"></div></div>
+<div class="topbar__chapter" id="chapterPill"><b id="chapterNum">00</b> <span id="chapterTitle">Intro</span></div>
+
+<header class="topbar">
+  <a href="/musings/" class="topbar__back">← Musings</a>
+  <a href="/" class="topbar__brand">HARSH RANA</a>
+</header>
+
+<article class="post post--memory">
+
+  <section class="hero hero--memory">
+    <div class="hero__eyebrow">Musing No. 03 · May 2026</div>
+    <h1>Your AI Agent Should Never Make the Same Mistake <em>Twice.</em></h1>
+    <p class="hero__deck">The best AI evals start as customer complaints. I turned Carl's real failures into tests, and those tests eventually became the product's memory.</p>
+    <div class="hero__meta">
+      <span><b>Harsh Rana</b></span>
+      <span class="sep"></span>
+      <span>11 min read</span>
+      <span class="sep"></span>
+      <span>May 2026</span>
+    </div>
+  </section>
+
+  <div class="complaint-intro" aria-label="Three real complaints from Carl users">
+    <p>“That's the wrong link.”</p>
+    <p>“Too of us.”</p>
+    <p>“That's it? Truly nothing else anywhere in Boston?”</p>
+  </div>
+
+  <p class="lede">These were not prompts written by an AI researcher.</p>
+
+  <p>They were messages from real people trying to use <a href="https://carl.golf/?utm_source=harshrana.com&amp;utm_medium=referral&amp;utm_campaign=evals-product-memory" target="_blank" rel="noopener noreferrer">Carl</a>, my AI golf concierge, to find a tee time.</p>
+
+  <p>One user corrected an invalid booking link. Another replied with a typo and watched the conversation lose its thread. Another expanded his search area, then Carl somehow searched fewer golf courses.</p>
+
+  <p>Every message exposed something I had misunderstood about the product.</p>
+
+  <p>Eventually, each one became a test.</p>
+
+  <p>Not because I expected Carl to stop making mistakes. An AI product will always find new ways to surprise you.</p>
+
+  <p>But it should not keep surprising you in the same way.</p>
+
+  <blockquote class="thesis-line">
+    <span>Product rule / 01</span>
+    <p>The first failure is <em>data.</em> The second is <em>yours.</em></p>
+  </blockquote>
+
+  <!-- 01 -->
+  <section class="section-break" data-chapter="01" data-title="Users Wrote It">
+    <div class="section-break__numeral">01</div>
+    <div class="section-break__kicker">
+      <span class="num">01</span>
+      <span>From observation to memory</span>
+    </div>
+    <h2>My users wrote the first <em>eval suite.</em></h2>
+  </section>
+
+  <p>I did not begin with a benchmark.</p>
+
+  <p>I began by watching people use the product.</p>
+
+  <p>Carl already had several layers of observability. PostHog showed me how people moved through the website, where they engaged, and where they disappeared. Stored conversations let me reconstruct what the user actually experienced. Structured server logs recorded every model turn, tool call, timing, and failure.</p>
+
+  <p>Each layer answered a different question:</p>
+
+  <!-- Visual 01: observation stack -->
+  <figure class="observation-stack wide-visual" aria-labelledby="observation-title">
+    <figcaption class="visual-cap">
+      <span><b>01</b> Observation stack</span>
+      <span id="observation-title">Signal becomes product memory</span>
+    </figcaption>
+    <div class="observation-flow">
+      <div class="observation-node">
+        <span>01 · Aggregate</span>
+        <strong>POSTHOG</strong>
+        <p>Where should I look?</p>
+      </div>
+      <i aria-hidden="true">→</i>
+      <div class="observation-node">
+        <span>02 · Experience</span>
+        <strong>CONVERSATION</strong>
+        <p>What happened to the user?</p>
+      </div>
+      <i aria-hidden="true">→</i>
+      <div class="observation-node">
+        <span>03 · Cause</span>
+        <strong>AGENT TRACE</strong>
+        <p>Why did it happen?</p>
+      </div>
+      <i aria-hidden="true">→</i>
+      <div class="observation-node observation-node--memory">
+        <span>04 · Memory</span>
+        <strong>EVAL</strong>
+        <p>Can it happen again?</p>
+      </div>
+    </div>
+    <div class="observation-foot">
+      <span>Find the signal</span><span>Reconstruct the moment</span><span>Inspect the system</span><span>Keep the lesson</span>
+    </div>
+  </figure>
+
+  <p>That separation matters.</p>
+
+  <p>I deliberately do not send message content or phone numbers into PostHog event properties. Product analytics is useful for identifying patterns, but it should not become an indiscriminate copy of every customer interaction.</p>
+
+  <p>When something looks wrong, I move from the aggregate signal into the smallest amount of detail necessary: the conversation, the tool path, and the timing.</p>
+
+  <p>That is where complaints become reproducible.</p>
+
+  <p>A user saying “the link is wrong” is feedback.</p>
+
+  <p>The stored conversation tells me which link Carl returned.</p>
+
+  <p>The agent trace tells me whether Carl reused an old result, called the wrong tool, or generated a link without verifying it.</p>
+
+  <p>The eval turns the lesson into a permanent requirement:</p>
+
+  <blockquote class="product-promise">
+    <span>Fixture · booking_link_recovery</span>
+    <p>When a user reports a bad booking link, Carl must generate a new one.</p>
+  </blockquote>
+
+  <p>That is no longer a prompt suggestion. It is a product promise.</p>
+
+  <!-- 02 -->
+  <section class="section-break" data-chapter="02" data-title="Freeze the Baseline">
+    <div class="section-break__numeral">02</div>
+    <div class="section-break__kicker">
+      <span class="num">02</span>
+      <span>Regression safety before a rewrite</span>
+    </div>
+    <h2>I built the first suite before deleting <em>half the architecture.</em></h2>
+  </section>
+
+  <p>In April, Carl used a router, a core agent, and four specialized subagents.</p>
+
+  <p>It worked, but the architecture was becoming harder to reason about. Follow-up messages lost context between layers. Different agents interpreted the same conversation differently. A user could provide the missing information and still fail to trigger a search.</p>
+
+  <p>I wanted to collapse the system into one agent with one tool loop.</p>
+
+  <p>That was a large change. Before making it, I froze the current product experience.</p>
+
+  <p>The first eval suite contained 15 scenarios, all grounded in real beta conversations. Together, they covered 19 conversational turns.</p>
+
+  <p>The scenarios were not polished demonstrations. They included the awkward things people really wrote:</p>
+
+  <ul>
+    <li>A bare “Hi.”</li>
+    <li>A course request with no player count.</li>
+    <li>“Too of us” as a typo-filled follow-up.</li>
+    <li>“What's my name?” after Carl had already learned it.</li>
+    <li>“That's the wrong link, can you try again?”</li>
+    <li>A request for golf near the city from someone without a car.</li>
+  </ul>
+
+  <p>Each fixture seeded the relevant user state and conversation history, sent the messages through Carl's real application path, and recorded what happened.</p>
+
+  <p>The suite checked more than the final answer:</p>
+
+  <ul>
+    <li>Which tools Carl called.</li>
+    <li>Which tools it avoided.</li>
+    <li>Whether it remembered prior turns.</li>
+    <li>Whether it asked for missing information.</li>
+    <li>How long the response took.</li>
+    <li>How many tokens it used.</li>
+    <li>How much the interaction cost.</li>
+  </ul>
+
+  <p>The frozen baseline passed 12 of 15 scenarios.</p>
+
+  <p>That was useful. The three failures documented bugs in the architecture I was about to replace.</p>
+
+  <!-- Visual 02: frozen baseline transformation -->
+  <figure class="baseline-board wide-visual" aria-labelledby="baseline-title">
+    <figcaption class="visual-cap">
+      <span><b>02</b> Frozen baseline</span>
+      <span id="baseline-title">Same product promises, simpler architecture</span>
+    </figcaption>
+    <div class="architecture-summary">
+      <div><span>Before rewrite</span><strong>ROUTER + CORE + 4 SUBAGENTS</strong></div>
+      <i aria-hidden="true">→</i>
+      <div><span>After rewrite</span><strong>1 CARL + 1 TOOL LOOP</strong></div>
+    </div>
+    <div class="baseline-table" role="table" aria-label="Evaluation results before and after the architecture rewrite">
+      <div class="baseline-row baseline-head" role="row">
+        <span role="columnheader">Metric</span><span role="columnheader">Before</span><span role="columnheader">After</span><span role="columnheader">Change</span>
+      </div>
+      <div class="baseline-row" role="row">
+        <span role="cell">Scenarios passed</span><b role="cell">12 / 15</b><b role="cell">15 / 15</b><strong role="cell">+3</strong>
+      </div>
+      <div class="baseline-row" role="row">
+        <span role="cell">Cost per suite</span><b role="cell">6.99¢</b><b role="cell">5.83¢</b><strong role="cell">↓ 17%</strong>
+      </div>
+      <div class="baseline-row" role="row">
+        <span role="cell">Median reply</span><b role="cell">4.9s</b><b role="cell">3.3s</b><strong role="cell">↓ 33%</strong>
+      </div>
+    </div>
+    <div class="baseline-verdict"><span>Regression safety</span><b>BEHAVIOR PRESERVED</b><span>Architecture</span><b>SIMPLIFIED</b></div>
+  </figure>
+
+  <p>After collapsing the router and four subagents into one Carl, the same suite passed 15 of 15. The cost of a run fell from 6.99¢ to 5.83¢, and median reply latency dropped from 4.9 seconds to 3.3.</p>
+
+  <p>The evals did not tell me how to redesign the architecture.</p>
+
+  <p>They told me whether the redesign preserved what mattered.</p>
+
+  <p>That distinction gave me permission to make a much larger change than I otherwise would have trusted.</p>
+
+  <!-- 03 -->
+  <section class="section-break" data-chapter="03" data-title="Complaints Become Promises">
+    <div class="section-break__numeral">03</div>
+    <div class="section-break__kicker">
+      <span class="num">03</span>
+      <span>Real failures, permanent requirements</span>
+    </div>
+    <h2>A complaint is an unlabeled <em>product requirement.</em></h2>
+  </section>
+
+  <p>As more people used Carl, the suite grew.</p>
+
+  <p>One booking provider began returning errors. Without an explicit rule, the model was capable of filling the silence with plausible-looking tee times.</p>
+
+  <p>The new requirement was not “produce a good response.”</p>
+
+  <p>It was: if the provider fails, acknowledge the uncertainty and never invent availability.</p>
+
+  <p>Another provider exposed tee times that existed on its internal schedule but were not publicly bookable. Carl confidently recommended them. The user clicked through and found nothing.</p>
+
+  <p>That became another fixture: never recommend a tee time unless it is available to the public.</p>
+
+  <p>Then a user told Carl he was willing to drive farther.</p>
+
+  <p>Carl searched six courses, then four, then six again. As the user became more flexible, the agent's effort did not increase. <a href="/musings/try-harder-agent-evals.html">That failure became its own investigation into search coverage and tool design.</a></p>
+
+  <!-- Visual 03: complaint to assertion -->
+  <figure class="promise-cards wide-visual" aria-labelledby="promise-title">
+    <figcaption class="visual-cap">
+      <span><b>03</b> Complaint compiler</span>
+      <span id="promise-title">Complaint → promise → assertion</span>
+    </figcaption>
+    <div class="promise-grid">
+      <article class="promise-card">
+        <div class="promise-complaint"><span>User</span><p>“That's the wrong link.”</p></div>
+        <i aria-hidden="true">↓</i>
+        <div class="promise-rule"><span>Promise</span><p>Recover from invalid booking links.</p></div>
+        <i aria-hidden="true">↓</i>
+        <div class="promise-assertion"><span>Assertion</span><code>new_link != old_link</code></div>
+      </article>
+      <article class="promise-card">
+        <div class="promise-complaint"><span>Provider</span><p>Availability request failed.</p></div>
+        <i aria-hidden="true">↓</i>
+        <div class="promise-rule"><span>Promise</span><p>Never invent tee times.</p></div>
+        <i aria-hidden="true">↓</i>
+        <div class="promise-assertion"><span>Assertion</span><code>results.length == 0</code></div>
+      </article>
+      <article class="promise-card">
+        <div class="promise-complaint"><span>User</span><p>“Truly nothing else?”</p></div>
+        <i aria-hidden="true">↓</i>
+        <div class="promise-rule"><span>Promise</span><p>Wider intent gets wider coverage.</p></div>
+        <i aria-hidden="true">↓</i>
+        <div class="promise-assertion"><span>Assertion</span><code>coverage_2 &gt; coverage_1</code></div>
+      </article>
+    </div>
+  </figure>
+
+  <p>That failure produced several new measurements:</p>
+
+  <ul>
+    <li>How many courses did Carl actually check?</li>
+    <li>How many tee times came back?</li>
+    <li>Did every result have enough open spots for the requested group?</li>
+    <li>Did a wider request produce wider coverage?</li>
+    <li>Did a specific-course request stay narrow?</li>
+  </ul>
+
+  <p>That last guardrail was important.</p>
+
+  <p>Once I taught Carl to search more broadly, I also needed to make sure it did not search the entire region when someone named one golf course.</p>
+
+  <p>A fix in one direction creates a new possible failure in the other.</p>
+
+  <p>Later, billing created a different class of product promise. A grandfathered beta user must never be told that they owe the standard subscription price. Someone asking to cancel should receive the account link, not a retention speech. A preview user should receive a useful result before the deterministic product gate asks them to start a trial.</p>
+
+  <p>None of these are measures of abstract model intelligence.</p>
+
+  <p>They are the accumulated definition of what Carl owes its users.</p>
+
+  <blockquote class="pull">A benchmark tells you what a model can do. <em>A complaint tells you what your product failed to do.</em></blockquote>
+
+  <!-- 04 -->
+  <section class="section-break" data-chapter="04" data-title="Hard Guarantees">
+    <div class="section-break__numeral">04</div>
+    <div class="section-break__kicker">
+      <span class="num">04</span>
+      <span>Judge only what needs judgment</span>
+    </div>
+    <h2>Not every failure should be judged by <em>another model.</em></h2>
+  </section>
+
+  <p>AI evals often get reduced to “LLM-as-a-judge.”</p>
+
+  <p>Carl does use a model judge, but only where judgment is actually required.</p>
+
+  <p>If Carl should ask for the player count before searching, I can deterministically assert that it called zero search tools.</p>
+
+  <p>If every returned tee time must have at least four open spots, code can inspect every result.</p>
+
+  <p>If a request names one course, the suite can verify that Carl checked no more than two.</p>
+
+  <p>If the product promises a fast acknowledgment, I can measure milliseconds.</p>
+
+  <p>If a conversation must stay below a cost budget, I can measure actual model spend.</p>
+
+  <p>Those are not matters of taste. Using another model to judge them would make a hard guarantee probabilistic for no reason.</p>
+
+  <p>Other requirements are difficult to express as exact matches.</p>
+
+  <p>Carl should ask someone's name naturally, without sounding like a form.</p>
+
+  <p>It should explain what it does in the voice of an old caddie, not as a corporate feature list.</p>
+
+  <p>When a booking system is unavailable, it should acknowledge the failure without claiming it found specific tee times.</p>
+
+  <p>There may be dozens of acceptable ways to say those things. A list of required phrases would reject perfectly good answers.</p>
+
+  <p>Those cases use a tightly scoped judge rubric with explicit passing and failing conditions.</p>
+
+  <div class="judge-split">
+    <div>
+      <span>19 scenarios</span>
+      <strong>CODE</strong>
+      <p>Tools, state, coverage, spots, latency, cost</p>
+    </div>
+    <div>
+      <span>14 scenarios</span>
+      <strong>MODEL</strong>
+      <p>Voice, explanation, natural language, uncertainty</p>
+    </div>
+  </div>
+
+  <p>Today, Carl's suite contains 33 scenarios and 54 conversational turns. Only 14 use model-judged rubrics. The rest lean on deterministic assertions.</p>
+
+  <blockquote class="thesis-line thesis-line--compact">
+    <span>Product rule / 02</span>
+    <p>Use models to judge <em>language.</em> Use code to enforce <em>promises.</em></p>
+  </blockquote>
+
+  <!-- 05 -->
+  <section class="section-break" data-chapter="05" data-title="Product Memory">
+    <div class="section-break__numeral">05</div>
+    <div class="section-break__kicker">
+      <span class="num">05</span>
+      <span>The suite outlives the prompt</span>
+    </div>
+    <h2>The eval suite became more accurate than <em>the prompt.</em></h2>
+  </section>
+
+  <p>Carl's prompt explains how the product should behave today.</p>
+
+  <p>The eval suite preserves why those instructions exist.</p>
+
+  <p>That difference compounds.</p>
+
+  <!-- Visual 04: growing product memory -->
+  <figure class="memory-timeline wide-visual" aria-labelledby="memory-title">
+    <figcaption class="visual-cap">
+      <span><b>04</b> Repository history</span>
+      <span id="memory-title">The growing memory of the product</span>
+    </figcaption>
+    <div class="timeline-track">
+      <div class="timeline-rail" aria-hidden="true"></div>
+      <article class="timeline-event timeline-event--origin">
+        <span>01 · BASELINE</span><i></i><strong>15</strong><p>real conversations</p>
+      </article>
+      <article class="timeline-event">
+        <span>02 · CONTEXT</span><i></i><strong>+</strong><p>multi-turn judgment</p>
+      </article>
+      <article class="timeline-event">
+        <span>03 · FAILURE</span><i></i><strong>+</strong><p>provider guardrails</p>
+      </article>
+      <article class="timeline-event">
+        <span>04 · COVERAGE</span><i></i><strong>+</strong><p>search measurements</p>
+      </article>
+      <article class="timeline-event">
+        <span>05 · BUSINESS</span><i></i><strong>+</strong><p>billing promises</p>
+      </article>
+      <article class="timeline-event">
+        <span>06 · MODELS</span><i></i><strong>+</strong><p>cost and latency races</p>
+      </article>
+      <article class="timeline-event timeline-event--now">
+        <span>07 · NOW</span><i></i><strong>33</strong><p>product promises</p>
+      </article>
+    </div>
+    <div class="timeline-summary"><span>19 → 54 conversational turns</span><span>Real behavior → permanent regression coverage</span></div>
+  </figure>
+
+  <p>The suite began with 15 conversations from early users.</p>
+
+  <p>A day later, it expanded to multi-turn scenarios and model-judged language.</p>
+
+  <p>A production provider failure added hallucination guardrails.</p>
+
+  <p>Several geography complaints added coverage measurement.</p>
+
+  <p>A pricing launch added billing and cancellation promises.</p>
+
+  <p>A new model-comparison harness added real cost, median latency, tail latency, and side-by-side failure analysis.</p>
+
+  <p>A free-preview experiment added the boundary between model judgment and a deterministic product gate.</p>
+
+  <p>The current suite contains more than twice as many scenarios as the original, and more than half were derived directly from real user behavior.</p>
+
+  <p>It now tests memory, tool selection, search breadth, overreach, provider failures, pricing, cancellation, activation, latency, cost, and voice.</p>
+
+  <p>No system prompt communicates the product that completely.</p>
+
+  <p>Prompts are optimized for the model that is running now. They change as the architecture changes. Instructions get rewritten, removed, or compressed.</p>
+
+  <p>The eval survives those changes.</p>
+
+  <blockquote class="product-promise product-promise--large">
+    <span>Prompt vs. memory</span>
+    <p>Prompts tell the model what you currently believe. Evals preserve what the product has already learned.</p>
+  </blockquote>
+
+  <p>That becomes especially valuable when changing models.</p>
+
+  <p>In one head-to-head run, a faster candidate reduced median reply latency from 2.9 seconds to 2.2 seconds.</p>
+
+  <p>If I had looked only at speed, it would have appeared to be an upgrade.</p>
+
+  <p>But it passed only 18 of 32 scenarios. The existing model passed 25, and cost slightly less.</p>
+
+  <p>The eval suite turned “this model feels faster” into “this product fails seven more promises.”</p>
+
+  <p>That is a much easier decision to make.</p>
+
+  <!-- 06 -->
+  <section class="section-break" data-chapter="06" data-title="The Production Loop">
+    <div class="section-break__numeral">06</div>
+    <div class="section-break__kicker">
+      <span class="num">06</span>
+      <span>A process learned from the failures</span>
+    </div>
+    <h2>My eval process now starts <em>in production.</em></h2>
+  </section>
+
+  <p>The loop I use is straightforward:</p>
+
+  <ol class="production-loop">
+    <li><strong>Observe the product.</strong><span>Look for complaints, abandoned flows, repeated retries, unexpected tool patterns, latency spikes, and moments where users push back.</span></li>
+    <li><strong>Reconstruct the experience.</strong><span>Combine the user's conversation with the agent's tool calls, outputs, timing, and state.</span></li>
+    <li><strong>Name the violated promise.</strong><span>Do not begin with “what response should the model generate?” Begin with “what did the product owe this person?”</span></li>
+    <li><strong>Choose the hardest reliable assertion.</strong><span>Use deterministic checks for observable facts. Use model judgment only where valid language can vary.</span></li>
+    <li><strong>Reproduce the relevant state.</strong><span>A realistic eval may need multiple turns, stored preferences, prior results, account status, or a simulated provider failure.</span></li>
+    <li><strong>Measure the whole product.</strong><span>A scenario can become more accurate while also becoming slower, more expensive, or worse elsewhere.</span></li>
+    <li><strong>Keep the fixture forever.</strong><span>The implementation can change. The lesson should not.</span></li>
+  </ol>
+
+  <p>This is why I am skeptical of eval suites made entirely from imagined “ideal” prompts.</p>
+
+  <p>Synthetic scenarios are useful for boundaries and counterexamples. Carl has several. But reality is better at finding the assumptions I did not know I was making.</p>
+
+  <p>Users do not speak like benchmark authors. Providers do not fail cleanly. Conversation state does not disappear between turns. A technically correct result can still lead to a broken booking page.</p>
+
+  <p>Customer complaints arrive pre-weighted by consequence.</p>
+
+  <p>They tell you which failures mattered enough for someone to notice.</p>
+
+  <h3>The goal is not zero failure</h3>
+
+  <p>An eval suite cannot make a probabilistic system infallible.</p>
+
+  <p>Carl will fail again. Every sufficiently interesting product will.</p>
+
+  <p>The goal is to make each failure purchase something permanent: a clearer product promise, a better boundary, or a new test.</p>
+
+  <p>I do not want an eval suite that proves Carl is intelligent.</p>
+
+  <p>I want one that prevents the product from forgetting what its users already taught it.</p>
+
+  <blockquote class="closing-memory">
+    <span>The product remembers</span>
+    <p>Your AI agent can forget. <em>Your product cannot.</em></p>
+  </blockquote>
+
+  <div class="contact-card">
+    <h4>Building an agentic product?</h4>
+    <p>If you are turning production failures into durable product guarantees, I’d like to compare notes.</p>
+    <a href="/#contact">Start a conversation →</a>
+  </div>
+
+  <div class="signoff">
+    Until next time,
+    <div class="signoff__name">Harsh</div>
+  </div>
+
+  <div class="next">
+    <div class="next__label">Keep reading</div>
+    <a href="/musings/try-harder-agent-evals.html" class="next__card">
+      <div class="next__card-meta"><span>MUSING 02 · 9 MIN</span><span class="arrow">→</span></div>
+      <div class="next__card-title">I Told My AI Agent to “Try Harder”</div>
+    </a>
+    <a href="/musings/software-engineering-age-of-agents.html" class="next__card">
+      <div class="next__card-meta"><span>MUSING 01 · 8 MIN</span><span class="arrow">→</span></div>
+      <div class="next__card-title">Software Engineering in the Age of Agents</div>
+    </a>
+  </div>
+
+</article>
+
+<footer class="musing-footer">
+  <div class="links">
+    <a href="https://twitter.com/_harshrana" target="_blank" rel="noopener">Twitter</a>
+    <a href="https://linkedin.com/in/harshrana1997" target="_blank" rel="noopener">LinkedIn</a>
+    <a href="https://github.com/hr23232323" target="_blank" rel="noopener">GitHub</a>
+    <a href="mailto:harsh@harshrana.com">Email</a>
+  </div>
+</footer>
+
+<style>
+  .hero--memory h1 {
+    font-size: clamp(46px, 7vw, 76px);
+  }
+
+  .complaint-intro {
+    margin: 0 0 56px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .post .complaint-intro p {
+    width: fit-content;
+    max-width: 90%;
+    margin: 0;
+    padding: 13px 17px;
+    border: 1px solid var(--rule-strong);
+    border-radius: 4px 16px 16px 16px;
+    background: var(--bg-card);
+    font-family: var(--sans);
+    font-size: 14px;
+    line-height: 1.35;
+    color: var(--ink-mid);
+  }
+
+  .post .complaint-intro p:nth-child(2) { margin-left: 12%; }
+  .post .complaint-intro p:nth-child(3) { margin-left: 5%; border-color: rgba(222,105,51,.45); color: var(--ink); }
+
+  .wide-visual {
+    width: calc(100% + 320px);
+    margin: 56px -160px;
+    border: 1px solid var(--rule-strong);
+    border-radius: 8px;
+    background: #111411;
+    overflow: hidden;
+  }
+
+  .visual-cap {
+    min-height: 44px;
+    padding: 0 18px;
+    border-bottom: 1px solid var(--rule);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    font-family: var(--mono);
+    font-size: 10px;
+    line-height: 1.3;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+  }
+
+  .visual-cap b { margin-right: 8px; color: var(--accent); font-weight: 500; }
+
+  .thesis-line,
+  .closing-memory {
+    margin: 68px -80px;
+    padding: 48px 64px;
+    border: 1px solid var(--rule-strong);
+    background: var(--bg-card);
+    text-align: center;
+  }
+
+  .thesis-line > span,
+  .closing-memory > span {
+    display: block;
+    margin-bottom: 18px;
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    color: var(--accent);
+  }
+
+  .post .thesis-line p,
+  .post .closing-memory p {
+    margin: 0;
+    font-size: clamp(31px, 4vw, 43px);
+    font-style: italic;
+    line-height: 1.16;
+  }
+
+  .thesis-line em,
+  .closing-memory em { color: var(--accent); }
+
+  .thesis-line--compact { margin-top: 56px; margin-bottom: 56px; }
+
+  .product-promise {
+    margin: 44px 0;
+    padding: 28px 30px;
+    border: 1px solid var(--rule-strong);
+    border-left: 3px solid var(--accent);
+    background: var(--bg-card);
+  }
+
+  .product-promise > span {
+    display: block;
+    margin-bottom: 12px;
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: .09em;
+    text-transform: uppercase;
+    color: var(--accent);
+  }
+
+  .post .product-promise p { margin: 0; font-size: 24px; font-style: italic; line-height: 1.35; }
+  .product-promise--large { margin: 64px -40px; padding: 38px 42px; }
+  .post .product-promise--large p { font-size: clamp(27px, 4vw, 36px); }
+
+  /* Visual 01 */
+  .observation-flow {
+    padding: 32px 24px;
+    display: grid;
+    grid-template-columns: 1fr 30px 1fr 30px 1fr 30px 1fr;
+    align-items: stretch;
+  }
+
+  .observation-flow > i {
+    display: grid;
+    place-items: center;
+    color: var(--ink-faint);
+    font-family: var(--mono);
+    font-size: 18px;
+    font-style: normal;
+  }
+
+  .observation-node {
+    min-height: 190px;
+    padding: 22px 18px;
+    border: 1px solid var(--rule-strong);
+    display: flex;
+    flex-direction: column;
+    background: rgba(255,255,255,.018);
+  }
+
+  .observation-node > span {
+    font-family: var(--mono);
+    font-size: 9px;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+  }
+
+  .observation-node > strong {
+    margin: auto 0 16px;
+    font-family: var(--sans);
+    font-size: 18px;
+    letter-spacing: -.02em;
+    color: var(--ink);
+  }
+
+  .post .observation-node > p {
+    margin: 0;
+    font-family: var(--sans);
+    font-size: 11px;
+    line-height: 1.4;
+    color: var(--ink-soft);
+  }
+
+  .observation-node--memory { border-color: var(--accent); background: rgba(61,138,100,.15); }
+  .observation-node--memory > span, .observation-node--memory > strong { color: var(--accent); }
+
+  .observation-foot {
+    border-top: 1px solid var(--rule);
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .observation-foot span {
+    padding: 15px 12px;
+    border-right: 1px solid var(--rule);
+    font-family: var(--mono);
+    font-size: 9px;
+    text-align: center;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+  }
+
+  .observation-foot span:last-child { border-right: 0; color: var(--accent); }
+
+  /* Visual 02 */
+  .architecture-summary {
+    min-height: 120px;
+    padding: 22px 28px;
+    display: grid;
+    grid-template-columns: 1fr 70px 1fr;
+    align-items: center;
+    background: rgba(255,255,255,.018);
+  }
+
+  .architecture-summary > div { display: flex; flex-direction: column; gap: 8px; }
+  .architecture-summary > div:last-child { text-align: right; }
+  .architecture-summary span { font-family: var(--mono); font-size: 9px; letter-spacing: .08em; text-transform: uppercase; color: var(--ink-faint); }
+  .architecture-summary strong { font-family: var(--sans); font-size: 17px; color: var(--ink-mid); }
+  .architecture-summary > div:last-child strong { color: var(--accent); }
+  .architecture-summary > i { text-align: center; color: var(--accent); font-family: var(--mono); font-size: 24px; font-style: normal; }
+
+  .baseline-table { padding: 0 28px; border-top: 1px solid var(--rule); }
+  .baseline-row {
+    min-height: 72px;
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 1fr 1fr;
+    align-items: center;
+    gap: 18px;
+    border-bottom: 1px solid var(--rule);
+  }
+  .baseline-row > span:first-child { font-family: var(--sans); font-size: 13px; color: var(--ink-mid); }
+  .baseline-row > b { font-family: var(--serif); font-size: 25px; font-weight: 400; font-variant-numeric: tabular-nums; }
+  .baseline-row > strong { width: fit-content; padding: 7px 9px; background: rgba(61,138,100,.14); color: #73bb91; font-family: var(--mono); font-size: 10px; }
+  .baseline-head { min-height: 40px; }
+  .baseline-head > span, .baseline-head > span:first-child { font-family: var(--mono); font-size: 9px; letter-spacing: .08em; text-transform: uppercase; color: var(--ink-faint); }
+  .baseline-verdict { padding: 20px 28px; display: grid; grid-template-columns: 1fr auto 1fr auto; align-items: center; gap: 18px; font-family: var(--mono); font-size: 9px; letter-spacing: .07em; text-transform: uppercase; color: var(--ink-soft); }
+  .baseline-verdict b { padding: 7px 9px; border: 1px solid var(--accent-soft); color: var(--accent); font-weight: 500; }
+
+  /* Visual 03 */
+  .promise-grid { padding: 28px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+  .promise-card { min-width: 0; border: 1px solid var(--rule-strong); background: rgba(255,255,255,.018); }
+  .promise-card > i { height: 28px; display: grid; place-items: center; color: var(--ink-faint); font-family: var(--mono); font-size: 11px; font-style: normal; }
+  .promise-complaint, .promise-rule, .promise-assertion { min-height: 112px; padding: 16px; border-bottom: 1px solid var(--rule); }
+  .promise-assertion { min-height: 86px; border-bottom: 0; background: rgba(61,138,100,.08); }
+  .promise-complaint span, .promise-rule span, .promise-assertion span { display: block; margin-bottom: 10px; font-family: var(--mono); font-size: 8px; letter-spacing: .08em; text-transform: uppercase; color: var(--ink-faint); }
+  .post .promise-complaint p, .post .promise-rule p { margin: 0; font-family: var(--sans); font-size: 12px; line-height: 1.4; color: var(--ink-mid); }
+  .post .promise-complaint p { font-style: italic; color: var(--ink); }
+  .promise-assertion span { color: var(--accent); }
+  .promise-assertion code { padding: 0; border: 0; background: transparent; color: #73bb91; font-size: 10px; white-space: normal; }
+
+  .judge-split { margin: 48px 0; display: grid; grid-template-columns: 1.35fr 1fr; border: 1px solid var(--rule-strong); }
+  .judge-split > div { min-height: 190px; padding: 25px; display: flex; flex-direction: column; }
+  .judge-split > div:first-child { border-right: 1px solid var(--rule); background: rgba(61,138,100,.09); }
+  .judge-split span { font-family: var(--mono); font-size: 9px; letter-spacing: .08em; text-transform: uppercase; color: var(--ink-soft); }
+  .judge-split strong { margin: auto 0 12px; font-family: var(--serif); font-size: 47px; font-weight: 400; color: var(--accent); }
+  .judge-split > div:last-child strong { color: var(--ink-mid); }
+  .post .judge-split p { margin: 0; font-family: var(--sans); font-size: 11px; line-height: 1.5; color: var(--ink-soft); }
+
+  /* Visual 04 */
+  .timeline-track {
+    min-height: 310px;
+    padding: 42px 26px 30px;
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 12px;
+    position: relative;
+  }
+  .timeline-rail { position: absolute; top: 118px; left: 7%; right: 7%; height: 2px; background: var(--rule-strong); }
+  .timeline-event { min-width: 0; position: relative; z-index: 1; display: grid; grid-template-rows: 48px 40px 54px auto; justify-items: center; text-align: center; }
+  .timeline-event > span { font-family: var(--mono); font-size: 8px; line-height: 1.35; letter-spacing: .06em; color: var(--ink-faint); }
+  .timeline-event > i { width: 12px; height: 12px; margin-top: 22px; border: 3px solid #111411; border-radius: 50%; background: var(--ink-faint); box-shadow: 0 0 0 1px var(--rule-strong); }
+  .timeline-event > strong { align-self: end; font-family: var(--serif); font-size: 38px; font-weight: 400; line-height: 1; color: var(--ink-mid); }
+  .post .timeline-event > p { margin: 8px 0 0; font-family: var(--sans); font-size: 9px; line-height: 1.4; color: var(--ink-soft); }
+  .timeline-event--origin > i, .timeline-event--now > i { background: var(--accent); box-shadow: 0 0 0 1px var(--accent), 0 0 0 6px rgba(61,138,100,.08); }
+  .timeline-event--origin > strong, .timeline-event--now > strong { color: var(--accent); }
+  .timeline-summary { border-top: 1px solid var(--rule); display: flex; justify-content: space-between; gap: 20px; padding: 18px 26px; font-family: var(--mono); font-size: 9px; letter-spacing: .06em; text-transform: uppercase; color: var(--ink-soft); }
+  .timeline-summary span:last-child { color: var(--accent); }
+
+  .production-loop { margin: 40px 0 56px; border-top: 1px solid var(--rule); }
+  .post .production-loop li { min-height: 102px; margin: 0; padding: 23px 18px 23px 72px; border-bottom: 1px solid var(--rule); display: grid; grid-template-columns: 190px 1fr; gap: 22px; align-items: start; }
+  .post .production-loop li::before { left: 18px; top: 22px; font-size: 11px; }
+  .production-loop strong { font-family: var(--sans); font-size: 13px; color: var(--ink); }
+  .production-loop span { font-family: var(--sans); font-size: 12px; line-height: 1.55; color: var(--ink-soft); }
+
+  .closing-memory { margin-top: 72px; margin-bottom: 72px; }
+
+  @media (max-width: 1040px) {
+    .wide-visual { width: calc(100% + 160px); margin-left: -80px; margin-right: -80px; }
+  }
+
+  @media (max-width: 800px) {
+    .wide-visual { width: 100%; margin: 48px 0; }
+    .thesis-line, .closing-memory { margin-left: 0; margin-right: 0; padding: 40px 28px; }
+    .product-promise--large { margin-left: 0; margin-right: 0; }
+    .observation-flow { grid-template-columns: 1fr; gap: 0; }
+    .observation-flow > i { min-height: 30px; transform: rotate(90deg); }
+    .observation-node { min-height: 150px; }
+    .observation-foot { display: none; }
+    .promise-grid { grid-template-columns: 1fr; }
+    .promise-card { display: grid; grid-template-columns: 1fr 26px 1fr 26px 1fr; align-items: stretch; }
+    .promise-card > i { height: auto; transform: rotate(-90deg); }
+    .promise-complaint, .promise-rule, .promise-assertion { min-height: 130px; border-bottom: 0; }
+    .timeline-track { grid-template-columns: 1fr; padding: 28px; gap: 0; }
+    .timeline-rail { top: 42px; bottom: 42px; left: 57px; right: auto; width: 2px; height: auto; }
+    .timeline-event { min-height: 82px; grid-template-columns: 72px 36px 58px 1fr; grid-template-rows: 1fr; align-items: center; justify-items: start; text-align: left; }
+    .timeline-event > i { margin: 0; justify-self: center; }
+    .timeline-event > strong { align-self: center; font-size: 31px; }
+    .post .timeline-event > p { margin: 0; }
+  }
+
+  @media (max-width: 620px) {
+    .hero--memory h1 { font-size: clamp(43px, 13vw, 60px); }
+    .visual-cap { align-items: flex-start; flex-direction: column; gap: 4px; padding-top: 13px; padding-bottom: 13px; }
+    .architecture-summary { grid-template-columns: 1fr; gap: 14px; }
+    .architecture-summary > div:last-child { text-align: left; }
+    .architecture-summary > i { transform: rotate(90deg); }
+    .baseline-table { padding: 0 14px; }
+    .baseline-row { grid-template-columns: 1.35fr .8fr .8fr; gap: 8px; }
+    .baseline-row > *:nth-child(2) { display: none; }
+    .baseline-row > b { font-size: 20px; }
+    .baseline-row > span:first-child { font-size: 11px; }
+    .baseline-verdict { grid-template-columns: 1fr auto; padding: 18px 14px; }
+    .promise-grid { padding: 16px; }
+    .promise-card { grid-template-columns: 1fr; }
+    .promise-card > i { height: 28px; transform: none; }
+    .promise-complaint, .promise-rule, .promise-assertion { min-height: auto; border-bottom: 1px solid var(--rule); }
+    .promise-assertion { border-bottom: 0; }
+    .judge-split { grid-template-columns: 1fr; }
+    .judge-split > div:first-child { border-right: 0; border-bottom: 1px solid var(--rule); }
+    .timeline-summary { flex-direction: column; }
+    .post .production-loop li { grid-template-columns: 1fr; gap: 10px; padding-left: 62px; }
+  }
+</style>
+
+<script src="components.js"></script>
+</body>
+</html>

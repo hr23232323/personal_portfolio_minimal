@@ -115,9 +115,11 @@ It has made superficial agency easier to perform.
 
 So do not show me only what you started.
 
-Show me what you released before it felt completely safe. Show me the feedback you received, especially the feedback you disliked. Show me the metric that did not move. Show me what you changed afterward.
-
-And show me the project you killed once reality gave you the answer.
+- What did you release before it felt completely safe?
+- What feedback did you receive, especially the feedback you disliked?
+- Which metric did not move?
+- What did you change afterward?
+- What did you kill once reality gave you the answer?
 
 Starting is abundant now.
 

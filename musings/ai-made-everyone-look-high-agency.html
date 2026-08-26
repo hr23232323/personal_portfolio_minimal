@@ -223,45 +223,33 @@
 
   <p>The scarce skills will move further down the loop:</p>
 
-  <figure class="agency-loop wide-visual" aria-labelledby="agency-loop-title">
-    <figcaption class="visual-cap">
-      <span><b>02</b> The agency loop</span>
-      <span id="agency-loop-title">AI compresses the beginning. Ownership lives downstream.</span>
-    </figcaption>
-    <div class="agency-stages">
-      <div class="agency-stage agency-stage--start">
-        <span>01 · Compressed</span>
-        <strong>START</strong>
-        <p>Turn the idea into an artifact.</p>
-      </div>
-      <i aria-hidden="true">→</i>
-      <div class="agency-stage">
-        <span>02 · Exposure</span>
-        <strong>SHIP</strong>
-        <p>Put the imperfect work in reach.</p>
-      </div>
-      <i aria-hidden="true">→</i>
-      <div class="agency-stage">
-        <span>03 · Truth</span>
-        <strong>OBSERVE</strong>
-        <p>Measure behavior, not intent.</p>
-      </div>
-      <i aria-hidden="true">→</i>
-      <div class="agency-stage agency-stage--decide">
-        <span>04 · Ownership</span>
-        <strong>DECIDE</strong>
-        <p>Iterate, hand off, or kill.</p>
-      </div>
-    </div>
-    <div class="agency-signal">
-      <div><span>ABUNDANT</span><i></i></div>
-      <div><i></i><span>SCARCE SIGNAL</span></div>
-    </div>
-  </figure>
+  <p><strong>START → SHIP → OBSERVE → DECIDE</strong></p>
 
   <p>AI dramatically compresses the first step.</p>
 
   <p>It does not automatically create ownership of the rest.</p>
+
+  <figure class="agency-proof wide-visual" aria-labelledby="agency-proof-title">
+    <figcaption class="visual-cap">
+      <span><b>02</b> The agency signal</span>
+      <span id="agency-proof-title">What looks like agency / what proves agency</span>
+    </figcaption>
+    <table class="agency-proof-table">
+      <thead>
+        <tr><th scope="col">Visible immediately</th><th scope="col">Visible after reality</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Ideas</td><td>Adoption</td></tr>
+        <tr><td>Prototypes</td><td>Changed behavior</td></tr>
+        <tr><td>Demos</td><td>Uncomfortable data</td></tr>
+        <tr><td>Launches</td><td>Iteration or termination</td></tr>
+      </tbody>
+    </table>
+    <div class="agency-proof-foot">
+      <span>AI made the left column abundant.</span>
+      <strong>Careers are built in the right.</strong>
+    </div>
+  </figure>
 
   <p>This means managers will need to become more careful about what they reward. Demos, documents, and launches are visible. Adoption, iteration, cleanup, and killing failed work are quieter.</p>
 
@@ -298,10 +286,6 @@
     <div><span>04</span><p>What did you change afterward?</p></div>
     <div class="signal-ledger--kill"><span>05</span><p>What did you kill once reality gave you the answer?</p></div>
   </div>
-
-  <p>Show me what you released before it felt completely safe. Show me the feedback you received, especially the feedback you disliked. Show me the metric that did not move. Show me what you changed afterward.</p>
-
-  <p>And show me the project you killed once reality gave you the answer.</p>
 
   <blockquote class="closing-agency">
     <span>The new signal</span>
@@ -464,48 +448,58 @@
 
   .closure-foot strong { color: var(--accent); font-weight: 500; }
 
-  .agency-stages {
-    padding: 34px 26px;
-    display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr) 30px) minmax(0, 1fr);
-    align-items: stretch;
+  .agency-proof-table {
+    width: 100%;
+    border-collapse: collapse;
+    table-layout: fixed;
   }
 
-  .agency-stages > i { display: grid; place-items: center; font-family: var(--mono); font-size: 12px; font-style: normal; color: var(--ink-faint); }
+  .agency-proof-table th,
+  .agency-proof-table td {
+    width: 50%;
+    padding: 22px 28px;
+    border-bottom: 1px solid var(--rule);
+    text-align: left;
+  }
 
-  .agency-stage {
-    min-width: 0;
-    min-height: 225px;
-    padding: 18px;
+  .agency-proof-table th + th,
+  .agency-proof-table td + td { border-left: 1px solid var(--rule); }
+
+  .agency-proof-table th {
+    font-family: var(--mono);
+    font-size: 9px;
+    font-weight: 500;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+  }
+
+  .agency-proof-table th:last-child { color: var(--accent); background: rgba(61,138,100,.05); }
+
+  .agency-proof-table td {
+    font-family: var(--serif);
+    font-size: clamp(22px, 3vw, 31px);
+    line-height: 1.15;
+    color: var(--ink-soft);
+  }
+
+  .agency-proof-table td:last-child { color: var(--ink); background: rgba(61,138,100,.05); }
+
+  .agency-proof-foot {
+    min-height: 58px;
+    padding: 0 28px;
     display: flex;
-    flex-direction: column;
-    border: 1px solid var(--rule-strong);
-    background: rgba(255,255,255,.015);
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    font-family: var(--mono);
+    font-size: 9px;
+    letter-spacing: .06em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
   }
 
-  .agency-stage > span { font-family: var(--mono); font-size: 8px; letter-spacing: .06em; color: var(--ink-faint); }
-  .agency-stage > strong { margin: auto 0 16px; font-family: var(--sans); font-size: 19px; font-weight: 600; letter-spacing: .03em; color: var(--ink); }
-  .post .agency-stage > p { margin: 0; font-family: var(--sans); font-size: 10px; line-height: 1.45; color: var(--ink-soft); }
-
-  .agency-stage--start { border-color: var(--accent-soft); background: rgba(61,138,100,.06); }
-  .agency-stage--start > strong { color: var(--ink-mid); }
-  .agency-stage--decide { border-color: var(--accent); background: rgba(61,138,100,.14); }
-  .agency-stage--decide > span, .agency-stage--decide > strong { color: var(--accent); }
-
-  .agency-signal {
-    min-height: 54px;
-    padding: 0 26px 20px;
-    display: grid;
-    grid-template-columns: 1fr 3fr;
-    gap: 30px;
-  }
-
-  .agency-signal > div { display: flex; flex-direction: column; gap: 8px; }
-  .agency-signal > div:last-child { align-items: flex-end; }
-  .agency-signal span { font-family: var(--mono); font-size: 8px; letter-spacing: .08em; color: var(--ink-faint); }
-  .agency-signal > div:last-child span { color: var(--accent); }
-  .agency-signal i { width: 100%; height: 2px; background: var(--rule-strong); }
-  .agency-signal > div:last-child i { background: linear-gradient(90deg, var(--rule-strong), var(--accent)); }
+  .agency-proof-foot strong { color: var(--accent); font-weight: 500; }
 
   .signal-ledger {
     margin: 44px 0 50px;
@@ -535,10 +529,6 @@
     .agency-thesis, .closing-agency { margin-left: 0; margin-right: 0; padding: 38px 28px; }
     .closure-panels { grid-template-columns: 1fr; }
     .closure-panel:first-child { border-right: 0; border-bottom: 1px solid var(--rule); }
-    .agency-stages { grid-template-columns: 1fr; gap: 0; }
-    .agency-stages > i { min-height: 34px; transform: rotate(90deg); }
-    .agency-stage { min-height: 180px; }
-    .agency-signal { display: none; }
   }
 
   @media (max-width: 620px) {
@@ -548,6 +538,11 @@
     .closure-path { gap: 4px; }
     .closure-path b { min-height: 52px; font-size: 8px; }
     .closure-foot { align-items: flex-start; flex-direction: column; padding-top: 14px; padding-bottom: 14px; }
+    .agency-proof-table th,
+    .agency-proof-table td { padding: 18px 14px; }
+    .agency-proof-table th { font-size: 8px; }
+    .agency-proof-table td { font-size: 21px; }
+    .agency-proof-foot { align-items: flex-start; flex-direction: column; padding-top: 16px; padding-bottom: 16px; }
   }
 </style>
 

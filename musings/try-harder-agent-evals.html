@@ -61,7 +61,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300..700;1,6..72,300..700&amp;family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="components.css">
+  <link rel="stylesheet" href="components.css?v=4">
 </head>
 <body>
 
@@ -76,6 +76,7 @@
 <article class="post post--experiment">
 
   <section class="hero hero--experiment">
+    <img class="hero__art" src="/img/musings/covers/try-harder-cover.webp" alt="" width="800" height="1200">
     <div class="hero__eyebrow">Musing No. 02 · April 2026</div>
     <h1>I Told My AI Agent to <em>“Try Harder.”</em> It Got 8% Worse, 66% More Expensive, and Its Tail Latency Nearly Doubled.</h1>
     <p class="hero__deck">A change that fixed the exact behavior I was targeting quietly made the overall product worse.</p>
@@ -566,7 +567,7 @@
     margin: 56px -160px;
     border: 1px solid var(--rule-strong);
     border-radius: 8px;
-    background: #111411;
+    background: #eee6d8;
     overflow: hidden;
   }
 
@@ -622,7 +623,7 @@
     gap: 14px;
     border: 1px solid var(--rule-strong);
     border-radius: 5px 18px 18px 18px;
-    background: rgba(255,255,255,.025);
+    background: rgba(25,26,22,.025);
   }
 
   .request-bubble > span {
@@ -667,7 +668,7 @@
 
   .coverage-track {
     height: 8px;
-    background: rgba(255,255,255,.06);
+    background: rgba(25,26,22,.06);
     position: relative;
     overflow: hidden;
   }
@@ -878,7 +879,7 @@
   .architecture-panel {
     min-width: 0;
     border: 1px solid var(--rule-strong);
-    background: rgba(255,255,255,.018);
+    background: rgba(25,26,22,.025);
   }
 
   .architecture-panel > header {
@@ -951,7 +952,7 @@
     bottom: -8px;
     z-index: 2;
     color: var(--ink-faint);
-    background: #111411;
+    background: var(--bg-elev);
     font-family: var(--mono);
     font-size: 10px;
   }

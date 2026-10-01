@@ -39,7 +39,7 @@
     }
     </script>
 
-    <link rel="stylesheet" href="styles.css?v=8">
+    <link rel="stylesheet" href="styles.css?v=9">
     <script src="/contact.js?v=1" defer></script>
 </head>
 <body>
@@ -67,47 +67,75 @@
         </section>
 
         <section class="work" aria-labelledby="work-title">
-            <h2 id="work-title">The kind of work I mean</h2>
+            <header class="work-header">
+                <p class="work-kicker">The kind of work I mean</p>
+                <h2 id="work-title">A few ways the workday could feel lighter.</h2>
+                <p>These are examples, not packages. We would begin with how your business actually works.</p>
+            </header>
 
-            <article class="work-item">
-                <figure class="work-doodle reviews-doodle" aria-hidden="true">
-                    <img src="/img/small-business/reviews-cutout-v3.webp" alt="" width="1280" height="854" loading="lazy">
-                </figure>
-                <div>
-                    <h3>Turn happy customers into more reviews, without remembering to ask</h3>
-                    <p>Ask at the right moment, make responding easy, and know who has already received a request. No one has to remember another weekly task.</p>
-                </div>
-            </article>
+            <div class="example-board">
+                <article class="example-card reviews-card">
+                    <div class="example-art">
+                        <img src="/img/small-business/reviews-cutout-v3.webp" alt="Two people sharing a positive customer moment" width="1280" height="854" loading="lazy">
+                    </div>
+                    <div class="example-copy">
+                        <span class="example-number">01 / Reviews</span>
+                        <h3>Turn a happy customer into a review while the good feeling is fresh.</h3>
+                        <div class="before-after">
+                            <p><span>Before</span>Someone remembers on Friday that nobody asked.</p>
+                            <p><span>After</span>The right customer gets a thoughtful request at the right moment.</p>
+                        </div>
+                    </div>
+                    <p class="example-note">kind, timely, not spammy</p>
+                </article>
 
-            <article class="work-item">
-                <figure class="work-doodle followup-doodle" aria-hidden="true">
-                    <img src="/img/small-business/follow-up-cutout-v3.webp" alt="" width="1280" height="854" loading="lazy">
-                </figure>
-                <div>
-                    <h3>Respond to good leads before they go cold</h3>
-                    <p>Bring calls, forms, emails, and reminders into one simple flow so the right person knows who needs a response and what should happen next.</p>
-                </div>
-            </article>
+                <article class="example-card leads-card">
+                    <div class="example-copy">
+                        <span class="example-number">02 / Follow-up</span>
+                        <h3>Know which good leads need a response before they go cold.</h3>
+                        <p class="example-description">Bring calls, forms, emails, and reminders into one simple flow. The right person sees who needs help and what should happen next.</p>
+                    </div>
+                    <div class="mini-inbox" aria-label="Example follow-up list">
+                        <div class="inbox-head"><span>Today</span><span>3 need a reply</span></div>
+                        <div class="inbox-row"><i class="dot hot"></i><p><strong>Maria</strong><span>Asked about Saturday availability</span></p><b>12m</b></div>
+                        <div class="inbox-row"><i class="dot warm"></i><p><strong>Devon</strong><span>Opened estimate twice</span></p><b>46m</b></div>
+                        <div class="inbox-row"><i class="dot cool"></i><p><strong>Sam</strong><span>Needs one missing detail</span></p><b>1h</b></div>
+                        <div class="inbox-action">A helpful next step, already drafted →</div>
+                    </div>
+                    <figure class="leads-cutout" aria-hidden="true">
+                        <img src="/img/small-business/follow-up-cutout-v3.webp" alt="" width="1280" height="854" loading="lazy">
+                    </figure>
+                </article>
 
-            <article class="work-item">
-                <figure class="work-doodle paperwork-doodle" aria-hidden="true">
-                    <img src="/img/small-business/paperwork-cutout-v3.webp" alt="" width="1280" height="854" loading="lazy">
-                </figure>
-                <div>
-                    <h3>Finish paperwork without entering the same information twice</h3>
-                    <p>Collect information once, reuse it safely, and create the forms or documents your team needs without copying the same details all afternoon.</p>
-                </div>
-            </article>
+                <article class="example-card paperwork-card">
+                    <div class="paper-stack" aria-hidden="true">
+                        <div class="paper back-paper"></div>
+                        <div class="paper front-paper">
+                            <span>New customer</span>
+                            <i></i><i></i><i></i><i class="short"></i>
+                            <b>Ready to send ✓</b>
+                        </div>
+                        <img src="/img/small-business/paperwork-cutout-v3.webp" alt="" width="1280" height="854" loading="lazy">
+                    </div>
+                    <div class="example-copy">
+                        <span class="example-number">03 / Paperwork</span>
+                        <h3>Collect information once. Stop entering it everywhere else.</h3>
+                        <p class="example-description">Create the forms, documents, and updates your team needs without copying the same customer details all afternoon.</p>
+                    </div>
+                </article>
 
-            <article class="work-item">
-                <figure class="work-doodle returning-doodle" aria-hidden="true">
-                    <img src="/img/small-business/returning-customer-cutout-v3.webp" alt="" width="1280" height="960" loading="lazy">
-                </figure>
-                <div>
-                    <h3>Know which customers are ready to hear from you again</h3>
-                    <p>Notice useful moments to check in, offer the next service, or bring a good customer back without turning every relationship into a campaign.</p>
-                </div>
-            </article>
+                <article class="example-card returning-card">
+                    <div class="example-copy">
+                        <span class="example-number">04 / Good customers</span>
+                        <h3>Remember who might genuinely want to hear from you again.</h3>
+                        <p class="example-description">Notice useful moments to check in, offer the next service, or welcome someone back without turning every relationship into a campaign.</p>
+                    </div>
+                    <figure aria-hidden="true">
+                        <img src="/img/small-business/returning-customer-cutout-v3.webp" alt="" width="1280" height="960" loading="lazy">
+                    </figure>
+                    <div class="postcard" aria-hidden="true"><span>A small nudge</span><strong>“It might be time.”</strong></div>
+                </article>
+            </div>
         </section>
 
         <section class="about" aria-labelledby="about-title">

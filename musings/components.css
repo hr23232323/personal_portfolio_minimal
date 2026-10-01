@@ -58,6 +58,7 @@ a { color: inherit; }
   text-align: center;
   border-bottom: 1px solid var(--rule);
   position: relative;
+  view-transition-name: site-header;
 }
 .topbar__brand {
   font-family: var(--sans);
@@ -196,7 +197,31 @@ a { color: inherit; }
 .hero__meta b { color: #fff8e9; font-weight: 600; }
 
 @view-transition { navigation: auto; }
-::view-transition-old(featured-book), ::view-transition-new(featured-book) { animation-duration: .45s; }
+::view-transition-group(root) {
+  animation-duration: .62s;
+  animation-timing-function: cubic-bezier(.2, .75, .2, 1);
+}
+::view-transition-old(root) { animation: page-leave .26s ease both; }
+::view-transition-new(root) { animation: page-arrive .62s cubic-bezier(.2, .75, .2, 1) both; }
+::view-transition-group(site-header) {
+  z-index: 20;
+  animation-duration: .48s;
+  animation-timing-function: cubic-bezier(.2, .75, .2, 1);
+}
+::view-transition-group(featured-book) {
+  z-index: 15;
+  animation-duration: .88s;
+  animation-timing-function: cubic-bezier(.2, .8, .2, 1);
+}
+::view-transition-old(featured-book), ::view-transition-new(featured-book) {
+  animation-duration: .88s;
+  mix-blend-mode: normal;
+}
+@keyframes page-leave { to { opacity: 0; } }
+@keyframes page-arrive {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
 
 /* ─── Body paragraphs ─── */
 .post p {
@@ -619,4 +644,9 @@ a { color: inherit; }
 
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
+  ::view-transition-group(root),
+  ::view-transition-group(site-header),
+  ::view-transition-group(featured-book) {
+    animation-duration: 1ms;
+  }
 }

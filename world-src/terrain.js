@@ -64,10 +64,10 @@ export function isWater(x, z) {
     return terrainHeight(x, z) < WATER_Y + 0.12;
 }
 
-// One float height map and one RGBA mask: fairway, green, path, sand.
+// One single-channel float height map and one RGBA mask: fairway, green, path, sand.
 export function bakeMaps() {
     const n = 1024;
-    const heights = new Float32Array(n * n * 4);
+    const heights = new Float32Array(n * n);
     const masks = new Uint8Array(n * n * 4);
     for (let j = 0; j < n; j++) {
         for (let i = 0; i < n; i++) {
@@ -75,7 +75,7 @@ export function bakeMaps() {
             const z = ((j + 0.5) / n - 0.5) * SIZE;
             const k = (j * n + i) * 4;
             const h = terrainHeight(x, z);
-            heights[k] = h;
+            heights[j * n + i] = h;
 
             const width = 13 + 2 * Math.sin(z * 0.08);
             let fairway = 1 - smooth(width - 0.8, width + 0.8, distToLine(x, z, FAIRWAY));
@@ -97,7 +97,7 @@ export function bakeMaps() {
             masks[k + 3] = sand * 255;
         }
     }
-    const heightTex = new THREE.DataTexture(heights, n, n, THREE.RGBAFormat, THREE.FloatType);
+    const heightTex = new THREE.DataTexture(heights, n, n, THREE.RedFormat, THREE.FloatType);
     const maskTex = new THREE.DataTexture(masks, n, n, THREE.RGBAFormat);
     maskTex.magFilter = THREE.LinearFilter;
     maskTex.minFilter = THREE.LinearFilter;

@@ -22,6 +22,7 @@ const coarse = matchMedia('(pointer: coarse)').matches;
 const calm = matchMedia('(prefers-reduced-motion: reduce)').matches;
 const quality = params.get('q') || (coarse ? 'low' : 'high');
 const high = quality === 'high';
+const assets = (folder) => `/world/assets/${folder}${high ? '' : '-lite'}`;
 
 const $ = (id) => document.getElementById(id);
 let player;
@@ -32,6 +33,27 @@ const setLofi = (on) => {
 };
 $('text-toggle').onclick = () => setLofi(!document.body.classList.contains('lofi'));
 
+// iOS kills a tab that runs out of memory and reloads it, which would crash again
+// forever. A mark left behind means the last visit never got to leave the page.
+const OPEN_KEY = 'world-open';
+const markOpen = (open) => {
+    try {
+        if (open) localStorage.setItem(OPEN_KEY, Date.now());
+        else localStorage.removeItem(OPEN_KEY);
+    } catch { /* Private browsing can block storage. The guard just won't apply. */ }
+};
+let lastOpen = 0;
+try { lastOpen = Number(localStorage.getItem(OPEN_KEY)); } catch { /* Same as above. */ }
+if (Date.now() - lastOpen < 10 * 60 * 1000) {
+    document.body.classList.add('no-webgl');
+    setLofi(true);
+    throw new Error('The last visit crashed, showing text version');
+}
+markOpen(true);
+addEventListener('pagehide', () => markOpen(false));
+addEventListener('pageshow', () => markOpen(true));
+document.addEventListener('visibilitychange', () => markOpen(!document.hidden));
+
 let renderer;
 try {
     renderer = new THREE.WebGLRenderer({ antialias: false, powerPreference: 'high-performance' });
@@ -41,7 +63,7 @@ try {
     throw new Error('WebGL unavailable, showing text version');
 }
 
-let pixelRatio = Math.min(devicePixelRatio, high ? 1.5 : 1);
+let pixelRatio = Math.min(devicePixelRatio, 1.5);
 renderer.setPixelRatio(pixelRatio);
 renderer.setSize(innerWidth, innerHeight);
 renderer.toneMapping = THREE.ACESFilmicToneMapping;
@@ -85,7 +107,7 @@ const texLoader = new THREE.TextureLoader(manager);
 function loadTex(name, repeat = 1, parts = ['diff', 'nor', 'rough']) {
     const out = {};
     const get = (part, srgb) => {
-        const t = texLoader.load(`/world/assets/tex/${name}_${part}.webp`);
+        const t = texLoader.load(`${assets('tex')}/${name}_${part}.webp`);
         t.wrapS = t.wrapT = THREE.RepeatWrapping;
         t.repeat.set(repeat, repeat);
         t.anisotropy = 8;
@@ -110,14 +132,14 @@ const grassTex = loadTex('leafy_grass', 1, ['diff', 'nor']);
 const sandTex = loadTex('coast_sand_01', 1, ['diff']);
 const gravelTex = loadTex('gravel_floor', 1, ['diff']);
 const treeTextures = ['tree_small_02', 'island_tree_02', 'island_tree_01', 'jacaranda_tree'].map((n) => {
-    const t = texLoader.load(`/world/assets/img/${n}.webp`);
+    const t = texLoader.load(`${assets('trees')}/${n}.webp`);
     t.colorSpace = THREE.SRGBColorSpace;
     return t;
 });
 
-const sky = new HDRLoader(manager).loadAsync('/world/assets/hdri/sunset_fairway_2k.hdr');
+const sky = new HDRLoader(manager).loadAsync(`/world/assets/hdri/sunset_fairway_${high ? '2k' : '1k'}.hdr`);
 const fontsReady = document.fonts.load('700 100px "Bricolage Grotesque"');
-await Promise.all([loadModels(manager), sky.then((hdr) => {
+await Promise.all([loadModels(manager, assets('models')), sky.then((hdr) => {
     hdr.mapping = THREE.EquirectangularReflectionMapping;
     scene.background = hdr;
     scene.environment = hdr;
@@ -137,7 +159,7 @@ const { heightTex, maskTex } = bakeMaps();
 scene.add(makeTerrain({ maskTex, grass: { map: grassTex.map, normal: grassTex.normalMap }, sand: { map: sandTex.map }, gravel: { map: gravelTex.map }, pools: POST_SPOTS }));
 const water = makeWater();
 scene.add(water);
-const grass = makeGrass({ heightTex, maskTex, count: high ? 340000 : 90000 });
+const grass = makeGrass({ heightTex, maskTex, count: high ? 340000 : 50000 });
 scene.add(grass);
 scene.add(makeCabin(tex));
 const { flag, pit, reactions } = buildProps(scene, tex, texLoader);
@@ -168,7 +190,7 @@ await nextFrame();
 const sun = new THREE.DirectionalLight(0xff9d63, 1.15);
 sun.position.set(-34, 15, -72);
 sun.castShadow = true;
-sun.shadow.mapSize.set(4096, 4096);
+sun.shadow.mapSize.setScalar(high ? 4096 : 1024);
 Object.assign(sun.shadow.camera, { left: -62, right: 62, top: 42, bottom: -42, near: 1, far: 190 });
 sun.shadow.bias = -0.0003;
 sun.shadow.normalBias = 0.05;
@@ -189,7 +211,7 @@ const addLight = (color, intensity, distance, x, y, z, shadow = false) => {
     scene.add(l);
     return l;
 };
-const room = addLight(0xffb169, 30, 15, 0, 2.75, -5.2, true);
+const room = addLight(0xffb169, 30, 15, 0, 2.75, -5.2, high);
 addLight(0xffc08a, 5, 4.5, -0.75, FLOOR_Y + 1.5, -8.6);
 addLight(0xffb978, 13, 10, 0, 2.85, -1.2);
 addLight(0xffb36b, 26, 17, 10, 2.9, 0.5);
@@ -501,8 +523,10 @@ renderer.compile(scene, camera);
 updateTitle(0);
 sun.shadow.autoUpdate = false;
 sun.shadow.needsUpdate = true;
-room.shadow.autoUpdate = false;
-room.shadow.needsUpdate = true;
+if (high) {
+    room.shadow.autoUpdate = false;
+    room.shadow.needsUpdate = true;
+}
 
 // Hold the reveal until the world has drawn a frame and the ball has reached the cup.
 async function finishLoading() {
@@ -512,6 +536,7 @@ async function finishLoading() {
     document.body.classList.add('sunk');
     await new Promise((resolve) => setTimeout(resolve, calm ? 0 : 760));
     document.body.classList.add('ready');
+    setTimeout(() => $('poster').remove(), 1500);
 }
 
 let last = performance.now();

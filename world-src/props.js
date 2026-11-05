@@ -12,10 +12,10 @@ hanging_picture_frame_01 office_notepads tea_set_01 wooden_stool_01`.split(/\s+/
 
 const models = {};
 
-export async function loadModels(manager) {
+export async function loadModels(manager, folder) {
     const loader = new GLTFLoader(manager).setMeshoptDecoder(MeshoptDecoder);
     await Promise.all(NAMES.map(async (name) => {
-        models[name] = (await loader.loadAsync(`/world/assets/models/${name}.glb`)).scene;
+        models[name] = (await loader.loadAsync(`${folder}/${name}.glb`)).scene;
     }));
 }
 

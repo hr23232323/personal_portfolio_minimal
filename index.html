@@ -28,11 +28,14 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,700;12..96,800&family=Barlow+Condensed:wght@500;700&family=IM+Fell+English:ital@0;1&family=Caveat:wght@500;700&family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
     <link rel="preload" as="image" href="/world/assets/img/poster.jpg">
-    <link rel="stylesheet" href="/world/style.css?v=ffdd4a34">
+    <link rel="stylesheet" href="/world/style.css?v=47ddafe1">
     <noscript><style>#title, #poster, #hud { display: none; } #text { display: block; } body { overflow: auto; }</style></noscript>
-    <script type="module" src="/world/main.js?v=ffdd4a34"></script>
+    <script type="module" src="/world/main.js?v=47ddafe1"></script>
 </head>
 <body>
+<script>
+    try { if (sessionStorage.getItem('prefers-text')) document.body.classList.add('lofi'); } catch {}
+</script>
 <div id="stage"></div>
 <img id="poster" src="/world/assets/img/poster.jpg" alt="" aria-hidden="true">
 

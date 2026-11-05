@@ -26,12 +26,24 @@ const assets = (folder) => `/world/assets/${folder}${high ? '' : '-lite'}`;
 
 const $ = (id) => document.getElementById(id);
 let player;
+let wantWorld;
 const setLofi = (on) => {
     document.body.classList.toggle('lofi', on);
     $('text-toggle').querySelector('span').textContent = on ? '3D version' : 'Text version';
     if (on) player?.unlock();
+    else wantWorld?.();
 };
-$('text-toggle').onclick = () => setLofi(!document.body.classList.contains('lofi'));
+
+// Remember the choice for this tab, so coming back from an essay stays in the text version.
+const TEXT_KEY = 'prefers-text';
+$('text-toggle').onclick = () => {
+    const on = !document.body.classList.contains('lofi');
+    setLofi(on);
+    try {
+        if (on) sessionStorage.setItem(TEXT_KEY, '1');
+        else sessionStorage.removeItem(TEXT_KEY);
+    } catch { /* Private browsing can block storage. The choice just won't stick. */ }
+};
 
 // iOS kills a tab that runs out of memory and reloads it, which would crash again
 // forever. A mark left behind means the last visit never got to leave the page.
@@ -49,6 +61,13 @@ if (Date.now() - lastOpen < 10 * 60 * 1000) {
     setLofi(true);
     throw new Error('The last visit crashed, showing text version');
 }
+
+// Someone reading the text version shouldn't pay for a 3D world they aren't looking at.
+if (document.body.classList.contains('lofi')) {
+    setLofi(true);
+    await new Promise((resolve) => { wantWorld = resolve; });
+}
+
 markOpen(true);
 addEventListener('pagehide', () => markOpen(false));
 addEventListener('pageshow', () => markOpen(true));

@@ -6,23 +6,23 @@
    ============================================================ */
 
 :root {
-  color-scheme: light;
-  --bg: #f7f2e7;
-  --bg-elev: #eee6d8;
-  --bg-card: rgba(25,26,22,0.035);
-  --rule: rgba(25,26,22,0.12);
-  --rule-strong: rgba(25,26,22,0.22);
-  --ink: #191a16;
-  --ink-mid: #4f514a;
-  --ink-soft: #71736b;
-  --ink-faint: #9a988f;
-  --accent: #2c7152;
-  --accent-soft: #a8cbb6;
-  --accent-glow: rgba(44,113,82,0.17);
-  --highlight: rgba(44,113,82,0.1);
+  color-scheme: dark;
+  --bg: #171a2e;
+  --bg-elev: #20243c;
+  --bg-card: rgba(251,241,221,0.045);
+  --rule: rgba(251,241,221,0.14);
+  --rule-strong: rgba(251,241,221,0.26);
+  --ink: #f3ebda;
+  --ink-mid: #cbc5b8;
+  --ink-soft: #a9a5a6;
+  --ink-faint: #8a8893;
+  --accent: #ffc98a;
+  --accent-soft: rgba(255,201,138,0.4);
+  --accent-glow: rgba(255,201,138,0.22);
+  --highlight: rgba(255,201,138,0.12);
 
   --serif: 'Newsreader', 'Iowan Old Style', Georgia, serif;
-  --sans: 'Inter', -apple-system, system-ui, sans-serif;
+  --sans: 'Bricolage Grotesque', -apple-system, system-ui, sans-serif;
   --mono: 'JetBrains Mono', ui-monospace, monospace;
 }
 
@@ -62,9 +62,9 @@ a { color: inherit; }
 }
 .topbar__brand {
   font-family: var(--sans);
-  font-weight: 700;
-  letter-spacing: 0.18em;
-  font-size: 18px;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  font-size: 22px;
   color: var(--ink);
   text-decoration: none;
 }
@@ -129,7 +129,10 @@ a { color: inherit; }
   position: absolute;
   inset: 0;
   z-index: 1;
-  background: linear-gradient(180deg, rgba(8,9,7,.06) 18%, rgba(8,9,7,.38) 53%, rgba(8,9,7,.94) 100%);
+  /* Covers are busy, so the text gets dark ground on its side and the art stays clear on the other. */
+  background:
+    linear-gradient(90deg, rgba(14,15,32,.82) 0%, rgba(14,15,32,.62) 42%, rgba(14,15,32,.08) 78%),
+    linear-gradient(180deg, rgba(14,15,32,.3) 0%, rgba(14,15,32,.55) 45%, rgba(14,15,32,.96) 100%);
   pointer-events: none;
 }
 .hero__art {
@@ -163,6 +166,7 @@ a { color: inherit; }
   color: #fff8e9;
   margin-bottom: 24px;
   text-wrap: balance;
+  text-shadow: 0 2px 28px rgba(8,8,22,.6);
   font-variation-settings: "opsz" 72;
 }
 .hero h1 em {
@@ -170,12 +174,13 @@ a { color: inherit; }
   font-weight: 400;
   color: var(--accent);
 }
-.hero__deck {
+.post .hero__deck {
   font-family: var(--serif);
   font-style: italic;
   font-size: clamp(19px, 2vw, 25px);
   line-height: 1.45;
-  color: rgba(255,248,233,.82);
+  color: rgba(255,248,233,.94);
+  text-shadow: 0 1px 16px rgba(8,8,22,.7);
   margin-bottom: 28px;
   max-width: 53ch;
   text-wrap: pretty;
@@ -184,9 +189,9 @@ a { color: inherit; }
 .hero__meta {
   display: flex; align-items: center; gap: 16px;
   font-family: var(--sans);
-  font-size: 12px;
-  color: rgba(255,248,233,.64);
-  letter-spacing: 0.04em;
+  font-size: 13px;
+  color: rgba(255,248,233,.82);
+  letter-spacing: 0.02em;
   padding-top: 20px;
   border-top: 1px solid rgba(255,255,255,.28);
 }
@@ -238,7 +243,7 @@ a { color: inherit; }
   font-family: var(--mono);
   font-size: 0.86em;
   color: var(--ink);
-  background: rgba(25,26,22,0.045);
+  background: rgba(251,241,221,0.07);
   padding: 1px 6px;
   border-radius: 3px;
   border: 1px solid var(--rule);
@@ -362,8 +367,8 @@ a { color: inherit; }
   overflow-x: auto;
 }
 .codeblock__body .com { color: var(--ink-faint); font-style: italic; }
-.codeblock__body .str { color: #3e7355; }
-.codeblock__body .fn  { color: #95642e; }
+.codeblock__body .str { color: #8fd3a8; }
+.codeblock__body .fn  { color: #ffc98a; }
 
 /* ─── Big stat ─── */
 .stat {
@@ -627,7 +632,7 @@ a { color: inherit; }
 @media (max-width: 720px) {
   .topbar { padding: 22px 18px; }
   .topbar__back { left: 18px; top: 24px; }
-  .topbar__brand { font-size: 14px; }
+  .topbar__brand { font-size: 18px; }
   .post { padding: 28px 20px 90px; }
   .hero {
     width: calc(100vw - 20px);
@@ -637,7 +642,7 @@ a { color: inherit; }
   }
   .hero__art { object-position: center; }
   .post .hero h1 { font-size: clamp(42px, 13vw, 62px); }
-  .hero__deck { font-size: 18px; }
+  .post .hero__deck { font-size: 18px; }
   .hero__meta { flex-wrap: wrap; gap: 10px; font-size: 10px; }
   .topbar__chapter { display: none; }
 }

@@ -163,13 +163,13 @@ body:not(.started) #hud kbd { display: none; }
 
 #toast { bottom: 22vh; font-size: 1.5rem; font-weight: 700; }
 
-#stick { display: none; position: fixed; left: 26px; bottom: 26px; z-index: 4; width: 116px; height: 116px; border-radius: 50%; background: rgba(255, 255, 255, .14); border: 1.5px solid rgba(255, 255, 255, .4); touch-action: none; }
+#stick { display: none; position: fixed; right: 26px; bottom: calc(26px + env(safe-area-inset-bottom)); z-index: 4; width: 116px; height: 116px; border-radius: 50%; background: rgba(255, 255, 255, .14); border: 1.5px solid rgba(255, 255, 255, .4); touch-action: none; }
 #knob { position: absolute; left: 50%; top: 50%; width: 48px; height: 48px; margin: -24px; border-radius: 50%; background: rgba(255, 255, 255, .72); }
 @media (pointer: coarse) {
     .started:not(.inspecting) #stick { display: block; }
     #prompt kbd { display: none; }
     #prompt { padding: 12px 20px; }
-    #help { display: none; }
+    #help { bottom: 164px; }
 }
 
 #resume {

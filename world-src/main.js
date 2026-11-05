@@ -12,7 +12,7 @@ import { bakeMaps, CUP, FLOOR_Y, makeTerrain, makeWater, onPath, terrainHeight }
 import { makeGrass } from './grass.js';
 import { makeCabin } from './building.js';
 import { buildProps, GLOW, loadModels, makeTrees, POST_SPOTS } from './props.js';
-import { makeBalls, makeFire, makeFireflies } from './fx.js';
+import { makeBalls, makeBeacons, makeFire, makeFireflies } from './fx.js';
 import { createPlayer } from './player.js';
 import { createAudio } from './audio.js';
 import { closeCard, EXHIBITS, openCard, setupExhibits } from './exhibits.js';
@@ -517,6 +517,8 @@ function updateTitle(t) {
 }
 
 setupExhibits(terrainHeight);
+const beacons = makeBeacons(EXHIBITS, calm);
+scene.add(beacons);
 
 // Static world, so the big shadow maps only need to render once.
 renderer.compile(scene, camera);
@@ -577,11 +579,13 @@ renderer.setAnimationLoop(() => {
     }
 
     const speed = player.update(dt);
+    let target = null;
     if (state === 'walk') {
-        const e = nearestExhibit();
-        prompt.classList.toggle('on', !!e);
-        if (e) prompt.querySelector('span').textContent = e.verb;
+        target = nearestExhibit();
+        prompt.classList.toggle('on', !!target);
+        if (target) prompt.querySelector('span').textContent = target.verb;
     }
+    beacons.userData.update(t, dt, camera.position, target, document.body.classList.contains('inspecting') ? current : null);
 
     // Look at the object, shifted left so the card has room.
     viewShift += (shiftTarget - viewShift) * (1 - Math.exp(-dt * 4));

@@ -120,6 +120,72 @@ export function makeFireflies(count) {
     return points;
 }
 
+function ringTexture() {
+    const c = document.createElement('canvas');
+    c.width = c.height = 128;
+    const ctx = c.getContext('2d');
+    ctx.strokeStyle = '#fff';
+    ctx.lineWidth = 2.5;
+    ctx.shadowColor = '#fff';
+    ctx.shadowBlur = 6;
+    ctx.beginPath();
+    ctx.arc(64, 64, 54, 0, Math.PI * 2);
+    ctx.stroke();
+    return new THREE.CanvasTexture(c);
+}
+
+// A light hovering over everything you can open, like a firefly that stays put.
+// It fades in as you get near and brightens once you can actually open the thing.
+export function makeBeacons(exhibits, calm) {
+    const g = new THREE.Group();
+    const ring = ringTexture();
+    const sprite = (map, color) => {
+        const s = new THREE.Sprite(new THREE.SpriteMaterial({ map, color, transparent: true, opacity: 0, blending: THREE.AdditiveBlending, depthWrite: false }));
+        g.add(s);
+        return s;
+    };
+    const beacons = exhibits.map((exhibit, i) => ({
+        exhibit,
+        phase: i * 0.37,
+        size: exhibit.size ?? 1,
+        focus: 0,
+        visible: 0,
+        halo: sprite(GLOW, 0xffc46b),
+        core: sprite(GLOW, 0xfff0c8),
+        ring: sprite(ring, 0xffdca0),
+    }));
+
+    g.userData.update = (t, dt, viewer, target, hidden) => {
+        const ease = 1 - Math.exp(-dt * 6);
+        for (const b of beacons) {
+            const distance = viewer.distanceTo(b.exhibit.beacon);
+            const near = 1 - THREE.MathUtils.smoothstep(distance, 20, 34);
+            b.visible += ((b.exhibit === hidden ? 0 : near) - b.visible) * ease;
+            b.focus += ((b.exhibit === target ? 1 : 0) - b.focus) * ease;
+
+            const pulse = calm ? 0.8 : 0.72 + Math.sin(t * 2.1 + b.phase * 5) * 0.28;
+            const position = b.exhibit.beacon.clone();
+            if (!calm) position.y += Math.sin(t * 1.3 + b.phase * 7) * 0.035;
+            b.halo.position.copy(position);
+            b.core.position.copy(position);
+            b.ring.position.copy(position);
+
+            // Bigger with distance so it stays findable, and quieter up close once it's found.
+            const size = b.size * (1 + distance * 0.1);
+            const settled = 0.25 + 0.75 * THREE.MathUtils.smoothstep(distance, 1.5, 6);
+            b.core.scale.setScalar(0.08 * size * (0.85 + pulse * 0.3));
+            b.core.material.opacity = b.visible * (0.75 + b.focus * 0.25);
+            b.halo.scale.setScalar(0.38 * size * (0.8 + pulse * 0.4));
+            b.halo.material.opacity = b.visible * settled * (0.2 + pulse * 0.16 + b.focus * 0.12);
+
+            const wave = calm ? 0.5 : (t * 0.36 + b.phase) % 1;
+            b.ring.scale.setScalar((0.1 + wave * 0.5) * size);
+            b.ring.material.opacity = b.visible * settled * (1 - wave) * (1 - wave) * 0.45;
+        }
+    };
+    return g;
+}
+
 // A few golf balls on the green. Walk into one and it rolls.
 export function makeBalls(spots, cup, onSink) {
     const g = new THREE.Group();

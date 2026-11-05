@@ -1,0 +1,13 @@
+# Everything here stays out of the image, so it can't be served by Caddy.
+.git
+.gitignore
+.dockerignore
+.claude
+.playwright-mcp
+**/.DS_Store
+Dockerfile
+Makefile
+contact-api
+musings/sources
+musings/README.md
+img/README.txt

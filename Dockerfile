@@ -8,6 +8,9 @@ COPY . /srv
 # Copy Caddyfile to Caddy's config directory
 COPY Caddyfile /etc/caddy/Caddyfile
 
+# The config only belongs in /etc/caddy, not in the public folder
+RUN rm /srv/Caddyfile
+
 # Expose the standard HTTP port
 EXPOSE 80
 

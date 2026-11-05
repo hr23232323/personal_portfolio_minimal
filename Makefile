@@ -5,7 +5,7 @@ GCP_PROJECT=harsh-personal-projects-misc
 APP_NAME=portfolio
 CONTACT_APP_NAME=portfolio-contact
 
-.PHONY: help dev up down logs clean set-gcp-project build-cloud push deploy build-contact push-contact deploy-contact
+.PHONY: help dev up down logs clean build-world set-gcp-project build-cloud push deploy deploy-preview go-live build-contact push-contact deploy-contact
 
 help:
 	@echo "Portfolio Development Commands:"
@@ -16,9 +16,12 @@ help:
 	@echo "  make down          - Stop website server"
 	@echo "  make logs          - View website logs"
 	@echo "  make clean         - Clean Docker resources"
+	@echo "  make build-world   - Rebuild the 3D homepage into world/main.js"
 	@echo ""
 	@echo "Production Deployment (Cloud Run):"
 	@echo "  make deploy        - Build image, push, and deploy to Cloud Run"
+	@echo "  make deploy-preview - Deploy to a private preview URL with no public traffic"
+	@echo "  make go-live       - Send all public traffic to the latest revision"
 	@echo "  make build-cloud   - Build Docker image for Cloud Run"
 	@echo "  make push          - Push image to GCR"
 	@echo "  make deploy-contact - Deploy the Resend contact endpoint"
@@ -69,6 +72,9 @@ clean:
 	@docker rmi portfolio:dev 2>/dev/null || true
 	@echo "✓ Cleanup complete"
 
+build-world:
+	cd world-src && npm install && npm run build
+
 # ============================================================
 # PRODUCTION DEPLOYMENT (Cloud Run)
 # ============================================================
@@ -103,6 +109,22 @@ deploy: set-gcp-project build-cloud push
 	@echo ""
 	@echo "✓ Deployment complete!"
 	@echo "Your site should be live at the URL shown above"
+
+deploy-preview: set-gcp-project
+	docker buildx build --platform linux/amd64 -t gcr.io/$(GCP_PROJECT)/$(APP_NAME):preview -f Dockerfile .
+	docker push gcr.io/$(GCP_PROJECT)/$(APP_NAME):preview
+	gcloud run deploy $(APP_NAME) \
+		--image gcr.io/$(GCP_PROJECT)/$(APP_NAME):preview \
+		--platform managed \
+		--region us-central1 \
+		--port 80 \
+		--no-traffic \
+		--tag preview
+	@echo "✓ Preview is up. Public traffic has not changed."
+
+go-live: set-gcp-project
+	gcloud run services update-traffic $(APP_NAME) --region us-central1 --to-latest
+	@echo "✓ All traffic now goes to the latest revision"
 
 build-contact:
 	@echo "Building contact API image for Cloud Run (linux/amd64)..."

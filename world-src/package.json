@@ -1,0 +1,8 @@
+{
+  "name": "harsh-world",
+  "private": true,
+  "type": "module",
+  "scripts": { "build": "esbuild main.js --bundle --minify --format=esm --target=es2022 --outfile=../world/main.js" },
+  "dependencies": { "n8ao": "2.0.1", "postprocessing": "*", "three": "0.187.0" },
+  "devDependencies": { "esbuild": "*" }
+}

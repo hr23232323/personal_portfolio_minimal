@@ -13,7 +13,7 @@ if (backLink) {
     const previousPath = cameFromThisSite ? previousUrl.pathname : '';
 
     if (previousPath === '/') {
-        backLink.href = '/#writing';
+        backLink.href = '/';
         backLink.textContent = '← Home';
     } else if (previousPath === '/musings/' || previousPath.startsWith('/musings/index.')) {
         backLink.href = '/musings/';

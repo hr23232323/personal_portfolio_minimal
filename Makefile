@@ -16,7 +16,7 @@ help:
 	@echo "  make down          - Stop website server"
 	@echo "  make logs          - View website logs"
 	@echo "  make clean         - Clean Docker resources"
-	@echo "  make build-world   - Rebuild the 3D homepage into world/main.js"
+	@echo "  make build-world   - Rebuild the 3D homepage (make deploy does this for you)"
 	@echo ""
 	@echo "Production Deployment (Cloud Run):"
 	@echo "  make deploy        - Build image, push, and deploy to Cloud Run"
@@ -72,8 +72,13 @@ clean:
 	@docker rmi portfolio:dev 2>/dev/null || true
 	@echo "✓ Cleanup complete"
 
+# Rebuilds the world, then stamps index.html with a hash of the result, so browsers
+# only download new files when something actually changed.
 build-world:
-	cd world-src && npm install && npm run build
+	cd world-src && npm install --silent && npm run build
+	@VERSION=$$(cat world/main.js world/style.css | shasum | cut -c1-8); \
+	perl -pi -e "s/(world\/(?:main\.js|style\.css)\?v=)\w+/\$${1}$$VERSION/g" index.html; \
+	echo "✓ World built, version $$VERSION"
 
 # ============================================================
 # PRODUCTION DEPLOYMENT (Cloud Run)
@@ -98,7 +103,7 @@ push:
 	docker push gcr.io/$(GCP_PROJECT)/$(APP_NAME)
 	@echo "✓ Image pushed to gcr.io/$(GCP_PROJECT)/$(APP_NAME)"
 
-deploy: set-gcp-project build-cloud push
+deploy: build-world set-gcp-project build-cloud push
 	@echo "Deploying to Cloud Run..."
 	gcloud run deploy $(APP_NAME) \
 		--image gcr.io/$(GCP_PROJECT)/$(APP_NAME) \
@@ -110,7 +115,7 @@ deploy: set-gcp-project build-cloud push
 	@echo "✓ Deployment complete!"
 	@echo "Your site should be live at the URL shown above"
 
-deploy-preview: set-gcp-project
+deploy-preview: build-world set-gcp-project
 	docker buildx build --platform linux/amd64 -t gcr.io/$(GCP_PROJECT)/$(APP_NAME):preview -f Dockerfile .
 	docker push gcr.io/$(GCP_PROJECT)/$(APP_NAME):preview
 	gcloud run deploy $(APP_NAME) \

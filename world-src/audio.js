@@ -1,7 +1,16 @@
 // Everything here is synthesized, so the page ships no sound files.
+// Phone speakers barely reproduce low, quiet sounds, so phones get a louder, brighter mix.
+const phone = matchMedia('(pointer: coarse)').matches;
+const LEVEL = phone ? 3.5 : 1;
+
 export function createAudio() {
     let ctx, master, fireGain, noise;
     let muted = false;
+
+    // iOS can suspend audio at any time, like after switching apps.
+    const wake = () => {
+        if (ctx.state !== 'running') ctx.resume();
+    };
 
     function makeNoise() {
         const buffer = ctx.createBuffer(1, ctx.sampleRate * 3, ctx.sampleRate);
@@ -63,13 +72,21 @@ export function createAudio() {
         start() {
             if (ctx) return;
             ctx = new AudioContext();
+            wake();
+            ['pointerdown', 'touchend', 'keydown'].forEach((type) => addEventListener(type, wake));
+            document.addEventListener('visibilitychange', () => { if (!document.hidden) wake(); });
+
+            const limiter = ctx.createDynamicsCompressor();
+            limiter.threshold.value = -6;
+            limiter.ratio.value = 12;
+            limiter.connect(ctx.destination);
             master = ctx.createGain();
-            master.gain.value = 0;
-            master.connect(ctx.destination);
-            master.gain.linearRampToValueAtTime(muted ? 0 : 1, ctx.currentTime + 2.5);
+            master.connect(limiter);
+            master.gain.setValueAtTime(0, ctx.currentTime);
+            master.gain.linearRampToValueAtTime(muted ? 0 : LEVEL, ctx.currentTime + 2.5);
             noise = makeNoise();
 
-            const wind = loop('lowpass', 420, 0.4, 0.05);
+            const wind = loop('lowpass', phone ? 1100 : 420, 0.4, 0.05);
             const lfo = ctx.createOscillator();
             const depth = ctx.createGain();
             lfo.frequency.value = 0.09;
@@ -105,7 +122,7 @@ export function createAudio() {
         },
         toggle() {
             muted = !muted;
-            if (ctx) master.gain.linearRampToValueAtTime(muted ? 0 : 1, ctx.currentTime + 0.3);
+            if (ctx) master.gain.linearRampToValueAtTime(muted ? 0 : LEVEL, ctx.currentTime + 0.3);
             return muted;
         },
     };

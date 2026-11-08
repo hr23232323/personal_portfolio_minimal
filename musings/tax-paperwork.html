@@ -81,7 +81,10 @@
 <article class="post">
 
   <section class="hero hero--tax">
-    <img class="hero__art" src="/img/musings/covers/tax-paperwork-cover.webp" alt="A person reads in an armchair in a cozy cabin while an antique machine turns a shoebox of receipts into neat index cards" width="800" height="1200">
+    <picture class="hero__art">
+      <source media="(min-width: 721px)" srcset="/img/musings/covers/tax-paperwork-wide.webp" width="2400" height="1500">
+      <img src="/img/musings/covers/tax-paperwork-cover.webp" alt="A person reads in an armchair in a cozy cabin while an antique machine turns a shoebox of receipts into neat index cards" width="800" height="1200">
+    </picture>
     <div class="hero__eyebrow">Applied AI No. 01 · November 2026</div>
     <h1>The Tax Paperwork I Don’t Do <em>Anymore.</em></h1>
     <p class="hero__deck">The AI setup that handles it for our rental, keeps it in the exact format our CPA wants, and taught me more tax law than I ever meant to learn.</p>
@@ -555,7 +558,11 @@ on you. So:
 </footer>
 
 <style>
-  .hero--tax h1 { font-size: clamp(52px, 7.6vw, 96px); max-width: 760px; }
+  .post .hero--tax h1 { font-size: clamp(52px, 6.2vw, 84px); max-width: 760px; }
+  /* Desktop gets a wide version of the cover; phones keep the portrait one.
+     Left-aligned so the man in the armchair stays clear of the title. */
+  .hero picture.hero__art img { width: 100%; height: 100%; object-fit: cover; object-position: left center; }
+  @media (max-width: 720px) { .hero picture.hero__art img { object-position: center; } }
 
   /* Wider than the text column, like the hero, so screenshots stay legible. */
   .aa-wide {
@@ -710,7 +717,7 @@ on you. So:
   .aa-setup__actions :focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
 
   @media (max-width: 720px) {
-    .hero--tax h1 { font-size: clamp(42px, 12.5vw, 60px); }
+    .post .hero--tax h1 { font-size: clamp(42px, 12.5vw, 60px); }
     .aa-wide { width: calc(100vw - 24px); }
     .aa-flow { padding: 22px 16px 18px; }
     .aa-flow__wide { display: none !important; }

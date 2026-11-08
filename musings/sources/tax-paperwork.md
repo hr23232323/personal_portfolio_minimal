@@ -71,7 +71,7 @@ Mine has a handful of subfolders, numbered in the order I'd hand them to the CPA
 
 Why bother? Because chats end, get long, and get forgotten. Files don't. If I switched AI tools tomorrow, every entry and receipt would still be sitting there in formats anyone can open.
 
-> The chat is the *workbench.* The folder is the *record.*
+> The chat is the *collaboration interface.* The folder is the *record.*
 
 ## 3 · You write notes. *It writes the entries.*
 
@@ -165,20 +165,6 @@ You don't need to micromanage every entry. You need to understand the system wel
 
 > Use it as a *clerk* and you save time. Use it as a *tutor* and you get smarter about your own life.
 
-## Start small. *Seriously.*
-
-You don't need all of this on day one. Mine took about a month of trial and error, including an earlier version I outgrew. Figuring it out was half the fun.
-
-**Level 1 · This weekend, about 30 minutes.** Make a folder. Put whatever your CPA, insurer, or lender gave you inside. Open the Claude desktop app, give it access to the folder, and say: *"Read what's in here and build me a simple spreadsheet to track this. Explain each rule to me in plain English as you go. Then I'll send you notes."* Send your first notes. You're done.
-
-**Level 2 · Week two.** Say: *"Start a rules file in this folder. Read it at the start of every chat. Whenever I correct you, add the correction. Keep a short list of what I've learned, too."* This is the single biggest upgrade.
-
-**Level 3 · When it matters.** Say: *"Turn our rules into a checklist. Run it after every update, and confirm the file actually saved."* Now you can trust it with things that count.
-
-That's it. Three sentences, spread over a few weeks.
-
-**Or skip the reading:** the last section of this post is written for your AI, not for you. Paste it into Claude and it'll set the whole thing up and ask you the right questions.
-
 ## No rental? *Same idea.*
 
 Owning a home quietly turns you into a records department. Any of these works the same way: someone who'll read it, a folder, a rules file, a quick glance.
@@ -193,19 +179,19 @@ Owning a home quietly turns you into a records department. Any of these works th
 
 Pick the one that would hurt most to rebuild from memory. Start there.
 
-## Keep it *going.*
+## Start small. *Seriously.*
 
-That's really the whole point. The boring stuff everyone has to do got done, and I barely had to do it.
+You don't need all of this on day one. Mine took about a month of trial and error, including an earlier version I outgrew. Figuring it out was half the fun.
 
-I expected the hard part to be the AI. It wasn't. The hard part was the setup around it, and staying curious once it worked.
+**Level 1 · This weekend, about 30 minutes.** Make a folder. Put whatever your CPA, insurer, or lender gave you inside. Open the Claude desktop app, give it access to the folder, and say: *"Read what's in here and build me a simple spreadsheet to track this. Explain each rule to me in plain English as you go. Then I'll send you notes."* Send your first notes. You're done.
 
-Systems drift if nobody tends them. The habit I'm building is a short monthly check-in, three questions to Claude:
+**Level 2 · Week two.** Say: *"Start a rules file in this folder. Read it at the start of every chat. Whenever I correct you, add the correction. Keep a short list of what I've learned, too."* This is the single biggest upgrade.
 
-- *"What did I learn this month? Add it to the rules file."*
-- *"What's still missing: receipts, photos, names?"*
-- *"What should I understand better before year end?"*
+**Level 3 · When it matters.** Say: *"Turn our rules into a checklist. Run it after every update, and confirm the file actually saved."* Now you can trust it with things that count.
 
-Each one makes the system a little sharper, and me too.
+That's it. Three sentences, spread over a few weeks.
+
+**Or skip the reading:** the last section of this post is written for your AI, not for you. Paste it into Claude and it'll set the whole thing up and ask you the right questions.
 
 > The system rule
 >

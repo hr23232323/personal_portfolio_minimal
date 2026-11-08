@@ -68,14 +68,14 @@ Copy the head of the newest musing and change the text. The parts that matter:
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300..700;1,6..72,300..700&amp;family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,700;12..96,800&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
   <link rel="stylesheet" href="components.css?v=6">
-  <script src="/musing-back.js?v=3" defer></script>
+  <script src="/musing-back.js?v=4" defer></script>
 </head>
 <body>
 <div class="progress"><div class="progress__bar" id="progressBar"></div></div>
 <div class="topbar__chapter" id="chapterPill"><b id="chapterNum">00</b> <span id="chapterTitle">Intro</span></div>
 
 <header class="topbar">
-  <a href="/musings/" class="topbar__back">← Writing</a>
+  <a href="/musings/" class="topbar__back">← Musings</a>
   <a href="/" class="topbar__brand">Harsh Rana</a>
 </header>
 
@@ -105,10 +105,11 @@ Copy the head of the newest musing and change the text. The parts that matter:
 </html>
 ```
 
-The back link is fixed up by `/musing-back.js`: it becomes "← Home",
-"← Writing" or "← Back" depending on where the reader came from, and uses
-browser history, so readers from the text homepage land back on the text
-version rather than the 3D world. Leave the default `href="/musings/"`.
+The back link names the page's series: `<a href="/musings/">← Musings</a>`
+for a musing, `<a href="/musings/#applied-ai">← Applied AI</a>` for Applied
+AI. `/musing-back.js` swaps it for "← Home" or "← Back" when the reader came
+from somewhere else, and uses browser history, so readers from the text
+homepage land back on the text version rather than the 3D world.
 
 ## Components (in `components.css`)
 

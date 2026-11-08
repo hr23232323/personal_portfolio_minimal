@@ -17,7 +17,7 @@ if (backLink) {
         backLink.textContent = '← Home';
     } else if (previousPath === '/musings/' || previousPath.startsWith('/musings/index.')) {
         backLink.href = '/musings/';
-        backLink.textContent = '← Musings';
+        backLink.textContent = '← Writing';
     } else if (cameFromThisSite && previousPath !== window.location.pathname) {
         backLink.href = `${previousUrl.pathname}${previousUrl.search}${previousUrl.hash}`;
         backLink.textContent = '← Back';

@@ -1,5 +1,17 @@
 # Musings
 
+The writing page (`/musings/`) holds two series:
+
+- **Musings:** essays, on the bookshelf.
+- **Applied AI:** practical pieces on handing everyday chores to AI, in their
+  own section below the shelf. Each one ends with a "For your AI" box (with a
+  copy button) and the same text published as `musings/<slug>-setup.md`, so
+  readers can paste it or point their AI at the link.
+  `tax-paperwork.html` is the first one; copy its bespoke styles for the next.
+
+Both series use the same page skeleton and folder. Applied AI pieces are
+written, not templated: structure follows the draft.
+
 Each musing is its own hand-authored HTML page. No build step, no template.
 Shared look lives in `components.css` + `components.js`; each page picks the
 components it needs and adds bespoke pieces inline.
@@ -56,14 +68,14 @@ Copy the head of the newest musing and change the text. The parts that matter:
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300..700;1,6..72,300..700&amp;family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,700;12..96,800&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
   <link rel="stylesheet" href="components.css?v=6">
-  <script src="/musing-back.js?v=2" defer></script>
+  <script src="/musing-back.js?v=3" defer></script>
 </head>
 <body>
 <div class="progress"><div class="progress__bar" id="progressBar"></div></div>
 <div class="topbar__chapter" id="chapterPill"><b id="chapterNum">00</b> <span id="chapterTitle">Intro</span></div>
 
 <header class="topbar">
-  <a href="/musings/" class="topbar__back">← Musings</a>
+  <a href="/musings/" class="topbar__back">← Writing</a>
   <a href="/" class="topbar__brand">Harsh Rana</a>
 </header>
 
@@ -94,7 +106,7 @@ Copy the head of the newest musing and change the text. The parts that matter:
 ```
 
 The back link is fixed up by `/musing-back.js`: it becomes "← Home",
-"← Musings" or "← Back" depending on where the reader came from, and uses
+"← Writing" or "← Back" depending on where the reader came from, and uses
 browser history, so readers from the text homepage land back on the text
 version rather than the 3D world. Leave the default `href="/musings/"`.
 
@@ -132,15 +144,17 @@ Don't promote a piece to the shared components unless a second musing needs it.
 
 A new musing has to be added in four places:
 
-1. **`musings/index.html`** (the writing shelf): add a `.book-spine` at the top
-   of `.bookcase` with its `data-*` fields and spine colors, move `is-active`
-   to it, point the `featured-*` block at it, and update the count in the
-   bookcase `aria-label`.
+1. **`musings/index.html`** (the writing page): for a musing, add a
+   `.book-spine` at the top of `.bookcase` with its `data-*` fields and spine
+   colors, move `is-active` to it, point the `featured-*` block at it, and
+   update the count in the bookcase `aria-label`. For Applied AI, add a
+   `.guide` card at the top of `.guides`.
 2. **`index.html`, 3D bookshelf card** (`<template id="card-writing">`): add an
-   `<li>` with `data-cover="<name>-cover"` at the top of the list and set
-   `#book-cover` to the new cover.
-3. **`index.html`, text version** (the "Writing" list in `#text`): it shows the
-   three newest, so add the new one at the top and drop the oldest.
+   `<li>` with `data-cover="<name>-cover"` at the top of the right list
+   (the numbered list for musings, the Applied AI list for those).
+3. **`index.html`, text version** (the "Writing" list in `#text`): the newest
+   Applied AI piece sits at the top as "Applied AI: <title>", then the three
+   newest musings.
 4. **`sitemap.xml`**: add the URL.
 
 Also update the "Keep reading" cards on the previous musing if you want it to
@@ -148,8 +162,8 @@ point forward.
 
 ## Numbering
 
-Musings are numbered sequentially: `Musing No. 01`, `No. 02`, … Set in the
-`.hero__eyebrow`, and as `data-issue` on the shelf spine.
+Each series is numbered on its own: `Musing No. 08`, `Applied AI No. 02`, …
+Set in the `.hero__eyebrow` (and as `data-issue` on a musing's shelf spine).
 
 ## Caching
 

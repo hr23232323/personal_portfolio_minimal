@@ -1,6 +1,6 @@
 ---
 name: new-musing
-description: Turn Harsh's markdown draft into a new musing (blog post) on harshrana.com, in the site's dusk style, and list it everywhere it needs to appear. Use when he pastes a draft and says "build me a musing page for this", "new musing", "new blog post", or similar.
+description: Turn Harsh's markdown draft into a new musing or Applied AI piece (blog post) on harshrana.com, in the site's dusk style, and list it everywhere it needs to appear. Use when he pastes a draft and says "build me a musing page for this", "new musing", "new blog post", or similar.
 ---
 
 # New musing
@@ -12,8 +12,10 @@ steps.
 ## 1. Get what you need
 
 From the draft, work out the title, deck (one sentence), read time
-(~230 words a minute) and slug (short, kebab-case). The number is the newest
-`Musing No.` plus one, and the date is this month unless he says otherwise.
+(~230 words a minute) and slug (short, kebab-case). Work out the series:
+an essay is a Musing, a practical how-to for everyday AI use is Applied AI
+(ask if unclear). The number is that series' newest number plus one, and the
+date is this month unless he says otherwise.
 
 Ask Harsh only for what you can't work out:
 - The **cover art** (800×1200 portrait) and **share image** (~1.9:1 landscape).

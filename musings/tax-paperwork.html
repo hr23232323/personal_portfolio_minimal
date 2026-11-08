@@ -1,0 +1,755 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>The Tax Paperwork I Don’t Do Anymore | Harsh Rana</title>
+  <meta name="description" content="The AI setup that handles it for our rental, keeps it in the exact format our CPA wants, and taught me more tax law than I ever meant to learn.">
+  <link rel="canonical" href="https://harshrana.com/musings/tax-paperwork.html">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="The Tax Paperwork I Don’t Do Anymore">
+  <meta property="og:description" content="Use it as a clerk and you save time. Use it as a tutor and you get smarter about your own life.">
+  <meta property="og:url" content="https://harshrana.com/musings/tax-paperwork.html">
+  <meta property="og:image" content="https://harshrana.com/img/tax-paperwork-social.jpg">
+  <meta property="og:image:width" content="1376">
+  <meta property="og:image:height" content="768">
+  <meta property="og:site_name" content="Harsh Rana">
+  <meta property="article:author" content="Harsh Rana">
+  <meta property="article:published_time" content="2026-11-07">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@_harshrana">
+  <meta name="twitter:creator" content="@_harshrana">
+  <meta name="twitter:title" content="The Tax Paperwork I Don’t Do Anymore">
+  <meta name="twitter:description" content="Use it as a clerk and you save time. Use it as a tutor and you get smarter about your own life.">
+  <meta name="twitter:image" content="https://harshrana.com/img/tax-paperwork-social.jpg">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://harshrana.com/musings/tax-paperwork.html"
+    },
+    "headline": "The Tax Paperwork I Don’t Do Anymore",
+    "description": "The AI setup that handles it for our rental, keeps it in the exact format our CPA wants, and taught me more tax law than I ever meant to learn.",
+    "image": "https://harshrana.com/img/tax-paperwork-social.jpg",
+    "datePublished": "2026-11-07",
+    "isPartOf": {
+      "@type": "CreativeWorkSeries",
+      "name": "Applied AI"
+    },
+    "author": {
+      "@type": "Person",
+      "name": "Harsh Rana",
+      "url": "https://harshrana.com/"
+    },
+    "publisher": {
+      "@type": "Person",
+      "name": "Harsh Rana",
+      "url": "https://harshrana.com/"
+    },
+    "inLanguage": "en-US",
+    "keywords": [
+      "Applied AI",
+      "Claude",
+      "rental property records",
+      "tax paperwork"
+    ]
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300..700;1,6..72,300..700&amp;family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,700;12..96,800&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="components.css?v=6">
+  <script src="/musing-back.js?v=3" defer></script>
+</head>
+<body>
+
+<div class="progress"><div class="progress__bar" id="progressBar"></div></div>
+<div class="topbar__chapter" id="chapterPill"><b id="chapterNum">00</b> <span id="chapterTitle">Intro</span></div>
+
+<header class="topbar">
+  <a href="/musings/" class="topbar__back">← Writing</a>
+  <a href="/" class="topbar__brand">Harsh Rana</a>
+</header>
+
+<article class="post">
+
+  <section class="hero hero--tax">
+    <img class="hero__art" src="/img/musings/covers/tax-paperwork-cover.webp" alt="A person reads in an armchair in a cozy cabin while an antique machine turns a shoebox of receipts into neat index cards" width="800" height="1200">
+    <div class="hero__eyebrow">Applied AI No. 01 · November 2026</div>
+    <h1>The Tax Paperwork I Don’t Do <em>Anymore.</em></h1>
+    <p class="hero__deck">The AI setup that handles it for our rental, keeps it in the exact format our CPA wants, and taught me more tax law than I ever meant to learn.</p>
+    <div class="hero__meta">
+      <span><b>Harsh Rana</b></span>
+      <span class="sep"></span>
+      <span>10 min read</span>
+      <span class="sep"></span>
+      <span>November 2026</span>
+    </div>
+  </section>
+
+  <p class="lede">If you own a home, you already run a records department. Receipts for your CPA. Photos for your insurer. Warranties, permits, the date you last changed the furnace filter.</p>
+
+  <p>Most of us run it on a shoebox and good intentions.</p>
+
+  <p>I built a system with Claude for the most demanding version of that job: a vacation rental where our tax strategy depends on a detailed log of every hour we spend running it. By the end of this post you’ll have three sentences you can say to Claude this weekend, and one habit that matters more than all three.</p>
+
+  <aside class="aa-box">
+    <div class="aa-box__label">The short version</div>
+    <ol>
+      <li>Give the AI a folder, not just a chat.</li>
+      <li>Keep a rules file. Every correction becomes a rule.</li>
+      <li>Have it check its work, and check that the save happened.</li>
+      <li>Make it <em>teach you</em> as it goes. That’s where the real payoff is.</li>
+    </ol>
+  </aside>
+
+  <p>Here’s how it started. My wife and I had just opened the rental, and our CPA sent a spreadsheet template plus a stack of articles on what to track. I didn’t want a second job as a bookkeeper, so I sent Claude this:</p>
+
+  <blockquote class="aa-said">“So... fun one for you today. I’ll just drop deets when we go up, what we did, time spent, photos, receipts. You keep it perfectly organized.”</blockquote>
+
+  <p>A month and a lot of trial and error later, the log is complete back to opening day: 115 entries, in the CPA’s format, and I barely touched a spreadsheet. Along the way, it told us when we’d hit our hours target, and a question I asked out of curiosity changed our holiday plans and saved real money.</p>
+
+  <p><strong>What you need:</strong> the Claude app on your computer, one folder, and the notes you’d write anyway. No code. No spreadsheet skills.</p>
+
+  <p class="aa-note"><em>Not tax advice. I’m an engineer with a rental, not a CPA.</em></p>
+
+  <section class="section-break" data-chapter="" data-title="How it works">
+    <h2>How it <em>works.</em></h2>
+  </section>
+
+  <p>Here’s the whole system in one picture. Everything after this is just detail on one of these boxes.</p>
+
+  <figure class="aa-wide aa-flow">
+    <figcaption>
+      <strong>You write notes. Claude drafts. Your fixes become rules.</strong>
+      <span>How the system works</span>
+    </figcaption>
+    <svg class="aa-flow__wide" viewBox="16 74 728 212" role="img" aria-label="How the system works: your notes go to Claude, which drafts the entries; you check them; they’re saved to your folder and go to your CPA at year end. Your fixes are saved to a rules file that Claude reads first.">
+      <defs><marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" class="tip"/></marker></defs>
+      <g class="line">
+        <path d="M152 110H170" marker-end="url(#arrow)"/><path d="M298 110H316" marker-end="url(#arrow)"/><path d="M444 110H462" marker-end="url(#arrow)"/><path d="M590 110H608" marker-end="url(#arrow)"/>
+        <path d="M380 138V212" stroke-dasharray="4 4" marker-end="url(#arrow)"/><path d="M234 212V138" marker-end="url(#arrow)"/>
+      </g>
+      <rect x="24" y="82" width="128" height="56" rx="8" class="box"/>
+      <rect x="170" y="82" width="128" height="56" rx="8" class="box"/>
+      <rect x="316" y="82" width="128" height="56" rx="8" class="box box--you"/>
+      <rect x="462" y="82" width="128" height="56" rx="8" class="box"/>
+      <rect x="608" y="82" width="128" height="56" rx="8" class="box"/>
+      <rect x="182" y="212" width="210" height="56" rx="8" class="box box--rules"/>
+      <g class="name">
+        <text x="88" y="106">Your notes</text><text x="234" y="106">Claude drafts</text><text x="380" y="106">You check</text>
+        <text x="526" y="106">Your folder</text><text x="672" y="106">Your CPA</text><text x="287" y="236">Rules file</text>
+      </g>
+      <g class="sub">
+        <text x="88" y="124">photos, receipts</text><text x="234" y="124">the entries</text><text x="380" y="124" class="you">a quick look</text>
+        <text x="526" y="124">files you own</text><text x="672" y="124">at year end</text><text x="287" y="254">every fix, written down</text>
+      </g>
+      <text x="226" y="180" class="label" text-anchor="end">read first</text>
+      <text x="388" y="180" class="label">fixes saved</text>
+    </svg>
+    <svg class="aa-flow__tall" viewBox="0 0 340 372" role="img" aria-label="How the system works: your notes go to Claude, which drafts the entries; you check them; they’re saved to your folder and go to your CPA at year end. Your fixes are saved to a rules file that Claude reads first.">
+      <defs><marker id="arrow-tall" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" class="tip"/></marker></defs>
+      <g class="line">
+        <path d="M101 68V86" marker-end="url(#arrow-tall)"/><path d="M101 140V158" marker-end="url(#arrow-tall)"/><path d="M101 212V230" marker-end="url(#arrow-tall)"/><path d="M101 284V302" marker-end="url(#arrow-tall)"/>
+        <path d="M226 114H188" marker-end="url(#arrow-tall)"/><path d="M186 186H224" stroke-dasharray="4 4" marker-end="url(#arrow-tall)"/>
+      </g>
+      <rect x="16" y="16" width="170" height="52" rx="8" class="box"/>
+      <rect x="16" y="88" width="170" height="52" rx="8" class="box"/>
+      <rect x="16" y="160" width="170" height="52" rx="8" class="box box--you"/>
+      <rect x="16" y="232" width="170" height="52" rx="8" class="box"/>
+      <rect x="16" y="304" width="170" height="52" rx="8" class="box"/>
+      <rect x="226" y="96" width="104" height="108" rx="8" class="box box--rules"/>
+      <g class="name">
+        <text x="101" y="38">Your notes</text><text x="101" y="110">Claude drafts</text><text x="101" y="182">You check</text>
+        <text x="101" y="254">Your folder</text><text x="101" y="326">Your CPA</text><text x="278" y="146">Rules file</text>
+      </g>
+      <g class="sub">
+        <text x="101" y="56">photos, receipts</text><text x="101" y="128">the entries</text><text x="101" y="200" class="you">a quick look</text>
+        <text x="101" y="272">files you own</text><text x="101" y="344">at year end</text><text x="278" y="163">every fix,</text><text x="278" y="177">written down</text>
+        <text x="278" y="117" class="label">read first</text><text x="278" y="197" class="label">fixes saved</text>
+      </g>
+    </svg>
+  </figure>
+
+  <!-- 01 -->
+  <section class="section-break" data-chapter="01" data-title="Whoever reads it">
+    <div class="section-break__numeral">01</div>
+    <div class="section-break__kicker"><span class="num">01</span></div>
+    <h2>Start with whoever <em>reads it.</em></h2>
+  </section>
+
+  <p>Before I asked Claude to do anything, I gave it the finish line: our CPA’s template and the articles explaining their rules.</p>
+
+  <p>Then I asked it to read all of it and write a one-page cheat sheet in plain English. What counts, what doesn’t, what’s a gray area.</p>
+
+  <p>Everything else got built to match. Expense categories use the exact names from the CPA’s form. Their original file stays untouched; our working log sits next to it. At year end, it’s copy and paste, not translation.</p>
+
+  <blockquote class="pull">Your format is a guess. Theirs is <em>the assignment.</em></blockquote>
+
+  <p>Most AI paperwork disappoints for the same reason: it’s tidy, but it’s shaped for nobody in particular.</p>
+
+  <!-- 02 -->
+  <section class="section-break" data-chapter="02" data-title="A folder, not a chat">
+    <div class="section-break__numeral">02</div>
+    <div class="section-break__kicker"><span class="num">02</span></div>
+    <h2>Give it a folder, <em>not a chat.</em></h2>
+  </section>
+
+  <p>If you’ve only used AI in a chat window, this is the step that changes everything.</p>
+
+  <p>The Claude desktop app can work inside a folder on your computer once you give it access. So instead of pasting text back and forth, it reads your files and saves real ones: spreadsheets, notes, organized receipts.</p>
+
+  <p>Mine has a handful of subfolders, numbered in the order I’d hand them to the CPA:</p>
+
+  <ul>
+    <li><strong>Reference:</strong> the cheat sheet and the CPA’s original template</li>
+    <li><strong>Log:</strong> the working spreadsheet</li>
+    <li><strong>Receipts</strong> and <strong>Photos:</strong> named by date, so anything is findable</li>
+    <li><strong>CPA Handoff:</strong> the final package at year end</li>
+  </ul>
+
+  <figure class="aa-wide aa-shot">
+    <img src="/img/musings/tax-paperwork/01-folder.webp" alt="" width="1600" height="858" loading="lazy">
+    <figcaption>The folder: numbered subfolders, receipts named by date, and the rules file (fake data)</figcaption>
+  </figure>
+
+  <p>Why bother? Because chats end, get long, and get forgotten. Files don’t. If I switched AI tools tomorrow, every entry and receipt would still be sitting there in formats anyone can open.</p>
+
+  <blockquote class="pull">The chat is the <em>workbench.</em> The folder is the <em>record.</em></blockquote>
+
+  <!-- 03 -->
+  <section class="section-break" data-chapter="03" data-title="You write notes">
+    <div class="section-break__numeral">03</div>
+    <div class="section-break__kicker"><span class="num">03</span></div>
+    <h2>You write notes. <em>It writes the entries.</em></h2>
+  </section>
+
+  <p>My part is small. On Sunday I jot down what happened, the way I’d text a friend:</p>
+
+  <blockquote class="aa-said"><em>“Sat, drove up early. Swapped three light fixtures with my wife (old house, no electrical boxes behind them), maybe 2-3 hrs. Hardware store run for a dimmer. Messaged the cleaners about Thursday.”</em></blockquote>
+
+  <p>I paste that in with any photos or receipts, and Claude turns it into neat rows.</p>
+
+  <p>Even the weird ones. When the hot tub went in, our well couldn’t fill it, so a truck showed up with the water. That’s a row too.</p>
+
+  <p>Two habits keep that reliable:</p>
+
+  <p><strong>Decide things once.</strong> Every drive to the house is logged as exactly two hours. A gas stop? A 15-minute break and two one-hour legs. Slightly absurd? Yes. Has it saved me from re-deciding how long the drive was every single time? Also yes. A guest message is 15 minutes unless I say otherwise. “2-3 hours” always becomes 2. Write these down once and you never answer the same question twice.</p>
+
+  <p><strong>Glance before it’s final.</strong> Small stuff gets a one-line “here’s what I logged.” A busy day gets a quick table first, my hours and my wife’s side by side, so I can say “no, that was after lunch” before anything is saved.</p>
+
+  <figure class="aa-wide aa-shot">
+    <img src="/img/musings/tax-paperwork/02-day-table.webp" alt="" width="1600" height="956" loading="lazy">
+    <figcaption>Claude lays out a busy Saturday as a table for two people and asks two questions before saving (fake data)</figcaption>
+  </figure>
+
+  <p>That glance catches real mistakes. Once, a meeting with our cleaners turned out to sit <em>inside</em> hours I’d already logged for cleaning. Claude flagged it and took the hour out so nothing was counted twice.</p>
+
+  <blockquote class="pull">Hand off the <em>typing.</em> Keep the <em>judgment.</em></blockquote>
+
+  <!-- 04 -->
+  <section class="section-break" data-chapter="04" data-title="Corrections become rules">
+    <div class="section-break__numeral">04</div>
+    <div class="section-break__kicker"><span class="num">04</span></div>
+    <h2>Every correction <em>becomes a rule.</em></h2>
+  </section>
+
+  <p>AI doesn’t remember your last conversation the way a person would. Start a new chat and it’s a blank slate.</p>
+
+  <p>The fix is one plain text file in the folder. I call it the rules file. It says what this project is, how we do things, and where we left off. Claude reads it at the start of every chat and updates it at the end.</p>
+
+  <p>The magic is what goes in it over time. Every time I correct something, the correction gets written down:</p>
+
+  <ul>
+    <li><em>“Round time ranges down.”</em></li>
+    <li><em>“DO NOT ADD MORE TO NOTES.”</em></li>
+    <li><em>“Everything in date order.”</em></li>
+  </ul>
+
+  <p>Yes, that middle one is real, all caps. The Notes column had gotten out of hand. It’s still in the file.</p>
+
+  <figure class="aa-wide aa-shot">
+    <img src="/img/musings/tax-paperwork/03-rules-file.webp" alt="" width="1600" height="1028" loading="lazy">
+    <figcaption>The rules file: context, rules, what I’ve learned, and where we left off (fake data)</figcaption>
+  </figure>
+
+  <p>Early on, I explained a lot. Now I send three lines and get back exactly what I wanted, because the file already knows.</p>
+
+  <p>Before a two-week trip, I caught up on everything in one sitting. All of it was logged before I left.</p>
+
+  <blockquote class="pull">The AI forgets. <em>The rules file doesn’t.</em></blockquote>
+
+  <!-- 05 -->
+  <section class="section-break" data-chapter="05" data-title="Trust, but check">
+    <div class="section-break__numeral">05</div>
+    <div class="section-break__kicker"><span class="num">05</span></div>
+    <h2>Trust, <em>but check.</em></h2>
+  </section>
+
+  <p>A messy log is worse than no log. It looks like proof.</p>
+
+  <p>So every rule we agreed on also became an automatic check. After each batch of entries, Claude runs it before saving: nothing counted twice, nothing out of order, nothing missing a reason, totals that add up. If anything fails, nothing gets saved until it’s fixed.</p>
+
+  <p>You don’t need to know how that works. You just ask for it: <em>“Turn our rules into a checklist and run it every time you update the log.”</em></p>
+
+  <figure class="aa-wide aa-shot">
+    <img src="/img/musings/tax-paperwork/04-check.webp" alt="" width="1600" height="783" loading="lazy">
+    <figcaption>Claude runs the checks before saving and confirms the file changed (fake data)</figcaption>
+  </figure>
+
+  <p>One more check came from a scare. One afternoon, Claude said a save worked. The file on my laptop was still the old version. Nothing errored. It just quietly didn’t happen.</p>
+
+  <p>Now it confirms the file actually changed, every time.</p>
+
+  <blockquote class="pull">“Saved!” is a message. <em>The file is the truth.</em></blockquote>
+
+  <!-- 06 -->
+  <section class="section-break" data-chapter="06" data-title="Make it teach you">
+    <div class="section-break__numeral">06</div>
+    <div class="section-break__kicker"><span class="num">06</span></div>
+    <h2>Make it <em>teach you.</em></h2>
+  </section>
+
+  <p>This is the one I care about most.</p>
+
+  <p>It would be easy to let Claude run all of this while I nod along. The entries look right. The totals add up. Why learn the rules?</p>
+
+  <p>Two reasons. I can’t catch a mistake in something I don’t understand. And the most valuable thing this system did wasn’t bookkeeping.</p>
+
+  <p>At one point I asked a curious question: what happens if we spend a weekend up there with friends? Claude walked me through the actual rule. In any year with personal use, rental expenses (depreciation included) get split by days, rental versus personal. In our short first year, a couple of personal weekends would have cut our deduction by more than half.</p>
+
+  <p>So those trips moved to January. Nobody would have flagged that for me. I found it because I asked why. (We’re confirming with our CPA before treating it as settled. You should too.)</p>
+
+  <p>The research points the same way. In a <a href="https://doi.org/10.1073/pnas.2422633122" target="_blank" rel="noopener">study of nearly 1,000 high school students</a>, those given a plain chatbot did 48% better during practice, then 17% worse than students who never had it once it was taken away. A version built to tutor instead of hand out answers largely avoided that drop. Separately, a <a href="https://www.microsoft.com/en-us/research/uploads/prod/2025/01/lee_2025_ai_critical_thinking_survey.pdf" target="_blank" rel="noopener">Microsoft and Carnegie Mellon survey</a> of 319 knowledge workers found that the more people trusted AI on a task, the less critically they thought about it.</p>
+
+  <p>Same tool. Crutch or coach. Your call.</p>
+
+  <p>Here’s what coaching looks like in practice:</p>
+
+  <ul>
+    <li><em>“Before you log this, tell me the rule in two sentences and why it applies.”</em></li>
+    <li><em>“What’s the gray area here, and what would a cautious CPA do?”</em></li>
+    <li><em>“What should I be asking that I’m not?”</em></li>
+    <li><em>“Draw me a picture of how this system works.”</em> (Like the diagram at the top of this post.)</li>
+    <li><em>“Quiz me on the three rules that matter most.”</em></li>
+  </ul>
+
+  <figure class="aa-wide aa-shot">
+    <img src="/img/musings/tax-paperwork/05-teach.webp" alt="" width="1600" height="687" loading="lazy">
+    <figcaption>Asked to explain a rule before logging, Claude gives it in two sentences, says why it applies, and flags the gray area (fake data)</figcaption>
+  </figure>
+
+  <p>Claude also has a <a href="https://engadget.com/ai/anthropic-brings-claudes-learning-mode-to-regular-users-and-devs-170018471.html" target="_blank" rel="noopener">Learning style</a> you can pick from the style menu. It answers with guiding questions instead of finished answers.</p>
+
+  <p>You don’t need to micromanage every entry. You need to understand the system well enough to notice when something smells off. Ask for the picture, the one-paragraph summary, the “explain it like I’m new.” Then dig in where the money or the risk is.</p>
+
+  <blockquote class="pull">Use it as a <em>clerk</em> and you save time. Use it as a <em>tutor</em> and you get smarter about your own life.</blockquote>
+
+  <section class="section-break" data-chapter="" data-title="Start small">
+    <h2>Start small. <em>Seriously.</em></h2>
+  </section>
+
+  <p>You don’t need all of this on day one. Mine took about a month of trial and error, including an earlier version I outgrew. Figuring it out was half the fun.</p>
+
+  <div class="aa-levels">
+    <p><strong>Level 1 · This weekend, about 30 minutes.</strong> Make a folder. Put whatever your CPA, insurer, or lender gave you inside. Open the Claude desktop app, give it access to the folder, and say: <em>“Read what’s in here and build me a simple spreadsheet to track this. Explain each rule to me in plain English as you go. Then I’ll send you notes.”</em> Send your first notes. You’re done.</p>
+
+    <p><strong>Level 2 · Week two.</strong> Say: <em>“Start a rules file in this folder. Read it at the start of every chat. Whenever I correct you, add the correction. Keep a short list of what I’ve learned, too.”</em> This is the single biggest upgrade.</p>
+
+    <p><strong>Level 3 · When it matters.</strong> Say: <em>“Turn our rules into a checklist. Run it after every update, and confirm the file actually saved.”</em> Now you can trust it with things that count.</p>
+  </div>
+
+  <p>That’s it. Three sentences, spread over a few weeks.</p>
+
+  <p><strong>Or skip the reading:</strong> the <a href="#for-your-ai">last section of this post</a> is written for your AI, not for you. Paste it into Claude and it’ll set the whole thing up and ask you the right questions.</p>
+
+  <section class="section-break" data-chapter="" data-title="No rental?">
+    <h2>No rental? <em>Same idea.</em></h2>
+  </section>
+
+  <p>Owning a home quietly turns you into a records department. Any of these works the same way: someone who’ll read it, a folder, a rules file, a quick glance.</p>
+
+  <div class="aa-table">
+    <table>
+      <thead>
+        <tr><th>Build this</th><th>For whoever reads it later</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><strong>Home improvement log.</strong> Every project and receipt, marked <em>improvement</em> or <em>repair</em>.</td><td>Your CPA, the year you sell</td></tr>
+        <tr><td><strong>Home inventory.</strong> Photos by room, receipts and serial numbers for big items.</td><td>Your insurer, after a claim</td></tr>
+        <tr><td><strong>Maintenance tracker.</strong> Recurring jobs, how often, when last done.</td><td>Future you, and someday a buyer</td></tr>
+        <tr><td><strong>Warranty drawer.</strong> Model, serial, purchase date, manual, warranty end.</td><td>The manufacturer, when something breaks</td></tr>
+        <tr><td><strong>Renovation file.</strong> Bids side by side, payments, permits.</td><td>You, your contractor, the town</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p>Pick the one that would hurt most to rebuild from memory. Start there.</p>
+
+  <section class="section-break" data-chapter="" data-title="Keep it going">
+    <h2>Keep it <em>going.</em></h2>
+  </section>
+
+  <p>That’s really the whole point. The boring stuff everyone has to do got done, and I barely had to do it.</p>
+
+  <p>I expected the hard part to be the AI. It wasn’t. The hard part was the setup around it, and staying curious once it worked.</p>
+
+  <p>Systems drift if nobody tends them. The habit I’m building is a short monthly check-in, three questions to Claude:</p>
+
+  <ul>
+    <li><em>“What did I learn this month? Add it to the rules file.”</em></li>
+    <li><em>“What’s still missing: receipts, photos, names?”</em></li>
+    <li><em>“What should I understand better before year end?”</em></li>
+  </ul>
+
+  <p>Each one makes the system a little sharper, and me too.</p>
+
+  <aside class="aa-box aa-box--rule">
+    <div class="aa-box__label">The system rule</div>
+    <p><strong>Start</strong> with whoever reads it.</p>
+    <p><strong>Keep</strong> it in a folder you own.</p>
+    <p><strong>Write down</strong> every fix.</p>
+    <p><strong>Check</strong> before you trust.</p>
+    <p><strong>Learn</strong> as you go.</p>
+    <p class="aa-box__end"><em>The AI does the typing. You keep the judgment.</em></p>
+  </aside>
+
+  <div class="contact-card">
+    <h4>Your move</h4>
+    <ul>
+      <li><strong>This weekend:</strong> do Level 1. About 30 minutes.</li>
+      <li><strong>Short on time?</strong> Paste the box at the bottom of this post into Claude and let it interview you.</li>
+      <li><strong>Built something?</strong> Tell me what you made. I’d love to see it.</li>
+    </ul>
+    <a href="mailto:harsh@harshrana.com">Start a conversation →</a>
+  </div>
+
+  <p>Coming next in Applied AI: what the year-end handoff to our CPA actually looks like.</p>
+
+  <div class="signoff">
+    Until next time,
+    <div class="signoff__name">Harsh</div>
+  </div>
+
+  <p class="aa-sources"><strong>Sources:</strong> <a href="https://doi.org/10.1073/pnas.2422633122" target="_blank" rel="noopener">Bastani et al., PNAS 2025</a> · <a href="https://www.microsoft.com/en-us/research/uploads/prod/2025/01/lee_2025_ai_critical_thinking_survey.pdf" target="_blank" rel="noopener">Lee et al., CHI 2025 (Microsoft Research and Carnegie Mellon)</a> · <a href="https://engadget.com/ai/anthropic-brings-claudes-learning-mode-to-regular-users-and-devs-170018471.html" target="_blank" rel="noopener">Engadget on Claude’s Learning mode</a></p>
+
+  <section class="section-break" id="for-your-ai" data-chapter="" data-title="For your AI">
+    <h2>For your AI: <em>set this up for me</em></h2>
+  </section>
+
+  <p>You don’t need to read this part. It’s written for Claude (or whatever AI you use).</p>
+
+  <p>Open the Claude desktop app, give it access to an empty folder, and paste everything in the box below. It will interview you, then build the system with you in an afternoon.</p>
+
+  <div class="codeblock aa-setup aa-wide">
+    <div class="codeblock__cap">
+      <span class="lang">tax-paperwork-setup.md</span>
+      <span class="aa-setup__actions">
+        <a href="/musings/tax-paperwork-setup.md" target="_blank" rel="noopener">Open as a file</a>
+        <button type="button" id="copySetup">Copy</button>
+      </span>
+    </div>
+<pre class="codeblock__body" id="setupText"># Set up a personal records system (from harshrana.com, Applied AI No. 01)
+
+You are helping a non-technical person turn a paperwork chore into a reliable,
+low-effort system. They will send rough notes, photos, and receipts. You keep
+everything organized in files they own, in the format the person at the end needs.
+Go slowly, explain in plain language, and never assume they know technical terms.
+
+## Step 1: Interview (ask, then wait)
+Ask these one or two at a time, in plain words:
+1. What are you keeping track of? (a rental, a renovation, home maintenance, a claim)
+2. Who will use this at the end? (a CPA, insurer, lender, future buyer, just you)
+3. Do they have a template, form, checklist, or rules? Ask them to drop it in the folder
+   or paste links.
+4. How do you want to send updates? (weekly notes, photos as they happen, both)
+5. Who else does work on this? (spouse, cleaners, contractors). Each person may
+   need their own entries.
+6. How much do you want to learn along the way? (just the essentials,
+   or teach me the details as we go)
+
+## Step 2: Learn the rules from the source
+Read every template, form, and link they gave you. Write a one-page cheat sheet in
+plain English into 00_Reference/: what counts, what doesn't, and what's a gray area.
+Cite where each rule came from. Mark anything you're unsure of as a question for the
+professional, not a fact. Show it to them and ask what looks wrong.
+
+## Step 3: Build the folder
+Propose a structure, numbered in the order things get handed over. A typical one:
+00_Reference, 01_Log, 02_Receipts/&lt;year&gt;, 03_Photos/&lt;year&gt;/&lt;date&gt;_&lt;task&gt;,
+04_Correspondence, 99_Handoff. Name files with the date first (YYYY-MM-DD_...).
+Never edit their professional's original template. Keep it in 00_Reference and
+build a companion file next to it.
+
+## Step 4: Build the working file
+One spreadsheet, one tab per kind of record (for example: log of time or tasks,
+expenses, people/vendors, dates or stays). Use dropdowns for anything with a fixed
+set of choices. Use the exact category names from their template so year-end is
+copy and paste. Add a simple dashboard with the two or three numbers they care
+about most, in plain words ("On track" / "Need 9 more hours").
+Show them before you fill it.
+
+## Step 5: Start the rules file
+Create setup.md in the folder. First line: "Read this first in every new chat."
+Sections: Context (what this is, who's involved, who reads it), Conventions
+(standard durations, rounding, naming, what goes in notes), Workflow (how you
+update and check), State (counts, totals, last ID, open questions, missing
+receipts). Read it at the start of every chat. Update it at the end of every
+batch. Whenever they correct you, add the correction as a rule.
+
+## Step 6: How to handle their updates
+- Simple items: restate in one line, then log them.
+- Busy days or anything with several tasks or people: show a short table first
+  (who, what, how long) and wait for an OK before saving.
+- Be conservative: round ranges down, never invent amounts or times, and ask
+  when something is missing.
+- Never count anything twice. If a new item overlaps an existing one, say so and
+  fix it.
+- Flag gray areas for their professional instead of deciding them.
+- Keep a running list of missing evidence (receipts, photos, names).
+
+## Step 7: Check before you trust
+Turn every rule into a check and run it after every update, before saving:
+allowed categories only; every entry has a date, person, and amount or duration;
+anything excluded has a reason; no overlaps or duplicates; date order; totals
+match the rows; evidence linked or marked missing. If a check fails, fix it
+before saving and tell them what you fixed.
+
+## Step 8: Confirm the save
+After saving, confirm the file in their folder actually changed (open it again,
+or compare a checksum). Never report success based only on a tool's message.
+If it didn't change, say so plainly and retry.
+
+## Step 9: Teach as you go (this matters as much as the bookkeeping)
+The goal is a person who understands their own system, not one who depends
+on you. So:
+- When you apply a rule for the first time, explain it in two plain sentences
+  and say why it applies here.
+- Point out gray areas and what a cautious professional would do.
+- Every so often, suggest one question they should be asking but aren't,
+  especially where money or risk is involved.
+- When they ask how something works, offer a simple diagram or a
+  one-paragraph summary before the details.
+- Keep a "What I've learned" section in setup.md and add to it.
+- Once a month, offer a check-in: what they learned, what's missing,
+  what to understand better before year end.
+- Don't lecture. Short explanations, offered at the right moment.
+
+## Always
+- Plain language. Short updates. One question at a time when you can.
+- This is record-keeping help, not tax, legal, or financial advice. Point
+  judgment calls to their professional.
+- Keep personal and financial details inside their folder.</pre>
+  </div>
+
+  <div class="next">
+    <div class="next__label">Keep reading</div>
+    <a href="/musings/software-is-multiplying-users-arent.html" class="next__card">
+      <div class="next__card-meta"><span>MUSING 07 · 5 MIN</span><span class="arrow">→</span></div>
+      <div class="next__card-title">Software Is Multiplying. Users Aren’t.</div>
+    </a>
+    <a href="/musings/ai-made-everyone-look-high-agency.html" class="next__card">
+      <div class="next__card-meta"><span>MUSING 06 · 5 MIN</span><span class="arrow">→</span></div>
+      <div class="next__card-title">AI Made Everyone Look High-Agency</div>
+    </a>
+  </div>
+
+</article>
+
+<footer class="musing-footer">
+  <div class="links">
+    <a href="https://twitter.com/_harshrana" target="_blank" rel="noopener">Twitter</a>
+    <a href="https://linkedin.com/in/harshrana1997" target="_blank" rel="noopener">LinkedIn</a>
+    <a href="https://github.com/hr23232323" target="_blank" rel="noopener">GitHub</a>
+    <a href="mailto:harsh@harshrana.com">Email</a>
+  </div>
+</footer>
+
+<style>
+  .hero--tax h1 { font-size: clamp(52px, 7.6vw, 96px); max-width: 760px; }
+
+  /* Wider than the text column, like the hero, so screenshots stay legible. */
+  .aa-wide {
+    width: min(820px, calc(100vw - 40px));
+    margin: 48px 0 48px 50%;
+    transform: translateX(-50%);
+  }
+
+  .aa-shot img {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 24px 60px rgba(6,6,18,.45);
+  }
+  .aa-shot figcaption,
+  .aa-flow figcaption span {
+    margin-top: 14px;
+    font-family: var(--sans);
+    font-size: 13px;
+    line-height: 1.45;
+    color: var(--ink-soft);
+  }
+
+  .aa-flow {
+    padding: 30px 30px 26px;
+    border: 1px solid var(--rule);
+    border-radius: 10px;
+    background: var(--bg-card);
+  }
+  .aa-flow figcaption { margin-bottom: 26px; }
+  .aa-flow figcaption strong {
+    display: block;
+    font-family: var(--sans);
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--ink);
+  }
+  .aa-flow figcaption span { display: block; margin-top: 4px; }
+  .aa-flow svg { display: block; width: 100%; height: auto; font-family: var(--sans); }
+  .aa-flow__tall { display: none !important; max-width: 340px; margin: 0 auto; }
+  .aa-flow .line { fill: none; stroke: var(--rule-strong); stroke-width: 1.25; }
+  .aa-flow .tip { fill: var(--ink-faint); }
+  .aa-flow .box { fill: none; stroke: var(--rule-strong); stroke-width: 1.25; }
+  .aa-flow .box--you { fill: var(--highlight); stroke: var(--accent); stroke-width: 2; }
+  .aa-flow .box--rules { fill: rgba(251,241,221,.06); }
+  .aa-flow text { text-anchor: middle; }
+  .aa-flow .name { font-size: 13px; font-weight: 600; fill: var(--ink); }
+  .aa-flow .sub { font-size: 11.5px; fill: var(--ink-soft); }
+  .aa-flow .sub .you { fill: var(--ink); }
+  .aa-flow .label { font-size: 11.5px; fill: var(--ink-faint); }
+  .aa-flow__wide .label[text-anchor="end"] { text-anchor: end; }
+  .aa-flow__wide .label:not([text-anchor]) { text-anchor: start; }
+
+  .aa-box {
+    margin: 44px 0;
+    padding: 30px 34px 26px;
+    border: 1px solid var(--rule);
+    border-left: 3px solid var(--accent);
+    background: var(--bg-card);
+  }
+  .aa-box__label {
+    margin-bottom: 16px;
+    font-family: var(--sans);
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--accent);
+  }
+  .post .aa-box ol { margin: 0; }
+  .post .aa-box ol li { margin-bottom: 10px; }
+  .post .aa-box ol li::before { content: counter(li) "."; font-size: 14px; padding-top: 3px; }
+  .post .aa-box--rule p { margin-bottom: .35em; font-size: 21px; }
+  .post .aa-box--rule .aa-box__end { margin-top: 18px; color: var(--ink-mid); }
+
+  .aa-said {
+    margin: 0 0 1.4em;
+    padding: 20px 24px;
+    border-radius: 16px 16px 16px 4px;
+    background: var(--bg-elev);
+    font-family: var(--serif);
+    font-size: 19px;
+    line-height: 1.6;
+    color: var(--ink);
+  }
+  .post .aa-note { color: var(--ink-soft); }
+
+  .aa-levels {
+    margin: 36px 0;
+    padding-left: 22px;
+    border-left: 1px solid var(--rule-strong);
+  }
+  .post .aa-levels strong { color: var(--accent); font-weight: 600; }
+
+  .aa-table { margin: 36px 0 40px; }
+  .aa-table table { width: 100%; border-collapse: collapse; }
+  .aa-table th {
+    padding: 0 16px 12px 0;
+    text-align: left;
+    font-family: var(--sans);
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--ink-soft);
+    border-bottom: 1px solid var(--rule-strong);
+  }
+  .aa-table td {
+    padding: 16px 16px 16px 0;
+    vertical-align: top;
+    font-family: var(--serif);
+    font-size: 17px;
+    line-height: 1.5;
+    border-bottom: 1px solid var(--rule);
+  }
+  .aa-table td:last-child { width: 38%; padding-right: 0; color: var(--ink-mid); }
+
+  .post .contact-card ul { margin: 14px 0 0; }
+  .post .contact-card li { font-size: 17px; }
+
+  .post .aa-sources {
+    margin-top: 40px;
+    font-family: var(--sans);
+    font-size: 13px;
+    line-height: 1.6;
+    color: var(--ink-soft);
+  }
+  .post .aa-sources strong { color: var(--ink-mid); }
+  .post .aa-sources a { color: var(--ink-mid); border-bottom-color: var(--rule-strong); }
+
+  .post .section-break h2:only-child { margin-bottom: 0; }
+  .section-break:has(h2:only-child) { min-height: 0; }
+
+  .post .aa-setup { margin-top: 28px; }
+  .aa-setup .codeblock__body {
+    max-height: 520px;
+    overflow: auto;
+    font-size: 13px;
+  }
+  .aa-setup__actions { display: flex; align-items: center; gap: 16px; }
+  .aa-setup__actions a { color: var(--ink-soft); text-decoration: none; }
+  .aa-setup__actions a:hover { color: var(--ink); }
+  .aa-setup__actions button {
+    padding: 6px 12px;
+    border: 1px solid var(--accent-soft);
+    border-radius: 999px;
+    background: none;
+    color: var(--accent);
+    font: inherit;
+    letter-spacing: inherit;
+    text-transform: inherit;
+    cursor: pointer;
+  }
+  .aa-setup__actions button:hover { border-color: var(--accent); }
+  .aa-setup__actions :focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+
+  @media (max-width: 720px) {
+    .hero--tax h1 { font-size: clamp(42px, 12.5vw, 60px); }
+    .aa-wide { width: calc(100vw - 24px); }
+    .aa-flow { padding: 22px 16px 18px; }
+    .aa-flow__wide { display: none !important; }
+    .aa-flow__tall { display: block !important; }
+    .aa-box { padding: 24px 22px 20px; }
+    .aa-table td { font-size: 15px; padding-right: 12px; }
+  }
+</style>
+
+<script>
+  const copyButton = document.getElementById('copySetup');
+  copyButton.addEventListener('click', async () => {
+    try {
+      await navigator.clipboard.writeText(document.getElementById('setupText').textContent);
+      copyButton.textContent = 'Copied';
+    } catch {
+      copyButton.textContent = 'Select and copy';
+    }
+    setTimeout(() => { copyButton.textContent = 'Copy'; }, 2000);
+  });
+</script>
+<script src="components.js"></script>
+</body>
+</html>

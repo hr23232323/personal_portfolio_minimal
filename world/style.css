@@ -274,6 +274,8 @@ body:not(.started) #hud kbd { display: none; }
 .book h2 { font-size: 1.6rem; font-weight: 400; font-style: italic; line-height: 1.15; margin-bottom: 14px; }
 .book ol { padding-left: 1.5em; }
 .book li { margin-bottom: 8px; font-size: .98rem; line-height: 1.3; }
+.book h3 { margin: 16px 0 6px; font-size: .8rem; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; color: #6b5a44; }
+.book ul { padding-left: 1.5em; list-style: disc; }
 .book a { text-decoration-color: rgba(0, 0, 0, .3); text-underline-offset: 3px; }
 .book a:hover { color: #8a2a1a; }
 

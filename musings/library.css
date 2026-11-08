@@ -24,7 +24,7 @@ main{width:min(100% - 44px,1280px);margin:0 auto}
 .book-volume.is-changing{opacity:.25;transform:rotateY(-18deg) translateX(-12px)}
 .book-cover{position:absolute;inset:0;display:block;overflow:hidden;background:#25251f;box-shadow:-18px 25px 50px rgba(4,4,14,.6);transform:translateZ(16px)}
 .book-cover img{width:100%;height:100%;display:block;object-fit:cover}
-.book-cover-shade{position:absolute;inset:0;background:linear-gradient(90deg,rgba(0,0,0,.28),transparent 12%,transparent 58%,rgba(0,0,0,.2)),linear-gradient(0deg,rgba(0,0,0,.78),transparent 58%)}
+.book-cover-shade{position:absolute;inset:0;background:linear-gradient(90deg,rgba(0,0,0,.28),transparent 12%,transparent 58%,rgba(0,0,0,.2)),linear-gradient(0deg,rgba(8,9,22,.9),rgba(8,9,22,.62) 48%,transparent 78%)}
 .book-cover-copy{position:absolute;inset:0;padding:clamp(22px,3vw,38px);display:flex;flex-direction:column;justify-content:flex-end;color:#fff7e6;text-shadow:0 2px 22px rgba(0,0,0,.6)}
 .book-cover-copy>span{position:absolute;top:30px;left:30px;font-size:.62rem;letter-spacing:.12em;text-transform:uppercase}
 .book-cover-copy strong{font-family:"Newsreader",Georgia,serif;font-size:clamp(1.7rem,3vw,3rem);font-weight:400;letter-spacing:-.035em;line-height:.97}
@@ -41,7 +41,7 @@ main{width:min(100% - 44px,1280px);margin:0 auto}
 .bookcase{position:relative;padding:74px 0 84px;display:flex;flex-direction:column;justify-content:center;background:var(--shelf);overflow:hidden}
 .bookcase::before{content:"THE COMPLETE SHELF";margin:0 40px 34px;color:rgba(255,255,255,.55);font-size:.64rem;letter-spacing:.15em}
 .book-spine{position:relative;min-height:78px;margin:0 40px;padding:0 21px;display:grid;grid-template-columns:34px 1fr auto;align-items:center;gap:17px;color:var(--spine-ink);background:var(--spine);border-bottom:1px solid rgba(0,0,0,.24);text-decoration:none;transform-origin:right center;transition:transform .28s cubic-bezier(.2,.75,.2,1),filter .2s,box-shadow .2s;box-shadow:inset 0 1px rgba(255,255,255,.16),inset 0 -3px rgba(0,0,0,.11)}
-.book-spine:nth-of-type(2){margin-left:26px}.book-spine:nth-of-type(3){margin-right:27px}.book-spine:nth-of-type(4){margin-left:56px}.book-spine:nth-of-type(5){margin-right:48px}.book-spine:nth-of-type(6){margin-left:20px}.book-spine:nth-of-type(7){margin-right:18px}
+.book-spine:nth-of-type(2){margin-left:26px}.book-spine:nth-of-type(3){margin-right:27px}.book-spine:nth-of-type(4){margin-left:56px}.book-spine:nth-of-type(5){margin-right:48px}.book-spine:nth-of-type(6){margin-left:20px}.book-spine:nth-of-type(7){margin-right:18px}.book-spine:nth-of-type(8){margin-left:38px}
 .book-spine span,.book-spine small{font-size:.57rem;letter-spacing:.09em;opacity:.72}
 .book-spine strong{font-family:"Newsreader",Georgia,serif;font-size:clamp(.9rem,1.45vw,1.13rem);font-weight:400;line-height:1.08}
 .book-spine:hover,.book-spine:focus-visible,.book-spine.is-active{z-index:2;transform:translateX(-23px) rotate(-.35deg);filter:saturate(1.08);box-shadow:18px 18px 30px rgba(0,0,0,.24)}

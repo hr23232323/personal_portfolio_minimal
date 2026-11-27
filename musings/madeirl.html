@@ -3,13 +3,13 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Building a Shirt Shop for AI Agents | Harsh Rana</title>
+  <title>ChatGPT, I’ll take ten | Harsh Rana</title>
   <meta name="description" content="A golf tee, a group chat, and a bet on how people will find their next purchase.">
   <link rel="canonical" href="https://harshrana.com/musings/madeirl.html">
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
 
   <meta property="og:type" content="article">
-  <meta property="og:title" content="Building a Shirt Shop for AI Agents">
+  <meta property="og:title" content="ChatGPT, I’ll take ten">
   <meta property="og:description" content="A golf tee, a group chat, and a bet on how people will find their next purchase.">
   <meta property="og:url" content="https://harshrana.com/musings/madeirl.html">
   <meta property="og:image" content="https://harshrana.com/img/madeirl-social.jpg">
@@ -22,7 +22,7 @@
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:site" content="@_harshrana">
   <meta name="twitter:creator" content="@_harshrana">
-  <meta name="twitter:title" content="Building a Shirt Shop for AI Agents">
+  <meta name="twitter:title" content="ChatGPT, I’ll take ten">
   <meta name="twitter:description" content="A golf tee, a group chat, and a bet on how people will find their next purchase.">
   <meta name="twitter:image" content="https://harshrana.com/img/madeirl-social.jpg">
 
@@ -34,7 +34,7 @@
       "@type": "WebPage",
       "@id": "https://harshrana.com/musings/madeirl.html"
     },
-    "headline": "Building a Shirt Shop for AI Agents",
+    "headline": "ChatGPT, I’ll take ten",
     "description": "A golf tee, a group chat, and a bet on how people will find their next purchase.",
     "image": "https://harshrana.com/img/madeirl-social.jpg",
     "datePublished": "2026-11-27",
@@ -79,65 +79,72 @@
   <section class="hero">
     <img class="hero__art" src="/img/musings/covers/madeirl-cover.webp" alt="" width="800" height="1200">
     <div class="hero__eyebrow">Musing No. 09 · November 2026</div>
-    <h1>Building a Shirt Shop for <em>AI Agents</em></h1>
+    <h1>ChatGPT, <em>I’ll take ten</em></h1>
     <p class="hero__deck">A golf tee, a group chat, and a bet on how people will find their next purchase.</p>
-    <div class="hero__meta"><span><b>Harsh Rana</b></span><span class="sep"></span><span>3 min read</span><span class="sep"></span><span>November 2026</span></div>
+    <div class="hero__meta"><span><b>Harsh Rana</b></span><span class="sep"></span><span>4 min read</span><span class="sep"></span><span>November 2026</span></div>
   </section>
 
-  <p class="lede">“Put me down for five” is a pretty good golf shirt. If you’ve ever watched somebody fish two balls out of a pond and announce a bogey, you already know who should get one.</p>
+  <p class="lede">Suggest matching shirts for a golf trip and you’ll get nine enthusiastic replies. Congratulations. You’re now the shirt guy.</p>
 
-  <p>Now imagine asking the AI agent that helped plan your golf weekend to make the shirt. It already knows the joke. How much of a print shop should you have to learn to get from there to “I’ll take a medium”?</p>
+  <p>I gave ChatGPT the fun part of the job: design a funny tee for the trip. It came back with <strong>Breakfast Ball Country Club</strong>. Washed green shirt, little crest on the chest, a raccoon on the back teeing up another ball. Underneath him, in cream lettering: <em>First one didn’t count.</em></p>
 
-  <p>I started building <strong>MadeIRL</strong>, a print-on-demand merch prototype for AI agents, to work through that question.</p>
+  <p>I’d wear that. More importantly, I know exactly which of my friends would insist on explaining the joke to strangers.</p>
 
-  <section class="section-break" data-chapter="01" data-title="The shop">
-    <div class="section-break__numeral">01</div>
-    <div class="section-break__kicker"><span class="num">01</span></div>
-    <h2>Building for the other side of the reservation</h2>
-  </section>
-
-  <p><a href="/musings/software-is-multiplying-users-arent.html">A while back</a>, I wrote about asking Emma, my chief-of-staff agent, to book a restaurant. Emma could call on a whole stack of services while I stayed in one conversation.</p>
-
-  <p>I wanted to build something on the restaurant’s side of that interaction. A shirt seemed like a good test because there’s a moment when I absolutely do want to look at a screen. The difference between a joke I’d wear and a bachelor-party shirt I’d leave in the hotel can be about two inches of lettering.</p>
-
-  <p>I spent a surprising amount of time on the MadeIRL homepage getting that lettering right. Then it occurred to me that the first visitor I was designing for could skip the homepage entirely.</p>
-
-  <section class="section-break" data-chapter="02" data-title="The handoff">
-    <div class="section-break__numeral">02</div>
-    <div class="section-break__kicker"><span class="num">02</span></div>
-    <h2>One shirt, two interfaces</h2>
-  </section>
-
-  <p>In the working prototype, an agent can specify a line of text, a color, and a print style. MadeIRL returns a preview URL and a matching purchase-page URL. The person opens the preview and sees the words on the actual color they picked. Change “cream” to “ink” and the shirt and lettering change together.</p>
-
-  <figure class="proof">
-    <figcaption>Inside the prototype</figcaption>
-    <fieldset>
-      <legend>Pick a design to follow from request to preview.</legend>
-      <input id="golf" type="radio" name="design" checked><label for="golf">Golf weekend</label>
-      <input id="sailing" type="radio" name="design"><label for="sailing">Sailing crew</label>
-      <div class="proof__case proof__case--golf">
-        <div><b>Agent sends</b><dl><dt>text</dt><dd>put me down for five.</dd><dt>color</dt><dd>cream</dd><dt>style</dt><dd>editorial</dd></dl></div>
-        <div><b>You see</b><img loading="lazy" src="/img/musings/madeirl/golf.webp" alt="Cream tee with small dark lettering reading “put me down for five.”"></div>
-      </div>
-      <div class="proof__case proof__case--sailing">
-        <div><b>Agent sends</b><dl><dt>text</dt><dd>who tied this?</dd><dt>color</dt><dd>ink</dd><dt>style</dt><dd>editorial</dd></dl></div>
-        <div><b>You see</b><img loading="lazy" src="/img/musings/madeirl/sailing.webp" alt="Ink tee with small ivory lettering reading “who tied this?”"></div>
-      </div>
-    </fieldset>
+  <figure class="conversation">
+    <a href="/img/musings/madeirl/chatgpt.webp"><img src="/img/musings/madeirl/chatgpt.webp" width="1350" height="766" loading="lazy" alt="ChatGPT-style mock showing the Breakfast Ball Country Club shirt, front and back, followed by a request to order ten."></a>
+    <figcaption>ChatGPT design example. The follow-up exchange is illustrative.</figcaption>
   </figure>
 
-  <p>That little handoff is where I think a business can live. I’m happy to delegate finding a printer, working out its options, and setting the type. I’d still like a look at the shirt before anybody charges my card. A shop that makes both parts easy has a shot at an order from someone who never thought to search for a shop.</p>
+  <p>You can spend another minute riffing. Try “Provisional Ball Club.” Make the crest smaller. Keep the raccoon. Actually, the first line was better.</p>
 
-  <section class="section-break" data-chapter="03" data-title="Fulfillment">
-    <div class="section-break__numeral">03</div>
-    <div class="section-break__kicker"><span class="num">03</span></div>
-    <h2>The part that has to show up in the mail</h2>
+  <p>Then comes the easiest sentence in the whole conversation: <strong>“Perfect. I’ll take ten.”</strong></p>
+
+  <p>This is usually where my agent gives me homework. Download the image. Pick a printer. Find a green tee that looks like the green tee everybody just agreed on. Upload the front and back. Dig through the group chat for sizes. Somewhere in there, figure out whether the box will beat us to the rental house.</p>
+
+  <p>That handoff is why I’m building <a href="https://madeirl.ai">MadeIRL</a>. I want to order the shirt in the conversation where we designed it.</p>
+
+  <section class="section-break" data-chapter="01" data-title="The browser">
+    <div class="section-break__numeral">01</div>
+    <div class="section-break__kicker"><span class="num">01</span></div>
+    <h2>Couldn’t the agent just use a browser?</h2>
   </section>
 
-  <p>Today I can take you as far as choosing a size. Checkout is disabled. The next test is one paid shirt. I want to get an available size and a print proof from Printful, take payment through Stripe after approval, and see what comes out of the package. I’m particularly curious whether that small type still looks good on cotton.</p>
+  <p>Yes. One of the best moments I’ve had building this came from watching it do exactly that.</p>
 
-  <p>That’s the part of the agent economy I want to build for. A person will still want something very particular. Increasingly, I think the first business to hear about it will hear from their agent. For MadeIRL, I’ll know the idea has some legs when somebody shows up to the next golf weekend wearing the joke.</p>
+  <p>But first, consider what a browser agent inherits when you send it to a print shop. Custom Ink’s Design Lab has controls for picking a product, uploading artwork, adding and resizing text, and switching between the front and back. Its pricing guide describes saving the design and entering quantities to get a quote. If you’ve ever made a group shirt, you can probably picture the screen. <a href="https://www.customink.com/help_center/navigate-the-lab">Custom Ink’s Design Lab guide</a> · <a href="https://www.customink.com/ndx/">How quoting works</a></p>
+
+  <p>Now give the agent our raccoon picture and tell it to make the crest smaller. The picture shows two finished shirts side by side. The printer needs the art that goes on each one. Even if the agent finds the text-size control on its first click, the lettering in that image is pixels. And if a save form asks for an email, the agent has a judgment call to make. I asked it to try a smaller crest. Did I mean for it to give a shop my contact details?</p>
+
+  <p>Those are all solvable problems. What interests me is how many of them the customer should ever have to hear about.</p>
+
+  <section class="section-break" data-chapter="02" data-title="The preview">
+    <div class="section-break__numeral">02</div>
+    <div class="section-break__kicker"><span class="num">02</span></div>
+    <h2>I asked for blue. Claude brought back two shirts.</h2>
+  </section>
+
+  <p>For a real test, I gave Claude a less ambitious brief: use MadeIRL to make me a blue tee in size L that says “Here for the snacks.” Show it to me on a model, right here in the chat.</p>
+
+  <p>The catalog had <em>Flo Blue</em> and <em>Blue Jean</em>. One was the bright blue you might picture when somebody says “blue shirt.” The other was washed out enough to look almost gray. Claude used MadeIRL in the browser, made both previews, and brought them back into the conversation.</p>
+
+  <figure class="conversation">
+    <a href="/img/musings/madeirl/claude.webp"><img src="/img/musings/madeirl/claude.webp" width="1622" height="970" loading="lazy" alt="Claude showing the two MadeIRL color options beside an on-model preview of the Blue Jean tee in size L."></a>
+    <figcaption>Real MadeIRL preview session in Claude. This editorial recreation shortens the exchange and replaces the development URL. No order was placed.</figcaption>
+  </figure>
+
+  <p>That little choice is the experience I want. I didn’t have to learn the supplier’s name for blue. Claude didn’t have to guess which one I meant. I could look at the shirts and say, “The washed-out one.”</p>
+
+  <p>Now imagine the next message: <strong>“Ten of those. Can they get here by Thursday?”</strong></p>
+
+  <p>A useful answer takes some work. MadeIRL has to check whether the printer has the sizes we need, generate a proof from the artwork that will actually be printed, and quote a delivered price for the address we’ll be at on Thursday. I want to see that proof, the total, and the delivery estimate together. <em>That’s</em> the moment to ask for my approval.</p>
+
+  <p>After I approve, a payment retry shouldn’t turn ten shirts into twenty. If the last XL sells out, I want the agent to bring me a choice before somebody quietly orders Dave a medium. When the box ships, the tracking should land in the same conversation. That’s where I’ll go looking for it anyway.</p>
+
+  <p>This is my bet on the agent economy. Nobody on the golf trip was shopping for a print vendor. We had a joke, ten people who’d wear it, and roughly zero volunteers to organize it. A business that an agent can bring into that moment has a shot at an order that otherwise dies at “we should make shirts.”</p>
+
+  <p><a href="https://madeirl.ai">You can see what I’m building at MadeIRL.</a> The preview works today. My first test for the rest is personal: I want to order ten shirts for my golf trip without ever leaving Claude. I’ll call it working when the first thing I have to open is the box.</p>
+
+  <p>Put me down for a medium. And a five.</p>
 
   <div class="signoff">
     Until next time,
@@ -168,19 +175,9 @@
 </footer>
 
 <style>
-.proof { margin: 2.5rem 0; padding: clamp(14px, 3vw, 26px); border: 1px solid var(--rule); font-family: var(--sans); }
-.proof figcaption { color: var(--accent); font-size: 1.35rem; font-weight: 700; margin-bottom: .5rem; }
-.proof fieldset { padding: 0; margin: 0; min-width: 0; border: 0; }
-.proof legend { padding: 0; margin-bottom: 1rem; color: var(--ink-soft); }
-.proof input { margin-right: .35rem; accent-color: var(--accent); }
-.proof label { cursor: pointer; margin-right: .6rem; }
-.proof__case { display: none; grid-template-columns: 1fr 1.2fr; gap: 1rem; margin-top: 1.25rem; padding-top: 1rem; border-top: 1px solid var(--rule); }
-#golf:checked ~ .proof__case--golf, #sailing:checked ~ .proof__case--sailing { display: grid; }
-.proof__case b { display: block; margin-bottom: .75rem; }
-.proof dl { font: .85rem/1.4 var(--mono); }
-.proof dt { color: var(--ink-soft); }
-.proof dd { margin: 0 0 .65rem; color: var(--accent); }
-.proof img { display: block; width: 100%; height: auto; }
+.conversation { width: min(900px, calc(100vw - 40px)); margin: 2.5rem 0 2.5rem 50%; transform: translateX(-50%); }
+.conversation img { display: block; width: 100%; height: auto; }
+.conversation figcaption { margin-top: .7rem; color: var(--ink-soft); font: .85rem/1.45 var(--sans); }
 </style>
 <script src="components.js"></script>
 </body>

@@ -1,4 +1,6 @@
-# ChatGPT, I’ll take ten
+# Ordering a T-shirt from ChatGPT
+
+*I’m building MadeIRL so you can design a shirt, pick your size, and place the order in the same chat.*
 
 Suggest matching shirts for a golf trip and you’ll get nine enthusiastic replies. Congratulations. You’re now the shirt guy.
 

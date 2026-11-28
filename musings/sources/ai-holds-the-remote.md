@@ -64,9 +64,11 @@ Then the notification bell. Seven identical messages from the app store:
 
 All seven landed between 9:22 and 9:33 that morning. The TV had turned on at 9:16.
 
-![The TV's notifications, opened by Claude: one "Application has not been installed. Try again." after another, a few minutes apart (real screenshot)](/img/musings/ai-holds-the-remote/02-notifications.webp)
+![The TV's notifications, opened by Claude: one "Application has not been installed" after another, a few minutes apart (real screenshot)](/img/musings/ai-holds-the-remote/01-notifications.webp)
 
 So Claude tried one install itself. It worked in under a minute. So did the one I actually wanted. Every failure happened in the first 17 minutes after power-on. Everything after that went through.
+
+![YouTube TV, the one I actually wanted: Install, installing, Launch. Free space drops from 483 MB to 468 MB (real screenshots)](/img/musings/ai-holds-the-remote/02-install.webp)
 
 The bigger surprise was the home screen. Hulu, Disney+, Peacock, Sling: 13 of the 20 apps I was allowed to delete weren't really apps. They were placeholders, tiny stubs with version numbers like 0.0.32 that download the real thing the first time you open one. If that download fails, you get the message above.
 
@@ -80,6 +82,8 @@ Driving a TV this way is slow and a little absurd. Press Right. Screenshot. Read
 
 It also taught us things a person never notices. Once, Claude sent two dozen right-presses in a row. The TV ignored every one. Too fast. The fix: wait two seconds after connecting, and a full second between presses. It typed into search boxes too, which beats spelling "YouTube TV" with arrow keys.
 
+![Claude typing "YouTube TV" into the store's search, straight into the TV's on-screen keyboard (real screenshot)](/img/musings/ai-holds-the-remote/04-typing.webp)
+
 Is that efficient? No. Is it the same thing I'd do on the couch, minus the couch? Yes. Which is the point.
 
 > It's not hacking if it's *the remote.*
@@ -90,13 +94,13 @@ Here's what you don't see when you click through TV menus half-asleep: the dange
 
 On this TV, *Reset to Initial Settings* is one row below the menu we needed. In the account screen, *Sign Out* sits directly under *Account Management*, and *Terminate My Account* lives in the same list.
 
-![Settings > System on the TV. The highlighted row is the one Claude wanted. The one directly below it resets the TV (real screenshot)](/img/musings/ai-holds-the-remote/04-one-row-away.webp)
+![Settings > System on the TV. The highlighted row is the one Claude wanted. The one directly below it resets the TV (real screenshot)](/img/musings/ai-holds-the-remote/05-one-row-away.webp)
 
 So Claude never pressed OK blind. Move, screenshot, check what's highlighted, then press.
 
 Deleting works the same way. The TV asks *"Are you sure you want to delete Sling TV?"* and Claude read the app's name in that sentence before choosing Delete. Eleven times, eleven names.
 
-![The TV's own confirmation, naming the app. Claude read it before every Delete (real screenshot)](/img/musings/ai-holds-the-remote/05-read-the-dialog.webp)
+![All eleven of the TV's own confirmations, each naming the app. Claude read every one before pressing Delete (real screenshots)](/img/musings/ai-holds-the-remote/06-eleven-dialogs.webp)
 
 > Read the dialog. *Then* press OK.
 
@@ -108,17 +112,21 @@ My instructions were precise, in their way:
 
 "Stuff I don't use" is a judgment call, so Claude found a fair test: my LG account keeps a history of every app I've ever chosen. Anything on the TV that wasn't in that history came preloaded. Those 11 got deleted: Sling TV, Pluto TV, ShopTime, a pool game, a game-show app, Copilot and five of LG's own apps. Anything I'd chosen before stayed, even the placeholders.
 
+![Where deleting happens: Edit App List, the pencil at the very end of the app row (real screenshot)](/img/musings/ai-holds-the-remote/07-edit-app-list.webp)
+
 Six built-ins can't be deleted, only hidden: LG Channels, Sports, Home Hub, LG Gallery+, Alexa, and Camera. Hidden. One menu brings them back.
+
+![The six built-ins, moved to the hidden list. Reset Editing Apps brings them back (real screenshot)](/img/musings/ai-holds-the-remote/08-hidden.webp)
 
 Then the ads, which are just settings LG ships switched on:
 
-![Home Settings with Home Promotion and Content Recommendation both off. The sponsored games row below became "Device Functions" (real screenshot)](/img/musings/ai-holds-the-remote/06-home-settings.webp)
+![The four switches Claude turned off, each one checked on screen after the press (real screenshots)](/img/musings/ai-holds-the-remote/09-switches.webp)
 
 Home Promotion off: the sponsored banner went away. Content Recommendation off: the sponsored row went with it. Screen Saver Promotion and Smart Tips off too. On the LG account, it unchecked marketing emails and the voice-print agreement and left the payment terms alone.
 
 Live Plus was already off. That's LG's name for the feature that recognizes what's on your screen. A [2024 study of LG and Samsung TVs](https://arxiv.org/abs/2409.06203) found it running on live TV and on whatever you plug in over HDMI, and found that opting out stopped the traffic. Worth checking yours.
 
-![Before and after, same TV, same morning (real screenshots)](/img/musings/ai-holds-the-remote/01-before-after.webp)
+![Before and after, same TV, same morning (real screenshots)](/img/musings/ai-holds-the-remote/10-before-after.webp)
 
 33 tiles became 15. Free app storage went from 468 MB to about 560 MB. And the first thing the TV shows now is a quiet picture of a road instead of a game trailer.
 

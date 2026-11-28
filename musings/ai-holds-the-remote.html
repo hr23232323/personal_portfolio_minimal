@@ -1,0 +1,721 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>I Let Claude Hold the Remote | Harsh Rana</title>
+  <meta name="description" content="Why my TV stopped installing apps, and how an AI cleared 17 preloaded apps and the home-screen ads off it, one screenshot at a time. No hacking.">
+  <link rel="canonical" href="https://harshrana.com/musings/ai-holds-the-remote.html">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="I Let Claude Hold the Remote">
+  <meta property="og:description" content="It’s not hacking if it’s the remote. How an AI diagnosed my TV and took the ads off it, one screenshot at a time.">
+  <meta property="og:url" content="https://harshrana.com/musings/ai-holds-the-remote.html">
+  <meta property="og:image" content="https://harshrana.com/img/ai-holds-the-remote-social.png">
+  <meta property="og:site_name" content="Harsh Rana">
+  <meta property="article:author" content="Harsh Rana">
+  <meta property="article:published_time" content="2026-11-28">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@_harshrana">
+  <meta name="twitter:creator" content="@_harshrana">
+  <meta name="twitter:title" content="I Let Claude Hold the Remote">
+  <meta name="twitter:description" content="It’s not hacking if it’s the remote. How an AI diagnosed my TV and took the ads off it, one screenshot at a time.">
+  <meta name="twitter:image" content="https://harshrana.com/img/ai-holds-the-remote-social.png">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://harshrana.com/musings/ai-holds-the-remote.html"
+    },
+    "headline": "I Let Claude Hold the Remote",
+    "description": "Why my TV stopped installing apps, and how an AI cleared 17 preloaded apps and the home-screen ads off it, one screenshot at a time. No hacking.",
+    "image": "https://harshrana.com/img/ai-holds-the-remote-social.png",
+    "datePublished": "2026-11-28",
+    "isPartOf": {
+      "@type": "CreativeWorkSeries",
+      "name": "Applied AI"
+    },
+    "author": {
+      "@type": "Person",
+      "name": "Harsh Rana",
+      "url": "https://harshrana.com/"
+    },
+    "publisher": {
+      "@type": "Person",
+      "name": "Harsh Rana",
+      "url": "https://harshrana.com/"
+    },
+    "inLanguage": "en-US",
+    "keywords": [
+      "Applied AI",
+      "Claude Code",
+      "smart TV ads",
+      "LG webOS",
+      "debloat"
+    ]
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300..700;1,6..72,300..700&amp;family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,700;12..96,800&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="components.css?v=6">
+  <script src="/musing-back.js?v=4" defer></script>
+</head>
+<body>
+
+<div class="progress"><div class="progress__bar" id="progressBar"></div></div>
+<div class="topbar__chapter" id="chapterPill"><b id="chapterNum">00</b> <span id="chapterTitle">Intro</span></div>
+
+<header class="topbar">
+  <a href="/musings/#applied-ai" class="topbar__back">← Applied AI</a>
+  <a href="/" class="topbar__brand">Harsh Rana</a>
+</header>
+
+<article class="post">
+
+  <section class="hero hero--remote">
+    <img class="hero__art" src="/img/musings/covers/ai-holds-the-remote-cover.webp" alt="" width="800" height="1200">
+    <div class="hero__eyebrow">Applied AI No. 02 · November 2026</div>
+    <h1>I Let Claude Hold the <em>Remote.</em></h1>
+    <p class="hero__deck">Why my TV stopped installing apps, and how an AI cleared 17 preloaded apps and the home-screen ads off it, one screenshot at a time. No hacking.</p>
+    <div class="hero__meta">
+      <span><b>Harsh Rana</b></span>
+      <span class="sep"></span>
+      <span>7 min read</span>
+      <span class="sep"></span>
+      <span>November 2026</span>
+    </div>
+  </section>
+
+  <p class="lede">You paid for your TV. It shows you ads anyway.</p>
+
+  <p>Ours opened on a Grand Theft Auto banner. Under it, a sponsored row of games. Then 33 tiles, most of which nobody in our house ever picked. And one morning, apps just stopped installing.</p>
+
+  <p>So I handed Claude the remote. Not the plastic one. The one the TV listens to over Wi-Fi.</p>
+
+  <p>By the end of this post you’ll know how to have an AI look at a device in your house without breaking it, the five rules I’d make any AI follow before it touches one, and the menu paths if you’d rather just do it yourself tonight.</p>
+
+  <aside class="aa-box">
+    <div class="aa-box__label">The short version</div>
+    <ol>
+      <li>Tell it <em>which</em> device. Then tell it again.</li>
+      <li>Let it look before it touches.</li>
+      <li>A screenshot before every press.</li>
+      <li>It asks before it deletes anything anyone uses.</li>
+    </ol>
+  </aside>
+
+  <p>Here’s how it started. I’d cloned <a href="https://github.com/Gathin23/cleanyourtv" target="_blank" rel="noopener">CleanYourTV</a>, an open-source project that strips ads and bloat off Android TVs (518 models and counting), and opened Claude Code in it:</p>
+
+  <blockquote class="aa-said">“I have a TV I kinda wanna run this on, but mostly I wanna diagnose what’s wrong and why apps won’t install on it.”</blockquote>
+
+  <p>Plot twist: our TV isn’t Android. It’s an LG, which runs LG’s own system, webOS. The project’s own notes say it can’t touch these. No back door, nothing to install.</p>
+
+  <p>So Claude didn’t use one. It used the connection LG built for remote-control apps, the same one <a href="https://www.home-assistant.io/integrations/webostv/" target="_blank" rel="noopener">Home Assistant</a> uses to control LG TVs. It pressed a button, took a screenshot, read it, and decided on the next press. Over and over.</p>
+
+  <p><strong>What you need:</strong> a laptop on the same Wi-Fi, Claude Code (or another coding agent), the TV remote to say “Allow” once, and some patience. You won’t write code. Claude writes the little script that talks to the TV.</p>
+
+  <section class="section-break" data-chapter="" data-title="How it works">
+    <h2>How it <em>works.</em></h2>
+  </section>
+
+  <p>One loop, and two moments where you’re in charge.</p>
+
+  <figure class="aa-wide aa-flow">
+    <figcaption>
+      <strong>Claude presses one key, reads one screenshot, repeats.</strong>
+      <span>How it works</span>
+    </figcaption>
+    <svg class="aa-flow__wide" viewBox="16 74 696 156" role="img" aria-label="How it works: you tell Claude, on your laptop, what you want. Claude sends the TV one key press and gets a screenshot back, over and over. Claude asks you before deleting anything. You accept the connection on the TV once.">
+      <defs><marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" class="tip"/></marker></defs>
+      <g class="line">
+        <path d="M152 100H298" marker-end="url(#arrow)"/><path d="M300 124H154" marker-end="url(#arrow)"/>
+        <path d="M428 100H574" marker-end="url(#arrow)"/><path d="M576 124H430" marker-end="url(#arrow)"/>
+        <path d="M88 138V196H640V140" stroke-dasharray="4 4" marker-end="url(#arrow)"/>
+      </g>
+      <rect x="24" y="82" width="128" height="56" rx="8" class="box box--you"/>
+      <rect x="300" y="82" width="128" height="56" rx="8" class="box"/>
+      <rect x="576" y="82" width="128" height="56" rx="8" class="box"/>
+      <g class="name">
+        <text x="88" y="106">You</text><text x="364" y="106">Claude Code</text><text x="640" y="106">Your TV</text>
+      </g>
+      <g class="sub">
+        <text x="88" y="124" class="you">the final say</text><text x="364" y="124">on your laptop</text><text x="640" y="124">same Wi-Fi</text>
+      </g>
+      <g class="label">
+        <text x="226" y="92">what you want</text><text x="226" y="146">asks before deleting</text>
+        <text x="502" y="92">one key press</text><text x="502" y="146">a screenshot back</text>
+        <text x="364" y="216">“Allow” on the TV, once</text>
+      </g>
+    </svg>
+    <svg class="aa-flow__tall" viewBox="0 0 340 330" role="img" aria-label="How it works: you tell Claude, on your laptop, what you want. Claude sends the TV one key press and gets a screenshot back, over and over. Claude asks you before deleting anything. You accept the connection on the TV once.">
+      <defs><marker id="arrow-tall" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" class="tip"/></marker></defs>
+      <g class="line">
+        <path d="M80 68V136" marker-end="url(#arrow-tall)"/><path d="M122 138V70" marker-end="url(#arrow-tall)"/>
+        <path d="M80 190V258" marker-end="url(#arrow-tall)"/><path d="M122 260V192" marker-end="url(#arrow-tall)"/>
+        <path d="M186 42H310V286H188" stroke-dasharray="4 4" marker-end="url(#arrow-tall)"/>
+      </g>
+      <rect x="16" y="16" width="170" height="52" rx="8" class="box box--you"/>
+      <rect x="16" y="138" width="170" height="52" rx="8" class="box"/>
+      <rect x="16" y="260" width="170" height="52" rx="8" class="box"/>
+      <g class="name">
+        <text x="101" y="38">You</text><text x="101" y="160">Claude Code</text><text x="101" y="282">Your TV</text>
+      </g>
+      <g class="sub">
+        <text x="101" y="56" class="you">the final say</text><text x="101" y="178">on your laptop</text><text x="101" y="300">same Wi-Fi</text>
+      </g>
+      <g class="label">
+        <text x="134" y="100" class="start">asks first</text><text x="72" y="100" class="end">your ask</text>
+        <text x="134" y="222" class="start">screenshot</text><text x="72" y="222" class="end">key press</text>
+        <text x="300" y="166" class="end">“Allow”,</text><text x="300" y="180" class="end">once</text>
+      </g>
+    </svg>
+  </figure>
+
+  <!-- 01 -->
+  <section class="section-break" data-chapter="01" data-title="Which TV">
+    <div class="section-break__numeral">01</div>
+    <div class="section-break__kicker"><span class="num">01</span></div>
+    <h2>Tell it <em>which TV.</em></h2>
+  </section>
+
+  <p>We have two TVs. I said so, and said not to touch the other one.</p>
+
+  <p>Claude misread which one was “the other” and poked at the wrong TV. Read-only, no harm done. But that’s exactly the kind of mistake that matters when the next step deletes things.</p>
+
+  <p>Since then, rule one: before anything changes, the AI names the device it’s about to touch, by model, and waits for a yes.</p>
+
+  <blockquote class="pull">Name the device. <em>Then</em> touch it.</blockquote>
+
+  <!-- 02 -->
+  <section class="section-break" data-chapter="02" data-title="Look first">
+    <div class="section-break__numeral">02</div>
+    <div class="section-break__kicker"><span class="num">02</span></div>
+    <h2>Let it look <em>before it touches.</em></h2>
+  </section>
+
+  <p>The first stretch was all looking. What’s on the network. What the TV says about itself. Which apps are installed. How much storage is free.</p>
+
+  <p>Then the notification bell. Seven identical messages from the app store:</p>
+
+  <blockquote class="aa-said"><em>“Application has not been installed. Try again.”</em></blockquote>
+
+  <p>All seven landed between 9:22 and 9:33 that morning. The TV had turned on at 9:16.</p>
+
+  <figure class="aa-wide aa-shot">
+    <img src="/img/musings/ai-holds-the-remote/02-notifications.webp" alt="" width="960" height="540" loading="lazy">
+    <figcaption>The TV’s notifications, opened by Claude: one “Application has not been installed” after another, a few minutes apart (real screenshot)</figcaption>
+  </figure>
+
+  <p>So Claude tried one install itself. It worked in under a minute. So did the one I actually wanted. Every failure happened in the first 17 minutes after power-on. Everything after that went through.</p>
+
+  <p>The bigger surprise was the home screen. Hulu, Disney+, Peacock, Sling: 13 of the 20 apps I was allowed to delete weren’t really apps. They were placeholders, tiny stubs with version numbers like 0.0.32 that download the real thing the first time you open one. If that download fails, you get the message above.</p>
+
+  <figure class="aa-wide aa-shot">
+    <img src="/img/musings/ai-holds-the-remote/03-placeholders.webp" alt="" width="960" height="540" loading="lazy">
+    <figcaption>The LG store’s own list: HBO Max, Prime Video, YouTube and Netflix say Launch. Disney+ and Hulu, despite their icons on the home screen, still say Install (real screenshot)</figcaption>
+  </figure>
+
+  <p>Nothing was broken. I’d have spent an evening resetting things for nothing.</p>
+
+  <!-- 03 -->
+  <section class="section-break" data-chapter="03" data-title="The remote">
+    <div class="section-break__numeral">03</div>
+    <div class="section-break__kicker"><span class="num">03</span></div>
+    <h2>It used <em>the remote.</em></h2>
+  </section>
+
+  <p>Driving a TV this way is slow and a little absurd. Press Right. Screenshot. Read. Press Right again.</p>
+
+  <p>It also taught us things a person never notices. Once, Claude sent two dozen right-presses in a row. The TV ignored every one. Too fast. The fix: wait two seconds after connecting, and a full second between presses. It typed into search boxes too, which beats spelling “YouTube TV” with arrow keys.</p>
+
+  <p>Is that efficient? No. Is it the same thing I’d do on the couch, minus the couch? Yes. Which is the point.</p>
+
+  <blockquote class="pull">It’s not hacking if it’s <em>the remote.</em></blockquote>
+
+  <!-- 04 -->
+  <section class="section-break" data-chapter="04" data-title="Screenshot first">
+    <div class="section-break__numeral">04</div>
+    <div class="section-break__kicker"><span class="num">04</span></div>
+    <h2>A screenshot before <em>every press.</em></h2>
+  </section>
+
+  <p>Here’s what you don’t see when you click through TV menus half-asleep: the dangerous buttons sit right next to the useful ones.</p>
+
+  <p>On this TV, <em>Reset to Initial Settings</em> is one row below the menu we needed. In the account screen, <em>Sign Out</em> sits directly under <em>Account Management</em>, and <em>Terminate My Account</em> lives in the same list.</p>
+
+  <figure class="aa-wide aa-shot">
+    <img src="/img/musings/ai-holds-the-remote/04-one-row-away.webp" alt="" width="960" height="540" loading="lazy">
+    <figcaption>Settings › System on the TV. The highlighted row is the one Claude wanted. The one directly below it resets the TV (real screenshot)</figcaption>
+  </figure>
+
+  <p>So Claude never pressed OK blind. Move, screenshot, check what’s highlighted, then press.</p>
+
+  <p>Deleting works the same way. The TV asks <em>“Are you sure you want to delete Sling TV?”</em> and Claude read the app’s name in that sentence before choosing Delete. Eleven times, eleven names.</p>
+
+  <figure class="aa-wide aa-shot">
+    <img src="/img/musings/ai-holds-the-remote/05-read-the-dialog.webp" alt="" width="960" height="540" loading="lazy">
+    <figcaption>The TV’s own confirmation, naming the app. Claude read it before every Delete (real screenshot)</figcaption>
+  </figure>
+
+  <blockquote class="pull">Read the dialog. <em>Then</em> press OK.</blockquote>
+
+  <!-- 05 -->
+  <section class="section-break" data-chapter="05" data-title="What came off">
+    <div class="section-break__numeral">05</div>
+    <div class="section-break__kicker"><span class="num">05</span></div>
+    <h2>What <em>came off.</em></h2>
+  </section>
+
+  <p>My instructions were precise, in their way:</p>
+
+  <blockquote class="aa-said">“Debloat it, delete a bunch of stuff I don’t use and is default there plz. CLEAN it up. No crazy DNS or network stuff tho.”</blockquote>
+
+  <p>“Stuff I don’t use” is a judgment call, so Claude found a fair test: my LG account keeps a history of every app I’ve ever chosen. Anything on the TV that wasn’t in that history came preloaded. Those 11 got deleted: Sling TV, Pluto TV, ShopTime, a pool game, a game-show app, Copilot and five of LG’s own apps. Anything I’d chosen before stayed, even the placeholders.</p>
+
+  <p>Six built-ins can’t be deleted, only hidden: LG Channels, Sports, Home Hub, LG Gallery+, Alexa, and Camera. Hidden. One menu brings them back.</p>
+
+  <p>Then the ads, which are just settings LG ships switched on:</p>
+
+  <figure class="aa-wide aa-shot">
+    <img src="/img/musings/ai-holds-the-remote/06-home-settings.webp" alt="" width="960" height="540" loading="lazy">
+    <figcaption>Home Settings with Home Promotion and Content Recommendation both off. The sponsored games row below became “Device Functions” (real screenshot)</figcaption>
+  </figure>
+
+  <p>Home Promotion off: the sponsored banner went away. Content Recommendation off: the sponsored row went with it. Screen Saver Promotion and Smart Tips off too. On the LG account, it unchecked marketing emails and the voice-print agreement and left the payment terms alone.</p>
+
+  <p>Live Plus was already off. That’s LG’s name for the feature that recognizes what’s on your screen. A <a href="https://arxiv.org/abs/2409.06203" target="_blank" rel="noopener">2024 study of LG and Samsung TVs</a> found it running on live TV and on whatever you plug in over HDMI, and found that opting out stopped the traffic. Worth checking yours.</p>
+
+  <figure class="aa-wide aa-shot aa-shot--tall">
+    <img src="/img/musings/ai-holds-the-remote/01-before-after.webp" alt="" width="960" height="1160" loading="lazy">
+    <figcaption>Before and after, same TV, same morning (real screenshots)</figcaption>
+  </figure>
+
+  <p>33 tiles became 15. Free app storage went from 468 MB to about 560 MB. And the first thing the TV shows now is a quiet picture of a road instead of a game trailer.</p>
+
+  <aside class="aa-box aa-box--diy">
+    <div class="aa-box__label">Rather do it yourself? On a 2025 LG (webOS 25)</div>
+    <p><strong>Ads on Home:</strong> Settings → General → System → Additional Settings → Home Settings → turn off <em>Home Promotion</em> and <em>Content Recommendation</em>.</p>
+    <p><strong>Screensaver ads:</strong> same Additional Settings → Screen Saver Settings → <em>Screen Saver Promotion</em> off.</p>
+    <p><strong>Screen tracking:</strong> same Additional Settings → <em>Live Plus</em> off.</p>
+    <p><strong>Pop-up tips:</strong> General → AI Service → AI Recommendation → <em>Smart Tips</em> off.</p>
+    <p><strong>Apps:</strong> scroll to the end of the app row → <em>Edit App List</em> → the trash icon deletes, the eye icon hides.</p>
+    <p class="aa-box__end"><em>Menus move between years. These are from one 2025 set.</em></p>
+  </aside>
+
+  <!-- 06 -->
+  <section class="section-break" data-chapter="06" data-title="Make it teach you">
+    <div class="section-break__numeral">06</div>
+    <div class="section-break__kicker"><span class="num">06</span></div>
+    <h2>Make it <em>teach you.</em></h2>
+  </section>
+
+  <p>The cleanup is nice. What I learned is the part that sticks.</p>
+
+  <p>I now know why a tile can say Hulu and not be Hulu. I know where my TV’s ads actually come from: two switches, not some unknowable ad empire. I know which built-ins LG won’t let me delete, and that a firmware update can quietly flip things back.</p>
+
+  <p>I also know what Claude couldn’t do. It looked for LG’s ad-tracking page in the settings and the account menus and didn’t find it on this model. It said so instead of guessing. I’ll take that over a confident wrong answer every time.</p>
+
+  <p>Here’s what coaching sounds like when the AI is holding the remote:</p>
+
+  <ul>
+    <li><em>“Before you press OK, tell me what’s highlighted and what’s one row above and below it.”</em></li>
+    <li><em>“Which of these changes can’t be undone?”</em></li>
+    <li><em>“What did you find that you didn’t expect?”</em></li>
+    <li><em>“Draw me how you’re talking to the TV.”</em> (That’s the diagram at the top of this post.)</li>
+    <li><em>“Make me a list of everything you changed, and how to put each one back.”</em></li>
+  </ul>
+
+  <section class="section-break" data-chapter="" data-title="Not an LG?">
+    <h2>Not an LG? <em>Same idea.</em></h2>
+  </section>
+
+  <div class="aa-table">
+    <table>
+      <thead>
+        <tr><th>Your TV</th><th>Start here</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><strong>Android TV or Google TV</strong> (Sony, TCL, Hisense, Xiaomi, most streaming boxes)</td><td><a href="https://github.com/Gathin23/cleanyourtv" target="_blank" rel="noopener">CleanYourTV</a>: paste its prompt into Claude Code. It can switch off far more than the menus can, and every change has a one-line undo.</td></tr>
+        <tr><td><strong>Samsung, Roku, Vizio, Hisense VIDAA</strong></td><td><a href="https://cleanyour.tv/not-android" target="_blank" rel="noopener">cleanyour.tv/not-android</a>: the privacy switches, step by step, with the remote.</td></tr>
+        <tr><td><strong>LG</strong></td><td>This post. The box at the bottom does the setup.</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <section class="section-break" data-chapter="" data-title="Start small">
+    <h2>Start small. <em>Seriously.</em></h2>
+  </section>
+
+  <div class="aa-levels">
+    <p><strong>Level 1 · Tonight, about 15 minutes, no AI.</strong> Grab the remote and follow the “Rather do it yourself?” box above. The two Home Settings switches alone take the ads off your home screen.</p>
+
+    <p><strong>Level 2 · When something’s off.</strong> Open Claude Code on a laptop on the same Wi-Fi and say: <em>“Find my TV on the network and tell me what’s wrong with it. Don’t change anything. Ask me before you connect to anything.”</em> Diagnosis only. That’s where my mystery was solved.</p>
+
+    <p><strong>Level 3 · When you want it clean.</strong> Paste the box at the bottom of this post into Claude Code. It brings the rules with it: name the device, screenshot every press, ask before deleting, and keep a list of how to undo everything.</p>
+  </div>
+
+  <aside class="aa-box aa-box--rule">
+    <div class="aa-box__label">The remote rule</div>
+    <p><strong>Name</strong> the device.</p>
+    <p><strong>Look</strong> before you touch.</p>
+    <p><strong>Screenshot</strong> every press.</p>
+    <p><strong>Ask</strong> before you delete.</p>
+    <p><strong>Keep</strong> a way back.</p>
+    <p class="aa-box__end"><em>The AI holds the remote. You keep the final say.</em></p>
+  </aside>
+
+  <div class="contact-card">
+    <h4>Your move</h4>
+    <ul>
+      <li><strong>Tonight:</strong> Level 1. Two switches, and the ads are gone.</li>
+      <li><strong>Got a weird device problem?</strong> Try Level 2 and let it look first.</li>
+      <li><strong>Cleaned something up?</strong> Send me your before and after. I want to see it.</li>
+    </ul>
+    <a href="mailto:harsh@harshrana.com">Start a conversation →</a>
+  </div>
+
+  <p>Coming next in Applied AI: what it takes to send this back to the open-source project that started it.</p>
+
+  <div class="signoff">
+    Until next time,
+    <div class="signoff__name">Harsh</div>
+  </div>
+
+  <p class="aa-sources"><strong>Sources:</strong> <a href="https://github.com/Gathin23/cleanyourtv" target="_blank" rel="noopener">CleanYourTV</a> · <a href="https://cleanyour.tv/not-android" target="_blank" rel="noopener">cleanyour.tv/not-android</a> · <a href="https://arxiv.org/abs/2409.06203" target="_blank" rel="noopener">Anselmi et al., “Watching TV with the Second-Party”, IMC 2024</a> · <a href="https://www.home-assistant.io/integrations/webostv/" target="_blank" rel="noopener">Home Assistant’s LG webOS integration</a></p>
+
+  <section class="section-break" id="for-your-ai" data-chapter="" data-title="For your AI">
+    <h2>For your AI: <em>clean up my LG TV</em></h2>
+  </section>
+
+  <p>You don’t need to read this part. It’s written for Claude Code (or whatever coding agent you use).</p>
+
+  <p>Open Claude Code on a computer on the same Wi-Fi as your TV, and paste everything in the box below. It will find the TV, ask before every step that matters, and keep a list of how to undo everything.</p>
+
+  <div class="codeblock aa-setup aa-wide">
+    <div class="codeblock__cap">
+      <span class="lang">ai-holds-the-remote-setup.md</span>
+      <span class="aa-setup__actions">
+        <a href="/musings/ai-holds-the-remote-setup.md" target="_blank" rel="noopener">Open as a file</a>
+        <button type="button" id="copySetup">Copy</button>
+      </span>
+    </div>
+<pre class="codeblock__body" id="setupText"># Clean up my LG TV, safely (from harshrana.com, Applied AI No. 02)
+
+You are a coding agent on a computer on the same Wi-Fi as the person's LG TV
+(webOS). You will diagnose it and, only with their OK, clean it up: delete
+preloaded apps they never chose, hide built-ins that can't be deleted, and turn
+off the home-screen ads. You do this through LG's own remote-control connection,
+exactly as if you were pressing buttons on the remote. No root, no Developer
+Mode, no exploits, no network or DNS changes. Go slowly and explain in plain words.
+
+If the TV turns out to be Android TV or Google TV, stop and use
+https://github.com/Gathin23/cleanyourtv (its PROMPT.md) instead. For Samsung,
+Roku, Vizio or Hisense VIDAA, send them to https://cleanyour.tv/not-android.
+
+## Step 1: Interview (ask, then wait)
+1. What's wrong, in their words? (ads, apps won't install, slow, cluttered)
+2. How many TVs are in the house? Which one is this, by room and brand?
+3. Which apps does the household actually use? Which must never be touched?
+4. Do they use the TV's voice assistant, Live TV / antenna, or casting?
+5. Anything off-limits? (default: no network, DNS, or account changes beyond
+   optional marketing consents)
+
+## Step 2: Find the TV, and name it before touching it
+Look for it read-only: the ARP table, and mDNS (`_googlecast._tcp` gives the
+model and a friendly name). If there is more than one TV, list each with its
+model and name, and ask which one. Never send anything to a TV they didn't
+pick. Say the model back to them before you pair.
+
+## Step 3: Pair once, with their consent
+Use LG's SSAP websocket on port 3001 (TLS; port 3000 may reset). A maintained
+client like the Python `aiowebostv` package works. Tell them a prompt is about
+to appear on the TV and wait for them to accept it. Store the pairing key in a
+local file and tell them where it is and how to remove it later.
+Practical notes from a 2025 set (webOS 25):
+- Screenshots: `ssap://tv/executeOneShot` with
+  `{"path": "/tmp/capture.png", "method": "DISPLAY", "format": "PNG"}` returns
+  an `imageUri` you can download (TLS, self-signed).
+- Keys: request `com.webos.service.networkinput/getPointerInputSocket`, open the
+  returned `wss://` path, and send `type:button\nname:RIGHT\n\n` (UP, DOWN,
+  LEFT, RIGHT, ENTER, BACK, HOME, EXIT).
+- Text: `com.webos.service.ime/insertText` with `{"text": "...", "replace": 0}`.
+- Apps: `com.webos.applicationManager/listApps` (look at `version`,
+  `removable`, `visible`, `installTime`).
+- Wait about 2 seconds after connecting before the first key, and about 1
+  second between keys. Fast bursts get dropped silently.
+- Some reads return "401 insufficient permissions". That's expected. Say so
+  and move on.
+
+## Step 4: Look before you touch (read-only diagnosis)
+Report back before changing anything:
+- Model, region, webOS version (Settings &gt; Support &gt; TV Information).
+- Free app storage (shown on any app's page in the Apps store).
+- The notification bell: install failures and their times.
+- The app list: which apps are real and which are placeholder stubs (version
+  0.0.x; the Apps store shows "Install" for them under ⋮ &gt; Manage App).
+Explain what you found in plain words, with your confidence, and what you'd
+suggest. Wait for their OK.
+
+## Step 5: Drive with a screenshot before every OK
+- Move, screenshot, check what's highlighted, then press OK. Never press OK
+  on a screen you haven't just looked at.
+- Never select: Reset to Initial Settings, Sign Out, Terminate My Account,
+  Delete Viewing Information, Home/Store Mode, Software Update, anything under
+  Network. If one is highlighted, move away.
+- When a confirmation dialog appears, read the item's name in it before
+  choosing Delete. If it names the wrong thing, choose Cancel.
+
+## Step 6: Decide what goes, with them
+- Before: save the app list (titles, ids, versions) to a local file.
+- A fair test for "preloaded": the LG account's app history (Apps store &gt; ⋮ &gt;
+  Manage App) lists what the household has chosen before. Propose deleting
+  only removable apps that are not in that history and not on their keep list.
+  Show the list and wait for a yes.
+- Built-ins that can't be deleted can be hidden (eye icon). Propose, then hide.
+- Delete and hide from Home &gt; end of the app row &gt; Edit App List.
+- After: save the app list again and show the before/after difference.
+
+## Step 7: Turn off the ads (settings they can see)
+On webOS 25 these were under Settings &gt; General &gt; System &gt; Additional Settings:
+Home Settings &gt; Home Promotion and Content Recommendation; Screen Saver
+Settings &gt; Screen Saver Promotion; Live Plus. Also General &gt; AI Service &gt;
+AI Recommendation &gt; Smart Tips. Menus move between years: find each by
+reading the screen, not by counting key presses. Optional LG account consents
+(marketing, biometric) are their call. Ask first. Leave payment terms on.
+If you can't find a setting, say so. Don't guess.
+
+## Step 8: Leave a way back, and hand back the keys
+Give them a plain list of every change and how to undo it: reinstall from
+the Apps store, Edit App List &gt; Reset Editing Apps to unhide, flip the
+switches back. Mention that firmware updates can turn things back on.
+Return the TV to its Home screen. Tell them where the pairing key is, and that
+deleting it (and removing the computer from the TV's connected devices) ends
+the pairing.
+
+## Teach as you go
+- Before pressing OK, say what's highlighted and what's one row above and below.
+- Flag anything that can't be undone before doing it.
+- Point out what surprised you, e.g. placeholder apps, settings that were
+  already off.
+- Offer a simple picture of how you're talking to the TV if they ask.
+
+## Always
+- Keep screenshots local. Settings screens show the account email, serial
+  number and MAC address; never paste or upload those.
+- One TV, one change at a time, a screenshot after each.
+- Plain language. Ask before anything the household might use.</pre>
+  </div>
+
+  <div class="next">
+    <div class="next__label">Keep reading</div>
+    <a href="/musings/tax-paperwork.html" class="next__card">
+      <div class="next__card-meta"><span>APPLIED AI 01 · 10 MIN</span><span class="arrow">→</span></div>
+      <div class="next__card-title">The Tax Paperwork I Don’t Do Anymore</div>
+    </a>
+    <a href="/musings/ai-high-potential-hire.html" class="next__card">
+      <div class="next__card-meta"><span>MUSING 08 · 8 MIN</span><span class="arrow">→</span></div>
+      <div class="next__card-title">Your AI Is a High-Potential Hire</div>
+    </a>
+  </div>
+
+</article>
+
+<footer class="musing-footer">
+  <div class="links">
+    <a href="https://twitter.com/_harshrana" target="_blank" rel="noopener">Twitter</a>
+    <a href="https://linkedin.com/in/harshrana1997" target="_blank" rel="noopener">LinkedIn</a>
+    <a href="https://github.com/hr23232323" target="_blank" rel="noopener">GitHub</a>
+    <a href="mailto:harsh@harshrana.com">Email</a>
+  </div>
+</footer>
+
+<style>
+  .post .hero--remote h1 { font-size: clamp(52px, 6.4vw, 88px); max-width: 720px; }
+
+  /* Wider than the text column, like the hero, so screenshots stay legible. */
+  .aa-wide {
+    width: min(820px, calc(100vw - 40px));
+    margin: 48px 0 48px 50%;
+    transform: translateX(-50%);
+  }
+
+  .aa-shot img {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 24px 60px rgba(6,6,18,.45);
+  }
+  .aa-shot--tall { width: min(640px, calc(100vw - 40px)); }
+  .aa-shot figcaption,
+  .aa-flow figcaption span {
+    margin-top: 14px;
+    font-family: var(--sans);
+    font-size: 13px;
+    line-height: 1.45;
+    color: var(--ink-soft);
+  }
+
+  .aa-flow {
+    padding: 30px 30px 26px;
+    border: 1px solid var(--rule);
+    border-radius: 10px;
+    background: var(--bg-card);
+  }
+  .aa-flow figcaption { margin-bottom: 26px; }
+  .aa-flow figcaption strong {
+    display: block;
+    font-family: var(--sans);
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--ink);
+  }
+  .aa-flow figcaption span { display: block; margin-top: 4px; }
+  .aa-flow svg { display: block; width: 100%; height: auto; font-family: var(--sans); }
+  .aa-flow__tall { display: none !important; max-width: 340px; margin: 0 auto; }
+  .aa-flow .line { fill: none; stroke: var(--rule-strong); stroke-width: 1.25; }
+  .aa-flow .tip { fill: var(--ink-faint); }
+  .aa-flow .box { fill: none; stroke: var(--rule-strong); stroke-width: 1.25; }
+  .aa-flow .box--you { fill: var(--highlight); stroke: var(--accent); stroke-width: 2; }
+  .aa-flow text { text-anchor: middle; }
+  .aa-flow .name { font-size: 13px; font-weight: 600; fill: var(--ink); }
+  .aa-flow .sub { font-size: 11.5px; fill: var(--ink-soft); }
+  .aa-flow .sub .you { fill: var(--ink); }
+  .aa-flow .label { font-size: 11.5px; fill: var(--ink-faint); }
+  .aa-flow .label .start { text-anchor: start; }
+  .aa-flow .label .end { text-anchor: end; }
+
+  .aa-box {
+    margin: 44px 0;
+    padding: 30px 34px 26px;
+    border: 1px solid var(--rule);
+    border-left: 3px solid var(--accent);
+    background: var(--bg-card);
+  }
+  .aa-box__label {
+    margin-bottom: 16px;
+    font-family: var(--sans);
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--accent);
+  }
+  .post .aa-box ol { margin: 0; }
+  .post .aa-box ol li { margin-bottom: 10px; }
+  .post .aa-box ol li::before { content: counter(li) "."; font-size: 14px; padding-top: 3px; }
+  .post .aa-box--rule p { margin-bottom: .35em; font-size: 21px; }
+  .post .aa-box--rule .aa-box__end,
+  .post .aa-box--diy .aa-box__end { margin-top: 18px; color: var(--ink-mid); }
+  .post .aa-box--diy p { margin-bottom: .7em; font-size: 17px; line-height: 1.55; }
+
+  .aa-said {
+    margin: 0 0 1.4em;
+    padding: 20px 24px;
+    border-radius: 16px 16px 16px 4px;
+    background: var(--bg-elev);
+    font-family: var(--serif);
+    font-size: 19px;
+    line-height: 1.6;
+    color: var(--ink);
+  }
+
+  .aa-levels {
+    margin: 36px 0;
+    padding-left: 22px;
+    border-left: 1px solid var(--rule-strong);
+  }
+  .post .aa-levels strong { color: var(--accent); font-weight: 600; }
+
+  .aa-table { margin: 36px 0 40px; }
+  .aa-table table { width: 100%; border-collapse: collapse; }
+  .aa-table th {
+    padding: 0 16px 12px 0;
+    text-align: left;
+    font-family: var(--sans);
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--ink-soft);
+    border-bottom: 1px solid var(--rule-strong);
+  }
+  .aa-table td {
+    padding: 16px 16px 16px 0;
+    vertical-align: top;
+    font-family: var(--serif);
+    font-size: 17px;
+    line-height: 1.5;
+    border-bottom: 1px solid var(--rule);
+  }
+  .aa-table td:first-child { width: 38%; }
+  .aa-table td:last-child { padding-right: 0; color: var(--ink-mid); }
+
+  .post .contact-card ul { margin: 14px 0 0; }
+  .post .contact-card li { font-size: 17px; }
+
+  .post .aa-sources {
+    margin-top: 40px;
+    font-family: var(--sans);
+    font-size: 13px;
+    line-height: 1.6;
+    color: var(--ink-soft);
+  }
+  .post .aa-sources strong { color: var(--ink-mid); }
+  .post .aa-sources a { color: var(--ink-mid); border-bottom-color: var(--rule-strong); }
+
+  .post .section-break h2:only-child { margin-bottom: 0; }
+  .section-break:has(h2:only-child) { min-height: 0; }
+
+  .post .aa-setup { margin-top: 28px; }
+  .aa-setup .codeblock__body {
+    max-height: 520px;
+    overflow: auto;
+    font-size: 13px;
+  }
+  .aa-setup__actions { display: flex; align-items: center; gap: 16px; }
+  .aa-setup__actions a { color: var(--ink-soft); text-decoration: none; }
+  .aa-setup__actions a:hover { color: var(--ink); }
+  .aa-setup__actions button {
+    padding: 6px 12px;
+    border: 1px solid var(--accent-soft);
+    border-radius: 999px;
+    background: none;
+    color: var(--accent);
+    font: inherit;
+    letter-spacing: inherit;
+    text-transform: inherit;
+    cursor: pointer;
+  }
+  .aa-setup__actions button:hover { border-color: var(--accent); }
+  .aa-setup__actions :focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+
+  @media (max-width: 720px) {
+    .post .hero--remote h1 { font-size: clamp(42px, 12.5vw, 60px); }
+    .aa-wide { width: calc(100vw - 24px); }
+    .aa-flow { padding: 22px 16px 18px; }
+    .aa-flow__wide { display: none !important; }
+    .aa-flow__tall { display: block !important; }
+    .aa-box { padding: 24px 22px 20px; }
+    .aa-table td { font-size: 15px; padding-right: 12px; }
+  }
+</style>
+
+<script>
+  const copyButton = document.getElementById('copySetup');
+  copyButton.addEventListener('click', async () => {
+    try {
+      await navigator.clipboard.writeText(document.getElementById('setupText').textContent);
+      copyButton.textContent = 'Copied';
+    } catch {
+      copyButton.textContent = 'Select and copy';
+    }
+    setTimeout(() => { copyButton.textContent = 'Copy'; }, 2000);
+  });
+</script>
+<script src="components.js"></script>
+</body>
+</html>
